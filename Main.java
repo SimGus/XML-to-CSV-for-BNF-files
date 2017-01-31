@@ -1,9 +1,11 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 
 import util.Log;
 import util.EnFrString;
 
 import backend.files.FileNamesInterpreter;
+import backend.files.FileOpener;
 
 import gui.Window;
 
@@ -30,6 +32,7 @@ public class Main {
       }
 
       //Window mainWindow = new Window();
+      Log.log("current directory : "+FileOpener.currentDirectory);
 
       if (inputFileName != null) {
          try {
@@ -37,6 +40,11 @@ public class Main {
             outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFileName, outputFileName);
             Log.log("Input file : "+inputFileName);
             Log.log("Output file : "+outputFileName);
+
+            if (FileOpener.fileExists(inputFileName))
+               Log.log(inputFileName+" exists");
+            else
+               Log.log(inputFileName+" doesn't exist");
          } catch (IllegalArgumentException e) {
             Log.err("Invalid argument : "+e.getMessage());
          }
