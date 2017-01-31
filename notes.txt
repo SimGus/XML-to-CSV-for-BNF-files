@@ -1,0 +1,10 @@
+GUI :
+   2 tabs
+      - main
+         choose file to translate -> edit text
+         browse button
+         choose file to write -> edit text
+         translate button
+         output pane
+      - options
+         language -> drop down menu
