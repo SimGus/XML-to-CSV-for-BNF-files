@@ -1,4 +1,4 @@
-package backend.parser;
+package backend.files;
 
 import java.util.Scanner;
 
@@ -8,6 +8,10 @@ public class Reader {
    private static final String commentBeginning = "<!--", commentEnding = "-->";
    private static boolean currentLineBeginsInAComment = false, nextLineBeginsInAComment = false;
 
+   /*
+    * Returns the  next line that is not empty  or not fully a comment in the file read by @inputScanner
+    * If there is no more "effective" line, returns @null
+    */
    public static String getNextEffectiveLine(Scanner inputScanner) {
       String answer;
       while (inputScanner.hasNextLine()) {

@@ -7,9 +7,10 @@ import java.util.ArrayList;
 
 import util.Log;
 import backend.files.FileOpener;
+import backend.files.Reader;
 
 public class Parser {
-   private static final String firstXmlTagName = "?xml";
+   private static final String firstXmlTagName = "?xml", preferredXMLVersion = "\"1.0\"";
 
    public static void parse(String inputFileName, String outputFileName) {
       Scanner inputScanner;
@@ -21,18 +22,36 @@ public class Parser {
       }
 
       String currentLine = Reader.getNextEffectiveLine(inputScanner);
+      if (currentLine == null) {
+         Log.warn("File '"+inputFileName+"' is empty (no effective line).");
+         return;
+      }
+      //============= Check the validity of the file ==================
+      ArrayList<String> firstTagParts = splitTag(currentLine, 0);
+      if (firstTagParts.size() <= 0 || !firstTagParts.get(0).equals(firstXmlTagName)) {
+         Log.err("The file '"+inputFileName+"' is not a valid XML file. Missing the first XML tag.");
+         return;
+      }
+      for (int i=1; i<firstTagParts.size(); i++) {
+         if (firstTagParts.get(i).equals("version")) {
+            if (!firstTagParts.get(i+1).equals(preferredXMLVersion))
+               Log.warn("XML version might be out-of-date : version is "+firstTagParts.get(i+1)+" while preferred version is "+preferredXMLVersion);
+            break;
+         }
+      }
+      //TODO more checking about the encoding?
+
+      //================= Parse all following tags =====================
       while (currentLine != null) {
-         Log.log(currentLine);
-         //splitTag(currentLine, 0);
-         for (String current : splitTag(currentLine, 0))
-            Log.log("splitted : '"+current+"'");
-         currentLine = Reader.getNextEffectiveLine(inputScanner);
+         Reader.getNextEffectiveLine(inputScanner);
+
       }
    }
 
    /*
-    * returns the name, attributes and values of attributes of the tag that begins ('<') at index @tagBeginningIndex in @line
-    * returns an ArrayList with the tag name in place #0 and a pair attribute-value in all 2 next places
+    * Returns the name, attributes and values of attributes of the tag that begins ('<') at index @tagBeginningIndex in @line
+    * Returns an ArrayList with the tag name in place #0 and a pair attribute-value in all 2 next places
+    * If there is nothing in the tag, returns an empty ArrayList
     */
    public static ArrayList<String> splitTag(String line, int tagBeginningIndex) {
       if (line == null || line.length() <= 0 || tagBeginningIndex < 0 || tagBeginningIndex >= line.length())
@@ -116,7 +135,7 @@ public class Parser {
                   c = line.charAt(i);
             }
 
-            currentAttributeValue = currentAttributeValue.toLowerCase();
+            //currentAttributeValue = currentAttributeValue.toLowerCase();//We should keep the case
             answer.add(currentAttributeValue);
             if (currentAttributeValue.equals(""))
                Log.warn("Attribute '"+currentAttributeName+"' of tag '"+tagName+"' has no value.");
