@@ -17,4 +17,18 @@ public class XMLString implements XMLPart {
    public String tagNamesToString() {
       return null;
    }
+
+   public void printContents(int alinea) {
+      printAlinea(alinea);
+      System.out.println(content);
+   }
+
+   public void printTagNames(int alinea) {
+      //nothing to do
+   }
+
+   private void printAlinea(int alinea) {
+      for (int i=0; i<alinea; i++)
+         System.out.print("  ");
+   }
 }

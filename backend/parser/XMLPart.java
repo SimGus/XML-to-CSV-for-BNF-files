@@ -8,6 +8,12 @@ public interface XMLPart {
     * separated by a tabulation '\t'
     */
    String contentsToString();
-
    String tagNamesToString();//same thing just with the tag names
+
+   /*
+    * Prints a representation of the XMLPart and its contents
+    * @alinea is used for layout
+    */
+   void printContents(int alinea);
+   void printTagNames(int alinea);//same thing only with the tag names
 }

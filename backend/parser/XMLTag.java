@@ -74,4 +74,35 @@ public class XMLTag implements XMLPart {
 
       return answer;
    }
+
+   public void printContents(int alinea) {
+      printAlinea(alinea);
+      System.out.print("["+name+" (");
+
+      for (String attributeName : attributes.keySet())
+         System.out.print(attributeName+" ");
+      System.out.println(")");
+
+      for (XMLPart currentChild : childrenElements)
+         currentChild.printContents(alinea+1);
+
+      printAlinea(alinea);
+      System.out.println("]");
+   }
+
+   public void printTagNames(int alinea) {
+      printAlinea(alinea);
+      System.out.println("["+name);
+
+      for (XMLPart currentChild : childrenElements)
+         currentChild.printTagNames(alinea+1);
+
+      printAlinea(alinea);
+      System.out.println("]");
+   }
+
+   private void printAlinea(int alinea) {
+      for (int i=0; i<alinea; i++)
+         System.out.print("  ");
+   }
 }

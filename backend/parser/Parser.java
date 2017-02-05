@@ -13,13 +13,16 @@ import backend.files.Reader;
 public class Parser {
    private static final String firstXmlTagName = "?xml", preferredXMLVersion = "\"1.0\"";
 
-   private static String inputFileName = "undefined", outputFileName = "undefined";
+   private static String inputFileName = "undefined";
    private static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
    private static Stack<XMLTag> stackOfTags = new Stack<XMLTag>();
 
-   public static void parse(String inputFileName, String outputFileName) {
+   /*
+    * Parses the file with name @inputFileName and extracts the tree of XML tags
+    * Returns that tree
+    */
+   public static void parse(String inputFileName) {
       Parser.inputFileName = inputFileName;
-      Parser.outputFileName = outputFileName;
 
       Scanner inputScanner;
       try {
@@ -55,13 +58,8 @@ public class Parser {
       }
 
       Log.log("Detected tree :");
-      for (XMLPart current : rootTags)
-         System.out.println(current.contentsToString());
-
-      ArrayList<String> toWrite = new ArrayList<String>();
-      for (XMLPart current : rootTags)
-         toWrite.add(current.tagNamesToString());
-      FileOpener.writeFile(Parser.outputFileName, toWrite);
+      for (XMLPart tag : rootTags)
+         tag.printTagNames(0);
    }
 
    /*
@@ -201,6 +199,8 @@ public class Parser {
       int i=0;
       boolean standaloneTag = false, closingTag = false;
       while (i < line.length()) {
+         standaloneTag = false;
+         closingTag = false;
          //-------------- Add a string element ------------------------
          if (line.charAt(i) != '<') {
             String element = extractStringElement(line, i);
@@ -257,6 +257,8 @@ public class Parser {
                standaloneTag = true;
             }
 
+            if (standaloneTag)
+               continue;
             if (!closingTag) {
                //---------- Put tag in the roots if the stack is empty --------------
                if (stackOfTags.isEmpty()) {
@@ -279,7 +281,7 @@ public class Parser {
                   continue;
                }
                if (!stackOfTags.peek().getName().equals(tagName)) {
-                  Log.err("The closing tag with name "+tagName+" does not close the last opened XML tag. Ignoring the closing tag.");
+                  Log.err("The closing tag with name "+tagName+" does not close the last opened XML tag ("+stackOfTags.peek().getName()+"). Ignoring the closing tag.");
                   continue;
                }
                //Remove top tag

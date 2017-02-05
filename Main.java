@@ -46,8 +46,8 @@ public class Main {
                   Log.log(inputFileName+" doesn't exist");
 
                validFileNames = true;
-               
-               Parser.parse(inputFileName, outputFileName);
+
+               Parser.parse(inputFileName);
             } catch (IllegalArgumentException e) {
                Log.err("Invalid argument : "+e.getMessage());
             }
