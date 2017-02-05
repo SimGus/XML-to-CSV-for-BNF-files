@@ -8,3 +8,7 @@ GUI :
          output pane
       - options
          language -> drop down menu
+
+
+TODO the tags should be case sensitive
+TODO don't make it all in one method

@@ -14,7 +14,7 @@ public class Parser {
    private static final String firstXmlTagName = "?xml", preferredXMLVersion = "\"1.0\"";
 
    private static String inputFileName = "undefined", outputFileName = "undefined";
-   private static ArrayList<XMLTag> rootTags = new ArrayList<XMLTag>();
+   private static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
    private static Stack<XMLTag> stackOfTags = new Stack<XMLTag>();
 
    public static void parse(String inputFileName, String outputFileName) {
@@ -55,12 +55,12 @@ public class Parser {
       }
 
       Log.log("Detected tree :");
-      for (XMLTag current : rootTags)
+      for (XMLPart current : rootTags)
          System.out.println(current.contentsToString());
 
       ArrayList<String> toWrite = new ArrayList<String>();
-      for (XMLTag current : rootTags)
-         toWrite.add(current.contentsToString());
+      for (XMLPart current : rootTags)
+         toWrite.add(current.tagNamesToString());
       FileOpener.writeFile(Parser.outputFileName, toWrite);
    }
 
@@ -69,7 +69,7 @@ public class Parser {
     * Returns an ArrayList with the tag name in place #0 and a pair attribute-value in all 2 next places
     * If there is nothing in the tag, returns an empty ArrayList
     */
-   public static ArrayList<String> splitTag(String line, int tagBeginningIndex) {
+   private static ArrayList<String> splitTag(String line, int tagBeginningIndex) {
       if (line == null || line.length() <= 0 || tagBeginningIndex < 0 || tagBeginningIndex >= line.length())
          throw new IllegalArgumentException("Tried to get a tag name from an invalid line.");
       if (line.charAt(tagBeginningIndex) != '<')
@@ -172,7 +172,7 @@ public class Parser {
     * Checks if the first (effective) line of the file is a valid prolog tag with a valid form and version number
     * Returns true if the prolog tag is valid
     */
-   public static boolean prologTagIsValid(String firstLine) {
+   private static boolean prologTagIsValid(String firstLine) {
       if (firstLine.length() <= 0 || firstLine.charAt(0) != '<') {
          Log.err("The file "+inputFileName+" does not contain a valid XML prolog.");
          return false;
@@ -197,20 +197,32 @@ public class Parser {
    /*
     * Parses the line @line and puts the tags in @rootTags and @stackOfTags
     */
-   public static void parseLine(String line) {
+   private static void parseLine(String line) {
       int i=0;
       boolean standaloneTag = false, closingTag = false;
       while (i < line.length()) {
          //-------------- Add a string element ------------------------
-         if (line.charAt(i) != '<') {}
+         if (line.charAt(i) != '<') {
+            String element = extractStringElement(line, i);
+            i += element.length();
+
+            element = trim(element);
+
+            if (element.length() <= 0)
+               continue;
+
+            if (stackOfTags.isEmpty())
+               rootTags.add(new XMLString(element));
+            else {
+               XMLTag top = stackOfTags.peek();
+               top.addChildElement(new XMLString(element));
+            }
+         }
          //--------------- Create a new xml tag ------------------------
          else {
             ArrayList<String> splittedTag = splitTag(line, i);
             //--------- Get index pointer to the next interesting part of the line ----------------
-            if (!line.contains(">"))
-               i = line.length();
-            else
-               i = line.indexOf(">")+1;
+            i = nextTagClosingChar(line, i)+1;
             //-------------- make tag --------------------
             if (splittedTag.size() <= 0)
                continue;//don't make the new tag
@@ -283,12 +295,68 @@ public class Parser {
     * Returns true if the word ends in '/' and false otherwise
     * Meant to be called for the last word inside a tag to see if it is a standalone tag or not
     */
-   public static boolean isStandaloneWord(String word) {
+   private static boolean isStandaloneWord(String word) {
       if (word == null || word.length() <= 0) {
          Log.warn("Tried to check if an empty word ended with '/'");
          return false;
       }
 
       return (word.charAt(word.length()-1) == '/');
+   }
+
+   /*
+    * Returns the part of @source that goes from @index to the first following '<' in @source (or the end of @source)
+    * Exception thrown if @source or @index are invalid or if there isn't a '<' at @index
+    */
+   private static String extractStringElement(String source, int index) {
+      if (source == null || index < 0 || index >= source.length())
+         throw new IllegalArgumentException("Tried to extract a string from an empty line or with invalid arguments");
+
+      if (!source.contains("<"))
+         return source.substring(index);
+      int i;
+      for (i=index; i<source.length() && source.charAt(i) != '<'; i++)
+      {}
+      return source.substring(index, i);
+   }
+
+   /*
+    * Return a string that is the same string as @str but without the whitespaces (' ' and '\t') at the beginning and the end
+    */
+   private static String trim(String str) {
+      if (str == null || str.length() <= 0)
+         return "";
+
+      int i;
+      for (i=0; i<str.length(); i++) {
+         if (str.charAt(i) != ' ' && str.charAt(i) != '\t')
+            break;
+      }
+
+      int j;
+      for (j=str.length()-1; j>=0; j--) {
+         if (str.charAt(j) != ' ' && str.charAt(j) != '\t')
+            break;
+      }
+
+      if (j<=i)
+         return "";
+      return str.substring(i, j+1);
+   }
+
+   /*
+    * Returns the index of the next character '>' after index @beginningIndex in @str
+    * Returns @str.length() if no '>' was found or if there was a problem
+    */
+   private static int nextTagClosingChar(String str, int beginningIndex) {
+      if (str == null || str.length() <= 0 || beginningIndex < 0 || beginningIndex >= str.length()) {
+         Log.warn("Tried to get the index of a character with invalid parameters.");
+         return str.length();
+      }
+
+      int i;
+      for (i=beginningIndex; i<str.length() && str.charAt(i)!='>'; i++) {}
+
+      return i;
    }
 }

@@ -65,8 +65,12 @@ public class XMLTag implements XMLPart {
       String answer = "";
       answer += name + stringSpacing;
 
-      for (XMLPart currentChild : childrenElements)
-         answer += currentChild.tagNamesToString() + stringSpacing;
+      String tmp;
+      for (XMLPart currentChild : childrenElements) {
+         tmp = currentChild.tagNamesToString();
+         if (tmp != null)
+            answer += tmp + stringSpacing;
+      }
 
       return answer;
    }
