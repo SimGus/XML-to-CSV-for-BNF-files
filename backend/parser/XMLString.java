@@ -1,5 +1,7 @@
 package backend.parser;
 
+import java.util.ArrayList;
+
 public class XMLString implements XMLPart {
    protected String content;
 
@@ -8,6 +10,14 @@ public class XMLString implements XMLPart {
          throw new IllegalArgumentException("Tried to instantiate an XML string with no content");
 
       content = str;
+   }
+
+   public String getTagName() {
+      return null;
+   }
+
+   public ArrayList<XMLPart> getChildrenElements() {
+      return new ArrayList<XMLPart>();
    }
 
    public String contentsToString() {

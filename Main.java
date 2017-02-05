@@ -7,6 +7,7 @@ import util.EnFrString;
 import backend.files.FileNamesInterpreter;
 import backend.files.FileOpener;
 import backend.parser.Parser;
+import backend.transcripter.Interpreter;
 
 import gui.Window;
 
@@ -48,6 +49,7 @@ public class Main {
                validFileNames = true;
 
                Parser.parse(inputFileName);
+               Interpreter.writeNoticeableTagNames(outputFileName);
             } catch (IllegalArgumentException e) {
                Log.err("Invalid argument : "+e.getMessage());
             }

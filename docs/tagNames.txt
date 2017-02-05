@@ -1,0 +1,36 @@
+ead
+	eadheader
+		[eadid]
+		filedesc
+			[titlestmt]
+				titleproper
+				subtitle
+			[publicationstmt]
+				publisher
+				date
+		profiledesc
+			creation
+			[langusage]
+	archdesc
+		did
+			[unitid]
+			[unittitle]
+				title
+			[unitdate]
+			[repository]
+			[langmaterial]
+			physdesc
+				[geogname]
+				[physfacet]
+				[extent]
+				[dimensions]
+			[origination]
+		[bibliography]
+			bibref
+		[processinfo]
+		dsc
+		[altformavail]
+		[custodhist]
+		[scopecontent]
+		[dao]
+

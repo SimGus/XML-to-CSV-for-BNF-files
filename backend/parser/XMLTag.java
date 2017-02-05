@@ -18,7 +18,11 @@ public class XMLTag implements XMLPart {
       this.name = name;
    }
 
-   public String getName() {return name;}
+   public String getTagName() {
+      if (name == null)
+         throw new UnsupportedOperationException("Tried to get the name of an empty tag");
+      return name;
+   }
 
    public void putAttribute(String key, String value) {
       if (key == null || key.length() <= 0)
@@ -46,6 +50,10 @@ public class XMLTag implements XMLPart {
          throw new IllegalArgumentException("Tried to add an empty XML tag as a child element of another one");
 
       childrenElements.add(child);
+   }
+
+   public ArrayList<XMLPart> getChildrenElements() {
+      return childrenElements;
    }
 
    public String contentsToString() {

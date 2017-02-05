@@ -14,7 +14,7 @@ public class Parser {
    private static final String firstXmlTagName = "?xml", preferredXMLVersion = "\"1.0\"";
 
    private static String inputFileName = "undefined";
-   private static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
+   public static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
    private static Stack<XMLTag> stackOfTags = new Stack<XMLTag>();
 
    /*
@@ -53,13 +53,9 @@ public class Parser {
       if (!stackOfTags.isEmpty()) {
          Log.err("Missing closing tag(s) for tags with names :");
          while (!stackOfTags.isEmpty())
-            Log.err(stackOfTags.pop().getName());
+            Log.err(stackOfTags.pop().getTagName());
          Log.warn("The transcription might be wrong.");
       }
-
-      Log.log("Detected tree :");
-      for (XMLPart tag : rootTags)
-         tag.printTagNames(0);
    }
 
    /*
@@ -280,8 +276,8 @@ public class Parser {
                   Log.err("Missing an opening tag for tag named '"+tagName+"'. Ignoring the closing tag.");
                   continue;
                }
-               if (!stackOfTags.peek().getName().equals(tagName)) {
-                  Log.err("The closing tag with name "+tagName+" does not close the last opened XML tag ("+stackOfTags.peek().getName()+"). Ignoring the closing tag.");
+               if (!stackOfTags.peek().getTagName().equals(tagName)) {
+                  Log.err("The closing tag with name "+tagName+" does not close the last opened XML tag ("+stackOfTags.peek().getTagName()+"). Ignoring the closing tag.");
                   continue;
                }
                //Remove top tag

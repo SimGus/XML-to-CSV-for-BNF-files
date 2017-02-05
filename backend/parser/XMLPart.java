@@ -1,5 +1,7 @@
 package backend.parser;
 
+import java.util.ArrayList;
+
 public interface XMLPart {
    /*
     * A string that's formed recursively of the tag name,
@@ -16,4 +18,12 @@ public interface XMLPart {
     */
    void printContents(int alinea);
    void printTagNames(int alinea);//same thing only with the tag names
+
+   /*
+    * Returns an ArrayList containing all the children elements of the XML part
+    * or an empty ArrayList if the part does not have children elements
+    */
+   ArrayList<XMLPart> getChildrenElements();
+
+   String getTagName();
 }
