@@ -8,7 +8,7 @@ import backend.parser.Parser;
 import backend.files.FileOpener;
 import backend.parser.XMLPart;
 
-public class Interpreter {
+public class Lister {
    private static final String[] ignoredList = {"p", "lb", "num", "emph", "language", "head", "persname", "corpname", "extref"};
 
    /*
