@@ -8,6 +8,7 @@ import backend.files.FileNamesInterpreter;
 import backend.files.FileOpener;
 import backend.parser.Parser;
 import backend.transcripter.Lister;
+import backend.transcripter.Interpreter;
 
 import gui.Window;
 
@@ -49,7 +50,13 @@ public class Main {
                validFileNames = true;
 
                Parser.parse(inputFileName);
-               Lister.writeNoticeableTagNames(outputFileName);
+               //Lister.writeNoticeableTagNames(outputFileName);
+
+               //Initialize the HashMap of how to interpret each tags
+               Interpreter.initTagTypesMap();
+
+               ArrayList<String> linesToWrite = Interpreter.translateTree();
+               FileOpener.writeFile(outputFileName, linesToWrite);
             } catch (IllegalArgumentException e) {
                Log.err("Invalid argument : "+e.getMessage());
             }

@@ -12,3 +12,15 @@ GUI :
 
 TODO the tags should be case sensitive
 TODO don't make it all in one method
+
+There's a bug that seems not to read <lb/>
+
+Interpreter :  read the tree of the file
+               each time you encounter a tag that could contain something interesting keep on searching
+                                       a tag that doesn't contain anything valuable stop
+                                       a tag that can be simplified to the value (or value of an attribute it contains), simplify and put it in the HashMap
+               finally you get a HashMap containing all the fields of the database and their value
+
+               => 3 types :   - keep on going down the tree
+                              - get what's inside and that correspond to a database field
+                              - you've gone too far, there might be a problem with the file

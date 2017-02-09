@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 import util.Log;
+import backend.parser.Parser;
 
 public class XMLTag implements XMLPart {
    protected static char stringSpacing = '\t';
@@ -112,5 +113,46 @@ public class XMLTag implements XMLPart {
    private void printAlinea(int alinea) {
       for (int i=0; i<alinea; i++)
          System.out.print("  ");
+   }
+
+   public String getContentsFormatted() {
+      if (name.equals("origination")) {
+         printTagNames(0);
+      }
+
+      if (childrenElements.size() == 0) {
+         if (name.equals("lb"))
+            return "\n";
+         if (name.equals("dao")) {
+            if (attributes.get("href") != null)
+               return attributes.get("href");
+            return "";
+         }
+      }
+      else if (childrenElements.size() == 1) {
+         if (name.equals("persname") || name.equals("title")) {
+            if (attributes.get("normal") != null)
+               return attributes.get("normal");
+            return childrenElements.get(0).getContentsFormatted();
+         }
+      }
+
+      String answer = "";
+      for (XMLPart currentChild : childrenElements) {
+         answer += currentChild.getContentsFormatted();
+
+         if (currentChild.getTagName() != null
+            && (currentChild.getTagName().equals("p")
+            || currentChild.getTagName().equals("head")))
+            answer += "\n";
+         else
+            answer += " ";
+      }
+      answer = Parser.trim(answer);
+
+      if (name.equals("origination"))
+         System.out.println("Origination gives : '"+answer+"'");
+
+      return answer;
    }
 }

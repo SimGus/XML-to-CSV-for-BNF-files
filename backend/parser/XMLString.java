@@ -34,11 +34,16 @@ public class XMLString implements XMLPart {
    }
 
    public void printTagNames(int alinea) {
-      //nothing to do
+      printAlinea(alinea);
+      System.out.println("String");
    }
 
    private void printAlinea(int alinea) {
       for (int i=0; i<alinea; i++)
          System.out.print("  ");
+   }
+
+   public String getContentsFormatted() {
+      return content;
    }
 }

@@ -319,21 +319,21 @@ public class Parser {
    }
 
    /*
-    * Return a string that is the same string as @str but without the whitespaces (' ' and '\t') at the beginning and the end
+    * Return a string that is the same string as @str but without the whitespaces (' ', '\t' and '\n') at the beginning and the end
     */
-   private static String trim(String str) {
+   public static String trim(String str) {
       if (str == null || str.length() <= 0)
          return "";
 
       int i;
       for (i=0; i<str.length(); i++) {
-         if (str.charAt(i) != ' ' && str.charAt(i) != '\t')
+         if (str.charAt(i) != ' ' && str.charAt(i) != '\t' && str.charAt(i) != '\n')
             break;
       }
 
       int j;
       for (j=str.length()-1; j>=0; j--) {
-         if (str.charAt(j) != ' ' && str.charAt(j) != '\t')
+         if (str.charAt(j) != ' ' && str.charAt(j) != '\t' && str.charAt(j) != '\n')
             break;
       }
 

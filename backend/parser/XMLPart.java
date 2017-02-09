@@ -26,4 +26,9 @@ public interface XMLPart {
    ArrayList<XMLPart> getChildrenElements();
 
    String getTagName();
+
+   /*
+    * Returns a String containing the interesting contents of the tag formatted
+    */
+   String getContentsFormatted();
 }
