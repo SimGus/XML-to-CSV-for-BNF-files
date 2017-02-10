@@ -241,7 +241,6 @@ public class Parser {
             else {
                XMLTag top = stackOfTags.peek();
                top.addChildElement(new XMLString(element));
-               Log.log("Adding string");
             }
          }
          //--------------- Create a new xml tag ------------------------
@@ -279,6 +278,7 @@ public class Parser {
                standaloneTag = true;
             }
 
+            //---------- Add tag in the tags tree --------------
             if (standaloneTag) {
                if (stackOfTags.isEmpty()) {
                   Log.err("There is a problem in the architecture of the input file. Detected a standalone tag as root of the file.");
@@ -288,9 +288,8 @@ public class Parser {
                   XMLTag top = stackOfTags.peek();
                   top.addChildElement(newTag);
                }
-               continue;
             }
-            if (!closingTag) {
+            else if (!closingTag) {
                //---------- Put tag in the roots if the stack is empty --------------
                if (stackOfTags.isEmpty()) {
                   rootTags.add(newTag);
@@ -300,7 +299,7 @@ public class Parser {
                   XMLTag top = stackOfTags.peek();
                   top.addChildElement(newTag);
                }
-               //----------- Put tag onto the stack (if not standalone) -------------------
+               //----------- Put tag onto the stack -------------------
                stackOfTags.push(newTag);
             }
             else {
@@ -370,7 +369,7 @@ public class Parser {
             break;
       }
 
-      if (j<=i)
+      if (j<i)
          return "";
       return str.substring(i, j+1);
    }

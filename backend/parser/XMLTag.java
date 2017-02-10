@@ -116,10 +116,6 @@ public class XMLTag implements XMLPart {
    }
 
    public String getContentsFormatted() {
-      if (name.equals("origination")) {
-         printTagNames(0);
-      }
-
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
             return "\n";
@@ -149,9 +145,6 @@ public class XMLTag implements XMLPart {
             answer += " ";
       }
       answer = Parser.trim(answer);
-
-      if (name.equals("origination"))
-         System.out.println("Origination gives : '"+answer+"'");
 
       return answer;
    }
