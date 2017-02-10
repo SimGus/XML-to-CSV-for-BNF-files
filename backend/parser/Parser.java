@@ -11,7 +11,7 @@ import backend.files.FileOpener;
 import backend.files.Reader;
 
 public class Parser {
-   private static final String firstXmlTagName = "?xml", preferredXMLVersion = "\"1.0\"";
+   private static final String firstXmlTagName = "?xml", preferredXMLVersion = "1.0";
 
    private static String inputFileName = "undefined";
    public static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
@@ -91,7 +91,7 @@ public class Parser {
          }
 
          if (!tagName.equals("")) {
-            tagName = tagName.toLowerCase();
+            //tagName = tagName.toLowerCase();//tags should be case sensitive
             answer.add(tagName);
          }
          if (i == line.length()) {
@@ -120,7 +120,7 @@ public class Parser {
          }
 
          if (!currentAttributeName.equals("")) {
-            currentAttributeName = currentAttributeName.toLowerCase();
+            //currentAttributeName = currentAttributeName.toLowerCase();//should be case sensitive
             answer.add(currentAttributeName);
          }
          if (c == '>')
@@ -129,15 +129,40 @@ public class Parser {
             Log.err("Couldn't retrieve XML attribute associated with the '"+tagName+"' XML tag.");
             throw new IllegalArgumentException("Invalid syntax");
          }
-         if (c == ' ' || c == '\t')
+         while (c == ' ' || c == '\t') {
             i++;
+            if (i >= line.length())
+               return answer;
+            c = line.charAt(i);
+         }
 
          //----------- Find value --------------
-         if (c == '=' && i+1 < line.length()) {
+         if (c == '=') {
+            i++;
+            if (i >= line.length())
+               return answer;
+            c = line.charAt(i);
+         }
+         while (c == ' ' || c == '\t') {
+            i++;
+            if (i >= line.length())
+               return answer;
+            c = line.charAt(i);
+         }
+         char quotingSymbol;
+         if (c == '"')
+            quotingSymbol = '"';
+         else if (c == '\'')
+            quotingSymbol = '\'';
+         else {
+            Log.err("Attribute '"+currentAttributeName+"' of tag '"+tagName+"' has a value that is not quoted.");
+            throw new IllegalArgumentException("Invalid syntax");
+         }
+         if (i+1 < line.length()) {
             i++;
             c = line.charAt(i);
             while (i<line.length()) {
-               if (c==' ' || c=='\t' || c=='>')
+               if (c == quotingSymbol)
                   break;
                currentAttributeValue += c;
                i++;
@@ -145,11 +170,15 @@ public class Parser {
                   c = line.charAt(i);
             }
 
-            //currentAttributeValue = currentAttributeValue.toLowerCase();//We should keep the case
+            //currentAttributeValue = currentAttributeValue.toLowerCase();//should be case sensitive
             answer.add(currentAttributeValue);
-            if (currentAttributeValue.equals(""))
-               Log.warn("Attribute '"+currentAttributeName+"' of tag '"+tagName+"' has no value.");
 
+            if (c == quotingSymbol) {
+               i++;
+               if (i >= line.length())
+                  return answer;
+               c = line.charAt(i);
+            }
             if (c == '>')
                return answer;
             if (c == ' ' || c == '\t')
@@ -243,13 +272,9 @@ public class Parser {
 
             int j;
             for (j=1; j+1<splittedTag.size(); j+=2) {
-               if (j+1>=splittedTag.size()-2 && isStandaloneWord(splittedTag.get(j+1))) {//if it is the last attribute value
-                  splittedTag.set(j+1, splittedTag.get(j+1).substring(0, splittedTag.get(j+1).length()-1));//remove last character ('/')
-                  standaloneTag = true;
-               }
                newTag.putAttribute(splittedTag.get(j), splittedTag.get(j+1));
             }
-            if (j<splittedTag.size() && splittedTag.get(j).equals("/")) {//standalone tag
+            if (j<splittedTag.size() && isStandaloneWord(splittedTag.get(j))) {//standalone tag
                standaloneTag = true;
             }
 

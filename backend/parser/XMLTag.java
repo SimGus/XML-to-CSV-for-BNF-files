@@ -28,7 +28,7 @@ public class XMLTag implements XMLPart {
    public void putAttribute(String key, String value) {
       if (key == null || key.length() <= 0)
          throw new IllegalArgumentException("Tried to add an empty XML attribute to an XML tag");
-      if (value == null || value.length() <= 0) {
+      if (value == null) {
          Log.warn("Tried to add an XML attribute without value. Ignoring it.");
          return;
       }
