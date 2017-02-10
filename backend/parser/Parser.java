@@ -241,6 +241,7 @@ public class Parser {
             else {
                XMLTag top = stackOfTags.peek();
                top.addChildElement(new XMLString(element));
+               Log.log("Adding string");
             }
          }
          //--------------- Create a new xml tag ------------------------
@@ -278,8 +279,17 @@ public class Parser {
                standaloneTag = true;
             }
 
-            if (standaloneTag)
+            if (standaloneTag) {
+               if (stackOfTags.isEmpty()) {
+                  Log.err("There is a problem in the architecture of the input file. Detected a standalone tag as root of the file.");
+                  throw new IllegalArgumentException("Invalid architecture");
+               }
+               else {
+                  XMLTag top = stackOfTags.peek();
+                  top.addChildElement(newTag);
+               }
                continue;
+            }
             if (!closingTag) {
                //---------- Put tag in the roots if the stack is empty --------------
                if (stackOfTags.isEmpty()) {
@@ -291,9 +301,7 @@ public class Parser {
                   top.addChildElement(newTag);
                }
                //----------- Put tag onto the stack (if not standalone) -------------------
-               if (!standaloneTag) {
-                  stackOfTags.push(newTag);
-               }
+               stackOfTags.push(newTag);
             }
             else {
                //---------- Remove the tag that is on top of the stack (+check) -------------------
