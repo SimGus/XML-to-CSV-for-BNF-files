@@ -134,15 +134,28 @@ public class XMLTag implements XMLPart {
       }
 
       String answer = "";
+      boolean wasLastChildAString = false, dontPutSpaceAtBeginning = true;
       for (XMLPart currentChild : childrenElements) {
+         if (!(currentChild instanceof XMLString)
+            && !wasLastChildAString
+            && !dontPutSpaceAtBeginning)
+               answer += " ";
+
          answer += currentChild.getContentsFormatted();
 
          if (currentChild.getTagName() != null
             && (currentChild.getTagName().equals("p")
-            || currentChild.getTagName().equals("head")))
-            answer += "\n";
+            || currentChild.getTagName().equals("head"))) {
+               answer += "\n";
+               dontPutSpaceAtBeginning = true;
+         }
          else
-            answer += " ";
+            dontPutSpaceAtBeginning = false;
+
+         if (currentChild instanceof XMLString)
+            wasLastChildAString = true;
+         else
+            wasLastChildAString = false;
       }
       answer = Parser.trim(answer);
 
