@@ -101,6 +101,10 @@ public class Interpreter {
       return answer;
    }
 
+   /*
+    * Iterates recursively through the tags tree (thanks to argument @tag)
+    * and put the interesting translations in the HashMap @translatedFields
+    */
    private static void translateTag(XMLPart tag) {
       if (tag.getTagName() == null) {
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
@@ -120,12 +124,11 @@ public class Interpreter {
                translateTag(currentTag);
             }
             break;
-         case IGNORE:
-            //nothing to do
+         case IGNORE://nothing to do
             break;
          case FIELD:
-            //TODO
-            String fieldValue = getFieldValue(tag);
+            //TODO check if it is not already in the translatedFields
+            String fieldValue = tag.getContentsFormatted();
             if (fieldValue != null)
                translatedFields.put(tag.getTagName(), fieldValue);
             break;
@@ -133,9 +136,5 @@ public class Interpreter {
             Log.err("There was an error translating a tag.");
             break;
       }
-   }
-
-   private static String getFieldValue(XMLPart tag) {
-      return tag.getContentsFormatted();
    }
 }

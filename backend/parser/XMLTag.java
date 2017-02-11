@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 import util.Log;
-import backend.parser.Parser;
 
 public class XMLTag implements XMLPart {
    protected static char stringSpacing = '\t';
@@ -118,7 +117,7 @@ public class XMLTag implements XMLPart {
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-            return "\n";
+            return "\\n";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");
@@ -136,19 +135,20 @@ public class XMLTag implements XMLPart {
       String answer = "";
       boolean wasLastChildAString = false, dontPutSpaceAtBeginning = true;
       for (XMLPart currentChild : childrenElements) {
-         if (!(currentChild instanceof XMLString)
+         if ((!(currentChild instanceof XMLString) && !currentChild.getTagName().equals("lb"))
             && !wasLastChildAString
             && !dontPutSpaceAtBeginning)
                answer += " ";
 
          answer += currentChild.getContentsFormatted();
 
-         if (currentChild.getTagName() != null
-            && (currentChild.getTagName().equals("p")
-            || currentChild.getTagName().equals("head"))) {
-               answer += "\n";
+         if (currentChild.getTagName().equals("p")
+            || currentChild.getTagName().equals("head")) {
+               answer += "\\n";
                dontPutSpaceAtBeginning = true;
          }
+         else if (currentChild.getTagName().equals("lb"))
+            dontPutSpaceAtBeginning = true;
          else
             dontPutSpaceAtBeginning = false;
 
@@ -157,8 +157,41 @@ public class XMLTag implements XMLPart {
          else
             wasLastChildAString = false;
       }
-      answer = Parser.trim(answer);
+      answer = trim(answer);
 
       return answer;
+   }
+
+   /*
+    * Return a string that is the same string as @str but without the whitespaces (' ', '\t' and '\n') at the beginning and the end
+    * Removes also the literal "\\n" and "\\t"
+    */
+   public static String trim(String str) {
+      if (str == null || str.length() <= 0)
+         return "";
+
+      int i;
+      for (i=0; i<str.length(); i++) {
+         if (str.charAt(i) != ' ' && str.charAt(i) != '\t' && str.charAt(i) != '\n') {
+            if (i+1 >= str.length() || (str.charAt(i) != '\\' && (str.charAt(i+1) != 'n' && str.charAt(i+1) != 't')))
+               break;
+            else
+               i++;
+         }
+      }
+
+      int j;
+      for (j=str.length()-1; j>=0; j--) {
+         if (str.charAt(j) != ' ' && str.charAt(j) != '\t' && str.charAt(j) != '\n') {
+            if (j-1 <= 0 || (str.charAt(j-1) != '\\' && (str.charAt(j) != 'n' && str.charAt(j) != 't')))
+               break;
+            else
+               j--;
+         }
+      }
+
+      if (j<i)
+         return "";
+      return str.substring(i, j+1);
    }
 }

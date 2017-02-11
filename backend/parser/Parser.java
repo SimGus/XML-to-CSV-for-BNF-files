@@ -231,7 +231,7 @@ public class Parser {
             String element = extractStringElement(line, i);
             i += element.length();
 
-            element = trim(element);
+            //element = trim(element);//don't trim inside the XMLString object
 
             if (element.length() <= 0)
                continue;
@@ -348,30 +348,6 @@ public class Parser {
       for (i=index; i<source.length() && source.charAt(i) != '<'; i++)
       {}
       return source.substring(index, i);
-   }
-
-   /*
-    * Return a string that is the same string as @str but without the whitespaces (' ', '\t' and '\n') at the beginning and the end
-    */
-   public static String trim(String str) {
-      if (str == null || str.length() <= 0)
-         return "";
-
-      int i;
-      for (i=0; i<str.length(); i++) {
-         if (str.charAt(i) != ' ' && str.charAt(i) != '\t' && str.charAt(i) != '\n')
-            break;
-      }
-
-      int j;
-      for (j=str.length()-1; j>=0; j--) {
-         if (str.charAt(j) != ' ' && str.charAt(j) != '\t' && str.charAt(j) != '\n')
-            break;
-      }
-
-      if (j<i)
-         return "";
-      return str.substring(i, j+1);
    }
 
    /*

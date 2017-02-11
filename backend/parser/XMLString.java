@@ -13,7 +13,7 @@ public class XMLString implements XMLPart {
    }
 
    public String getTagName() {
-      return null;
+      return "XMLString";
    }
 
    public ArrayList<XMLPart> getChildrenElements() {
