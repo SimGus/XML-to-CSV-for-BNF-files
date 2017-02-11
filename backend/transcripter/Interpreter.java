@@ -17,13 +17,17 @@ public class Interpreter {
    }
 
    private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>();
+   private static final HashMap<String, String> fieldNames = new HashMap<String, String>();
 
    private static HashMap<String, String> translatedFields = new HashMap<String, String>();
 
    /*
     * Initializes the HashMap @tagTypesMap that contains information about how a certain tag name should be treated
+    * And the HashMap @fieldNames that contains the names of the fields in the database and their corresponding name
+    * in the XML file
     */
-   public static void initTagTypesMap() {
+   public static void initializeMaps() {
+      //================== Initialize tagTypesMap ========================
       tagTypesMap.put("ead", TagType.CONTAINER);
       tagTypesMap.put("eadheader", TagType.CONTAINER);
       tagTypesMap.put("eadid", TagType.FIELD);
@@ -73,6 +77,27 @@ public class Interpreter {
       tagTypesMap.put("persname", TagType.CONTENT);
       tagTypesMap.put("corpname", TagType.CONTENT);
       tagTypesMap.put("extref", TagType.CONTENT);
+
+      //============== Initialize fieldNames =====================
+      fieldNames.put("EAD identifier", "eadid");
+      fieldNames.put("Title statement", "titlestmt");
+      fieldNames.put("Publication statement", "publicationstmt");
+      fieldNames.put("Profile description", "profiledesc");
+
+      fieldNames.put("Identifier of the unit", "unitid");
+      fieldNames.put("Title of the unit", "unittitle");
+      fieldNames.put("Date of the unit", "unitdate");
+      fieldNames.put("Physical description", "physdesc");
+      fieldNames.put("Origination", "origination");
+      fieldNames.put("Repository", "repository");
+      fieldNames.put("Language of the material", "langmaterial");
+
+      fieldNames.put("Bibliography", "bibloiography");
+      fieldNames.put("Processing information", "processinfo");
+      fieldNames.put("Alternative form available", "altformavail");
+      fieldNames.put("Digital archival object", "dao");
+      fieldNames.put("Custodial history", "custodhist");
+      fieldNames.put("Scope and content", "scopecontent");
    }
 
    /*

@@ -53,7 +53,7 @@ public class Main {
                //Lister.writeNoticeableTagNames(outputFileName);
 
                //Initialize the HashMap of how to interpret each tags
-               Interpreter.initTagTypesMap();
+               Interpreter.initializeMaps();
 
                ArrayList<String> linesToWrite = Interpreter.translateTree();
                FileOpener.writeFile(outputFileName, linesToWrite);

@@ -173,20 +173,28 @@ public class XMLTag implements XMLPart {
       int i;
       for (i=0; i<str.length(); i++) {
          if (str.charAt(i) != ' ' && str.charAt(i) != '\t' && str.charAt(i) != '\n') {
-            if (i+1 >= str.length() || (str.charAt(i) != '\\' && (str.charAt(i+1) != 'n' && str.charAt(i+1) != 't')))
+            if (i+1 >= str.length())
                break;
-            else
+            if (str.charAt(i) == '\\' && (str.charAt(i+1) == 'n' || str.charAt(i+1) == 't')) {
                i++;
+               continue;
+            }
+            else
+               break;
          }
       }
 
       int j;
       for (j=str.length()-1; j>=0; j--) {
          if (str.charAt(j) != ' ' && str.charAt(j) != '\t' && str.charAt(j) != '\n') {
-            if (j-1 <= 0 || (str.charAt(j-1) != '\\' && (str.charAt(j) != 'n' && str.charAt(j) != 't')))
+            if (j-1 <= 0)
                break;
-            else
+            if (str.charAt(j-1) == '\\' && (str.charAt(j) == 'n' || str.charAt(j) == 't')) {
                j--;
+               continue;
+            }
+            else
+               break;
          }
       }
 
