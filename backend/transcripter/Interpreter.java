@@ -179,8 +179,12 @@ public class Interpreter {
          case FIELD:
             //TODO check if it is not already in the translatedFields
             String fieldValue = tag.getContentsFormatted();
-            if (fieldValue != null)
+            if (fieldValue != null) {
+               String currentStoredValue = translatedFields.get(tag.getTagName());
+               if (currentStoredValue != null)
+                  fieldValue = currentStoredValue + "\\n" + fieldValue;
                translatedFields.put(tag.getTagName(), fieldValue);
+            }
             break;
          default:
             Log.err("There was an error translating a tag.");

@@ -8,12 +8,15 @@ GUI :
          output pane
       - options
          language -> drop down menu
+      - description
 
+TODOS
+DONE the tags should be case sensitive
+DONE don't make it all in one method
+DONE check if one field is already filled (don't wipe out when adding something)
 
-TODO the tags should be case sensitive
-TODO don't make it all in one method
-
-There's a bug that seems not to read <lb/>
+BUGS
+FIXED <lb/> not read
 
 Interpreter :  read the tree of the file
                each time you encounter a tag that could contain something interesting keep on searching
