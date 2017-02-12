@@ -119,9 +119,34 @@ public class Interpreter {
       }
 
       ArrayList<String> answer = new ArrayList<String>();
+      /*
       for (Map.Entry<String, String> current : translatedFields.entrySet()) {
          answer.add("'"+current.getKey()+"'\n\t'"+current.getValue()+"'");
+      }//*/
+
+      //*
+      //============ Write first line (field names) ===============
+      String currentLine = "";
+      for (String fieldName : fieldNames.keySet()) {
+         currentLine += fieldName;
+         currentLine += "\t";
       }
+      currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
+      answer.add(currentLine);
+
+      //============ Write next lines (each object) ===============
+      currentLine = "";
+      String currentValue;
+      for (String fieldName : fieldNames.keySet()) {
+         currentValue = translatedFields.get(fieldNames.get(fieldName));
+         if (currentValue != null) {
+            currentLine += currentValue;
+            currentLine += "\t";
+         }
+      }
+      currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
+      answer.add(currentLine);
+      //*/
 
       return answer;
    }

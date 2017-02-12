@@ -1,0 +1,11 @@
+december : 6h (GUI)
+29 january : 2h
+30 jan : 6h (GUI)
+31 jan : 2h
+2 feb : 4h
+3 feb : 1h
+4 feb : 6h
+5 feb : 4h
+7 feb : 1h
+8 feb : 1h
+11 feb : 4h
