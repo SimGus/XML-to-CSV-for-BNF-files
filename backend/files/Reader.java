@@ -7,6 +7,7 @@ import util.Log;
 public class Reader {
    private static final String commentBeginning = "<!--", commentEnding = "-->";
    private static boolean currentLineBeginsInAComment = false, nextLineBeginsInAComment = false;
+   private static int currentLineNb = -1;
 
    /*
     * Returns the  next line that is not empty  or not fully a comment in the file read by @inputScanner
@@ -15,6 +16,7 @@ public class Reader {
    public static String getNextEffectiveLine(Scanner inputScanner) {
       String answer;
       while (inputScanner.hasNextLine()) {
+         currentLineNb++;
          answer = inputScanner.nextLine();
          currentLineBeginsInAComment = nextLineBeginsInAComment;
 
@@ -80,4 +82,6 @@ public class Reader {
 
       return line;
    }
+
+   public static int getCurrentLineNb() {return currentLineNb;}
 }

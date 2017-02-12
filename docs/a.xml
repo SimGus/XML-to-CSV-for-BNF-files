@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<ead id="N683119">
+  <eadheader>
+    <eadid>FRBNFEAD000003938</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Latin <num>16742</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France</publisher>
+        <date calendar="gregorian" era="ce">2007</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+
+      <langusage>Notice rédigée en<language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">Latin 16742</unitid>
+      <unitid type="ancienne cote">Feuillants 59. 2</unitid>
+      <unittitle>
+        <title type="">Biblia sacra</title>, tomus II.</unittitle>
+      <unitdate calendar="gregorian" era="ce">XIIe s. (1ère moitié)</unitdate>
+      <physdesc>
+        <physfacet type="décoration">France. Petites initiales de couleur (rouge, bleu, vert, jaune).</physfacet>
+        <extent> 236 ff. </extent>
+        <dimensions>430 x 290 mm  </dimensions>
+        <physfacet type="support">Parch. </physfacet>
+        <physfacet type="reliure">Reliure XVIIIe s. en cuir moucheté, avec des fers dorés sur le dos et des tranches mouchetées de rouge.</physfacet>
+        <physfacet type="sceau">Estampille Bibliothèque nationale (Révolution), 1792-1802, modèle identique à Josserand-Bruno, 277. </physfacet>
+      </physdesc>
+      <origination>
+        <corpname role="4010">Congrégation des Feuillants de la rue Saint-Honoré (Paris)</corpname>.<lb/>"Ex bibliotheca Fuliensium S. Bernardi Parisiensis" (XVIIe s., f. 1). <lb/>Le ms. a dû être utilisé par un nommé "Henry" qui a inscrit son nom en deux endroits sur le f. 1 (XVIe-XVIIe s.).</origination>
+    </did>
+    <bibliography>
+      <p>A. Bondéelle-Souchier, Bibliothèques cisterciennes dans la France médiévale. Répertoire des abbayes d'hommes, Paris, 1991, p. 249-256.</p>
+    </bibliography>
+    <processinfo>
+      <p>Notice rédigée par Charlotte Denoël.</p>
+    </processinfo>
+    <dsc/>
+    <altformavail>
+      <p>Microfilm en noir et blanc. Cote de consultation en salle de lecture : MF 27099. Cote de la matrice (pour commander une reproduction) : <num>R 5526</num>
+      </p>
+    </altformavail>
+    <dao href="http://gallica.bnf.fr/ark:/12148/btv1b90666516"/>
+    <altformavail>
+      <p>Numérisation effectuée à partir d'un document de substitution</p>
+    </altformavail>
+  </archdesc>
+</ead>

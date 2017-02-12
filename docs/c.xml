@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<ead id="d0e1">
+   <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+      <eadid>
+         FRBNFEAD000089761
+      </eadid>
+      <filedesc>
+         <titlestmt>
+            <titleproper>
+               Néerlandais <num>1</num>
+            </titleproper>
+            <subtitle>Notice descriptive</subtitle>
+         </titlestmt>
+         <publicationstmt>
+            <publisher>Bibliothèque nationale de France</publisher>
+            <date calendar="gregorian" era="ce">2011</date>
+         </publicationstmt>
+      </filedesc>
+      <profiledesc>
+         <langusage>
+            Notice rédigée en <language langcode="fre">français</language>.
+         </langusage>
+      </profiledesc>
+   </eadheader>
+   <archdesc level="item">
+      <did>
+         <unitid type="cote">Néerlandais 1</unitid>
+         <unittitle>
+            <persname authfilenumber="ark:/12148/cb118857741" normal="Boethius, Anicius Manlius Severinus (0480?-0524)" role="" source="OPP">
+               Boèce
+            </persname>,
+            <title authfilenumber="ark:/12148/cb122736625" normal="Boèce (0480?-0524) [Consolatio philosophiae]" role="" source="OPP">
+               De Consolatione Philosophiae
+            </title>.
+         </unittitle>
+         <unitdate calendar="gregorian" era="ce" normal="1400/1500">
+            XV <emph render="super">e</emph> siècle
+         </unitdate>
+         <langmaterial>
+            Texte <language langcode="lat">latin</language> avec traduction et commentaires en <language langcode="dut">flamand</language>
+         </langmaterial>
+         <repository>
+            <corpname authfilenumber="751041006" source="RCR">Bibliothèque nationale de France. Département des Manuscrits</corpname>
+         </repository>
+      </did>
+      <dao href="http://gallica.bnf.fr/ark:/12148/btv1b84511055"/>
+      <altformavail>
+         <p>
+            Numérisation effectuée à partir d'un document original
+         </p>
+      </altformavail>
+      <bibliography>
+         <p>
+            <date normal="1993" type="bibliographie">1993</date><lb/>
+            <bibref>
+               Eberhard KÖNIG et Heribert TENSCHERT, <emph render="italic">Leuchtendes Mittelalter</emph>, VI, 1993-1994.
+            </bibref>
+         </p>
+         <p>
+            <date normal="2009" type="bibliographie">2009</date><lb/>
+            <bibref>
+               Ilona HANS-COLLAS et Pascal SCHANDEL, <emph render="italic">Manuscrits enluminés des anciens Pays-Bas méridionaux. I. Manuscrits de Louis de Bruges</emph>,
+               Paris : Bibliothèque nationale de France, 2009, p. 250-255.
+            </bibref>
+         </p>
+         <p>
+            <date normal="2012" type="bibliographie">2012</date><lb/>
+            <bibref>
+               Konstantinos Sp. STAIKOS, <emph render="italic">The History of the Library in Western Civilization</emph>, Kotinos : Oak Knoll Press, 2012, cité p. 222 n. 101
+            </bibref>
+         </p>
+      </bibliography>
+      <dsc/>
+   </archdesc>
+</ead>

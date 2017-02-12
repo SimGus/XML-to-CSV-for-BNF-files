@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<ead id="d0e1">
+   <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+      <eadid>FRBNFEAD000008942</eadid>
+      <filedesc>
+         <titlestmt>
+            <titleproper>Français <num>801</num></titleproper>
+         </titlestmt>
+         <publicationstmt>
+            <publisher>Bibliothèque nationale de France</publisher>
+            <date calendar="gregorian" era="ce">2013</date>
+         </publicationstmt>
+      </filedesc>
+      <profiledesc>
+         <creation audience="internal">Cette notice a été encodée en XML conformément à la DTD EAD (version 2002).</creation>
+         <langusage>
+            Notice rédigée en <language langcode="fre">français</language>
+         </langusage>
+      </profiledesc>
+   </eadheader>
+
+   <archdesc level="item">
+      <did>
+         <unitid type="cote">Français 801</unitid>
+         <unitid type="ancienne cote">Regius 7196</unitid>
+         <unitid type="ancienne cote">533 (Dupuy II, 1645)</unitid>
+         <unitid type="ancienne cote">630 (Rigault II, 1622)</unitid>
+         <unitid type="ancienne cote">630 (Bibliothèque de Fontainebleau, XVIe siècle)</unitid>
+         <unitid type="ancienne cote">191-Rommant de la Rose (François Ier, XVIe siècle)</unitid>
+         <unittitle>
+            <title authfilenumber="ark:/12148/cb166125510" normal="Guillaume de Lorris (1200?-1260?) Jean de Meung (124.?-1304?) [Le roman de la rose]" role="" source="OPP"><emph render="italic">Roman de la rose</emph>
+            </title>
+         </unittitle>
+         <unitdate calendar="gregorian" era="ce" normal="1401/1500">XVe siècle</unitdate>
+         <repository>Bibliothèque nationale de France. Département des Manuscrits</repository>
+         <langmaterial>Documents en <language audience="external" langcode="fre">Français</language></langmaterial>
+         <physdesc>
+            <geogname role="5020">France</geogname>.
+            <physfacet type="écriture">
+               Ecriture bâtarde, une seule maine, encre foncée. Les rubriques et certains passages sont plus cursifs. 2 colonnes de 40-50 vers
+            </physfacet>.<lb/>
+            <physfacet type="décoration">
+               31 miniatures de la largeur d'une colonne (dessins à l'encre rehaussés de  couleurs) , aux  feuillets 1, 1v, 2 (2 miniatures), 2v  (2 miniatures), 3, 3 (2 miniatures), 4v, 5, 7, 8, 8v  (3 miniatures), 9, 11v  (2 miniatures), 12, 13, 17  (2 miniatures), 17v, 18, 19  (2 miniatures), 22v  (2 miniatures), 23, 23v. Facture provinciale. Les instructions du scribe à l'enlumineur sont inscrites aux côtés de certaines miniatures. Les noms des personnages représentés sont inscrits en rouge dans les miniatures.  Initiales bleues et rouges. Initiales à l'encre noire. Initiale de chaque vers rehaussée de jaune. Rubriques
+            </physfacet>.<lb/>
+            <physfacet type="support">
+               Parchemin
+            </physfacet>.
+            <extent>
+               3 feuillets de papier + 2  feuillets de parchemin +128 feuillets +  2  feuillets de parchemin  + 2 feuillets de papier
+            </extent>.
+            <dimensions>
+               350 x 245 mm (just. 250 x180 mm)
+            </dimensions>.<lb/>
+            <physfacet>
+               Foliotation moderne à l'encre. 16 cahiers de 8 feuillets (1-128). Réclames. Certains  feuillets de garde sont des remplois. Présence d'un talon entre le dernier feuillet de texte et la première garde
+            </physfacet>.<lb/>
+            <physfacet type="réglure">
+               Réglure à la mine de plomb
+            </physfacet>.<lb/>
+            <physfacet type="reliure">
+               Reliure de la bibliothèque impériale sous le règne de Napoléon Ier. Un fragment de manuscrit religieux du XIIe siècle 	 avec notations neumatiques est utilisé comme garde
+            </physfacet>.<lb/>
+            <physfacet type="sceau">
+               Estampille "Bibliothecae Regiae" correspondant au n. 1 (type A) de Josserand-Bruno
+            </physfacet>.
+         </physdesc>
+      </did>
+      <dao actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/btv1b60003066" show="new" title="Manuscrit numérisé" />
+      <altformavail>
+         <p>
+            <lb/>Manuscrit intégralement numérisé d'après l'original.
+         </p>
+      </altformavail>
+      <custodhist>
+         <p>
+            Au bas des feuillets 1,21,65, un écu d'or , à la bande de sable, chargé de trois  quintefeuilles d'argent, armoiries de la famille Martel en Dauphiné (d'après Paris).<lb/>
+            Le manuscrit est répertorié dans les collections royales : inventaire de la bibliothèque de Fontainebleau ; inventaire de Nicolas Rigault (1622); inventaire de Pierre et Jacques Dupuy (1645); inventaire de Nicolas Clément (cote Regius 1682).
+         </p>
+      </custodhist>
+      <scopecontent>
+         <p>
+            Au verso d'un feuillet de garde, dialogue en quatre huitains entre Macquet et le dormant:  « Povre dormant que fas tu la/ T'as beau dormir, se je t'esveille ... - ... Or liz d'affection entiere /Tout le fin long de ses feuilles».
+         </p>
+         <p>
+            ff.1-128v.
+            <persname authfilenumber="ark:/12148/cb11906341q" normal="Guillaume de Lorris (1200?-1260?)" role="0070" source="OPP">Guillaume de Lorris </persname>
+            et
+            <persname authfilenumber="ark:/12148/cb118866264" normal="Jean de Meung (124.?-1304?)" role="0070" source="OPP">Jean de Meung </persname>,
+            <emph render="italic"> Le Roman de la Rose</emph>: « Maintes gens dient que en songes / N'a se fables non et mensonges ... - ...  Ainsi oi la rose vermeille / Atant fu jour et je m'esveille ».
+         </p>
+      </scopecontent>
+      <bibliography>
+         <head>
+            Editions
+         </head>
+         <p>
+            <lb/>Dominique Martin Méon,
+            <emph render="italic">Le Roman de la Rose par Guillaume de Lorris et Jehan de Meung : nouvelle édition, revue et corrigée sur les meilleurs et les plus anciens manuscrits</emph>,
+            Paris : impr. de P. Didot l'aîné, 1814<lb/>
+            Armand Strubel,<emph render="italic">  Le roman de la rose, Guillaume de Lorris et Jean de Meun ; édition d'après les manuscrits BN 12786 et BN 378</emph>,
+            Paris : Librairie générale française, 1992
+         </p>
+      </bibliography>
+      <bibliography>
+         <head>
+            Bibliographie
+         </head>
+         <p><lb/>
+            <bibref>
+               Pierre Josserand et Jean Bruno, "Les Estampilles du département des imprimés de la Bibliothèque nationale", dans
+               <emph render="italic">Mélanges d’histoire du livre et des bibliothèques offerts à Monsieur Franz Calot</emph>, Paris, 1960, 261-298 et pl. XXIII-XXIV.
+            </bibref><lb/>
+            <bibref>
+               Ernest Langlois, <emph render="italic">Les manuscrits du Roman de la Rose : description et classement </emph>,
+               Lille : Tallandier ; Paris : H. Champion, 1910, p. 8-9
+            </bibref>
+            (transcription du poème sur le feuillet de garde)<lb/>
+            <bibref>
+               Paulin Paris, <emph render="italic">Les manuscrits françois de la Bibliothèque du roi, leur histoire et celle des textes allemands, anglois, hollandois, italiens, espagnols de la même collection</emph>,
+               Paris : Techener, 1836-1848,  VI, pp. 232-234
+            </bibref><lb/>
+            <bibref>
+               Notice sur le site <extref actuate="onrequest" href="http://romandelarose.org/">romandelarose.org</extref>
+            </bibref>
+         </p>
+      </bibliography>
+      <processinfo>
+         <p>
+            Notice rédigée par Delphine Mercuzot,  septembre   2013.
+         </p>
+      </processinfo>
+   </archdesc>
+</ead>
