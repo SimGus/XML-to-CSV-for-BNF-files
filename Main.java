@@ -12,6 +12,9 @@ import backend.transcripter.Interpreter;
 
 import gui.Window;
 
+import static util.LogType.*;
+import java.util.concurrent.TimeUnit;
+
 public class Main {
    public static void main(String[] args) {
       String inputFileName = null, outputFileName = null;
@@ -27,6 +30,25 @@ public class Main {
             inputFileName = new String(args[0]);
             outputFileName = new String(args[1]);
          }
+      }
+
+      //====== Test =======
+      Window window = new Window();
+      try {
+         TimeUnit.SECONDS.sleep(1);
+         window.addLog("Test", "Test", ERROR);
+         TimeUnit.SECONDS.sleep(1);
+         window.addLog("Warn", "avertissement", WARNING);
+         TimeUnit.SECONDS.sleep(1);
+         window.addLog("Not important", "Pas important", MINOR);
+         TimeUnit.SECONDS.sleep(1);
+         window.addLog("Norm", "narmol", NORMAL);
+         TimeUnit.SECONDS.sleep(1);
+         window.clearLogs();
+         TimeUnit.SECONDS.sleep(1);
+         window.addLog("retest", "retest", NORMAL);
+      } catch(Exception e) {
+         Log.log("fuck");
       }
 
       boolean validFileNames = false;
