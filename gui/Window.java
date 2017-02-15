@@ -2,22 +2,26 @@ package gui;
 
 import java.util.ArrayList;
 
+import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
+import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.JTabbedPane;
-import javax.swing.JButton;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
-import javax.swing.JTextPane;
-import java.awt.Dimension;
-import javax.swing.border.Border;
+
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.CompoundBorder;
+
 import javax.swing.text.StyledDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -47,7 +51,7 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
-   //--------- main tab elements ----------------
+   //============  main tab elements ===================
    protected JPanel mainTab = new JPanel();
 
    protected JLabel inputFileLabel = new JLabel();
@@ -78,9 +82,27 @@ public class Window extends JFrame {
 
    protected static final EnFrString logAreaTitle = new EnFrString("Output", "Sortie");
 
-   //----------- options tab elements ------------
+   //============ options tab elements ===============
+   protected JLabel outputFormatLabel = new JLabel();
+   protected JLabel languageChoiceLabel = new JLabel();
 
-   //----------- about tab elements --------------
+   protected static EnFrString outputFormatLabelString = new EnFrString("Output file format :", "Format du fichier de sortie :");
+   protected static EnFrString languageChoiceLabelString = new EnFrString("Language :", "Langue :");
+
+   protected JComboBox outputFormatDropDownMenu = new JComboBox();
+   protected JComboBox languageChoiceDropDownMenu = new JComboBox();
+
+   protected static EnFrString[] outputFormatsAvailable = {
+      new EnFrString("TXT file (.txt)", "Fichier TXT (.txt)"),
+      new EnFrString("TAB file (.tab)", "Fichier TAB (.tab)"),
+      new EnFrString("TSV file (.tsv)", "Fichier TSV (.tsv)")
+   };
+   protected static EnFrString[] languagesAvailable = {
+      new EnFrString("English", "Anglais"),
+      new EnFrString("French", "Français")
+   };
+
+   //============ about tab elements =================
    protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
    protected static EnFrString description = new EnFrString(
       "This program is meant to translate XML files that describe archival materials,"
@@ -195,6 +217,31 @@ public class Window extends JFrame {
       mainTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
       //========== make the contents of the option tab =================
+      Box outputFormatLine = Box.createHorizontalBox();
+      outputFormatLine.add(outputFormatLabel);
+      outputFormatLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      outputFormatLine.add(outputFormatDropDownMenu);
+      //sizes
+      setElementBorder(outputFormatLine, linesBorder);
+      int formatDropDownMenuHeight = outputFormatDropDownMenu.getPreferredSize().height;
+      outputFormatDropDownMenu.setMaximumSize(new Dimension(Integer.MAX_VALUE, formatDropDownMenuHeight));
+      outputFormatLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, formatDropDownMenuHeight+2*internalBorderSize));
+
+      Box languageLine = Box.createHorizontalBox();
+      languageLine.add(languageChoiceLabel);
+      languageLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      languageLine.add(languageChoiceDropDownMenu);
+      //sizes
+      int languagesDropDownMenuHeight = languageChoiceDropDownMenu.getPreferredSize().height;
+      setElementBorder(languageLine, linesBorder);
+      languageChoiceDropDownMenu.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight));
+      languageLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight+2*internalBorderSize));
+
+      Box optionsTab = Box.createVerticalBox();
+      optionsTab.add(outputFormatLine);
+      optionsTab.add(languageLine);
+      optionsTab.add(Box.createVerticalGlue());
+      optionsTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
       //========== make the contents of the about tab ==================
       Box descriptionBox = Box.createVerticalBox();
@@ -204,7 +251,7 @@ public class Window extends JFrame {
 
       //============ put the tabs in the panel =======================
       tabs.add(tabTitles[0].toString(), mainTab);
-      tabs.add(tabTitles[1].toString(), null);
+      tabs.add(tabTitles[1].toString(), optionsTab);
       tabs.add(tabTitles[2].toString(), descriptionBox);
 
       this.getContentPane().add(tabs);
@@ -232,6 +279,10 @@ public class Window extends JFrame {
       writeLogs();
 
       //=========== options tab =============
+      outputFormatLabel.setText(outputFormatLabelString.toString());
+      languageChoiceLabel.setText(languageChoiceLabelString.toString());
+
+      setDropDownMenusItems();
 
       //=========== about tab ==============
       writeDesc();
@@ -294,6 +345,16 @@ public class Window extends JFrame {
 
       currentStyle = doc.addStyle("legal", normal);
       StyleConstants.setFontSize(currentStyle, 10);
+   }
+
+   protected void setDropDownMenusItems() {
+      outputFormatDropDownMenu.removeAllItems();
+      for (EnFrString currentItem : outputFormatsAvailable)
+         outputFormatDropDownMenu.addItem(currentItem.toString());
+
+      languageChoiceDropDownMenu.removeAllItems();
+      for (EnFrString currentItem : languagesAvailable)
+         languageChoiceDropDownMenu.addItem(currentItem.toString());
    }
 
    private void setElementBorder(JComponent element, EmptyBorder border) {
