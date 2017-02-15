@@ -44,8 +44,6 @@ public class Main {
          TimeUnit.SECONDS.sleep(1);
          window.addLog("Norm", "narmol", NORMAL);
          TimeUnit.SECONDS.sleep(1);
-         window.clearLogs();
-         TimeUnit.SECONDS.sleep(1);
          window.addLog("retest", "retest", NORMAL);
       } catch(Exception e) {
          Log.log("fuck");
