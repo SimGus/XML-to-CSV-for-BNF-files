@@ -9,3 +9,6 @@ december : 6h (GUI)
 7 feb : 1h
 8 feb : 1h
 11 feb : 4h
+12 feb : 4h (GUI)
+13 feb : 2h (GUI)
+15feb : 3h (GUI)

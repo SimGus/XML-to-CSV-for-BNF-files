@@ -43,6 +43,10 @@ public class Main {
          window.addLog("Not important", "Pas important", MINOR);
          TimeUnit.SECONDS.sleep(1);
          window.addLog("Norm", "narmol", NORMAL);
+
+         EnFrString.setCurrentLanguage("French");
+         window.setLabels();
+
          TimeUnit.SECONDS.sleep(1);
          window.addLog("retest", "retest", NORMAL);
       } catch(Exception e) {

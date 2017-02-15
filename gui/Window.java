@@ -31,7 +31,8 @@ import util.LogType;
 
 public class Window extends JFrame {
    protected static final int defaultWidth = 640, defaultHeight = 480;
-   protected static final int internalBorderSize = 8, externalBorderSize = 10, elementsSpacingSize = 10,
+   protected static final int internalBorderSize = 8, externalBorderSize = 10, externalDescBorderSize = 30,
+                              elementsSpacingSize = 10,
                               editTextPadding = 3, editTextMinWidth = 80;
    protected static final EnFrString[] tabTitles = {
       new EnFrString("Translate", "Traduire"),
@@ -80,6 +81,32 @@ public class Window extends JFrame {
    //----------- options tab elements ------------
 
    //----------- about tab elements --------------
+   protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
+   protected static EnFrString description = new EnFrString(
+      "This program is meant to translate XML files that describe archival materials,"
+      +" into TAB or TXT files importable easily into databases.",
+      "Ce programme permet de traduire des fichiers XML qui décrivent de la documentation archivistique,"
+      +"en fichiers TAB ou TXT facilement importables dans des bases de données."
+   );
+   protected static EnFrString usageTitle = new EnFrString("Usage", "Utilisation");
+   protected static EnFrString usage = new EnFrString(
+      "Specify the path to the XML file you want to translate (you can do so using the 'Browse' button);\n\n"
+      +"Optionaly specify the name of the TAB or TXT file;\n\n"
+      +"Click the button 'Run transcription';\n\n"
+      +"A TAB or TXT file containing the translation of the contents of the XML file will be created.",
+      "Spécifiez le chemin vers le fichier XML (par exemple en utilisant le bouton 'Parcourir');\n\n"
+      +"Éventuellement, spécifiez le nom du fichier TAB ou TXT à créer;\n\n"
+      +"Cliquez sur 'Lancer la transcription';\n\n"
+      +"Un fichier TAB ou TXT contenant la traduction du contenu du fichier XML sera créé."
+   );
+   protected static EnFrString precision = new EnFrString(
+      "You can set the format of the output file (TAB, TXT or TSV) in the option tab.",
+      "Vous pouvez régler le format du fichier de sortie (TAB, TXT ou TSV) dans l'onglet 'Options'."
+   );
+   protected static EnFrString credits = new EnFrString(
+      "\u00A9 2017 S. Gustin",
+      "\u00A9 2017 S. Gustin"
+   );
 
    public Window() {
       this(new EnFrString("XML to TSV transcriptor", "Transcripteur XML vers TSV"));
@@ -107,9 +134,10 @@ public class Window extends JFrame {
       outputFileName = defaultOutputFieldName.toString();
 
       initLogsStyles(logTextPane.getStyledDocument());
+      initDescStyles(descriptionPane.getStyledDocument());
 
-      setLabels();
       placeElements();
+      setLabels();
 
       this.setVisible(true);
    }
@@ -169,20 +197,28 @@ public class Window extends JFrame {
       //========== make the contents of the option tab =================
 
       //========== make the contents of the about tab ==================
+      Box descriptionBox = Box.createVerticalBox();
+      descriptionBox.add(descriptionPane);
+      descriptionBox.setFocusable(true);
+      descriptionBox.setBorder(new EmptyBorder(externalDescBorderSize, externalDescBorderSize, externalDescBorderSize, externalDescBorderSize));
 
       //============ put the tabs in the panel =======================
       tabs.add(tabTitles[0].toString(), mainTab);
       tabs.add(tabTitles[1].toString(), null);
-      tabs.add(tabTitles[2].toString(), null);
+      tabs.add(tabTitles[2].toString(), descriptionBox);
 
       this.getContentPane().add(tabs);
    }
-
 
    /*
     * Sets the texts of all the elements that display something
     */
    public void setLabels() {
+      //=========== tabs titles =============
+      tabs.setTitleAt(0, tabTitles[0].toString());
+      tabs.setTitleAt(1, tabTitles[1].toString());
+      tabs.setTitleAt(2, tabTitles[2].toString());
+
       //=========== main tab ==============
       inputFileLabel.setText(inputFileLabelString.toString());
       outputFileLabel.setText(outputFileLabelString.toString());
@@ -198,7 +234,21 @@ public class Window extends JFrame {
       //=========== options tab =============
 
       //=========== about tab ==============
+      writeDesc();
+   }
 
+   protected void writeDesc() {
+      descriptionPane.setText("");
+      StyledDocument doc = descriptionPane.getStyledDocument();
+      try {
+         doc.insertString(doc.getLength(), description.toString()+"\n\n\n", doc.getStyle("normal"));
+         doc.insertString(doc.getLength(), usageTitle.toString()+"\n\n", doc.getStyle("title"));
+         doc.insertString(doc.getLength(), usage.toString()+"\n\n", doc.getStyle("normal"));
+         doc.insertString(doc.getLength(), precision.toString()+"\n\n\n\n", doc.getStyle("italic"));
+         doc.insertString(doc.getLength(), credits.toString()+"\n", doc.getStyle("legal"));
+      } catch (BadLocationException e) {
+         Log.err("Couldn't insert text in the description text pane.");
+      }
    }
 
    /*
@@ -224,6 +274,28 @@ public class Window extends JFrame {
       StyleConstants.setBold(currentStyle, true);
    }
 
+   /*
+    * Define font styles for the description area
+    */
+   protected void initDescStyles(StyledDocument doc) {
+      Style defaultStyle = StyleContext
+                              .getDefaultStyleContext()
+                              .getStyle(StyleContext.DEFAULT_STYLE);
+
+      Style normal = doc.addStyle("normal", defaultStyle);
+      StyleConstants.setFontFamily(defaultStyle, "SansSerif");
+
+      Style currentStyle = doc.addStyle("title", normal);
+      StyleConstants.setBold(currentStyle, true);
+      StyleConstants.setFontSize(currentStyle, 16);
+
+      currentStyle = doc.addStyle("italic", normal);
+      StyleConstants.setItalic(currentStyle, true);
+
+      currentStyle = doc.addStyle("legal", normal);
+      StyleConstants.setFontSize(currentStyle, 10);
+   }
+
    private void setElementBorder(JComponent element, EmptyBorder border) {
       Border currentBorder = element.getBorder();
       if (currentBorder == null)
@@ -237,7 +309,7 @@ public class Window extends JFrame {
     * Writes the logs in the log area
     */
    public void writeLogs() {
-      logTextPane.setText("");//Rewrite everytime TODO optimize
+      logTextPane.setText("");//Rewrite everytime TODO optimize (maybe not because of languages)
       StyledDocument logDoc = logTextPane.getStyledDocument();
       for (GUILogs.LogMsg currentLogMsg : logs) {
          try {
