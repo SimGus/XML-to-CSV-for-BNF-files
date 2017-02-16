@@ -101,6 +101,13 @@ public class Interpreter {
    }
 
    /*
+    * Resets @translatedFields
+    */
+   public static void reset() {
+      translatedFields = new HashMap<String, String>();
+   }
+
+   /*
     * @pre :   The input XML file has been successfully read
     *          and the tags tree @Parser.rootTags is initialized
     * Iterate through the tag tree and translates it to the Strings

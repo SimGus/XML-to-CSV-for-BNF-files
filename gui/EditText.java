@@ -50,6 +50,13 @@ public class EditText extends JTextField implements FocusListener
 		return super.getText();
 	}
 
+	@Override
+	public void setText(String s) {
+		alreadyBeenSelected = true;
+		setForeground(Color.BLACK);
+		super.setText(s);
+	}
+
 	public void setDefaultText(String defaultText) {
 		firstText = defaultText;
 		setText(defaultText);

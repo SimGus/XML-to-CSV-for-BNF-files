@@ -1,6 +1,11 @@
 package backend.files;
 
+import util.Log;
+
 public class FileNamesInterpreter {
+   private static String[] extensionsAvailable = {"txt", "tab", "tsv"};
+   private static int extensionChosenID = 0;
+
    public static String interpretInputFileName(String userInput) {
       if (userInput == null || userInput.length() <= 0)
          throw new IllegalArgumentException("No input file name given.");
@@ -28,6 +33,26 @@ public class FileNamesInterpreter {
          throw new IllegalArgumentException("Invalid input file name.");
 
       String answer = inputFileName.substring(0, inputFileName.length()-3);
-      return answer+"txt";
+      return answer+extensionsAvailable[extensionChosenID];
+   }
+
+   public static void changeExtension(String extension) {
+      switch (extension.toLowerCase()) {
+         case "txt":
+         case ".txt":
+            extensionChosenID = 0;
+            break;
+         case "tab":
+         case ".tab":
+            extensionChosenID = 1;
+            break;
+         case "tsv":
+         case ".tsv":
+            extensionChosenID = 2;
+            break;
+         default:
+            Log.warn("Tried to change the extension to an unavailable extension.");
+            break;
+      }
    }
 }

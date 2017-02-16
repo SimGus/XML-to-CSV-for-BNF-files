@@ -18,11 +18,21 @@ public class Parser {
    private static Stack<XMLTag> stackOfTags = new Stack<XMLTag>();
 
    /*
+    * Resets @rootTags, @stackOfTags and @inputFileName
+    */
+   public static void reset() {
+      inputFileName = "undefined";
+      rootTags = new ArrayList<XMLPart>();
+      stackOfTags = new Stack<XMLTag>();
+   }
+
+   /*
     * Parses the file with name @inputFileName and extracts the tree of XML tags
     * Returns that tree
     */
    public static void parse(String inputFileName) {
       Parser.inputFileName = inputFileName;
+      Log.log("parse");
 
       Scanner inputScanner;
       try {

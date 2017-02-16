@@ -2,12 +2,13 @@ package gui;
 
 import java.util.ArrayList;
 
+import javax.swing.UIManager;
+
 import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.UIManager;
 import javax.swing.JTabbedPane;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
@@ -28,10 +29,17 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyleConstants;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import util.Log;
 import util.EnFrString;
 import util.LogType;
 //import static util.LogType.*;
+import backend.files.FileNamesInterpreter;
+import backend.files.FileOpener;
+import backend.parser.Parser;
+import backend.transcripter.Interpreter;
 
 public class Window extends JFrame {
    protected static final int defaultWidth = 640, defaultHeight = 480;
@@ -108,7 +116,7 @@ public class Window extends JFrame {
       "This program is meant to translate XML files that describe archival materials,"
       +" into TAB or TXT files importable easily into databases.",
       "Ce programme permet de traduire des fichiers XML qui décrivent de la documentation archivistique,"
-      +"en fichiers TAB ou TXT facilement importables dans des bases de données."
+      +" en fichiers TAB ou TXT facilement importables dans des bases de données."
    );
    protected static EnFrString usageTitle = new EnFrString("Usage", "Utilisation");
    protected static EnFrString usage = new EnFrString(
@@ -144,11 +152,12 @@ public class Window extends JFrame {
       this.setLocationRelativeTo(null);//center window
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      //get system theme
+      //---------- Set program to system theme --------------------
+      //*
       try {
          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
       } catch (Exception e) {
-         Log.err("Couldn't get system's window theme.");
+         Log.err("Couldn't get the system's window theme.");
       }//*/
 
       //--------- Initialize file names and styles --------------
@@ -158,6 +167,13 @@ public class Window extends JFrame {
       initLogsStyles(logTextPane.getStyledDocument());
       initDescStyles(descriptionPane.getStyledDocument());
 
+      //-------- Add listeners ------------
+      okButton.addActionListener(new ButtonListener());
+      browseButton.addActionListener(new ButtonListener());
+
+      //-------- Make window ------------
+      descriptionPane.setEditable(false);
+      logTextPane.setEditable(false);
       placeElements();
       setLabels();
 
@@ -366,9 +382,7 @@ public class Window extends JFrame {
    }
 
    //============== LOGS =================
-   /*
-    * Writes the logs in the log area
-    */
+   /* Writes the logs in the log area */
    public void writeLogs() {
       logTextPane.setText("");//Rewrite everytime TODO optimize (maybe not because of languages)
       StyledDocument logDoc = logTextPane.getStyledDocument();
@@ -399,9 +413,7 @@ public class Window extends JFrame {
       bar.setValue(bar.getMaximum());
    }
 
-   /*
-    * Add @enFrLine to the array of lines to be displayed in the log area
-    */
+   /* Add @enFrLine to the array of lines to be displayed in the log area */
    public void addLog(EnFrString enFrLine, LogType type) {
       logs.add(enFrLine, type);
       writeLogs();
@@ -410,11 +422,78 @@ public class Window extends JFrame {
       addLog(new EnFrString(enLine, frLine), type);
    }
 
-   /*
-    * Removes all the lines displayed in the log area
-    */
+   /* Removes all the lines displayed in the log area */
    public void clearLogs() {
       logs.clear();
       writeLogs();
+   }
+
+   //============ Listeners ==============
+   public class ButtonListener implements ActionListener {
+      public void actionPerformed(ActionEvent event) {
+         if (event.getSource() == okButton) {
+            runTranslation();
+         }
+         else if (event.getSource() == browseButton) {
+            openFileChooser();
+         }
+      }
+   }
+
+   public void runTranslation() {
+      Log.log("Running translation");
+      //============ Reset parser and interpreter =============
+      Parser.reset();
+      Interpreter.reset();
+
+      inputFileName = inputFileField.getText();
+      outputFileName = outputFileField.getText();
+      Log.log("input file : "+inputFileName);
+
+      //============== Check file names ======================
+      if (inputFileName != null) {
+         try {
+            inputFileName = FileNamesInterpreter.interpretInputFileName(inputFileName);
+            outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFileName, outputFileName);
+            Log.log("Input file : "+inputFileName);
+            Log.log("Output file : "+outputFileName);
+
+            if (!FileOpener.isValidFileName(inputFileName)) {
+               addLog("The name '"+inputFileName+"' is not a valid file name.",
+                  "Le nom '"+inputFileName+"' n'est pas un nom de fichier valide.", LogType.ERROR);
+               return;
+            }
+            if (!FileOpener.isValidFileName(outputFileName)) {
+               addLog("The name '"+outputFileName+"' is not a valid file name.",
+                  "Le nom '"+outputFileName+"' n'est pas un nom de fichier valide.", LogType.ERROR);
+               return;
+            }
+
+            if (!FileOpener.fileExists(inputFileName)) {
+               addLog("The file named '"+inputFileName+"' does not exist.",
+                  "Le fichier '"+inputFileName+"' n'existe pas.", LogType.WARNING);
+               return;
+            }
+
+            Parser.parse(inputFileName);
+            Log.log("Parsed");
+
+            ArrayList<String> linesToWrite = Interpreter.translateTree();
+            Log.log("Interpreted");
+            FileOpener.writeFile(outputFileName, linesToWrite);
+            Log.log("Written");
+         } catch (IllegalArgumentException e) {
+            Log.err("Invalid argument : "+e.getMessage());
+         }
+      }
+   }
+
+   public void openFileChooser() {
+      FileChooser chooser = new FileChooser();
+      String filenameSelected = chooser.getFileSelected();
+      if (filenameSelected != null) {
+         inputFileField.setText(filenameSelected);
+         outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
+      }
    }
 }

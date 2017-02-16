@@ -34,6 +34,10 @@ public class Main {
 
       //====== Test =======
       Window window = new Window();
+
+      //Initialize the HashMap of how to interpret each tags
+      Interpreter.initializeMaps();
+      
       try {
          TimeUnit.SECONDS.sleep(1);
          window.addLog("Test", "Test", ERROR);
@@ -52,39 +56,5 @@ public class Main {
       } catch(Exception e) {
          Log.log("fuck");
       }
-
-      boolean validFileNames = false;
-      //while (!validFileNames) {
-         //============= Run GUI and get file names =======================
-         //Window mainWindow = new Window();
-
-         //============== Check file names ======================
-         if (inputFileName != null) {
-            try {
-               inputFileName = FileNamesInterpreter.interpretInputFileName(inputFileName);
-               outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFileName, outputFileName);
-               Log.log("Input file : "+inputFileName);
-               Log.log("Output file : "+outputFileName);
-
-               if (FileOpener.fileExists(inputFileName))
-                  Log.log(inputFileName+" exists");
-               else
-                  Log.log(inputFileName+" doesn't exist");
-
-               validFileNames = true;
-
-               Parser.parse(inputFileName);
-               //Lister.writeNoticeableTagNames(outputFileName);
-
-               //Initialize the HashMap of how to interpret each tags
-               Interpreter.initializeMaps();
-
-               ArrayList<String> linesToWrite = Interpreter.translateTree();
-               FileOpener.writeFile(outputFileName, linesToWrite);
-            } catch (IllegalArgumentException e) {
-               Log.err("Invalid argument : "+e.getMessage());
-            }
-         }
-      //}
    }
 }

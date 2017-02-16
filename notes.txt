@@ -9,6 +9,7 @@ GUI :
       - options
          language -> drop down menu
          drop down menu for the output format
+         MAYBE add check box to know if we can translate a directory
       - description
 
 TODOS
