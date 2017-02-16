@@ -9,8 +9,12 @@ import java.util.Stack;
 import util.Log;
 import backend.files.FileOpener;
 import backend.files.Reader;
+import gui.Window;
+import static util.LogType.*;
 
 public class Parser {
+   private static boolean onlyValidSyntax = true;
+
    private static final String firstXmlTagName = "?xml", preferredXMLVersion = "1.0";
 
    private static String inputFileName = "undefined";
@@ -30,25 +34,26 @@ public class Parser {
     * Parses the file with name @inputFileName and extracts the tree of XML tags
     * Returns that tree
     */
-   public static void parse(String inputFileName) {
+   public static void parse(String inputFileName, Window window) {
       Parser.inputFileName = inputFileName;
-      Log.log("parse");
 
       Scanner inputScanner;
       try {
          inputScanner = new Scanner(new File(inputFileName));
       } catch (FileNotFoundException e) {
          Log.err("Couldn't open input file : '"+Parser.inputFileName+"'");
+         window.addLog("Couldn't open the XML file.", "Impossible d'ouvrir le fichier XML.", ERROR);
          return;
       }
 
       String currentLine = Reader.getNextEffectiveLine(inputScanner);
       if (currentLine == null) {
          Log.warn("File '"+Parser.inputFileName+"' is empty (no effective line).");
+         window.addLog("The XML file is empty.", "Le fichier XML est vide.", WARNING);
          return;
       }
       //============= Check the validity of the file (xml prolog) ==================
-      if (!prologTagIsValid(currentLine))
+      if (!prologTagIsValid(currentLine, window))
          return;
 
       //================= Parse all following tags =====================
@@ -65,7 +70,16 @@ public class Parser {
          while (!stackOfTags.isEmpty())
             Log.err(stackOfTags.pop().getTagName());
          Log.warn("The transcription might be wrong.");
+
+         window.addLog("Certain tags are not properly closed in the XML file. The translation might be invalid.",
+            "Certaines balises ne sont pas correctement fermées dans le fichier XML. La traduction pourrait être invalide.",
+            WARNING);
       }
+
+      if (!onlyValidSyntax)
+         window.addLog("Invalid syntax was detected in the XML file. The translation might be invalid.",
+            "Une syntaxe invalide a été détectée dans le fichier XML. La traduction pourrait être invalide.",
+            WARNING);
    }
 
    /*
@@ -80,6 +94,7 @@ public class Parser {
          throw new IllegalArgumentException("Tried to get a tag name in a place there is no tag.");
       if (tagBeginningIndex+1 == line.length()) {
          Log.warn("Missing closing tag character (>).");
+         onlyValidSyntax = false;
          return new ArrayList<String>();
       }
 
@@ -106,6 +121,7 @@ public class Parser {
          }
          if (i == line.length()) {
             Log.warn("Missing closing tag character (>).");
+            onlyValidSyntax = false;
             return answer;
          }
          if (c == '>')
@@ -137,7 +153,7 @@ public class Parser {
             return answer;
          if (currentAttributeName.equals("") && c == '=') {
             Log.err("Couldn't retrieve XML attribute associated with the '"+tagName+"' XML tag.");
-            throw new IllegalArgumentException("Invalid syntax");
+            throw new IllegalArgumentException("Invalid syntax in the input file (line "+Reader.getCurrentLineNb()+").");
          }
          while (c == ' ' || c == '\t') {
             i++;
@@ -166,7 +182,7 @@ public class Parser {
             quotingSymbol = '\'';
          else {
             Log.err("Attribute '"+currentAttributeName+"' of tag '"+tagName+"' has a value that is not quoted.");
-            throw new IllegalArgumentException("Invalid syntax");
+            throw new IllegalArgumentException("Invalid syntax in the input file (line "+Reader.getCurrentLineNb()+"). Missing quotes.");
          }
          if (i+1 < line.length()) {
             i++;
@@ -205,21 +221,31 @@ public class Parser {
     * Checks if the first (effective) line of the file is a valid prolog tag with a valid form and version number
     * Returns true if the prolog tag is valid
     */
-   private static boolean prologTagIsValid(String firstLine) {
+   private static boolean prologTagIsValid(String firstLine, Window window) {
       if (firstLine.length() <= 0 || firstLine.charAt(0) != '<') {
          Log.err("The file "+inputFileName+" does not contain a valid XML prolog.");
+         window.addLog("The XML file does not contain a valid XML prolog.",
+            "Le fichier XML ne contient pas un prologue valide.",
+            ERROR);
          return false;
       }
 
       ArrayList<String> parts = splitTag(firstLine, 0);
       if (parts.size() <= 0 || !parts.get(0).equals(firstXmlTagName)) {
          Log.err("The file '"+inputFileName+"' is not a valid XML file. Missing the XML prolog.");
+         window.addLog("The XML file does not contain a valid XML prolog.",
+            "Le fichier XML ne contient pas un prologue valide.",
+            ERROR);
          return false;
       }
       for (int i=1; i<parts.size(); i++) {
          if (parts.get(i).equals("version")) {
-            if (!parts.get(i+1).equals(preferredXMLVersion))
+            if (!parts.get(i+1).equals(preferredXMLVersion)) {
                Log.warn("XML version might be out-of-date : version is "+parts.get(i+1)+" while preferred version is "+preferredXMLVersion);
+               window.addLog("The XML version ("+parts.get(i+1)+") might be out-of-date. The preferred version is '"+preferredXMLVersion+"'.",
+                  "La version de XML ("+parts.get(i+1)+") pourrait être obsolète. La version préférentielle est '"+preferredXMLVersion+"'.",
+                  WARNING);
+            }
             break;
          }
       }
@@ -265,13 +291,16 @@ public class Parser {
             String tagName = splittedTag.get(0);
             if (tagName.equals("/")) {
                Log.err("Detected an XML tag with name '/'. Ignoring the tag.");
+               onlyValidSyntax = false;
                continue;
             }
             if (tagName.startsWith("/")) {//check if tag is a closing tag
                tagName = tagName.substring(1);
                closingTag = true;
-               if (splittedTag.size() > 1)
+               if (splittedTag.size() > 1) {
                   Log.warn("Detected attributes in the closing tag with name '"+tagName+"'");
+                  onlyValidSyntax = false;
+               }
             }
             if (splittedTag.size() == 1 && isStandaloneWord(tagName)) {
                tagName = tagName.substring(0, tagName.length()-1);//remove last character ('/')
@@ -292,7 +321,7 @@ public class Parser {
             if (standaloneTag) {
                if (stackOfTags.isEmpty()) {
                   Log.err("There is a problem in the architecture of the input file. Detected a standalone tag as root of the file.");
-                  throw new IllegalArgumentException("Invalid architecture");
+                  throw new IllegalArgumentException("Invalid architecture of the input file (first tag being self-closing).");
                }
                else {
                   XMLTag top = stackOfTags.peek();
@@ -316,10 +345,12 @@ public class Parser {
                //---------- Remove the tag that is on top of the stack (+check) -------------------
                if (stackOfTags.isEmpty()) {
                   Log.err("Missing an opening tag for tag named '"+tagName+"'. Ignoring the closing tag.");
+                  onlyValidSyntax = false;
                   continue;
                }
                if (!stackOfTags.peek().getTagName().equals(tagName)) {
                   Log.err("The closing tag with name "+tagName+" does not close the last opened XML tag ("+stackOfTags.peek().getTagName()+"). Ignoring the closing tag.");
+                  onlyValidSyntax = false;
                   continue;
                }
                //Remove top tag

@@ -19,7 +19,7 @@ public class Main {
    public static void main(String[] args) {
       String inputFileName = null, outputFileName = null;
 
-      //=================== Get arguments ======================
+      //=================== Get arguments ====================== TODO remove
       if (args == null || args.length <= 0)
          Log.log("No arguments");
       else {
@@ -32,7 +32,7 @@ public class Main {
          }
       }
 
-      //====== Test =======
+      //====== Create window =======
       Window window = new Window();
 
       //Initialize the HashMap of how to interpret each tags

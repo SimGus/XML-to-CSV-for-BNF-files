@@ -6,7 +6,7 @@ import java.io.File;
 import javax.swing.UIManager;
 
 import util.EnFrString;
-import util.Log;
+import util.Log;//TODO remove
 
 public class FileChooser extends JFileChooser
 {

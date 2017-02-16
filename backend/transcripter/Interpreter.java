@@ -7,6 +7,8 @@ import java.util.Map;
 import util.Log;
 import backend.parser.Parser;
 import backend.parser.XMLPart;
+import gui.Window;
+import static util.LogType.*;
 
 public class Interpreter {
    public enum TagType {
@@ -114,24 +116,21 @@ public class Interpreter {
     * that will be written in the output file
     * Each string in the ArrayList returned is a line of the file
     */
-   public static ArrayList<String> translateTree() {
+   public static ArrayList<String> translateTree(Window window) {
       if (Parser.rootTags.size() <= 0) {
-         Log.warn("Tried to translate a file before it was read or with no tags contained in it.");
+         window.addLog("There seems to be nothing to translate in the XML file.",
+            "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
+            WARNING);
          return new ArrayList<String>();
       }
 
       XMLPart currentTag;
       for (XMLPart currentRoot : Parser.rootTags) {
-         translateTag(currentRoot);
+         translateTag(currentRoot, window);
       }
 
       ArrayList<String> answer = new ArrayList<String>();
-      /*
-      for (Map.Entry<String, String> current : translatedFields.entrySet()) {
-         answer.add("'"+current.getKey()+"'\n\t'"+current.getValue()+"'");
-      }//*/
 
-      //*
       //============ Write first line (field names) ===============
       String currentLine = "";
       for (String fieldName : fieldNames.keySet()) {
@@ -153,7 +152,6 @@ public class Interpreter {
       }
       currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
       answer.add(currentLine);
-      //*/
 
       return answer;
    }
@@ -162,23 +160,29 @@ public class Interpreter {
     * Iterates recursively through the tags tree (thanks to argument @tag)
     * and put the interesting translations in the HashMap @translatedFields
     */
-   private static void translateTag(XMLPart tag) {
-      if (tag.getTagName() == null) {
+   private static void translateTag(XMLPart tag, Window window) {
+      /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
          return;
-      }
+      }*/
 
       if (tagTypesMap.get(tag.getTagName()) == null) {
-         Log.warn("Found an unknown tag in the input file.");
+         Log.warn("Found an unknown tag in the input file : '"+tag.getTagName()+"'. Ignoring it.");
+         window.addLog("Ignoring an unknown tag in the XML file : '"+tag.getTagName()+"'.",
+            "La balise '"+tag.getTagName()+"' trouvée dans le fichier XML est inconnue et ne sera pas prise en compte.",
+            MINOR);
          return;
       }
       switch (tagTypesMap.get(tag.getTagName())) {
          case CONTENT:
             Log.err("The input file seems to have an invalid architecture.");
+            window.addLog("The XML file seems to have an invalid architecture. The program will try to keep running anyway.",
+               "Le fichier XML semble avoir une architecture invalide. Le programme va tout de même essayer de continuer son exécution.",
+               WARNING);
             break;
          case CONTAINER:
             for (XMLPart currentTag : tag.getChildrenElements()) {
-               translateTag(currentTag);
+               translateTag(currentTag, window);
             }
             break;
          case IGNORE://nothing to do

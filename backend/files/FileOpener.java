@@ -7,13 +7,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.io.IOException;
 
-import util.Log;
+import gui.Window;
+import static util.LogType.*;
 
 public class FileOpener {
    public static String currentDirectory = Paths.get(".").toAbsolutePath().getParent().toString();
 
-   public static boolean isValidFileName(String fileName) {
-      File f = new File(fileName);
+   /* Checks if the path @filePath is valid according to the OS */
+   public static boolean isValidFileName(String filePath) {
+      File f = new File(filePath);
       try {
          f.getCanonicalPath();
          return true;
@@ -33,7 +35,7 @@ public class FileOpener {
       return (file.exists() && !file.isDirectory());
    }
 
-   public static void writeFile(String fileName, ArrayList<String> lines) {
+   public static void writeFile(String fileName, ArrayList<String> lines, Window window) {
       try {
          String filePath;
          File tmp = new File(fileName);
@@ -44,7 +46,9 @@ public class FileOpener {
          //Path file = Paths.get(filePath);
          Files.write(Paths.get(filePath), lines, Charset.forName("UTF-8"));
       } catch (IOException e) {
-         Log.err("Error while writing output file : '"+e.getMessage()+"'.");
+         window.addLog("Error while writing output file : '"+e.getMessage()+"'.",
+            "Erreur lors de l'écriture du fichier de sortie : '"+e.getMessage()+"'.",
+            ERROR);
       }
    }
 }

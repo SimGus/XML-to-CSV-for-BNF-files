@@ -8,19 +8,21 @@ import backend.parser.Parser;
 import backend.files.FileOpener;
 import backend.parser.XMLPart;
 
+import gui.Window;
+
 public class Lister {
    private static final String[] ignoredList = {"p", "lb", "num", "emph", "language", "head", "persname", "corpname", "extref"};
 
    /*
     * Writes the noticeable tag names in the file named @outputFileName
     */
-   public static void writeNoticeableTagNames(String outputFileName) {
+   public static void writeNoticeableTagNames(String outputFileName, Window window) {
       ArrayList<String> namesToWrite = new ArrayList<String>();
 
       for (String currentTagName : getNoticeableTagNames())
          namesToWrite.add(currentTagName);
 
-      FileOpener.writeFile(outputFileName, namesToWrite);
+      FileOpener.writeFile(outputFileName, namesToWrite, window);
    }
 
    /*

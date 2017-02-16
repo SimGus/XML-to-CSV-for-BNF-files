@@ -14,19 +14,19 @@ public class XMLTag implements XMLPart {
 
    public XMLTag(String name) {
       if (name == null || name.length() <= 0)
-         throw new IllegalArgumentException("Tried to instantiate an XML tag with no name");
+         throw new IllegalArgumentException("Tried to instantiate an XML tag with no name.");
       this.name = name;
    }
 
    public String getTagName() {
       if (name == null)
-         throw new UnsupportedOperationException("Tried to get the name of an empty tag");
+         throw new UnsupportedOperationException("Tried to get the name of an empty tag.");
       return name;
    }
 
    public void putAttribute(String key, String value) {
       if (key == null || key.length() <= 0)
-         throw new IllegalArgumentException("Tried to add an empty XML attribute to an XML tag");
+         throw new IllegalArgumentException("Tried to add an empty XML attribute to an XML tag.");
       if (value == null) {
          Log.warn("Tried to add an XML attribute without value. Ignoring it.");
          return;
@@ -39,7 +39,7 @@ public class XMLTag implements XMLPart {
 
    public String getValue(String attribute) {
       if (attribute == null || attribute.length() <= 0) {
-         Log.warn("Tried to get value of an empty attribute");
+         Log.warn("Tried to get value of an empty attribute.");
          return null;
       }
       return attributes.get(attribute);
@@ -47,7 +47,7 @@ public class XMLTag implements XMLPart {
 
    public void addChildElement(XMLPart child) {
       if (child == null)
-         throw new IllegalArgumentException("Tried to add an empty XML tag as a child element of another one");
+         throw new IllegalArgumentException("Tried to add an empty XML tag as a child element of another one.");
 
       childrenElements.add(child);
    }

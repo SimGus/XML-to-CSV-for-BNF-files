@@ -1,5 +1,8 @@
 package backend.files;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import util.Log;
 
 public class FileNamesInterpreter {
@@ -72,5 +75,10 @@ public class FileNamesInterpreter {
 
    public static boolean checkExtensionsCoherence(String outputFileName) {
       return (outputFileName.substring(outputFileName.length()-4).equals(extensionsAvailable[extensionChosenID]));
+   }
+
+   public static String getFileName(String filePath) {
+      Path path = Paths.get(filePath);
+      return path.getFileName().toString();
    }
 }

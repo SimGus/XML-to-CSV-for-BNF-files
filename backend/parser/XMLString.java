@@ -7,7 +7,7 @@ public class XMLString implements XMLPart {
 
    public XMLString(String str) {
       if (str == null)
-         throw new IllegalArgumentException("Tried to instantiate an XML string with no content");
+         throw new IllegalArgumentException("Tried to instantiate an XML string without content.");
 
       content = str;
    }

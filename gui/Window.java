@@ -409,10 +409,13 @@ public class Window extends JFrame {
          try {
             switch (currentLogMsg.getType()) {
                case ERROR:
-                  logDoc.insertString(logDoc.getLength(), errorLogsOpenings[0].toString()+" "+currentLogMsg.getString()+"\n", logDoc.getStyle("big"));
+                  logDoc.insertString(logDoc.getLength(), "\n"+errorLogsOpenings[0].toString()+" "+currentLogMsg.getString()+"\n\n", logDoc.getStyle("big"));
                   break;
                case WARNING:
-                  logDoc.insertString(logDoc.getLength(), errorLogsOpenings[1].toString()+" "+currentLogMsg.getString()+"\n", logDoc.getStyle("bold"));
+                  logDoc.insertString(logDoc.getLength(), "\n"+errorLogsOpenings[1].toString()+" "+currentLogMsg.getString()+"\n\n", logDoc.getStyle("bold"));
+                  break;
+               case IMPORTANT:
+                  logDoc.insertString(logDoc.getLength(), currentLogMsg.getString()+"\n", logDoc.getStyle("bold"));
                   break;
                case NORMAL:
                   logDoc.insertString(logDoc.getLength(), currentLogMsg.getString()+"\n", logDoc.getStyle("normal"));
@@ -463,53 +466,63 @@ public class Window extends JFrame {
     * MAIN FUNCTION - Translates the file whose name is given in the EditText
     */
    public void runTranslation() {
-      Log.log("Running translation");
       //============ Reset parser and interpreter =============
       Parser.reset();
       Interpreter.reset();
 
-      String inputFileName = inputFileField.getText();
+      String inputFilePath = inputFileField.getText();
       String outputFileName = outputFileField.getText();
-      Log.log("input file : "+inputFileName);
 
       //============== Check file names ======================
-      if (inputFileName != null && !inputFileName.equals("")) {
+      if (inputFilePath != null && !inputFilePath.equals("")) {
          try {
-            inputFileName = FileNamesInterpreter.interpretInputFileName(inputFileName);
-            outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFileName, outputFileName);
-            Log.log("Input file : "+inputFileName);
-            Log.log("Output file : "+outputFileName);
+            inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
+            outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFileName);
 
-            if (!FileOpener.isValidFileName(inputFileName)) {
-               addLog("The name '"+inputFileName+"' is not a valid file name.",
-                  "Le nom '"+inputFileName+"' n'est pas un nom de fichier valide.", LogType.ERROR);
-               return;
-            }
-            if (!FileOpener.isValidFileName(outputFileName)) {
-               addLog("The name '"+outputFileName+"' is not a valid file name.",
-                  "Le nom '"+outputFileName+"' n'est pas un nom de fichier valide.", LogType.ERROR);
+            String inputFileName = FileNamesInterpreter.getFileName(inputFilePath);
+            addLog("Starting translation of the file '"+inputFileName+"'.",
+               "Lancement de la traduction du fichier '"+inputFileName+"'.", LogType.IMPORTANT);
+
+            if (!FileOpener.isValidFileName(inputFilePath)) {
+               addLog("The path '"+inputFilePath+"' is not a valid file path.",
+                  "Le chemin '"+inputFilePath+"' n'est pas un chemin vers un fichier valide.", LogType.ERROR);
                return;
             }
 
-            if (!FileOpener.fileExists(inputFileName)) {
-               addLog("The file named '"+inputFileName+"' does not exist.",
-                  "Le fichier '"+inputFileName+"' n'existe pas.", LogType.WARNING);
+            if (!FileOpener.fileExists(inputFilePath)) {
+               addLog("The specified file named '"+inputFileName+"' does not exist.",
+                  "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
                return;
             }
 
-            Parser.parse(inputFileName);
-            Log.log("Parsed");
+            //--------- Parsing -----------
+            Parser.parse(inputFilePath, this);
 
-            ArrayList<String> linesToWrite = Interpreter.translateTree();
-            Log.log("Interpreted");
+            //----------- Translation -------------
+            ArrayList<String> linesToWrite = Interpreter.translateTree(this);
+
+            //---------- Writing ---------------
             if (!FileNamesInterpreter.checkExtensionsCoherence(outputFileName))
                addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getExtension()+"'). The name provided will be used.",
                   "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getExtension()+"'). Le nom fourni sera utilisé.",
                   LogType.WARNING);
-            FileOpener.writeFile(outputFileName, linesToWrite);
-            Log.log("Written");
+            FileOpener.writeFile(outputFileName, linesToWrite, this);
+            addLog("Translation of the file '"+inputFileName+"' done.",
+               "Traduction du fichier '"+inputFileName+"' terminée.",
+               LogType.IMPORTANT);
+
          } catch (IllegalArgumentException e) {
-            Log.err("Invalid argument : "+e.getMessage());
+            addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
+               "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
+               LogType.ERROR);
+         } catch (UnsupportedOperationException e) {
+            addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
+            "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+            LogType.ERROR);
+         } catch (Exception e) {
+            addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
+               "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
+               LogType.ERROR);
          }
       }
       else {
@@ -529,7 +542,6 @@ public class Window extends JFrame {
    public class DropDownMenuListener implements ActionListener {
       public void actionPerformed(ActionEvent event) {
          if (event.getSource() == outputFormatDropDownMenu) {
-            Log.log("output format : selected "+outputFormatDropDownMenu.getSelectedItem());
             String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
             if (selectedItem == null)
                return;//nothing to do
@@ -541,7 +553,6 @@ public class Window extends JFrame {
                FileNamesInterpreter.changeExtension("tsv");
          }
          else if (event.getSource() == languageChoiceDropDownMenu) {
-            Log.log("language choice : selected "+languageChoiceDropDownMenu.getSelectedItem());
             String selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
             if (selectedItem == null)
                return;//nothing to do

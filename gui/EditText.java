@@ -5,8 +5,6 @@ import java.awt.event.FocusListener;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 
-import util.Log;
-
 public class EditText extends JTextField implements FocusListener
 {
 	protected boolean alreadyBeenSelected = false;
@@ -63,8 +61,6 @@ public class EditText extends JTextField implements FocusListener
 	}
 
 	public void focusGained(FocusEvent event) {
-		Log.log("EDIT : focused");
-
 		if (!alreadyBeenSelected) {
 			setForeground(Color.BLACK);
 			setText("");
@@ -72,7 +68,5 @@ public class EditText extends JTextField implements FocusListener
 		}
 	}
 
-	public void focusLost(FocusEvent event) {
-		Log.log("EDIT : focus lost");
-	}
+	public void focusLost(FocusEvent event) {}//nothing to do
 }

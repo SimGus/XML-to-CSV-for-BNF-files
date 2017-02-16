@@ -2,8 +2,6 @@ package backend.files;
 
 import java.util.Scanner;
 
-import util.Log;
-
 public class Reader {
    private static final String commentBeginning = "<!--", commentEnding = "-->";
    private static boolean currentLineBeginsInAComment = false, nextLineBeginsInAComment = false;
