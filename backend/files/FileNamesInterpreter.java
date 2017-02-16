@@ -3,7 +3,7 @@ package backend.files;
 import util.Log;
 
 public class FileNamesInterpreter {
-   private static String[] extensionsAvailable = {"txt", "tab", "tsv"};
+   private static String[] extensionsAvailable = {".txt", ".tab", ".tsv"};
    private static int extensionChosenID = 0;
 
    public static String interpretInputFileName(String userInput) {
@@ -21,9 +21,10 @@ public class FileNamesInterpreter {
          return generateOutputFileName(inputFileName);
 
       if (userOutputInput.length() <= 4
-         || (!userOutputInput.substring(userOutputInput.length()-4).equals(".txt")
-            && !userOutputInput.substring(userOutputInput.length()-4).equals(".tsv")))
-         userOutputInput += ".txt";
+         || (!userOutputInput.substring(userOutputInput.length()-4).equals(extensionsAvailable[0])
+            && !userOutputInput.substring(userOutputInput.length()-4).equals(extensionsAvailable[1])
+            && !userOutputInput.substring(userOutputInput.length()-4).equals(extensionsAvailable[2])))
+         userOutputInput += extensionsAvailable[extensionChosenID];
 
       return userOutputInput;
    }
@@ -32,7 +33,7 @@ public class FileNamesInterpreter {
       if (inputFileName == null || inputFileName.length() <= 4)
          throw new IllegalArgumentException("Invalid input file name.");
 
-      String answer = inputFileName.substring(0, inputFileName.length()-3);
+      String answer = inputFileName.substring(0, inputFileName.length()-4);
       return answer+extensionsAvailable[extensionChosenID];
    }
 

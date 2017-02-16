@@ -77,10 +77,6 @@ public class Window extends JFrame {
 
    protected static final EnFrString okButtonLabel = new EnFrString("Run transcription", "Lancer la transcription");
    protected static final EnFrString browseButtonLabel = new EnFrString("Browse", "Parcourir");
-   protected static final EnFrString defaultInputFieldName = new EnFrString("file.xml", "fichier.xml");
-   protected static final EnFrString defaultOutputFieldName = new EnFrString("file.txt", "fichier.txt");
-   protected String inputFileName;
-   protected String outputFileName;
 
    protected Box logArea = Box.createHorizontalBox();
    protected JTextPane logTextPane = new JTextPane();
@@ -160,16 +156,16 @@ public class Window extends JFrame {
          Log.err("Couldn't get the system's window theme.");
       }//*/
 
-      //--------- Initialize file names and styles --------------
-      inputFileName = defaultInputFieldName.toString();
-      outputFileName = defaultOutputFieldName.toString();
-
+      //--------- Initialize styles --------------
       initLogsStyles(logTextPane.getStyledDocument());
       initDescStyles(descriptionPane.getStyledDocument());
 
       //-------- Add listeners ------------
       okButton.addActionListener(new ButtonListener());
       browseButton.addActionListener(new ButtonListener());
+
+      outputFormatDropDownMenu.addActionListener(new DropDownMenuListener());
+      languageChoiceDropDownMenu.addActionListener(new DropDownMenuListener());
 
       //-------- Make window ------------
       descriptionPane.setEditable(false);
@@ -364,13 +360,36 @@ public class Window extends JFrame {
    }
 
    protected void setDropDownMenusItems() {
+      int indexToSelect = -1;
+      String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
+      if (selectedItem == null)
+         indexToSelect = -1;//nothing to do
+      else if (selectedItem.equals(outputFormatsAvailable[0].getStrings("English")) || selectedItem.equals(outputFormatsAvailable[0].getStrings("French")))
+         indexToSelect = 0;
+      else if (selectedItem.equals(outputFormatsAvailable[1].getStrings("English")) || selectedItem.equals(outputFormatsAvailable[1].getStrings("French")))
+         indexToSelect = 1;
+      else if (selectedItem.equals(outputFormatsAvailable[2].getStrings("English")) || selectedItem.equals(outputFormatsAvailable[2].getStrings("French")))
+         indexToSelect = 2;
+
       outputFormatDropDownMenu.removeAllItems();
       for (EnFrString currentItem : outputFormatsAvailable)
          outputFormatDropDownMenu.addItem(currentItem.toString());
+      if (indexToSelect >= 0)
+         outputFormatDropDownMenu.setSelectedIndex(indexToSelect);
+
+      selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
+      if (selectedItem == null)
+         indexToSelect = -1;//nothing to do
+      else if (selectedItem.equals(languagesAvailable[0].getStrings("English")) || selectedItem.equals(languagesAvailable[0].getStrings("French")))
+         indexToSelect = 0;
+      else if (selectedItem.equals(languagesAvailable[1].getStrings("English")) || selectedItem.equals(languagesAvailable[1].getStrings("French")))
+         indexToSelect = 1;
 
       languageChoiceDropDownMenu.removeAllItems();
       for (EnFrString currentItem : languagesAvailable)
          languageChoiceDropDownMenu.addItem(currentItem.toString());
+      if (indexToSelect >= 0)
+         languageChoiceDropDownMenu.setSelectedIndex(indexToSelect);
    }
 
    private void setElementBorder(JComponent element, EmptyBorder border) {
@@ -440,14 +459,17 @@ public class Window extends JFrame {
       }
    }
 
+   /*
+    * MAIN FUNCTION - Translates the file whose name is given in the EditText
+    */
    public void runTranslation() {
       Log.log("Running translation");
       //============ Reset parser and interpreter =============
       Parser.reset();
       Interpreter.reset();
 
-      inputFileName = inputFileField.getText();
-      outputFileName = outputFileField.getText();
+      String inputFileName = inputFileField.getText();
+      String outputFileName = outputFileField.getText();
       Log.log("input file : "+inputFileName);
 
       //============== Check file names ======================
@@ -494,6 +516,34 @@ public class Window extends JFrame {
       if (filenameSelected != null) {
          inputFileField.setText(filenameSelected);
          outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
+      }
+   }
+
+   public class DropDownMenuListener implements ActionListener {
+      public void actionPerformed(ActionEvent event) {
+         if (event.getSource() == outputFormatDropDownMenu) {
+            Log.log("output format : selected "+outputFormatDropDownMenu.getSelectedItem());
+            String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
+            if (selectedItem == null)
+               return;//nothing to do
+            else if (selectedItem.equals(outputFormatsAvailable[0].toString()))
+               FileNamesInterpreter.changeExtension("txt");
+            else if (selectedItem.equals(outputFormatsAvailable[1].toString()))
+               FileNamesInterpreter.changeExtension("tab");
+            else if (selectedItem.equals(outputFormatsAvailable[2].toString()))
+               FileNamesInterpreter.changeExtension("tsv");
+         }
+         else if (event.getSource() == languageChoiceDropDownMenu) {
+            Log.log("language choice : selected "+languageChoiceDropDownMenu.getSelectedItem());
+            String selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
+            if (selectedItem == null)
+               return;//nothing to do
+            else if (selectedItem.equals(languagesAvailable[0].toString()))
+               EnFrString.setCurrentLanguage("English");
+            else if (selectedItem.equals(languagesAvailable[1].toString()))
+               EnFrString.setCurrentLanguage("French");
+            setLabels();
+         }
       }
    }
 }
