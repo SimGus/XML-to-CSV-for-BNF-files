@@ -9,14 +9,15 @@ GUI :
       - options
          language -> drop down menu
          drop down menu for the output format
-         MAYBE add check box to know if we can translate a directory
+         TODO add check box to know if we can translate a directory
       - description
 
 TODOS
 DONE the tags should be case sensitive
 DONE don't make it all in one method
 DONE check if one field is already filled (don't wipe out when adding something)
-TODO check if the file we will write has the same extension than what is in the drop down menu
+DONE check if the file we will write has the same extension than what is in the drop down menu
+TODO add check box to know if we can translate a directory
 
 BUGS
 FIXED <lb/> not read

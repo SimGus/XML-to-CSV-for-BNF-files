@@ -56,4 +56,21 @@ public class FileNamesInterpreter {
             break;
       }
    }
+
+   public static String getExtension() {
+      switch (extensionChosenID) {
+         case 0:
+            return "txt";
+         case 1:
+            return "tab";
+         case 2:
+            return "tsv";
+         default:
+            throw new IllegalArgumentException("The extension selected is not available.");
+      }
+   }
+
+   public static boolean checkExtensionsCoherence(String outputFileName) {
+      return (outputFileName.substring(outputFileName.length()-4).equals(extensionsAvailable[extensionChosenID]));
+   }
 }

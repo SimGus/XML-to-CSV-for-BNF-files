@@ -473,7 +473,7 @@ public class Window extends JFrame {
       Log.log("input file : "+inputFileName);
 
       //============== Check file names ======================
-      if (inputFileName != null) {
+      if (inputFileName != null && !inputFileName.equals("")) {
          try {
             inputFileName = FileNamesInterpreter.interpretInputFileName(inputFileName);
             outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFileName, outputFileName);
@@ -502,11 +502,18 @@ public class Window extends JFrame {
 
             ArrayList<String> linesToWrite = Interpreter.translateTree();
             Log.log("Interpreted");
+            if (!FileNamesInterpreter.checkExtensionsCoherence(outputFileName))
+               addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getExtension()+"'). The name provided will be used.",
+                  "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getExtension()+"'). Le nom fourni sera utilisé.",
+                  LogType.WARNING);
             FileOpener.writeFile(outputFileName, linesToWrite);
             Log.log("Written");
          } catch (IllegalArgumentException e) {
             Log.err("Invalid argument : "+e.getMessage());
          }
+      }
+      else {
+         addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
       }
    }
 

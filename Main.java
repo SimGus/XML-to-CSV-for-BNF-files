@@ -38,23 +38,7 @@ public class Main {
       //Initialize the HashMap of how to interpret each tags
       Interpreter.initializeMaps();
 
-      try {
-         TimeUnit.SECONDS.sleep(1);
-         window.addLog("Test", "Test", ERROR);
-         TimeUnit.SECONDS.sleep(1);
-         window.addLog("Warn", "avertissement", WARNING);
-         TimeUnit.SECONDS.sleep(1);
-         window.addLog("Not important", "Pas important", MINOR);
-         TimeUnit.SECONDS.sleep(1);
-         window.addLog("Norm", "narmol", NORMAL);
-
-         EnFrString.setCurrentLanguage("French");
-         window.setLabels();
-
-         TimeUnit.SECONDS.sleep(1);
-         window.addLog("retest", "retest", NORMAL);
-      } catch(Exception e) {
-         Log.log("exception in main : "+e.getMessage());
-      }
+      //Parser is called when the ok button is pressed
+      //(cf. Window.java)
    }
 }
