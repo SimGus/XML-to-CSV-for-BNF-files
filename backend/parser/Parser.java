@@ -268,6 +268,8 @@ public class Parser {
             i += element.length();
 
             //element = trim(element);//don't trim inside the XMLString object
+            //Translate special characters
+            element = translateSpecialChar(element);
 
             if (element.length() <= 0)
                continue;
@@ -287,6 +289,10 @@ public class Parser {
             //-------------- make tag --------------------
             if (splittedTag.size() <= 0)
                continue;//don't make the new tag
+
+            // Translate special characters
+            for (int j=0; j<splittedTag.size(); j++)
+               splittedTag.set(j, translateSpecialChar(splittedTag.get(j)));
 
             String tagName = splittedTag.get(0);
             if (tagName.equals("/")) {
@@ -405,5 +411,21 @@ public class Parser {
       for (i=beginningIndex; i<str.length() && str.charAt(i)!='>'; i++) {}
 
       return i;
+   }
+
+   /*
+    * Changes all special characters (&gt; and so on)
+    * into their Unicode representation (> and so on) in @str
+    */
+   private static String translateSpecialChar(String str) {
+      if (str == null || str.length() <= 0)
+         return str;
+
+      String answer = str.replaceAll("&lt;", "<");
+      answer = answer.replaceAll("&gt;", ">");
+      answer = answer.replaceAll("&amp;", "&");
+      answer = answer.replaceAll("&apos;", "'");
+      answer = answer.replaceAll("&quot;", "\"");
+      return answer;
    }
 }

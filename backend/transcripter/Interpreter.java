@@ -150,8 +150,10 @@ public class Interpreter {
             currentLine += "\t";
          }
       }
-      currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
-      answer.add(currentLine);
+      if (currentLine.length() > 0) {
+         currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
+         answer.add(currentLine);
+      }
 
       return answer;
    }

@@ -12,9 +12,6 @@ import backend.transcripter.Interpreter;
 
 import gui.Window;
 
-import static util.LogType.*;
-import java.util.concurrent.TimeUnit;
-
 public class Main {
    public static void main(String[] args) {
       String inputFileName = null, outputFileName = null;
