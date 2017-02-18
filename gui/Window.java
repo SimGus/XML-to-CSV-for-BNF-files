@@ -92,6 +92,9 @@ public class Window extends JFrame {
 
    protected static final EnFrString logAreaTitle = new EnFrString("Output", "Sortie");
 
+   protected JButton clearLogsButton = new JButton();
+   protected static final EnFrString clearLogsButtonLabel = new EnFrString("Clear output", "Vider la zone de messages de sortie");
+
    //============ options tab elements ===============
    protected JLabel outputFormatLabel = new JLabel();
    protected JLabel languageChoiceLabel = new JLabel();
@@ -176,6 +179,7 @@ public class Window extends JFrame {
       //-------- Add listeners ------------
       okButton.addActionListener(new ButtonListener());
       browseButton.addActionListener(new ButtonListener());
+      clearLogsButton.addActionListener(new ButtonListener());
 
       outputFormatDropDownMenu.addActionListener(new DropDownMenuListener());
       languageChoiceDropDownMenu.addActionListener(new DropDownMenuListener());
@@ -235,11 +239,19 @@ public class Window extends JFrame {
       //logArea needs to have its title changed, hence it is a class attribute
       logArea.add(logAreaScrollPane);
 
+      Box line4 = Box.createHorizontalBox();
+      line4.add(Box.createHorizontalGlue());
+      line4.add(clearLogsButton);
+      setElementBorder(line4, linesBorder);
+      //sizes
+      line4.setMaximumSize(new Dimension(Integer.MAX_VALUE, clearLogsButton.getPreferredSize().height+2*internalBorderSize));
+
       Box mainTab = Box.createVerticalBox();
       mainTab.add(line1);
       mainTab.add(line2);
       mainTab.add(line3);
       mainTab.add(logArea);
+      mainTab.add(line4);
       mainTab.setFocusable(true);
       mainTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
@@ -308,10 +320,11 @@ public class Window extends JFrame {
       outputFileLabel.setText(outputFileLabelString.toString());
 
       browseButton.setText(browseButtonLabel.toString());
-
       okButton.setText(okButtonLabel.toString());
 
       logArea.setBorder(BorderFactory.createTitledBorder(logAreaTitle.toString()));
+
+      clearLogsButton.setText(clearLogsButtonLabel.toString());
 
       writeLogs();
 
@@ -473,9 +486,10 @@ public class Window extends JFrame {
       addLog(new EnFrString(enLine, frLine), type);
    }
 
-   /* Removes all the lines displayed in the log area */
+   /* Removes all the lines displayed in the log area (and put again the default line) */
    public void clearLogs() {
       logs.clear();
+      addLog(readyLogMsg, LogType.NORMAL);
       writeLogs();
    }
 
@@ -487,6 +501,9 @@ public class Window extends JFrame {
          }
          else if (event.getSource() == browseButton) {
             openFileChooser();
+         }
+         else if (event.getSource() == clearLogsButton) {
+            clearLogs();
          }
       }
    }
