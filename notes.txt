@@ -23,6 +23,7 @@ TODOS
 
 BUGS
    FIXED <lb/> not read
+   BUG twice french in drop down menu at the start of the program
 
 Interpreter :  read the tree of the file
                each time you encounter a tag that could contain something interesting keep on searching

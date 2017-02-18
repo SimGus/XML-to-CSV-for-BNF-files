@@ -35,6 +35,18 @@ public class FileOpener {
       return (file.exists() && !file.isDirectory());
    }
 
+   public static boolean representsAFile(String filePath) {
+      File tmp = new File(filePath);
+      return tmp.isFile();
+   }
+
+   public static File[] getFilesInDirectory(String dirPath) {
+      File tmp = new File(dirPath);
+      if (!tmp.isDirectory())
+         throw new IllegalArgumentException("Tried to get files from a path that represents a file.");
+      return tmp.listFiles();
+   }
+
    public static void writeFile(String fileName, ArrayList<String> lines, Window window) {
       try {
          String filePath;

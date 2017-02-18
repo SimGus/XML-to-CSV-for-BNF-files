@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.io.File;
 
 import javax.swing.UIManager;
 
@@ -17,6 +18,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -59,6 +61,8 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
+   protected boolean dirTranslationEnabled = false;
+
    //============  main tab elements ===================
    protected JPanel mainTab = new JPanel();
 
@@ -82,20 +86,19 @@ public class Window extends JFrame {
    protected JTextPane logTextPane = new JTextPane();
    protected JScrollPane logAreaScrollPane = new JScrollPane(logTextPane);
 
-   protected GUILogs logs = new GUILogs();
+   protected static final EnFrString readyLogMsg = new EnFrString("Ready to translate XML file.", "Prêt à traduire un fichier XML.");
+   protected GUILogs logs = new GUILogs(readyLogMsg, LogType.NORMAL);
 
    protected static final EnFrString logAreaTitle = new EnFrString("Output", "Sortie");
 
    //============ options tab elements ===============
    protected JLabel outputFormatLabel = new JLabel();
    protected JLabel languageChoiceLabel = new JLabel();
-
    protected static EnFrString outputFormatLabelString = new EnFrString("Output file format :", "Format du fichier de sortie :");
    protected static EnFrString languageChoiceLabelString = new EnFrString("Language :", "Langue :");
 
    protected JComboBox outputFormatDropDownMenu = new JComboBox();
    protected JComboBox languageChoiceDropDownMenu = new JComboBox();
-
    protected static EnFrString[] outputFormatsAvailable = {
       new EnFrString("TXT file (.txt)", "Fichier TXT (.txt)"),
       new EnFrString("TAB file (.tab)", "Fichier TAB (.tab)"),
@@ -105,6 +108,13 @@ public class Window extends JFrame {
       new EnFrString("English", "Anglais"),
       new EnFrString("French", "Français")
    };
+
+   protected JLabel enableDirCheckBoxLabel = new JLabel();
+   protected JCheckBox enableDirCheckBox = new JCheckBox();
+   protected static EnFrString enableDirCheckBoxString = new EnFrString(
+      "Enable the translation of all files in the specified directory",
+      "Autoriser la traduction de tous les fichier se trouvant dans le dossier spécifié"
+   );
 
    //============ about tab elements =================
    protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
@@ -126,8 +136,10 @@ public class Window extends JFrame {
       +"Un fichier TAB ou TXT contenant la traduction du contenu du fichier XML sera créé."
    );
    protected static EnFrString precision = new EnFrString(
-      "You can set the format of the output file (TAB, TXT or TSV) in the option tab.",
-      "Vous pouvez régler le format du fichier de sortie (TAB, TXT ou TSV) dans l'onglet 'Options'."
+      "You can set the format of the output file (TAB, TXT or TSV) in the option tab.\n"
+      +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.",
+      "Vous pouvez régler le format du fichier de sortie (TAB, TXT ou TSV) dans l'onglet 'Options'.\n"
+      +"Si l'option 'traduire les dosssiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
    );
    protected static EnFrString credits = new EnFrString(
       "\u00A9 2017 S. Gustin",
@@ -166,6 +178,8 @@ public class Window extends JFrame {
 
       outputFormatDropDownMenu.addActionListener(new DropDownMenuListener());
       languageChoiceDropDownMenu.addActionListener(new DropDownMenuListener());
+
+      enableDirCheckBox.addActionListener(new CheckBoxListener());
 
       //-------- Make window ------------
       descriptionPane.setEditable(false);
@@ -249,9 +263,19 @@ public class Window extends JFrame {
       languageChoiceDropDownMenu.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight));
       languageLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight+2*internalBorderSize));
 
+      Box checkBoxLine = Box.createHorizontalBox();
+      checkBoxLine.add(enableDirCheckBox);
+      checkBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      checkBoxLine.add(enableDirCheckBoxLabel);
+      checkBoxLine.add(Box.createHorizontalGlue());
+      //sizes
+      setElementBorder(checkBoxLine, linesBorder);
+      checkBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, enableDirCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
+
       Box optionsTab = Box.createVerticalBox();
       optionsTab.add(outputFormatLine);
       optionsTab.add(languageLine);
+      optionsTab.add(checkBoxLine);
       optionsTab.add(Box.createVerticalGlue());
       optionsTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
@@ -293,6 +317,8 @@ public class Window extends JFrame {
       //=========== options tab =============
       outputFormatLabel.setText(outputFormatLabelString.toString());
       languageChoiceLabel.setText(languageChoiceLabelString.toString());
+
+      enableDirCheckBoxLabel.setText(enableDirCheckBoxString.toString());
 
       setDropDownMenusItems();
 
@@ -412,7 +438,7 @@ public class Window extends JFrame {
                   logDoc.insertString(logDoc.getLength(), "\n"+errorLogsOpenings[0].toString()+" "+currentLogMsg.getString()+"\n\n", logDoc.getStyle("big"));
                   break;
                case WARNING:
-                  logDoc.insertString(logDoc.getLength(), "\n"+errorLogsOpenings[1].toString()+" "+currentLogMsg.getString()+"\n\n", logDoc.getStyle("bold"));
+                  logDoc.insertString(logDoc.getLength(), errorLogsOpenings[1].toString()+" "+currentLogMsg.getString()+"\n", logDoc.getStyle("bold"));
                   break;
                case IMPORTANT:
                   logDoc.insertString(logDoc.getLength(), currentLogMsg.getString()+"\n", logDoc.getStyle("bold"));
@@ -471,45 +497,68 @@ public class Window extends JFrame {
       Interpreter.reset();
 
       String inputFilePath = inputFileField.getText();
-      String outputFileName = outputFileField.getText();
+      String outputFilePath = outputFileField.getText();
 
-      //============== Check file names ======================
-      if (inputFilePath != null && !inputFilePath.equals("")) {
+      inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
+      outputFilePath = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFilePath);
+
+      if (!dirTranslationEnabled || FileOpener.representsAFile(inputFilePath)) {
+         if (inputFilePath != null && !inputFilePath.equals("")) {
+            try {
+               if (!FileOpener.isValidFileName(inputFilePath)) {
+                  addLog("The path '"+inputFilePath+"' is not a valid file path.",
+                     "Le chemin '"+inputFilePath+"' n'est pas un chemin vers un fichier valide.", LogType.ERROR);
+                  return;
+               }
+
+               translate(inputFilePath, outputFilePath);
+
+            } catch (IllegalArgumentException e) {
+               addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  LogType.ERROR);
+            } catch (UnsupportedOperationException e) {
+               addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
+               "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+               LogType.ERROR);
+            } catch (Exception e) {
+               addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
+                  LogType.ERROR);
+            }
+         }
+         else {
+            addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
+         }
+      }
+      else {//dirTranslationEnabled
          try {
-            inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
-            outputFileName = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFileName);
+            addLog("\nStarting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
+               "\nLancement de la traduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"'.\n",
+               LogType.NORMAL);
 
-            String inputFileName = FileNamesInterpreter.getFileName(inputFilePath);
-            addLog("Starting translation of the file '"+inputFileName+"'.",
-               "Lancement de la traduction du fichier '"+inputFileName+"'.", LogType.IMPORTANT);
+            File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
+            if (filesInDir.length <= 0)
+               addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
 
-            if (!FileOpener.isValidFileName(inputFilePath)) {
-               addLog("The path '"+inputFilePath+"' is not a valid file path.",
-                  "Le chemin '"+inputFilePath+"' n'est pas un chemin vers un fichier valide.", LogType.ERROR);
-               return;
+            for (File inputFile : filesInDir) {
+               String currentInputFilePath = inputFile.getAbsolutePath();
+               if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
+                  if (!FileOpener.isValidFileName(currentInputFilePath)) {
+                     addLog("The path '"+currentInputFilePath+"' is not a valid file path. Moving on to the next file in the directory.",
+                        "Le chemin '"+currentInputFilePath+"' n'est pas valide. Passage au fichier suivant dans le dossier.",
+                        LogType.ERROR);
+                     continue;
+                  }
+
+                  String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
+                  translate(currentInputFilePath, currentOutputFilePath);
+               }
             }
 
-            if (!FileOpener.fileExists(inputFilePath)) {
-               addLog("The specified file named '"+inputFileName+"' does not exist.",
-                  "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
-               return;
-            }
-
-            //--------- Parsing -----------
-            Parser.parse(inputFilePath, this);
-
-            //----------- Translation -------------
-            ArrayList<String> linesToWrite = Interpreter.translateTree(this);
-
-            //---------- Writing ---------------
-            if (!FileNamesInterpreter.checkExtensionsCoherence(outputFileName))
-               addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getExtension()+"'). The name provided will be used.",
-                  "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getExtension()+"'). Le nom fourni sera utilisé.",
-                  LogType.WARNING);
-            FileOpener.writeFile(outputFileName, linesToWrite, this);
-            addLog("Translation of the file '"+inputFileName+"' done.",
-               "Traduction du fichier '"+inputFileName+"' terminée.",
-               LogType.IMPORTANT);
+            addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n",
+               "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n",
+               LogType.NORMAL);
 
          } catch (IllegalArgumentException e) {
             addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
@@ -525,13 +574,43 @@ public class Window extends JFrame {
                LogType.ERROR);
          }
       }
-      else {
-         addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
+
+      addLog(readyLogMsg, LogType.NORMAL);
+   }
+
+   protected void translate(String inputFilePath, String outputFilePath) {
+      String inputFileName = FileNamesInterpreter.getFileName(inputFilePath);
+      String outputFileName = FileNamesInterpreter.getFileName(outputFilePath);
+      if (!FileOpener.fileExists(inputFilePath)) {
+         addLog("The specified file named '"+inputFileName+"' does not exist.",
+            "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
+         return;
       }
+
+      addLog("Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'.",
+         "Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'.", LogType.NORMAL);
+
+      //--------- Parsing -----------
+      Parser.parse(inputFilePath, this);
+
+      //----------- Translation -------------
+      ArrayList<String> linesToWrite = Interpreter.translateTree(this);
+
+      //---------- Writing ---------------
+      if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
+         addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
+            "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
+            LogType.WARNING);
+
+      FileOpener.writeFile(outputFilePath, linesToWrite, this);
+
+      addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n",
+         "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n",
+         LogType.NORMAL);
    }
 
    public void openFileChooser() {
-      FileChooser chooser = new FileChooser();
+      FileChooser chooser = new FileChooser(dirTranslationEnabled);
       String filenameSelected = chooser.getFileSelected();
       if (filenameSelected != null) {
          inputFileField.setText(filenameSelected);
@@ -546,11 +625,11 @@ public class Window extends JFrame {
             if (selectedItem == null)
                return;//nothing to do
             else if (selectedItem.equals(outputFormatsAvailable[0].toString()))
-               FileNamesInterpreter.changeExtension("txt");
+               FileNamesInterpreter.changeOutputExtension("txt");
             else if (selectedItem.equals(outputFormatsAvailable[1].toString()))
-               FileNamesInterpreter.changeExtension("tab");
+               FileNamesInterpreter.changeOutputExtension("tab");
             else if (selectedItem.equals(outputFormatsAvailable[2].toString()))
-               FileNamesInterpreter.changeExtension("tsv");
+               FileNamesInterpreter.changeOutputExtension("tsv");
          }
          else if (event.getSource() == languageChoiceDropDownMenu) {
             String selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
@@ -562,6 +641,16 @@ public class Window extends JFrame {
                EnFrString.setCurrentLanguage("French");
             setLabels();
          }
+      }
+   }
+
+   public class CheckBoxListener implements ActionListener {
+      public void actionPerformed(ActionEvent event) {
+         //enableDirCheckBox
+         if (enableDirCheckBox.isSelected())
+            dirTranslationEnabled = true;
+         else
+            dirTranslationEnabled = false;
       }
    }
 }

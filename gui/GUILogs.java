@@ -24,7 +24,7 @@ public class GUILogs implements Iterable<GUILogs.LogMsg> {
 
    protected ArrayList<LogMsg> messages = new ArrayList<LogMsg>();
 
-   protected static EnFrString defaultLogMsg = new EnFrString("Ready to translate XML file.", "Prêt à traduire un fichier XML.");
+   protected static final EnFrString defaultLogMsg = new EnFrString("Ready to translate XML file.", "Prêt à traduire un fichier XML.");
 
    public GUILogs() {
       messages.add(new LogMsg(defaultLogMsg, NORMAL));

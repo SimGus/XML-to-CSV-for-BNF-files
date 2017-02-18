@@ -13,9 +13,9 @@ public class FileChooser extends JFileChooser
 	private static EnFrString title = new EnFrString("Choose a file", "Choisir un fichier");
 	private static EnFrString filterName = new EnFrString("XML file", "fichier XML");
 
-	public FileChooser()
+	public FileChooser(boolean dirChoiceEnabled)
 	{
-		this(title.toString());
+		this(title.toString(), dirChoiceEnabled);
 		//TODO REMOVE THIS PART
 		try {
          UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -31,12 +31,15 @@ public class FileChooser extends JFileChooser
 		//TODO UNTIL HERE
 	}
 
-	public FileChooser(String windowTitle)
+	public FileChooser(String windowTitle, boolean dirChoiceEnabled)
 	{
 		super();
 		setCurrentDirectory(new File("."));
 		setDialogTitle(windowTitle);
-		setFileSelectionMode(JFileChooser.FILES_ONLY);
+		if (dirChoiceEnabled)
+			setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		else
+			setFileSelectionMode(JFileChooser.FILES_ONLY);
 		setFileFilter(new FileNameExtensionFilter(filterName.toString(), "xml"));
 	}
 
