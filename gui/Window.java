@@ -62,6 +62,7 @@ public class Window extends JFrame {
    protected JTabbedPane tabs = new JTabbedPane();
 
    protected boolean dirTranslationEnabled = false;
+   protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
    //============  main tab elements ===================
    protected JPanel mainTab = new JPanel();
@@ -416,6 +417,8 @@ public class Window extends JFrame {
          languageChoiceDropDownMenu.addItem(currentItem.toString());
       if (indexToSelect >= 0)
          languageChoiceDropDownMenu.setSelectedIndex(indexToSelect);
+
+      languagesHaveBeenSetup = true;
    }
 
    private void setElementBorder(JComponent element, EmptyBorder border) {
@@ -499,11 +502,11 @@ public class Window extends JFrame {
       String inputFilePath = inputFileField.getText();
       String outputFilePath = outputFileField.getText();
 
-      inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
-      outputFilePath = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFilePath);
+      if (inputFilePath != null && !inputFilePath.equals("")) {
+         inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
+         outputFilePath = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFilePath);
 
-      if (!dirTranslationEnabled || FileOpener.representsAFile(inputFilePath)) {
-         if (inputFilePath != null && !inputFilePath.equals("")) {
+         if (!dirTranslationEnabled || FileOpener.representsAFile(inputFilePath)) {
             try {
                if (!FileOpener.isValidFileName(inputFilePath)) {
                   addLog("The path '"+inputFilePath+"' is not a valid file path.",
@@ -526,53 +529,60 @@ public class Window extends JFrame {
                   "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
                   LogType.ERROR);
             }
+
          }
-         else {
-            addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
+         else {//dirTranslationEnabled
+            try {
+               addLog("\n=====================================\n"
+                  +"Starting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
+                  "\n=====================================\n"
+                  +"Lancement de la traduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"'.\n",
+                  LogType.NORMAL
+               );
+
+               File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
+               if (filesInDir.length <= 0)
+                  addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
+
+               for (File inputFile : filesInDir) {
+                  String currentInputFilePath = inputFile.getAbsolutePath();
+                  if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
+                     if (!FileOpener.isValidFileName(currentInputFilePath)) {
+                        addLog("The path '"+currentInputFilePath+"' is not a valid file path. Moving on to the next file in the directory.",
+                           "Le chemin '"+currentInputFilePath+"' n'est pas valide. Passage au fichier suivant dans le dossier.",
+                           LogType.ERROR);
+                        continue;
+                     }
+
+                     String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
+                     translate(currentInputFilePath, currentOutputFilePath);
+                  }
+               }
+
+               addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"
+                  +"=====================================\n",
+                  "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n"
+                  +"=====================================\n",
+                  LogType.NORMAL
+               );
+
+            } catch (IllegalArgumentException e) {
+               addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  LogType.ERROR);
+            } catch (UnsupportedOperationException e) {
+               addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
+               "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+               LogType.ERROR);
+            } catch (Exception e) {
+               addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
+                  LogType.ERROR);
+            }
          }
       }
-      else {//dirTranslationEnabled
-         try {
-            addLog("\nStarting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
-               "\nLancement de la traduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"'.\n",
-               LogType.NORMAL);
-
-            File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
-            if (filesInDir.length <= 0)
-               addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
-
-            for (File inputFile : filesInDir) {
-               String currentInputFilePath = inputFile.getAbsolutePath();
-               if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
-                  if (!FileOpener.isValidFileName(currentInputFilePath)) {
-                     addLog("The path '"+currentInputFilePath+"' is not a valid file path. Moving on to the next file in the directory.",
-                        "Le chemin '"+currentInputFilePath+"' n'est pas valide. Passage au fichier suivant dans le dossier.",
-                        LogType.ERROR);
-                     continue;
-                  }
-
-                  String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
-                  translate(currentInputFilePath, currentOutputFilePath);
-               }
-            }
-
-            addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n",
-               "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n",
-               LogType.NORMAL);
-
-         } catch (IllegalArgumentException e) {
-            addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
-               "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
-               LogType.ERROR);
-         } catch (UnsupportedOperationException e) {
-            addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
-            "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
-            LogType.ERROR);
-         } catch (Exception e) {
-            addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
-               "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
-               LogType.ERROR);
-         }
+      else {
+         addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
       }
 
       addLog(readyLogMsg, LogType.NORMAL);
@@ -587,8 +597,12 @@ public class Window extends JFrame {
          return;
       }
 
-      addLog("Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'.",
-         "Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'.", LogType.NORMAL);
+      addLog("----------------------------------------------------------------\n"
+         +"Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'.",
+         "----------------------------------------------------------------\n"
+         +"Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'.",
+         LogType.NORMAL
+      );
 
       //--------- Parsing -----------
       Parser.parse(inputFilePath, this);
@@ -604,9 +618,12 @@ public class Window extends JFrame {
 
       FileOpener.writeFile(outputFilePath, linesToWrite, this);
 
-      addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n",
-         "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n",
-         LogType.NORMAL);
+      addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n"
+         +"----------------------------------------------------------------",
+         "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n"
+         +"----------------------------------------------------------------",
+         LogType.NORMAL
+      );
    }
 
    public void openFileChooser() {
@@ -639,7 +656,8 @@ public class Window extends JFrame {
                EnFrString.setCurrentLanguage("English");
             else if (selectedItem.equals(languagesAvailable[1].toString()))
                EnFrString.setCurrentLanguage("French");
-            setLabels();
+            if (languagesHaveBeenSetup)//don't call it if the listener is being called because of the first drop down menu setup
+               setLabels();
          }
       }
    }
