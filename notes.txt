@@ -24,6 +24,7 @@ TODOS
    DONE parser returns false if the file cannot be translated (=> don't create it)
    DONE add clear output button
    TODO translate directories recursively + add checkbox? (NOPE)
+   TODO multiple manuscript in one XML file
 
 BUGS
    FIXED <lb/> not read
