@@ -5,6 +5,7 @@ import java.io.File;
 
 import javax.swing.UIManager;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -80,8 +81,10 @@ public class Window extends JFrame {
    protected EditText inputFileField = new EditText("file.xml");
    protected EditText outputFileField = new EditText("file.txt");
 
-   protected static final EnFrString okButtonLabel = new EnFrString("Run transcription", "Lancer la transcription");
+   protected static final EnFrString okButtonLabel = new EnFrString("RUN TRANSCRIPTION", "LANCER LA TRANSCRIPTION");
    protected static final EnFrString browseButtonLabel = new EnFrString("Browse", "Parcourir");
+
+   protected static final int okButtonMargin = 10;
 
    protected Box logArea = Box.createHorizontalBox();
    protected JTextPane logTextPane = new JTextPane();
@@ -189,6 +192,8 @@ public class Window extends JFrame {
       //-------- Make window ------------
       descriptionPane.setEditable(false);
       logTextPane.setEditable(false);
+      okButton.setBackground(new Color(0x0277BD));
+      okButton.setForeground(Color.WHITE);
       placeElements();
       setLabels();
 
