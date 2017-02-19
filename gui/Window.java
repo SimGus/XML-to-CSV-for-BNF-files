@@ -622,25 +622,33 @@ public class Window extends JFrame {
       );
 
       //--------- Parsing -----------
-      Parser.parse(inputFilePath, this);
+      boolean somethingToTranslate = Parser.parse(inputFilePath, this);
 
-      //----------- Translation -------------
-      ArrayList<String> linesToWrite = Interpreter.translateTree(this);
+      if (somethingToTranslate) {
+         //----------- Translation -------------
+         ArrayList<String> linesToWrite = Interpreter.translateTree(this);
 
-      //---------- Writing ---------------
-      if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
-         addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
-            "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
-            LogType.WARNING);
+         //---------- Writing ---------------
+         if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
+            addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
+               "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
+               LogType.WARNING);
 
-      FileOpener.writeFile(outputFilePath, linesToWrite, this);
+         FileOpener.writeFile(outputFilePath, linesToWrite, this);
 
-      addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n"
-         +"----------------------------------------------------------------",
-         "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n"
-         +"----------------------------------------------------------------",
-         LogType.NORMAL
-      );
+         addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n"
+            +"----------------------------------------------------------------",
+            "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n"
+            +"----------------------------------------------------------------",
+            LogType.NORMAL
+         );
+      }
+      else {
+         addLog("----------------------------------------------------------------",
+            "----------------------------------------------------------------",
+            LogType.NORMAL
+         );
+      }
    }
 
    public void openFileChooser() {

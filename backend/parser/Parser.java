@@ -32,9 +32,9 @@ public class Parser {
 
    /*
     * Parses the file with name @inputFileName and extracts the tree of XML tags
-    * Returns that tree
+    * Returns true if there is something to translate
     */
-   public static void parse(String inputFileName, Window window) {
+   public static boolean parse(String inputFileName, Window window) {
       Parser.inputFileName = inputFileName;
 
       Scanner inputScanner;
@@ -43,18 +43,18 @@ public class Parser {
       } catch (FileNotFoundException e) {
          Log.err("Couldn't open input file : '"+Parser.inputFileName+"'");
          window.addLog("Couldn't open the XML file.", "Impossible d'ouvrir le fichier XML.", ERROR);
-         return;
+         return false;
       }
 
       String currentLine = Reader.getNextEffectiveLine(inputScanner);
       if (currentLine == null) {
          Log.warn("File '"+Parser.inputFileName+"' is empty (no effective line).");
          window.addLog("The XML file is empty.", "Le fichier XML est vide.", WARNING);
-         return;
+         return false;
       }
       //============= Check the validity of the file (xml prolog) ==================
       if (!prologTagIsValid(currentLine, window))
-         return;
+         return false;
 
       //================= Parse all following tags =====================
       int i=0;
@@ -80,6 +80,8 @@ public class Parser {
          window.addLog("Invalid syntax was detected in the XML file. The translation might be invalid.",
             "Une syntaxe invalide a été détectée dans le fichier XML. La traduction pourrait être invalide.",
             WARNING);
+
+      return true;
    }
 
    /*
