@@ -1,0 +1,147 @@
+abbr						X
+abstract					X
+accessrestrict			X
+accruals					X
+acqinfo
+address
+addressline
+altformavail			X
+appraisal
+arc
+archdesc					X
+archdescgrp
+archref
+arrangement
+author
+bibliography			X
+bibref					X
+bibseries
+bioghist
+blockquote
+c
+c01
+c02
+c03
+c04
+c05
+c06
+c07
+c08
+c09
+c10
+c11
+c12
+change
+chronitem
+chronlist
+colspec
+container
+controlaccess
+corpname					X
+creation					X
+custodhist				X
+dao						X
+daodesc
+doagrp
+daoloc
+date						X
+defitem
+descgrp
+descrules
+did						X
+dimensions				X
+div
+dsc						X
+dscgrp
+ead						X
+eadgrp
+eadheader				X
+eadid						X
+edition
+editionstmt
+emph						X
+entry
+event
+eventgrp
+expan
+extent					X
+extptr
+extptrloc
+extref					X
+extrefloc
+famname
+filedesc					X
+fileplan
+frontmatter
+function
+genreform
+goegname
+head						X
+head01
+head02
+imprint
+index
+indexentry
+item
+label
+langmaterial			X
+language					X		
+langusage				X
+lb							X
+legalstatus
+linkgrp
+list
+listhead
+materialspec
+name
+namegrp
+note
+notestmt
+num						X
+occupation
+odd
+originalsloc
+origination				X
+otherfindaid
+p							X
+persname					X
+physdesc
+physfacet				X
+physloc
+phystech
+prefercite
+processinfo				X
+profiledesc				X
+ptr
+ptrgrp
+ptrloc
+publicationstmt		X
+publisher				X
+ref
+refloc
+relatedmaterial
+repository				X
+resource
+revisiondesc
+row
+runner
+scopecontent			X
+separatedmaterial
+seriesstmt
+sponsor
+subarea
+subject
+subtitle					X
+table
+tbody
+tgroup
+thead
+title						X
+titlepage
+titleproper				X
+titlestmt				X
+unitdate					X
+unitid					X
+unittitle				X
+userestrict
+

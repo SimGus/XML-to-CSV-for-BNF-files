@@ -82,6 +82,8 @@ public class Interpreter {
 
       tagTypesMap.put("abbr", TagType.CONTENT);
       tagTypesMap.put("abstract", TagType.FIELD);
+      tagTypesMap.put("accessrestrict", TagType.FIELD);
+      tagTypesMap.put("accruals", TagType.FIELD);
 
       //============== Initialize fieldNames =====================
       fieldNames.put("EAD identifier", "eadid");
@@ -105,6 +107,8 @@ public class Interpreter {
       fieldNames.put("Scope and content", "scopecontent");
 
       fieldNames.put("Abstract", "abstract");
+      fieldNames.put("Conditions governing access", "accessrestrict");
+      fieldNames.put("Accruals", "accruals");
    }
 
    /*
