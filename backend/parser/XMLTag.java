@@ -130,6 +130,12 @@ public class XMLTag implements XMLPart {
                return attributes.get("normal");
             return childrenElements.get(0).getContentsFormatted();
          }
+         else if (name.equals("abbr")) {
+            String answer = childrenElements.get(0).getContentsFormatted();
+            if (attributes.get("expan") != null)
+               answer += " ("+attributes.get("expan")+")";
+            return answer;
+         }
       }
 
       String answer = "";

@@ -80,6 +80,9 @@ public class Interpreter {
       tagTypesMap.put("corpname", TagType.CONTENT);
       tagTypesMap.put("extref", TagType.CONTENT);
 
+      tagTypesMap.put("abbr", TagType.CONTENT);
+      tagTypesMap.put("abstract", TagType.FIELD);
+
       //============== Initialize fieldNames =====================
       fieldNames.put("EAD identifier", "eadid");
       fieldNames.put("Title statement", "titlestmt");
@@ -94,12 +97,14 @@ public class Interpreter {
       fieldNames.put("Repository", "repository");
       fieldNames.put("Language of the material", "langmaterial");
 
-      fieldNames.put("Bibliography", "bibloiography");
+      fieldNames.put("Bibliography", "bibliography");
       fieldNames.put("Processing information", "processinfo");
       fieldNames.put("Alternative form available", "altformavail");
       fieldNames.put("Digital archival object", "dao");
       fieldNames.put("Custodial history", "custodhist");
       fieldNames.put("Scope and content", "scopecontent");
+
+      fieldNames.put("Abstract", "abstract");
    }
 
    /*
@@ -134,8 +139,10 @@ public class Interpreter {
       //============ Write first line (field names) ===============
       String currentLine = "";
       for (String fieldName : fieldNames.keySet()) {
-         currentLine += fieldName;
-         currentLine += "\t";
+         if (translatedFields.get(fieldNames.get(fieldName)) != null) {
+            currentLine += fieldName;
+            currentLine += "\t";
+         }
       }
       currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
       answer.add(currentLine);
@@ -190,7 +197,6 @@ public class Interpreter {
          case IGNORE://nothing to do
             break;
          case FIELD:
-            //TODO check if it is not already in the translatedFields
             String fieldValue = tag.getContentsFormatted();
             if (fieldValue != null) {
                String currentStoredValue = translatedFields.get(tag.getTagName());
@@ -198,6 +204,7 @@ public class Interpreter {
                   fieldValue = currentStoredValue + "\\n" + fieldValue;
                translatedFields.put(tag.getTagName(), fieldValue);
             }
+            System.out.println("=> "+fieldValue);
             break;
          default:
             Log.err("There was an error translating a tag.");
