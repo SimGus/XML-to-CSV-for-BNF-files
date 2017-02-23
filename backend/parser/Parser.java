@@ -56,6 +56,9 @@ public class Parser {
       if (!prologTagIsValid(currentLine, window))
          return false;
 
+      //============ Parse remainder of the first line ======================
+      removeProlog(currentLine);
+
       //================= Parse all following tags =====================
       int i=0;
       boolean standaloneTag, closingTag;
@@ -251,8 +254,17 @@ public class Parser {
             break;
          }
       }
+
       //TODO more checking about the encoding?
       return true;
+   }
+
+   /*
+    * Returns the remainder of @line without the XML prolog tags
+    */
+   private static String removeProlog(String line) {
+      //TODO
+      return null;
    }
 
    /*

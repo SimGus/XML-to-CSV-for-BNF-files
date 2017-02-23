@@ -19,16 +19,24 @@ TODOS
    DONE check if one field is already filled (don't wipe out when adding something)
    DONE check if the file we will write has the same extension than what is in the drop down menu
    DONE add check box to know if we can translate a directory + backend
-   TODO add all EAD tags in HashMap
+   DONE add all EAD tags in HashMap
    DONE translate special XML characters
    DONE parser returns false if the file cannot be translated (=> don't create it)
    DONE add clear output button
-   TODO translate directories recursively + add checkbox? (NOPE)
-   TODO multiple manuscript in one XML file
+   NOPE TODO translate directories recursively + add checkbox?
 
-BUGS
+   TODO multiple manuscript in one XML file ()
+   DONE replace numérisation-fac-similé
+   DONE contentscope in contenu
+   TODO custodhist
+   TODO put things that have not Thomas's consent in a debug field
+   TODO cotes (take the first word)
+   DONE date -> siècle
+   DONE add BNF field
+
    FIXED <lb/> not read
    FIXED twice french in drop down menu at the start of the program
+   BUG read all the first line
 
 Interpreter :  read the tree of the file
                each time you encounter a tag that could contain something interesting keep on searching

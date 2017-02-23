@@ -37,6 +37,12 @@ public class XMLTag implements XMLPart {
       attributes.put(key, value);
    }
 
+   public String getAttribute(String key) {
+      if (key == null || key.length() <= 0)
+         throw new IllegalArgumentException("Tried to get the value of an attribute with an empty key.");
+      return attributes.get(key);
+   }
+
    public String getValue(String attribute) {
       if (attribute == null || attribute.length() <= 0) {
          Log.warn("Tried to get value of an empty attribute.");
@@ -117,7 +123,7 @@ public class XMLTag implements XMLPart {
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-            return "\\n";
+         return "/";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");
@@ -150,7 +156,7 @@ public class XMLTag implements XMLPart {
 
          if (currentChild.getTagName().equals("p")
             || currentChild.getTagName().equals("head")) {
-               answer += "\\n";
+               answer += " / ";
                dontPutSpaceAtBeginning = true;
          }
          else if (currentChild.getTagName().equals("lb"))
@@ -162,6 +168,9 @@ public class XMLTag implements XMLPart {
             wasLastChildAString = true;
          else
             wasLastChildAString = false;
+
+         if (answer.endsWith(" / "))
+            answer = answer.substring(0, answer.length()-3);
       }
       answer = trim(answer);
 

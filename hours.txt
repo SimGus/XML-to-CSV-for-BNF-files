@@ -11,4 +11,7 @@ december : 6h (GUI)
 11 feb : 4h
 12 feb : 4h (GUI)
 13 feb : 2h (GUI)
-15feb : 3h (GUI)
+15 feb : 3h (GUI)
+16 feb : 1h (GUI)
+18 feb : 6h (GUI)
+19 feb : 6h(GUI)
