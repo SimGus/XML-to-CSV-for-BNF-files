@@ -73,7 +73,7 @@ public class Interpreter {
       tagTypesMap.put("dsc", TagType.IGNORE);
       tagTypesMap.put("altformavail", TagType.FIELD);
       tagTypesMap.put("dao", TagType.IGNORE);//@Thomas "Je ne vois pas ce champ pour l'instant"
-      tagTypesMap.put("custodhist", TagType.IGNORE);//@Thomas "Je ne vois pas ce champ pour l'instant"
+      tagTypesMap.put("custodhist", TagType.FIELD);
       tagTypesMap.put("scopecontent", TagType.FIELD);
 
       tagTypesMap.put("date", TagType.CONTENT);
@@ -198,7 +198,7 @@ public class Interpreter {
       fieldNames.put("unitid", "Cote actuelle");//manage differently for different attributes
       fieldNames.put("unittitle", "Contenu");
       fieldNames.put("scopecontent", "Contenu");
-      fieldNames.put("unitdate", "Siècle");//special managment TODO
+      fieldNames.put("unitdate", "Siècle");//special managment TODO (not the time)
       fieldNames.put("physfacet", "Physical facet");//manage differently for different attributes
       fieldNames.put("extent", "Nombre de feuillets");
       fieldNames.put("dimensions", "Dimensions");
@@ -209,7 +209,7 @@ public class Interpreter {
       fieldNames.put("bibliography", "Bibliographie");//separate the fields by '/'
       fieldNames.put("altformavail", "Reproduction");
       // fieldNames.put("dao", "Digital archival object");//@Thomas "Je ne vois pas ce champ pour l'instant"
-      // fieldNames.put("custodhist", "Custodial history");//@Thomas "Je ne vois pas ce champ pour l'instant"
+      fieldNames.put("custodhist", "Contenu");//CHECK in contenu as well?
 
       // fieldNames.put("abstract", "Abstract");
       // fieldNames.put("accessrestrict", "Conditions governing access");
@@ -329,8 +329,9 @@ public class Interpreter {
          case FEEDBACK:
             {
                String fieldValue = tag.getContentsFormatted();
+               Log.log("formatted : '"+fieldValue+"'.");
                if (!fieldValue.equals("") && !fieldValue.equals(" ") && !fieldValue.equals("\t")) {
-                  fieldValue = "("+tag.getTagName()+") "+fieldValue;
+                  fieldValue = "["+tag.getTagName()+"] "+fieldValue;
                   updateField(feedbackTagName, fieldValue);
                }
             }

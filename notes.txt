@@ -28,8 +28,8 @@ TODOS
    TODO multiple manuscript in one XML file ()
    DONE replace numérisation-fac-similé
    DONE contentscope in contenu
-   TODO custodhist
-   TODO put things that have not Thomas's consent in a debug field
+   DONE custodhist placed in contenu CHECK
+   DONE put things that have not Thomas's consent in a debug field
    DONE cotes (take the first word)
    DONE date -> siècle
    DONE add BNF field
@@ -39,7 +39,10 @@ BUGS
    FIX <lb/> not read
    FIX twice french in drop down menu at the start of the program
    FIX read all the first line
-   BUG not all is reset when translating a directory
+   FIX not all is reset when translating a directory
+
+CHECKS
+   CHECK should I really have put custodhist in contenu?
 
 Interpreter :  read the tree of the file
                each time you encounter a tag that could contain something interesting keep on searching
