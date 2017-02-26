@@ -360,8 +360,10 @@ public class Interpreter {
                if (fieldValue != null) {
                   if (attribute.equals("cote"))
                      updateField("Cote actuelle", fieldValue);
-                  else if (attribute.equals("ancienne cote"))
-                     updateField("Ancienne cote", fieldValue);
+                  else if (attribute.equals("ancienne cote")) {
+                     String fieldName = "Ancienne cote " + getOldCoteSystem(fieldValue);
+                     updateField(fieldName, fieldValue);
+                  }
                   else
                      return false;
                }
@@ -427,6 +429,29 @@ public class Interpreter {
       if (currentStoredValue != null)
          fieldValue = currentStoredValue + " / " + fieldValue;
       translatedFields.put(fieldName, fieldValue);
+   }
+
+   private static String getOldCoteSystem(String coteValue) {
+      if (coteValue == null || coteValue.length() <= 0)
+         throw new IllegalArgumentException("Tried to get the old cote system name from an empty field.");
+
+      int i = 0;
+      char c = coteValue.charAt(0);
+      while (c==' ' || c=='\t') {//remove first spaces
+         if (++i >= coteValue.length())
+            return "";
+         c = coteValue.charAt(i);
+      }
+      int beginningIndex = i;
+
+      //find first actual space
+      while (c!=' ' && c!='\t') {
+         if (++i >= coteValue.length())
+            break;
+         c = coteValue.charAt(i);
+      }
+
+      return coteValue.substring(beginningIndex, i);
    }
 
    private static void romanToDecimal(java.lang.String romanNumber) {

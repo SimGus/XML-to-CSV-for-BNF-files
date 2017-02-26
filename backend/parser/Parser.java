@@ -57,9 +57,7 @@ public class Parser {
          return false;
 
       //============ Parse remainder of the first line ======================
-      Log.log("Prolog : "+currentLine);
       currentLine = removeProlog(currentLine);
-      Log.log("No prolog : "+currentLine);
       parseLine(currentLine);
 
       //================= Parse all following tags =====================
