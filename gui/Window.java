@@ -516,10 +516,6 @@ public class Window extends JFrame {
     * MAIN FUNCTION - Translates the file whose name is given in the EditText
     */
    public void runTranslation() {
-      //============ Reset parser and interpreter =============
-      Parser.reset();
-      Interpreter.reset();
-
       String inputFilePath = inputFileField.getText();
       String outputFilePath = outputFileField.getText();
 
@@ -575,7 +571,7 @@ public class Window extends JFrame {
                         continue;
                      }
 
-                     String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
+                     String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);//TODO only one file
                      translate(currentInputFilePath, currentOutputFilePath);
                   }
                }
@@ -624,6 +620,10 @@ public class Window extends JFrame {
          +"Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'.",
          LogType.NORMAL
       );
+
+      //============ Reset parser and interpreter =============
+      Parser.reset();
+      Interpreter.reset();
 
       //--------- Parsing -----------
       boolean somethingToTranslate = Parser.parse(inputFilePath, this);
