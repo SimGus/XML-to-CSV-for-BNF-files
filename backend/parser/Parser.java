@@ -15,7 +15,7 @@ import static util.LogType.*;
 public class Parser {
    private static boolean onlyValidSyntax = true;
 
-   private static final String firstXmlTagName = "?xml", preferredXMLVersion = "1.0";
+   private static final String firstXmlTagName = "?xml", preferredXMLVersion = "1.0", doctypeTagName = "!DOCTYPE";
 
    private static String inputFileName = "undefined";
    public static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
@@ -57,7 +57,10 @@ public class Parser {
          return false;
 
       //============ Parse remainder of the first line ======================
-      removeProlog(currentLine);
+      Log.log("Prolog : "+currentLine);
+      currentLine = removeProlog(currentLine);
+      Log.log("No prolog : "+currentLine);
+      parseLine(currentLine);
 
       //================= Parse all following tags =====================
       int i=0;
@@ -105,7 +108,7 @@ public class Parser {
 
       ArrayList<String> answer = new ArrayList<String>();
       int i = tagBeginningIndex+1;
-      char c;
+      char c = 0;
 
       //---------- Find tag name -------------
       String tagName = "";
@@ -133,6 +136,20 @@ public class Parser {
             return answer;
          if (c == ' ' || c == '\t')//always executed
             i++;
+      }
+
+      //DOCTYPE is not a normal xml tag
+      if (tagName.equals(doctypeTagName)) {
+         if (i >= line.length())
+            return answer;
+         int beginningAttributesIndex = i;
+         while (c != '>' && ++i < line.length())
+            c = line.charAt(i);
+
+         String attribute = line.substring(beginningAttributesIndex, i-1);
+         if (attribute.endsWith(">"))
+            attribute = attribute.substring(0, attribute.length()-1);
+         answer.add(attribute);
       }
 
       String currentAttributeName = "", currentAttributeValue = "";
@@ -263,8 +280,29 @@ public class Parser {
     * Returns the remainder of @line without the XML prolog tags
     */
    private static String removeProlog(String line) {
-      //TODO
-      return null;
+      if (line.length() <= 0)
+         return "";
+
+      char c = line.charAt(0);
+      int i = 0;
+      ArrayList<String> parts;
+      while (true) {
+         if (c == '<') {
+            parts = splitTag(line, i);
+            if (!parts.get(0).equals(firstXmlTagName) && !parts.get(0).equals(doctypeTagName))
+               break;
+         }
+         if (++i >= line.length())
+            return "";
+         c = line.charAt(i);
+      }
+
+      //get to next tag beginning
+      while (++i < line.length() && c != '<')
+         c = line.charAt(i);
+      if (i >= line.length())
+         return "";
+      return line.substring(i-1);
    }
 
    /*
