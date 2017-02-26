@@ -109,7 +109,6 @@ public class Window extends JFrame {
    protected static EnFrString[] outputFormatsAvailable = {
       new EnFrString("TXT file (.txt)", "Fichier TXT (.txt)"),
       new EnFrString("TAB file (.tab)", "Fichier TAB (.tab)"),
-      new EnFrString("TSV file (.tsv)", "Fichier TSV (.tsv)")
    };
    protected static EnFrString[] languagesAvailable = {
       new EnFrString("English", "Anglais"),
@@ -143,9 +142,9 @@ public class Window extends JFrame {
       +"Un fichier TAB ou TXT contenant la traduction du contenu du fichier XML sera créé."
    );
    protected static EnFrString precision = new EnFrString(
-      "You can set the format of the output file (TAB, TXT or TSV) in the option tab.\n"
+      "You can set the format of the output file (TAB or TXT) in the option tab.\n"
       +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.",
-      "Vous pouvez régler le format du fichier de sortie (TAB, TXT ou TSV) dans l'onglet 'Options'.\n"
+      "Vous pouvez régler le format du fichier de sortie (TAB or TXT) dans l'onglet 'Options'.\n"
       +"Si l'option 'traduire les dosssiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
    );
    protected static EnFrString credits = new EnFrString(
@@ -154,7 +153,7 @@ public class Window extends JFrame {
    );
 
    public Window() {
-      this(new EnFrString("XML to TSV transcriptor", "Transcripteur XML vers TSV"));
+      this(new EnFrString("XML to TAB transcriptor", "Transcripteur XML vers TAB"));
    }
 
    public Window(String enTitle, String frTitle) {
@@ -675,8 +674,6 @@ public class Window extends JFrame {
                FileNamesInterpreter.changeOutputExtension("txt");
             else if (selectedItem.equals(outputFormatsAvailable[1].toString()))
                FileNamesInterpreter.changeOutputExtension("tab");
-            else if (selectedItem.equals(outputFormatsAvailable[2].toString()))
-               FileNamesInterpreter.changeOutputExtension("tsv");
          }
          else if (event.getSource() == languageChoiceDropDownMenu) {
             String selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();

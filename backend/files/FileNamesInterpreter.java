@@ -9,7 +9,7 @@ import backend.files.FileOpener;
 
 public class FileNamesInterpreter {
    private static final String XMLExtension = ".xml";
-   private static final String[] extensionsAvailable = {".txt", ".tab", ".tsv"};
+   private static final String[] extensionsAvailable = {".txt", ".tab"};
    private static int extensionChosenID = 0;
 
    public static String interpretInputFileName(String userInput) {
@@ -79,10 +79,6 @@ public class FileNamesInterpreter {
          case ".tab":
             extensionChosenID = 1;
             break;
-         case "tsv":
-         case ".tsv":
-            extensionChosenID = 2;
-            break;
          default:
             Log.warn("Tried to change the extension to an unavailable extension.");
             break;
@@ -95,8 +91,6 @@ public class FileNamesInterpreter {
             return "txt";
          case 1:
             return "tab";
-         case 2:
-            return "tsv";
          default:
             throw new IllegalArgumentException("The extension selected is not available.");
       }
