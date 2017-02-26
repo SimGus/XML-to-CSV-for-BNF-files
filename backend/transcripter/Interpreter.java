@@ -27,7 +27,8 @@ public class Interpreter {
    private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>();
    private static final HashMap<String, String> fieldNames = new HashMap<String, String>();
 
-   private static HashMap<String, String> translatedFields = new HashMap<String, String>();
+   private static ArrayList<HashMap<String, String>> translatedFields = new ArrayList<HashMap<String, String>>();
+   private static int currentMapIndex = 0;
 
    /*
     * Initializes the HashMap @tagTypesMap that contains information about how a certain tag name should be treated
@@ -222,7 +223,7 @@ public class Interpreter {
     * Resets @translatedFields
     */
    public static void reset() {
-      translatedFields = new HashMap<String, String>();
+      translatedFields = new ArrayList<HashMap<String, String>>();
    }
 
    /*
@@ -252,12 +253,12 @@ public class Interpreter {
     * and their values in the output file.
     * @return that HashMap.
     */
-   public static HashMap<String, String> translateTree(Window window) {
+   public static ArrayList<HashMap<String, String>> translateTree(Window window) {
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
             WARNING);
-         return new HashMap<String, String>();
+         return new ArrayList<HashMap<String, String>>();
       }
 
       runTranslation(window);
@@ -271,49 +272,7 @@ public class Interpreter {
     * when translating only one file at a time.
     */
    private static ArrayList<String> generateLines(Window window) {
-      ArrayList<String> answer = new ArrayList<String>();
-
-      //============== Get the field names that are not empty ====================
-      ArrayList<String> fieldsOrder = new ArrayList<String>();
-      for (String fieldName : translatedFields.keySet()) {
-         if (fieldName == null)
-            continue;
-         if (translatedFields.get(fieldName) != null)
-            fieldsOrder.add(fieldName);
-      }
-      if (fieldsOrder.size() <= 0) {
-         window.addLog("All the fields in the XML input file seem to be empty.",
-            "Tous les champs dans le fichier XML d'entrée semblent être vides.",
-            WARNING);
-         return new ArrayList<String>();
-      }
-
-      //READABLE TRANSLATION TODO REMOVE
-      // for (String fieldName : fieldsOrder) {
-      //    answer.add(fieldName + "\t" + translatedFields.get(fieldName));
-      // }
-
-      //============ Write first line (field names) ===============
-      String currentLine = "";
-      for (String fieldName : fieldsOrder) {
-         currentLine += fieldName;
-         currentLine += "\t";
-      }
-      currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
-      answer.add(currentLine);
-
-      //============ Write next lines (each object) ===============
-      currentLine = "";
-      for (String fieldName : fieldsOrder) {
-         currentLine += translatedFields.get(fieldName);
-         currentLine += "\t";
-      }
-      if (currentLine.length() > 0) {
-         currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
-         answer.add(currentLine);
-      }
-
-      return answer;
+      return generateLines(translatedFields, window);
    }
 
    /*
@@ -342,6 +301,14 @@ public class Interpreter {
       ArrayList<String> fieldsOrder = new ArrayList<String>();
       for (String currentFieldName : fieldsNames)
          fieldsOrder.add(currentFieldName);
+
+      //READABLE TRANSLATION TODO REMOVE
+      // for (HashMap currentTranslation : allFilesFields) {
+      //    for (String fieldName : fieldsOrder) {
+      //       answer.add(fieldName + "\t" + currentTranslation.get(fieldName));
+      //    }
+      //    answer.add("\nNew entry");
+      // }
 
       //=========== Write first line ============================
       ArrayList<String> answer = new ArrayList<String>();
@@ -522,10 +489,13 @@ public class Interpreter {
    }
 
    private static void updateField(String fieldName, String fieldValue) {
-      String currentStoredValue = translatedFields.get(fieldName);
+      if (translatedFields.size() == 0)
+         translatedFields.add(new HashMap<String, String>());
+
+      String currentStoredValue = translatedFields.get(currentMapIndex).get(fieldName);
       if (currentStoredValue != null)
          fieldValue = currentStoredValue + " / " + fieldValue;
-      translatedFields.put(fieldName, fieldValue);
+      translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
    }
 
    private static String getOldCoteSystem(String coteValue) {

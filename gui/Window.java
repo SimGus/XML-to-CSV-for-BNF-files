@@ -605,9 +605,9 @@ public class Window extends JFrame {
                         translate(currentInputFilePath, currentOutputFilePath);
                      }
                      else {//single output for all the files in the directory
-                        HashMap<String, String> currentTranslation = translate(currentInputFilePath);
+                        ArrayList<HashMap<String, String>> currentTranslation = translate(currentInputFilePath);
                         if (currentTranslation != null)
-                           allFilesFields.add(currentTranslation);
+                           allFilesFields.addAll(currentTranslation);
                      }
                   }
                }
@@ -703,7 +703,7 @@ public class Window extends JFrame {
       }
    }
 
-   protected HashMap<String, String> translate(String inputFilePath) {
+   protected ArrayList<HashMap<String, String>> translate(String inputFilePath) {
       String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
       if (!FileOpener.fileExists(inputFilePath)) {
          addLog("The specified file name '"+inputFileName+"' does not exist.",
@@ -726,7 +726,7 @@ public class Window extends JFrame {
       boolean somethingToTranslate = Parser.parse(inputFilePath, this);
 
       if (somethingToTranslate) {
-         HashMap<String, String> answer = Interpreter.translateTree(this);
+         ArrayList<HashMap<String, String>> answer = Interpreter.translateTree(this);
 
          addLog("... Translation of the file '"+inputFileName+"' done.\n"
             +"----------------------------------------------------------------",
@@ -750,10 +750,7 @@ public class Window extends JFrame {
       String filenameSelected = chooser.getFileSelected();
       if (filenameSelected != null) {
          inputFileField.setText(filenameSelected);
-         if (singleFileOutput)
-            outputFileField.setText(FileNamesInterpreter.generateSingleOutputFilePath(filenameSelected));
-         else
-            outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
+         outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
       }
    }
 

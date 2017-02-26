@@ -40,46 +40,48 @@ public class FileNamesInterpreter {
       return userOutputInput;
    }
 
+   /*
+    * Generates an output file path by replacing the extension of the input file stored in @inputFilePath
+    */
    public static String generateOutputFileName(String inputFilePath) {
       if (inputFilePath == null || inputFilePath.length() <= 0)
          throw new IllegalArgumentException("Invalid input file path.");
 
       //------ Check if file or directory ------------
       File tmp = new File(inputFilePath);
-      if (tmp.isDirectory())
-         return inputFilePath;
+      if (tmp.isDirectory()) {
+         String inputFileName = getFileOrDirName(inputFilePath);
+         return inputFilePath+"/"+inputFileName+extensionsAvailable[extensionChosenID];
+      }
+      else {
+         if (inputFilePath.length() <= 4)
+            throw new IllegalArgumentException("Invalid input file path (too short).");
 
-      if (inputFilePath.length() <= 4)
-         throw new IllegalArgumentException("Invalid input file path (too short).");
-
-      String answer = inputFilePath.substring(0, inputFilePath.length()-4);
-      return answer+extensionsAvailable[extensionChosenID];
+         String answer = inputFilePath.substring(0, inputFilePath.length()-4);
+         return answer+extensionsAvailable[extensionChosenID];
+      }
    }
 
+   /*
+    * Generates an output file path that will be placed in @outputDirectoryPath and will have the same name
+    * as the file stored in @inputFilePath with its extension replaced by an output extension
+    */
    public static String generateOutputFileName(String inputFilePath, String outputDirectoryPath) {
       if (inputFilePath == null || inputFilePath.length() <= 0)
          throw new IllegalArgumentException("Invalid input file path.");
 
+      boolean isDirectory = false;
       File tmp = new File(inputFilePath);
       if (tmp.isDirectory())
-         throw new IllegalArgumentException("Tried to generate an output file name for an input that is not a file.");
+         isDirectory = true;
 
       String inputFileName = getFileOrDirName(inputFilePath);
-      String outputFilePath = outputDirectoryPath+"/"+inputFileName;
+      String outputFilePath;
+      if (isDirectory)
+         outputFilePath = outputDirectoryPath+"/"+inputFileName+XMLExtension;
+      else
+         outputFilePath = outputDirectoryPath+"/"+inputFileName;
       return generateOutputFileName(outputFilePath);
-   }
-
-   public static String generateSingleOutputFilePath(String inputDirPath) {
-      if (inputDirPath == null || inputDirPath.length() <= 0)
-         throw new IllegalArgumentException("Invalid input directory path.");
-
-      //------- Check if file or directory ---------------
-      File tmp = new File(inputDirPath);
-      if (tmp.isFile())
-         throw new IllegalArgumentException("Tried to generate an output file name for a directory that has the path of a file.");
-
-      String inputDirName = getFileOrDirName(inputDirPath);
-      return inputDirPath+"/"+inputDirName+extensionsAvailable[extensionChosenID];
    }
 
    public static void changeOutputExtension(String extension) {
