@@ -16,10 +16,11 @@ public class Interpreter {
       CONTAINER,//might contain tags with valuable information
       FIELD,//corresponds to a database field, thus contains valuable information
       CONTENT,//that tag is supposed to be inside a bigger tag that corresponds to a database field
-      IGNORE;//don't take this tag into account
+      IGNORE,//don't take this tag into account
+      FEEDBACK;//put it in a debug field so that Thomas can give feedback
    }
 
-   private static final String XMLStringTagName = "XMLString";
+   private static final String XMLStringTagName = "XMLString", feedbackTagName = "DEBUG";
    private static boolean invalidArchLogged = false;
 
    private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>();
@@ -87,93 +88,93 @@ public class Interpreter {
       tagTypesMap.put("extref", TagType.IGNORE);
 
       tagTypesMap.put("abbr", TagType.CONTENT);
-      tagTypesMap.put("abstract", TagType.IGNORE);
-      tagTypesMap.put("accessrestrict", TagType.IGNORE);
-      tagTypesMap.put("accruals", TagType.IGNORE);
-      tagTypesMap.put("controlaccess", TagType.IGNORE);
-      tagTypesMap.put("acqinfo", TagType.IGNORE);
-      tagTypesMap.put("address", TagType.IGNORE);
-      tagTypesMap.put("addressline", TagType.IGNORE);
-      tagTypesMap.put("appraisal", TagType.IGNORE);
-      tagTypesMap.put("arc", TagType.IGNORE);
-      tagTypesMap.put("archdescgrp", TagType.IGNORE);
-      tagTypesMap.put("archref", TagType.IGNORE);
-      tagTypesMap.put("arrangement", TagType.IGNORE);
-      tagTypesMap.put("author", TagType.IGNORE);
-      tagTypesMap.put("bibseries", TagType.IGNORE);
-      tagTypesMap.put("bioghist", TagType.IGNORE);
-      tagTypesMap.put("blockquote", TagType.IGNORE);
-      tagTypesMap.put("change", TagType.IGNORE);
-      tagTypesMap.put("chronitem", TagType.IGNORE);
-      tagTypesMap.put("chronlist", TagType.IGNORE);
-      tagTypesMap.put("colspec", TagType.IGNORE);
-      tagTypesMap.put("container", TagType.IGNORE);
-      tagTypesMap.put("daodesc", TagType.IGNORE);
-      tagTypesMap.put("daogrp", TagType.IGNORE);
-      tagTypesMap.put("daoloc", TagType.IGNORE);
-      tagTypesMap.put("defitem", TagType.IGNORE);
-      tagTypesMap.put("descgrp", TagType.IGNORE);
-      tagTypesMap.put("descrules", TagType.IGNORE);
-      tagTypesMap.put("div", TagType.IGNORE);
-      tagTypesMap.put("dscgrp", TagType.IGNORE);
-      tagTypesMap.put("eadgrp", TagType.IGNORE);
-      tagTypesMap.put("edition", TagType.IGNORE);
-      tagTypesMap.put("editionstmt", TagType.IGNORE);
-      tagTypesMap.put("entry", TagType.IGNORE);
-      tagTypesMap.put("event", TagType.IGNORE);
-      tagTypesMap.put("eventgrp", TagType.IGNORE);
-      tagTypesMap.put("expan", TagType.IGNORE);
-      tagTypesMap.put("extptr", TagType.IGNORE);
-      tagTypesMap.put("extptrloc", TagType.IGNORE);
-      tagTypesMap.put("extrefloc", TagType.IGNORE);
-      tagTypesMap.put("famname", TagType.IGNORE);
-      tagTypesMap.put("fileplan", TagType.IGNORE);
-      tagTypesMap.put("frontmatter", TagType.IGNORE);
-      tagTypesMap.put("function", TagType.IGNORE);
-      tagTypesMap.put("genreform", TagType.IGNORE);
-      tagTypesMap.put("imprint", TagType.IGNORE);
-      tagTypesMap.put("index", TagType.IGNORE);
-      tagTypesMap.put("indexentry", TagType.IGNORE);
-      tagTypesMap.put("item", TagType.IGNORE);
-      tagTypesMap.put("label", TagType.IGNORE);
-      tagTypesMap.put("legalstatus", TagType.IGNORE);
-      tagTypesMap.put("linkgrp", TagType.IGNORE);
-      tagTypesMap.put("list", TagType.IGNORE);
-      tagTypesMap.put("listhead", TagType.IGNORE);
-      tagTypesMap.put("materialspec", TagType.IGNORE);
-      tagTypesMap.put("name", TagType.IGNORE);
-      tagTypesMap.put("namegrp", TagType.IGNORE);
-      tagTypesMap.put("note", TagType.IGNORE);
-      tagTypesMap.put("notestmt", TagType.IGNORE);
-      tagTypesMap.put("occupation", TagType.IGNORE);
-      tagTypesMap.put("odd", TagType.IGNORE);
-      tagTypesMap.put("originalsloc", TagType.IGNORE);
-      tagTypesMap.put("otherfindaid", TagType.IGNORE);
-      tagTypesMap.put("physloc", TagType.IGNORE);
-      tagTypesMap.put("phystech", TagType.IGNORE);
-      tagTypesMap.put("prefercite", TagType.IGNORE);
-      tagTypesMap.put("processdesc", TagType.IGNORE);
-      tagTypesMap.put("ptr", TagType.IGNORE);
-      tagTypesMap.put("ptrgrp", TagType.IGNORE);
-      tagTypesMap.put("ptrloc", TagType.IGNORE);
-      tagTypesMap.put("ref", TagType.IGNORE);
-      tagTypesMap.put("refloc", TagType.IGNORE);
-      tagTypesMap.put("relatedmaterial", TagType.IGNORE);
-      tagTypesMap.put("resource", TagType.IGNORE);
-      tagTypesMap.put("revisiondesc", TagType.IGNORE);
-      tagTypesMap.put("row", TagType.IGNORE);
-      tagTypesMap.put("runner", TagType.IGNORE);
-      tagTypesMap.put("separatedmaterial", TagType.IGNORE);
-      tagTypesMap.put("seriesstmt", TagType.IGNORE);
-      tagTypesMap.put("sponsor", TagType.IGNORE);
-      tagTypesMap.put("subarea", TagType.IGNORE);
-      tagTypesMap.put("subject", TagType.IGNORE);
-      tagTypesMap.put("table", TagType.IGNORE);
-      tagTypesMap.put("tbody", TagType.IGNORE);
-      tagTypesMap.put("tgroup", TagType.IGNORE);
-      tagTypesMap.put("thead", TagType.IGNORE);
-      tagTypesMap.put("titlepage", TagType.IGNORE);
-      tagTypesMap.put("userestrict", TagType.IGNORE);
+      tagTypesMap.put("abstract", TagType.FEEDBACK);
+      tagTypesMap.put("accessrestrict", TagType.FEEDBACK);
+      tagTypesMap.put("accruals", TagType.FEEDBACK);
+      tagTypesMap.put("controlaccess", TagType.FEEDBACK);
+      tagTypesMap.put("acqinfo", TagType.FEEDBACK);
+      tagTypesMap.put("address", TagType.FEEDBACK);
+      tagTypesMap.put("addressline", TagType.FEEDBACK);
+      tagTypesMap.put("appraisal", TagType.FEEDBACK);
+      tagTypesMap.put("arc", TagType.FEEDBACK);
+      tagTypesMap.put("archdescgrp", TagType.FEEDBACK);
+      tagTypesMap.put("archref", TagType.FEEDBACK);
+      tagTypesMap.put("arrangement", TagType.FEEDBACK);
+      tagTypesMap.put("author", TagType.FEEDBACK);
+      tagTypesMap.put("bibseries", TagType.FEEDBACK);
+      tagTypesMap.put("bioghist", TagType.FEEDBACK);
+      tagTypesMap.put("blockquote", TagType.FEEDBACK);
+      tagTypesMap.put("change", TagType.FEEDBACK);
+      tagTypesMap.put("chronitem", TagType.FEEDBACK);
+      tagTypesMap.put("chronlist", TagType.FEEDBACK);
+      tagTypesMap.put("colspec", TagType.FEEDBACK);
+      tagTypesMap.put("container", TagType.FEEDBACK);
+      tagTypesMap.put("daodesc", TagType.FEEDBACK);
+      tagTypesMap.put("daogrp", TagType.FEEDBACK);
+      tagTypesMap.put("daoloc", TagType.FEEDBACK);
+      tagTypesMap.put("defitem", TagType.FEEDBACK);
+      tagTypesMap.put("descgrp", TagType.FEEDBACK);
+      tagTypesMap.put("descrules", TagType.FEEDBACK);
+      tagTypesMap.put("div", TagType.FEEDBACK);
+      tagTypesMap.put("dscgrp", TagType.FEEDBACK);
+      tagTypesMap.put("eadgrp", TagType.FEEDBACK);
+      tagTypesMap.put("edition", TagType.FEEDBACK);
+      tagTypesMap.put("editionstmt", TagType.FEEDBACK);
+      tagTypesMap.put("entry", TagType.FEEDBACK);
+      tagTypesMap.put("event", TagType.FEEDBACK);
+      tagTypesMap.put("eventgrp", TagType.FEEDBACK);
+      tagTypesMap.put("expan", TagType.FEEDBACK);
+      tagTypesMap.put("extptr", TagType.FEEDBACK);
+      tagTypesMap.put("extptrloc", TagType.FEEDBACK);
+      tagTypesMap.put("extrefloc", TagType.FEEDBACK);
+      tagTypesMap.put("famname", TagType.FEEDBACK);
+      tagTypesMap.put("fileplan", TagType.FEEDBACK);
+      tagTypesMap.put("frontmatter", TagType.FEEDBACK);
+      tagTypesMap.put("function", TagType.FEEDBACK);
+      tagTypesMap.put("genreform", TagType.FEEDBACK);
+      tagTypesMap.put("imprint", TagType.FEEDBACK);
+      tagTypesMap.put("index", TagType.FEEDBACK);
+      tagTypesMap.put("indexentry", TagType.FEEDBACK);
+      tagTypesMap.put("item", TagType.FEEDBACK);
+      tagTypesMap.put("label", TagType.FEEDBACK);
+      tagTypesMap.put("legalstatus", TagType.FEEDBACK);
+      tagTypesMap.put("linkgrp", TagType.FEEDBACK);
+      tagTypesMap.put("list", TagType.FEEDBACK);
+      tagTypesMap.put("listhead", TagType.FEEDBACK);
+      tagTypesMap.put("materialspec", TagType.FEEDBACK);
+      tagTypesMap.put("name", TagType.FEEDBACK);
+      tagTypesMap.put("namegrp", TagType.FEEDBACK);
+      tagTypesMap.put("note", TagType.FEEDBACK);
+      tagTypesMap.put("notestmt", TagType.FEEDBACK);
+      tagTypesMap.put("occupation", TagType.FEEDBACK);
+      tagTypesMap.put("odd", TagType.FEEDBACK);
+      tagTypesMap.put("originalsloc", TagType.FEEDBACK);
+      tagTypesMap.put("otherfindaid", TagType.FEEDBACK);
+      tagTypesMap.put("physloc", TagType.FEEDBACK);
+      tagTypesMap.put("phystech", TagType.FEEDBACK);
+      tagTypesMap.put("prefercite", TagType.FEEDBACK);
+      tagTypesMap.put("processdesc", TagType.FEEDBACK);
+      tagTypesMap.put("ptr", TagType.FEEDBACK);
+      tagTypesMap.put("ptrgrp", TagType.FEEDBACK);
+      tagTypesMap.put("ptrloc", TagType.FEEDBACK);
+      tagTypesMap.put("ref", TagType.FEEDBACK);
+      tagTypesMap.put("refloc", TagType.FEEDBACK);
+      tagTypesMap.put("relatedmaterial", TagType.FEEDBACK);
+      tagTypesMap.put("resource", TagType.FEEDBACK);
+      tagTypesMap.put("revisiondesc", TagType.FEEDBACK);
+      tagTypesMap.put("row", TagType.FEEDBACK);
+      tagTypesMap.put("runner", TagType.FEEDBACK);
+      tagTypesMap.put("separatedmaterial", TagType.FEEDBACK);
+      tagTypesMap.put("seriesstmt", TagType.FEEDBACK);
+      tagTypesMap.put("sponsor", TagType.FEEDBACK);
+      tagTypesMap.put("subarea", TagType.FEEDBACK);
+      tagTypesMap.put("subject", TagType.FEEDBACK);
+      tagTypesMap.put("table", TagType.FEEDBACK);
+      tagTypesMap.put("tbody", TagType.FEEDBACK);
+      tagTypesMap.put("tgroup", TagType.FEEDBACK);
+      tagTypesMap.put("thead", TagType.FEEDBACK);
+      tagTypesMap.put("titlepage", TagType.FEEDBACK);
+      tagTypesMap.put("userestrict", TagType.FEEDBACK);
 
       tagTypesMap.put("c", TagType.CONTAINER);
       tagTypesMap.put("c01", TagType.CONTAINER);
@@ -324,6 +325,15 @@ public class Interpreter {
             }
             break;
          case IGNORE://nothing to do
+            break;
+         case FEEDBACK:
+            {
+               String fieldValue = tag.getContentsFormatted();
+               if (!fieldValue.equals("") && !fieldValue.equals(" ") && !fieldValue.equals("\t")) {
+                  fieldValue = "("+tag.getTagName()+") "+fieldValue;
+                  updateField(feedbackTagName, fieldValue);
+               }
+            }
             break;
          case FIELD:
             if (!specialTreatement(tag, window)) {
