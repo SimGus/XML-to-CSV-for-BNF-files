@@ -787,11 +787,9 @@ public class Window extends JFrame {
          if (event.getSource() == enableDirCheckBox) {
             dirTranslationEnabled = enableDirCheckBox.isSelected();
             singleFileOutputCheckBox.setEnabled(enableDirCheckBox.isSelected());
-            Log.log("dir : "+dirTranslationEnabled);
          }
          else if (event.getSource() == singleFileOutputCheckBox) {
             singleFileOutput = !singleFileOutputCheckBox.isSelected();
-            Log.log("single file output : "+singleFileOutput);
          }
       }
    }
