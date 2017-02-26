@@ -25,7 +25,7 @@ TODOS
    DONE add clear output button
    NOPE TODO translate directories recursively + add checkbox?
 
-   TODO multiple manuscript in one XML file ()
+   TODO multiple manuscripts in one XML file (!!!)
    DONE replace numérisation-fac-similé
    DONE contentscope in contenu
    DONE custodhist placed in contenu CHECK
@@ -34,6 +34,7 @@ TODOS
    DONE date -> siècle
    DONE add BNF field
    DONE remove .tsv
+   DONE translate directories in only one file
 
 BUGS
    FIX <lb/> not read

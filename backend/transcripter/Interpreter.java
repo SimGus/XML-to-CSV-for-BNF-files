@@ -1,6 +1,7 @@
 package backend.transcripter;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -231,7 +232,7 @@ public class Interpreter {
     * that will be written in the output file
     * Each string in the ArrayList returned is a line of the file
     */
-   public static ArrayList<String> translateTree(Window window) {
+   public static ArrayList<String> translateTreeAndMakeLines(Window window) {
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
@@ -241,30 +242,60 @@ public class Interpreter {
 
       runTranslation(window);
 
+      return generateLines(window);
+   }
+
+   /*
+    * @pre :   The input XML file has been successfully read
+    *          and the tags tree @Parser.rootTags is initialized
+    * Run the translation on that tag, producing a HashMap @translatedFields of the fields
+    * and their values in the output file.
+    * @return that HashMap.
+    */
+   public static HashMap<String, String> translateTree(Window window) {
+      if (Parser.rootTags.size() <= 0) {
+         window.addLog("There seems to be nothing to translate in the XML file.",
+            "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
+            WARNING);
+         return new HashMap<String, String>();
+      }
+
+      runTranslation(window);
+
+      return translatedFields;
+   }
+
+   /*
+    * @pre :   The XML file has been successfully translated in @translatedFields
+    * Generates an ArrayList of all the lines that will be written in the output file
+    * when translating only one file at a time.
+    */
+   private static ArrayList<String> generateLines(Window window) {
       ArrayList<String> answer = new ArrayList<String>();
 
-      ArrayList<String> fieldOrder = new ArrayList<String>();
+      //============== Get the field names that are not empty ====================
+      ArrayList<String> fieldsOrder = new ArrayList<String>();
       for (String fieldName : translatedFields.keySet()) {
          if (fieldName == null)
             continue;
          if (translatedFields.get(fieldName) != null)
-            fieldOrder.add(fieldName);
+            fieldsOrder.add(fieldName);
       }
-      if (fieldOrder.size() <= 0) {
+      if (fieldsOrder.size() <= 0) {
          window.addLog("All the fields in the XML input file seem to be empty.",
-            "Tous les champs dans le fichier XML d'entrée semblent être vdes.",
+            "Tous les champs dans le fichier XML d'entrée semblent être vides.",
             WARNING);
          return new ArrayList<String>();
       }
 
       //READABLE TRANSLATION TODO REMOVE
-      // for (String fieldName : fieldOrder) {
+      // for (String fieldName : fieldsOrder) {
       //    answer.add(fieldName + "\t" + translatedFields.get(fieldName));
       // }
 
       //============ Write first line (field names) ===============
       String currentLine = "";
-      for (String fieldName : fieldOrder) {
+      for (String fieldName : fieldsOrder) {
          currentLine += fieldName;
          currentLine += "\t";
       }
@@ -273,14 +304,70 @@ public class Interpreter {
 
       //============ Write next lines (each object) ===============
       currentLine = "";
-      String currentValue;
-      for (String fieldName : fieldOrder) {
+      for (String fieldName : fieldsOrder) {
          currentLine += translatedFields.get(fieldName);
          currentLine += "\t";
       }
       if (currentLine.length() > 0) {
          currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
          answer.add(currentLine);
+      }
+
+      return answer;
+   }
+
+   /*
+    * @allFilesFields represent the translations of all the files you wanted to translate
+    * and write these translations in one single output file.
+    * @return all the lines that will be written in the output file
+    */
+   public static ArrayList<String> generateLines(ArrayList<HashMap<String, String>> allFilesFields, Window window) {
+      //============== Get the field names that are not empty ====================
+      HashSet<String> fieldsNames = new HashSet<String>();
+      for (HashMap<String, String> currentTranslation : allFilesFields) {
+         for (String fieldName : currentTranslation.keySet()) {
+            if (fieldName == null)
+               continue;
+            if (currentTranslation.get(fieldName) != null)
+               fieldsNames.add(fieldName);
+         }
+      }
+      if (fieldsNames.size() <= 0) {
+         window.addLog("All the fields in all the XML input files seem to be empty.",
+            "Tous les champs dans tous les fichiers XML d'entrée semblent être vides.",
+            WARNING);
+         return new ArrayList<String>();
+      }
+
+      ArrayList<String> fieldsOrder = new ArrayList<String>();
+      for (String currentFieldName : fieldsNames)
+         fieldsOrder.add(currentFieldName);
+
+      //=========== Write first line ============================
+      ArrayList<String> answer = new ArrayList<String>();
+
+      String currentLine = "";
+      for (String fieldName : fieldsOrder) {
+         currentLine += fieldName;
+         currentLine += "\t";
+      }
+      currentLine = currentLine.substring(0, currentLine.length()-1);//remove last '\t'
+      answer.add(currentLine);
+
+      //========== Write next lines ============================
+      String currentValue;
+      for (HashMap<String, String> currentTranslation : allFilesFields) {
+         currentLine = "";
+         for (String currentFieldName : fieldsOrder) {
+            currentValue = currentTranslation.get(currentFieldName);
+            if (currentValue != null)
+               currentLine += currentValue;
+            currentLine += "\t";
+         }
+         if (currentLine.length() > 0) {
+            currentLine = currentLine.substring(0, currentLine.length()-1);//Remove last '\t'
+            answer.add(currentLine);
+         }
       }
 
       return answer;
@@ -329,7 +416,6 @@ public class Interpreter {
          case FEEDBACK:
             {
                String fieldValue = tag.getContentsFormatted();
-               Log.log("formatted : '"+fieldValue+"'.");
                if (!fieldValue.equals("") && !fieldValue.equals(" ") && !fieldValue.equals("\t")) {
                   fieldValue = "["+tag.getTagName()+"] "+fieldValue;
                   updateField(feedbackTagName, fieldValue);

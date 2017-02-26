@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.swing.UIManager;
 
@@ -62,7 +63,7 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
-   protected boolean dirTranslationEnabled = false;
+   protected boolean dirTranslationEnabled = false, singleFileOutput = true;
    protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
    //============  main tab elements ===================
@@ -122,6 +123,13 @@ public class Window extends JFrame {
       "Autoriser la traduction de tous les fichier se trouvant dans le dossier spécifié"
    );
 
+   protected JLabel singleFileOutputCheckBoxLabel = new JLabel();
+   protected JCheckBox singleFileOutputCheckBox = new JCheckBox();
+   protected static EnFrString singleFileOutputCheckBoxString = new EnFrString(
+      "Generate one output file for each XML file translated.",
+      "Générer un fichier de sortie par fichier XML traduit."
+   );
+
    //============ about tab elements =================
    protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
    protected static EnFrString description = new EnFrString(
@@ -143,9 +151,9 @@ public class Window extends JFrame {
    );
    protected static EnFrString precision = new EnFrString(
       "You can set the format of the output file (TAB or TXT) in the option tab.\n"
-      +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.",
+      +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.\n",
       "Vous pouvez régler le format du fichier de sortie (TAB or TXT) dans l'onglet 'Options'.\n"
-      +"Si l'option 'traduire les dosssiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
+      +"Si l'option 'traduire les dossiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
    );
    protected static EnFrString credits = new EnFrString(
       "\u00A9 2017 S. Gustin",
@@ -187,6 +195,7 @@ public class Window extends JFrame {
       languageChoiceDropDownMenu.addActionListener(new DropDownMenuListener());
 
       enableDirCheckBox.addActionListener(new CheckBoxListener());
+      singleFileOutputCheckBox.addActionListener(new CheckBoxListener());
 
       //-------- Make window ------------
       descriptionPane.setEditable(false);
@@ -280,19 +289,31 @@ public class Window extends JFrame {
       languageChoiceDropDownMenu.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight));
       languageLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, languagesDropDownMenuHeight+2*internalBorderSize));
 
-      Box checkBoxLine = Box.createHorizontalBox();
-      checkBoxLine.add(enableDirCheckBox);
-      checkBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
-      checkBoxLine.add(enableDirCheckBoxLabel);
-      checkBoxLine.add(Box.createHorizontalGlue());
+      Box dircheckBoxLine = Box.createHorizontalBox();
+      dircheckBoxLine.add(enableDirCheckBox);
+      dircheckBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      dircheckBoxLine.add(enableDirCheckBoxLabel);
+      dircheckBoxLine.add(Box.createHorizontalGlue());
       //sizes
-      setElementBorder(checkBoxLine, linesBorder);
-      checkBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, enableDirCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
+      setElementBorder(dircheckBoxLine, linesBorder);
+      dircheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, enableDirCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
+
+      Box singleFileCheckBoxLine = Box.createHorizontalBox();
+      singleFileCheckBoxLine.add(Box.createHorizontalStrut(2*elementsSpacingSize));
+      singleFileCheckBoxLine.add(singleFileOutputCheckBox);
+      singleFileCheckBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      singleFileCheckBoxLine.add(singleFileOutputCheckBoxLabel);
+      singleFileCheckBoxLine.add(Box.createHorizontalGlue());
+      singleFileOutputCheckBox.setEnabled(enableDirCheckBox.isSelected());
+      //sizes
+      setElementBorder(singleFileCheckBoxLine, linesBorder);
+      singleFileCheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, singleFileOutputCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
 
       Box optionsTab = Box.createVerticalBox();
       optionsTab.add(outputFormatLine);
       optionsTab.add(languageLine);
-      optionsTab.add(checkBoxLine);
+      optionsTab.add(dircheckBoxLine);
+      optionsTab.add(singleFileCheckBoxLine);
       optionsTab.add(Box.createVerticalGlue());
       optionsTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
@@ -337,6 +358,7 @@ public class Window extends JFrame {
       languageChoiceLabel.setText(languageChoiceLabelString.toString());
 
       enableDirCheckBoxLabel.setText(enableDirCheckBoxString.toString());
+      singleFileOutputCheckBoxLabel.setText(singleFileOutputCheckBoxString.toString());
 
       setDropDownMenusItems();
 
@@ -561,6 +583,13 @@ public class Window extends JFrame {
                if (filesInDir.length <= 0)
                   addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
 
+               //----- only for single output -----------
+               String singleOutputFilePath = null;
+               if (singleFileOutput)
+                  singleOutputFilePath = outputFilePath;
+               ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();
+               //------------------------------------------
+
                for (File inputFile : filesInDir) {
                   String currentInputFilePath = inputFile.getAbsolutePath();
                   if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
@@ -571,9 +600,28 @@ public class Window extends JFrame {
                         continue;
                      }
 
-                     String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);//TODO only one file
-                     translate(currentInputFilePath, currentOutputFilePath);
+                     if (!singleFileOutput) {
+                        String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);//TODO only one file
+                        translate(currentInputFilePath, currentOutputFilePath);
+                     }
+                     else {//single output for all the files in the directory
+                        HashMap<String, String> currentTranslation = translate(currentInputFilePath);
+                        if (currentTranslation != null)
+                           allFilesFields.add(currentTranslation);
+                     }
                   }
+               }
+
+               if (singleFileOutput) {
+                  addLog("Writing translations in file.", "Lancement de l'écriture des traductions.", LogType.NORMAL);
+                  ArrayList<String> linesToWrite = Interpreter.generateLines(allFilesFields, this);
+                  //---------- Writing ---------------
+                  if (!FileNamesInterpreter.checkExtensionsCoherence(singleOutputFilePath))
+                     addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
+                        "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
+                        LogType.WARNING);
+
+                  FileOpener.writeFile(singleOutputFilePath, linesToWrite, this);
                }
 
                addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"
@@ -606,8 +654,8 @@ public class Window extends JFrame {
    }
 
    protected void translate(String inputFilePath, String outputFilePath) {
-      String inputFileName = FileNamesInterpreter.getFileName(inputFilePath);
-      String outputFileName = FileNamesInterpreter.getFileName(outputFilePath);
+      String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
+      String outputFileName = FileNamesInterpreter.getFileOrDirName(outputFilePath);
       if (!FileOpener.fileExists(inputFilePath)) {
          addLog("The specified file named '"+inputFileName+"' does not exist.",
             "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
@@ -630,7 +678,7 @@ public class Window extends JFrame {
 
       if (somethingToTranslate) {
          //----------- Translation -------------
-         ArrayList<String> linesToWrite = Interpreter.translateTree(this);
+         ArrayList<String> linesToWrite = Interpreter.translateTreeAndMakeLines(this);
 
          //---------- Writing ---------------
          if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
@@ -655,12 +703,57 @@ public class Window extends JFrame {
       }
    }
 
+   protected HashMap<String, String> translate(String inputFilePath) {
+      String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
+      if (!FileOpener.fileExists(inputFilePath)) {
+         addLog("The specified file name '"+inputFileName+"' does not exist.",
+            "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
+         return null;
+      }
+
+      addLog("----------------------------------------------------------------\n"
+         +"Starting translation of the file '"+inputFileName+"'.",
+         "----------------------------------------------------------------\n"
+         +"Lancement de la traduction du fichier '"+inputFileName+"'.",
+         LogType.NORMAL
+      );
+
+      //============ Reset parser and interpreter ===================
+      Parser.reset();
+      Interpreter.reset();
+
+      //----------- Parsing ----------------
+      boolean somethingToTranslate = Parser.parse(inputFilePath, this);
+
+      if (somethingToTranslate) {
+         HashMap<String, String> answer = Interpreter.translateTree(this);
+
+         addLog("... Translation of the file '"+inputFileName+"' done.\n"
+            +"----------------------------------------------------------------",
+            "... Traduction du fichier '"+inputFileName+"' terminée.\n"
+            +"----------------------------------------------------------------",
+            LogType.NORMAL
+         );
+         return answer;
+      }
+      else {
+         addLog("----------------------------------------------------------------",
+            "----------------------------------------------------------------",
+            LogType.NORMAL
+         );
+         return null;
+      }
+   }
+
    public void openFileChooser() {
       FileChooser chooser = new FileChooser(dirTranslationEnabled);
       String filenameSelected = chooser.getFileSelected();
       if (filenameSelected != null) {
          inputFileField.setText(filenameSelected);
-         outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
+         if (singleFileOutput)
+            outputFileField.setText(FileNamesInterpreter.generateSingleOutputFilePath(filenameSelected));
+         else
+            outputFileField.setText(FileNamesInterpreter.generateOutputFileName(filenameSelected));
       }
    }
 
@@ -691,11 +784,15 @@ public class Window extends JFrame {
 
    public class CheckBoxListener implements ActionListener {
       public void actionPerformed(ActionEvent event) {
-         //enableDirCheckBox
-         if (enableDirCheckBox.isSelected())
-            dirTranslationEnabled = true;
-         else
-            dirTranslationEnabled = false;
+         if (event.getSource() == enableDirCheckBox) {
+            dirTranslationEnabled = enableDirCheckBox.isSelected();
+            singleFileOutputCheckBox.setEnabled(enableDirCheckBox.isSelected());
+            Log.log("dir : "+dirTranslationEnabled);
+         }
+         else if (event.getSource() == singleFileOutputCheckBox) {
+            singleFileOutput = !singleFileOutputCheckBox.isSelected();
+            Log.log("single file output : "+singleFileOutput);
+         }
       }
    }
 }

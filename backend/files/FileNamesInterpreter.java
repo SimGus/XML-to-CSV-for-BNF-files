@@ -64,9 +64,22 @@ public class FileNamesInterpreter {
       if (tmp.isDirectory())
          throw new IllegalArgumentException("Tried to generate an output file name for an input that is not a file.");
 
-      String inputFileName = getFileName(inputFilePath);
+      String inputFileName = getFileOrDirName(inputFilePath);
       String outputFilePath = outputDirectoryPath+"/"+inputFileName;
       return generateOutputFileName(outputFilePath);
+   }
+
+   public static String generateSingleOutputFilePath(String inputDirPath) {
+      if (inputDirPath == null || inputDirPath.length() <= 0)
+         throw new IllegalArgumentException("Invalid input directory path.");
+
+      //------- Check if file or directory ---------------
+      File tmp = new File(inputDirPath);
+      if (tmp.isFile())
+         throw new IllegalArgumentException("Tried to generate an output file name for a directory that has the path of a file.");
+
+      String inputDirName = getFileOrDirName(inputDirPath);
+      return inputDirPath+"/"+inputDirName+extensionsAvailable[extensionChosenID];
    }
 
    public static void changeOutputExtension(String extension) {
@@ -100,8 +113,8 @@ public class FileNamesInterpreter {
       return (outputFileName.substring(outputFileName.length()-4).equals(extensionsAvailable[extensionChosenID]));
    }
 
-   public static String getFileName(String filePath) {
-      Path path = Paths.get(filePath);
+   public static String getFileOrDirName(String fileOrDirPath) {
+      Path path = Paths.get(fileOrDirPath);
       return path.getFileName().toString();
    }
 
