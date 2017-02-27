@@ -16,19 +16,28 @@ public class Interpreter {
    public enum TagType {
       CONTAINER,//might contain tags with valuable information
       FIELD,//corresponds to a database field, thus contains valuable information
+      FIELD_MAIN,//corresponds to a database field and should have the same value for all the materials (main and sub-materials)
       CONTENT,//that tag is supposed to be inside a bigger tag that corresponds to a database field
       IGNORE,//don't take this tag into account
+      LEVEL,//changes the level of description
       FEEDBACK;//put it in a debug field so that Thomas can give feedback
    }
+   public enum ParentFieldBehavior {
+      FILL,//if the child material has this field unset, set it to the value of the parent material
+      IGNORE;
+   }
 
-   private static final String XMLStringTagName = "XMLString", feedbackTagName = "DEBUG";
+   private static final String XMLStringTagName = "XMLString", feedbackFieldName = "DEBUG";
    private static boolean invalidArchLogged = false;
 
    private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>();
    private static final HashMap<String, String> fieldNames = new HashMap<String, String>();
+   private static final HashMap<String, ParentFieldBehavior> parentFieldsBehaviors = new HashMap<String, ParentFieldBehavior>();
 
    private static ArrayList<HashMap<String, String>> translatedFields = new ArrayList<HashMap<String, String>>();
    private static int currentMapIndex = 0;
+   private static boolean mainMaterialDescriptionEncountered = false;
+   private static ArrayList<Integer> parentDescriptionPointers = new ArrayList<Integer>();//stores which of the other description in @translatedFields you should fall back on for the fields that haven't been assigned (some points are described in the parent material)
 
    /*
     * Initializes the HashMap @tagTypesMap that contains information about how a certain tag name should be treated
@@ -69,10 +78,10 @@ public class Interpreter {
       tagTypesMap.put("dimensions", TagType.FIELD);
       tagTypesMap.put("origination", TagType.FIELD);
 
-      tagTypesMap.put("bibliography", TagType.FIELD);
+      tagTypesMap.put("bibliography", TagType.FIELD_MAIN);
       tagTypesMap.put("bibref", TagType.CONTENT);
       tagTypesMap.put("processinfo", TagType.IGNORE);
-      tagTypesMap.put("dsc", TagType.IGNORE);
+      tagTypesMap.put("dsc", TagType.CONTAINER);
       tagTypesMap.put("altformavail", TagType.FIELD);
       tagTypesMap.put("dao", TagType.IGNORE);//@Thomas "Je ne vois pas ce champ pour l'instant"
       tagTypesMap.put("custodhist", TagType.FIELD);
@@ -93,7 +102,7 @@ public class Interpreter {
       tagTypesMap.put("abstract", TagType.FEEDBACK);
       tagTypesMap.put("accessrestrict", TagType.FEEDBACK);
       tagTypesMap.put("accruals", TagType.FEEDBACK);
-      tagTypesMap.put("controlaccess", TagType.FEEDBACK);
+      tagTypesMap.put("controlaccess", TagType.IGNORE);
       tagTypesMap.put("acqinfo", TagType.FEEDBACK);
       tagTypesMap.put("address", TagType.FEEDBACK);
       tagTypesMap.put("addressline", TagType.FEEDBACK);
@@ -178,19 +187,19 @@ public class Interpreter {
       tagTypesMap.put("titlepage", TagType.FEEDBACK);
       tagTypesMap.put("userestrict", TagType.FEEDBACK);
 
-      tagTypesMap.put("c", TagType.CONTAINER);
-      tagTypesMap.put("c01", TagType.CONTAINER);
-      tagTypesMap.put("c02", TagType.CONTAINER);
-      tagTypesMap.put("c03", TagType.CONTAINER);
-      tagTypesMap.put("c04", TagType.CONTAINER);
-      tagTypesMap.put("c05", TagType.CONTAINER);
-      tagTypesMap.put("c06", TagType.CONTAINER);
-      tagTypesMap.put("c07", TagType.CONTAINER);
-      tagTypesMap.put("c08", TagType.CONTAINER);
-      tagTypesMap.put("c09", TagType.CONTAINER);
-      tagTypesMap.put("c10", TagType.CONTAINER);
-      tagTypesMap.put("c11", TagType.CONTAINER);
-      tagTypesMap.put("c12", TagType.CONTAINER);
+      tagTypesMap.put("c", TagType.LEVEL);
+      tagTypesMap.put("c01", TagType.LEVEL);
+      tagTypesMap.put("c02", TagType.LEVEL);
+      tagTypesMap.put("c03", TagType.LEVEL);
+      tagTypesMap.put("c04", TagType.LEVEL);
+      tagTypesMap.put("c05", TagType.LEVEL);
+      tagTypesMap.put("c06", TagType.LEVEL);
+      tagTypesMap.put("c07", TagType.LEVEL);
+      tagTypesMap.put("c08", TagType.LEVEL);
+      tagTypesMap.put("c09", TagType.LEVEL);
+      tagTypesMap.put("c10", TagType.LEVEL);
+      tagTypesMap.put("c11", TagType.LEVEL);
+      tagTypesMap.put("c12", TagType.LEVEL);
       tagTypesMap.put("head01", TagType.CONTAINER);
       tagTypesMap.put("head02", TagType.CONTAINER);
 
@@ -201,7 +210,7 @@ public class Interpreter {
       fieldNames.put("unittitle", "Contenu");
       fieldNames.put("scopecontent", "Contenu");
       fieldNames.put("unitdate", "Siècle");//special managment TODO (not the time)
-      fieldNames.put("physfacet", "Physical facet");//manage differently for different attributes
+      fieldNames.put("physfacet", "Description physique");//manage differently for different attributes
       fieldNames.put("extent", "Nombre de feuillets");
       fieldNames.put("dimensions", "Dimensions");
       fieldNames.put("origination", "Provenance moderne");
@@ -217,6 +226,29 @@ public class Interpreter {
       // fieldNames.put("accessrestrict", "Conditions governing access");
       // fieldNames.put("accruals", "Accruals");
       // fieldNames.put("controlaccess", "Controlled access headings");
+
+      //================= Initialize parentFieldsBehaviors ================
+      parentFieldsBehaviors.put(fieldNames.get("eadid"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("unitid"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("unittitle"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("scopecontent"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("unitdate"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("physfacet"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("extent"), ParentFieldBehavior.IGNORE);
+      parentFieldsBehaviors.put(fieldNames.get("dimensions"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("origination"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("langmaterial"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("bibliography"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("altformavail"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("custodhist"), ParentFieldBehavior.FILL);
+
+      parentFieldsBehaviors.put("Décor", ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put("Reliure", ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put("Support", ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put("Histoire BNF", ParentFieldBehavior.FILL);
+
+
+      parentFieldsBehaviors.put(feedbackFieldName, ParentFieldBehavior.IGNORE);
    }
 
    /*
@@ -224,6 +256,12 @@ public class Interpreter {
     */
    public static void reset() {
       translatedFields = new ArrayList<HashMap<String, String>>();
+      translatedFields.add(new HashMap<String, String>());
+
+      currentMapIndex = 0;
+
+      parentDescriptionPointers = new ArrayList<Integer>();
+      parentDescriptionPointers.add(-1);
    }
 
    /*
@@ -239,6 +277,11 @@ public class Interpreter {
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
             WARNING);
          return new ArrayList<String>();
+      }
+
+      if (translatedFields.size() == 0) {
+         translatedFields.add(new HashMap<String, String>());
+         parentDescriptionPointers.add(-1);
       }
 
       runTranslation(window);
@@ -259,6 +302,11 @@ public class Interpreter {
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
             WARNING);
          return new ArrayList<HashMap<String, String>>();
+      }
+
+      if (translatedFields.size() == 0) {
+         translatedFields.add(new HashMap<String, String>());
+         parentDescriptionPointers.add(-1);
       }
 
       runTranslation(window);
@@ -342,15 +390,17 @@ public class Interpreter {
 
    public static void runTranslation(Window window) {
       for (XMLPart currentRoot : Parser.rootTags) {
-         translateTags(currentRoot, window);//Translates tags recursively
+         translateTags(currentRoot, 0, window);//Translates tags recursively
       }
+
+      fillMinorMaterial();
    }
 
    /*
     * Iterates recursively through the tags tree (thanks to argument @tag)
     * and put the interesting translations in the HashMap @translatedFields
     */
-   private static void translateTags(XMLPart tag, Window window) {
+   private static void translateTags(XMLPart tag, int parentDescriptionIndex, Window window) {
       /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
          return;
@@ -375,7 +425,7 @@ public class Interpreter {
             break;
          case CONTAINER:
             for (XMLPart currentTag : tag.getChildrenElements()) {
-               translateTags(currentTag, window);
+               translateTags(currentTag, parentDescriptionIndex, window);
             }
             break;
          case IGNORE://nothing to do
@@ -385,7 +435,7 @@ public class Interpreter {
                String fieldValue = tag.getContentsFormatted();
                if (!fieldValue.equals("") && !fieldValue.equals(" ") && !fieldValue.equals("\t")) {
                   fieldValue = "["+tag.getTagName()+"] "+fieldValue;
-                  updateField(feedbackTagName, fieldValue);
+                  updateMainMaterialField(feedbackFieldName, fieldValue);
                }
             }
             break;
@@ -397,8 +447,26 @@ public class Interpreter {
                   updateField(fieldName, fieldValue);
             }
             break;
+         case FIELD_MAIN:
+            if (!specialTreatement(tag, window)) {
+               String fieldName = fieldNames.get(tag.getTagName());
+               String fieldValue = tag.getContentsFormatted();
+               if (fieldValue != null)
+                  updateMainMaterialField(fieldName, fieldValue);
+            }
+            break;
+         case LEVEL:
+            //create a new description (is it al<ays the use of c?)
+            translatedFields.add(new HashMap<String, String>());
+            parentDescriptionPointers.add(parentDescriptionIndex);
+            currentMapIndex++;
+            //translate children
+            for (XMLPart currentTag : tag.getChildrenElements()) {
+               translateTags(currentTag, currentMapIndex, window);
+            }
+            break;
          default:
-            Log.err("There was an error translating a tag.");
+            Log.err("Couldn't translate the tag named : '"+tag.getTagName()+"'. Ignoring it and its contents.");
             break;
       }
    }
@@ -488,6 +556,9 @@ public class Interpreter {
       return false;
    }
 
+   /*
+    * Add @fieldValue for the field @fieldName of the current piece of material described in the input file
+    */
    private static void updateField(String fieldName, String fieldValue) {
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
@@ -496,6 +567,19 @@ public class Interpreter {
       if (currentStoredValue != null)
          fieldValue = currentStoredValue + " / " + fieldValue;
       translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
+   }
+
+   /*
+    * Add @fieldValue for the field @fieldName of the main piece of material described in the input file
+    */
+   private static void updateMainMaterialField(String fieldName, String fieldValue) {
+      if (translatedFields.size() == 0)
+         translatedFields.add(new HashMap<String, String>());
+
+      String currentStoredValue = translatedFields.get(0).get(fieldName);
+      if (currentStoredValue != null)
+         fieldValue = currentStoredValue + " / " + fieldValue;
+      translatedFields.get(0).put(fieldName, fieldValue);
    }
 
    private static String getOldCoteSystem(String coteValue) {
@@ -521,6 +605,25 @@ public class Interpreter {
       return coteValue.substring(beginningIndex, i);
    }
 
+   /*
+    * Fills the minor material with the info of the main material if they haven't been replaced in the minor material description
+    */
+   private static void fillMinorMaterial() {
+      //if one of the HashMaps in @translatedFields doesn't have a value for one of the fields that are tagged as FIELD_MAIN,
+      //we place the value of the field from the main material description in that HashMap
+      HashMap<String, String> mainMaterial = translatedFields.get(0);
+      for (String fieldName : mainMaterial.keySet()) {
+         if (parentFieldsBehaviors.get(fieldName) == ParentFieldBehavior.FILL || fieldName.startsWith("Ancienne cote")) {
+            for (int i=1; i<translatedFields.size(); i++) {
+               if (translatedFields.get(i).get(fieldName) == null) {
+                  translatedFields.get(i).put(fieldName, translatedFields.get(parentDescriptionPointers.get(i)).get(fieldName));
+               }
+            }
+         }
+      }
+   }
+
+   //============= Not used =====================
    private static void romanToDecimal(java.lang.String romanNumber) {
       int decimal = 0;
       int lastNumber = 0;
