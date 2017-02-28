@@ -17,17 +17,17 @@ public class FileChooser extends JFileChooser
 	{
 		this(title.toString(), dirChoiceEnabled);
 		//TODO REMOVE THIS PART
-		try {
-         UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-      } catch (Exception e) {
-         Log.err("Couldn't set file chooser's window theme.");
-      }
-		super.updateUI();
-		try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception e) {
-         Log.err("Couldn't get system's window theme.");
-      }
+		// try {
+      //    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+      // } catch (Exception e) {
+      //    Log.err("Couldn't set file chooser's window theme.");
+      // }
+		// super.updateUI();
+		// try {
+      //    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      // } catch (Exception e) {
+      //    Log.err("Couldn't get system's window theme.");
+      // }
 		//TODO UNTIL HERE
 	}
 

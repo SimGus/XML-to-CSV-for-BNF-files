@@ -63,7 +63,7 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
-   protected boolean dirTranslationEnabled = false, singleFileOutput = true;
+   protected boolean dirTranslationEnabled = true, singleFileOutput = true;
    protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
    //============  main tab elements ===================
@@ -202,6 +202,7 @@ public class Window extends JFrame {
       logTextPane.setEditable(false);
       okButton.setBackground(new Color(0x0277BD));
       okButton.setForeground(Color.WHITE);
+      enableDirCheckBox.setSelected(true);
       placeElements();
       setLabels();
 
@@ -583,12 +584,7 @@ public class Window extends JFrame {
                if (filesInDir.length <= 0)
                   addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
 
-               //----- only for single output -----------
-               String singleOutputFilePath = null;
-               if (singleFileOutput)
-                  singleOutputFilePath = outputFilePath;
-               ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();
-               //------------------------------------------
+               ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();//only for single output
 
                for (File inputFile : filesInDir) {
                   String currentInputFilePath = inputFile.getAbsolutePath();
@@ -601,7 +597,7 @@ public class Window extends JFrame {
                      }
 
                      if (!singleFileOutput) {
-                        String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);//TODO only one file
+                        String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
                         translate(currentInputFilePath, currentOutputFilePath);
                      }
                      else {//single output for all the files in the directory
@@ -616,12 +612,12 @@ public class Window extends JFrame {
                   addLog("Writing translations in file.", "Lancement de l'écriture des traductions.", LogType.NORMAL);
                   ArrayList<String> linesToWrite = Interpreter.generateLines(allFilesFields, this);
                   //---------- Writing ---------------
-                  if (!FileNamesInterpreter.checkExtensionsCoherence(singleOutputFilePath))
+                  if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
                      addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
                         "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
                         LogType.WARNING);
 
-                  FileOpener.writeFile(singleOutputFilePath, linesToWrite, this);
+                  FileOpener.writeFile(outputFilePath, linesToWrite, this);
                }
 
                addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"

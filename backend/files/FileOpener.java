@@ -43,7 +43,7 @@ public class FileOpener {
    public static File[] getFilesInDirectory(String dirPath) {
       File tmp = new File(dirPath);
       if (!tmp.isDirectory())
-         throw new IllegalArgumentException("Tried to get files from a path that represents a file.");
+         throw new IllegalArgumentException("Tried to get all files of a directory from a path that represents a file.");
       return tmp.listFiles();
    }
 
@@ -52,11 +52,18 @@ public class FileOpener {
          String filePath;
          File tmp = new File(fileName);
          if (tmp.isAbsolute())
-         filePath = fileName;
+            filePath = fileName;
          else
             filePath = currentDirectory+"/"+fileName;
+
+         //add BOM at the beginning of the first line
+         if (lines.size() <= 0)
+            lines.add(Character.toString('\uFEFF'));
+         else
+            lines.set(0, Character.toString('\uFEFF')+lines.get(0));
+
          //Path file = Paths.get(filePath);
-         Files.write(Paths.get(filePath), lines, Charset.forName("UTF-8"));
+         Files.write(Paths.get(filePath), lines, Charset.forName("UTF-8"));// If the file exists, truncates it
       } catch (IOException e) {
          window.addLog("Error while writing output file : '"+e.getMessage()+"'.",
             "Erreur lors de l'écriture du fichier de sortie : '"+e.getMessage()+"'.",

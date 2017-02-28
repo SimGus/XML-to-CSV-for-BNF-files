@@ -71,12 +71,17 @@ public class FileNamesInterpreter {
          throw new IllegalArgumentException("Invalid input file path.");
 
       boolean isDirectory = false;
-      File tmp = new File(inputFilePath);
-      if (tmp.isDirectory())
+      File tmpInputChecker = new File(inputFilePath);
+      if (tmpInputChecker.isDirectory())
          isDirectory = true;
 
       String inputFileName = getFileOrDirName(inputFilePath);
       String outputFilePath;
+
+      File tmpOutputChecker = new File(outputDirectoryPath);
+      if (tmpOutputChecker.isFile())
+         outputDirectoryPath = tmpOutputChecker.getParent();
+
       if (isDirectory)
          outputFilePath = outputDirectoryPath+"/"+inputFileName+XMLExtension;
       else
