@@ -36,6 +36,8 @@ import javax.swing.text.StyleConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.SwingUtilities;
+
 import util.Log;
 import util.EnFrString;
 import util.LogType;
@@ -169,6 +171,7 @@ public class Window extends JFrame {
    }
 
    public Window(EnFrString title) {
+      Log.fct(0, "Window.constructor");
       this.title = title;
       this.setSize(defaultWidth, defaultHeight);
       this.setLocationRelativeTo(null);//center window
@@ -210,6 +213,7 @@ public class Window extends JFrame {
    }
 
    public void placeElements() {
+      Log.fct(3, "Window.placeElements");
       this.setTitle(title.toString());
       EmptyBorder linesBorder = new EmptyBorder(internalBorderSize, internalBorderSize, internalBorderSize, internalBorderSize);
 
@@ -336,6 +340,7 @@ public class Window extends JFrame {
     * Sets the texts of all the elements that display something
     */
    public void setLabels() {
+      Log.fct(3, "Window.setLabels");
       //=========== tabs titles =============
       tabs.setTitleAt(0, tabTitles[0].toString());
       tabs.setTitleAt(1, tabTitles[1].toString());
@@ -368,6 +373,7 @@ public class Window extends JFrame {
    }
 
    protected void writeDesc() {
+      Log.fct(4, "Window.writeDesc");
       descriptionPane.setText("");
       StyledDocument doc = descriptionPane.getStyledDocument();
       try {
@@ -385,6 +391,7 @@ public class Window extends JFrame {
     * Define font styles for the log area
     */
    protected void initLogsStyles(StyledDocument doc) {
+      Log.fct(4, "Window.initLogsStyles");
       Style defaultStyle = StyleContext
                               .getDefaultStyleContext()
                               .getStyle(StyleContext.DEFAULT_STYLE);
@@ -408,6 +415,7 @@ public class Window extends JFrame {
     * Define font styles for the description area
     */
    protected void initDescStyles(StyledDocument doc) {
+      Log.fct(4, "Window.initDescStyles");
       Style defaultStyle = StyleContext
                               .getDefaultStyleContext()
                               .getStyle(StyleContext.DEFAULT_STYLE);
@@ -427,6 +435,7 @@ public class Window extends JFrame {
    }
 
    protected void setDropDownMenusItems() {
+      Log.fct(4, "Window.setDropDownMenusItems");
       int indexToSelect = -1;
       String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
       if (selectedItem == null)
@@ -462,6 +471,7 @@ public class Window extends JFrame {
    }
 
    private void setElementBorder(JComponent element, EmptyBorder border) {
+      Log.fct(5, "Window.setElementBorder");
       Border currentBorder = element.getBorder();
       if (currentBorder == null)
          element.setBorder(border);
@@ -472,6 +482,8 @@ public class Window extends JFrame {
    //============== LOGS =================
    /* Writes the logs in the log area */
    public void writeLogs() {
+      Log.fct(4, "Window.writeLogs");
+      //logTextPane = new JTextPane();
       logTextPane.setText("");//Rewrite everytime TODO optimize (maybe not because of languages)
       StyledDocument logDoc = logTextPane.getStyledDocument();
       for (GUILogs.LogMsg currentLogMsg : logs) {
@@ -502,10 +514,23 @@ public class Window extends JFrame {
       //--------- Scroll down automatically ------------------
       JScrollBar bar = logAreaScrollPane.getVerticalScrollBar();
       bar.setValue(bar.getMaximum());
+
+      // logTextPane.updateUI();
+      // logTextPane.revalidate();
+      // logTextPane.validate();
+      // logTextPane.repaint();
+      // logTextPane.paintImmediately(logTextPane.getVisibleRect());//dangerous
+      //
+      // logAreaScrollPane.updateUI();
+      // logAreaScrollPane.revalidate();
+      // logAreaScrollPane.validate();
+      // logAreaScrollPane.repaint();
    }
 
    /* Add @enFrLine to the array of lines to be displayed in the log area */
    public void addLog(EnFrString enFrLine, LogType type) {
+      Log.fct(4, "Window.addLog");
+      Log.displayed(enFrLine.toString());
       logs.add(enFrLine, type);
       writeLogs();
    }
@@ -515,6 +540,7 @@ public class Window extends JFrame {
 
    /* Removes all the lines displayed in the log area (and put again the default line) */
    public void clearLogs() {
+      Log.fct(5, "Window.clearLogs");
       logs.clear();
       addLog(readyLogMsg, LogType.NORMAL);
       writeLogs();
@@ -523,8 +549,16 @@ public class Window extends JFrame {
    //============ Listeners ==============
    public class ButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent event) {
+         Log.fct(3, "Window.ButtonListener.actionPerformed");
          if (event.getSource() == okButton) {
-            runTranslation();
+            Log.log("Ok button : "+Thread.currentThread().getName());
+            SwingUtilities.invokeLater(new Runnable() {
+               @Override
+               public void run() {
+                  runTranslation();
+               }
+            });
+            //runTranslation();
          }
          else if (event.getSource() == browseButton) {
             openFileChooser();
@@ -539,6 +573,20 @@ public class Window extends JFrame {
     * MAIN FUNCTION - Translates the file whose name is given in the EditText
     */
    public void runTranslation() {
+      //========= DEBUG ===========
+      /*Log.log("Translation : "+Thread.currentThread().getName());
+      for (int i=0; i<20; i++) {
+         try {
+            Thread.sleep(1000);
+         } catch (InterruptedException e) {
+            Log.err("Thread interrupted : "+e.getMessage());
+         }
+         addLog("Test "+i, "Test "+i, LogType.NORMAL);
+         Log.log("Test "+i);
+      }*/
+
+      //========== Translation ===============
+      Log.fct(1, "Window.runTranslation");
       String inputFilePath = inputFileField.getText();
       String outputFilePath = outputFileField.getText();
 
@@ -546,7 +594,9 @@ public class Window extends JFrame {
          inputFilePath = FileNamesInterpreter.interpretInputFileName(inputFilePath);
          outputFilePath = FileNamesInterpreter.interpretOutputFileName(inputFilePath, outputFilePath);
 
+         //==================== Translate one file ==============================
          if (!dirTranslationEnabled || FileOpener.representsAFile(inputFilePath)) {
+            Log.log("Translate one file : '"+inputFilePath+"'");
             try {
                if (!FileOpener.isValidFileName(inputFilePath)) {
                   addLog("The path '"+inputFilePath+"' is not a valid file path.",
@@ -571,7 +621,9 @@ public class Window extends JFrame {
             }
 
          }
+         //======================= Translate one directory ==============================
          else {//dirTranslationEnabled
+            Log.log("Translate whole directory : '"+inputFilePath+"'");
             try {
                addLog("\n=====================================\n"
                   +"Starting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
@@ -586,9 +638,14 @@ public class Window extends JFrame {
 
                ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();//only for single output
 
+               int i=0;
+               Log.log("Beginning the translation of all files ("+filesInDir.length+" files)");
                for (File inputFile : filesInDir) {
+                  i++;
+                  //--------- Check if current file is an XML file --------------
                   String currentInputFilePath = inputFile.getAbsolutePath();
                   if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
+                     Log.log("Translation of file '"+inputFile.getName()+"' ("+i+"/"+filesInDir.length+")");
                      if (!FileOpener.isValidFileName(currentInputFilePath)) {
                         addLog("The path '"+currentInputFilePath+"' is not a valid file path. Moving on to the next file in the directory.",
                            "Le chemin '"+currentInputFilePath+"' n'est pas valide. Passage au fichier suivant dans le dossier.",
@@ -598,7 +655,7 @@ public class Window extends JFrame {
 
                      if (!singleFileOutput) {
                         String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
-                        translate(currentInputFilePath, currentOutputFilePath);
+                        translate(currentInputFilePath, currentOutputFilePath);//translates and write the current file
                      }
                      else {//single output for all the files in the directory
                         ArrayList<HashMap<String, String>> currentTranslation = translate(currentInputFilePath);
@@ -606,10 +663,16 @@ public class Window extends JFrame {
                            allFilesFields.addAll(currentTranslation);
                      }
                   }
+                  else//not an XML file
+                     continue;
+
+                  Log.log("Translation of '"+inputFile.getName()+"' over");
                }
 
+               //========== Make and write the single file (if directory is translating to only one single file) ===========
                if (singleFileOutput) {
-                  addLog("Writing translations in file.", "Lancement de l'écriture des traductions.", LogType.NORMAL);
+                  Log.log("Creating single file output '"+outputFilePath+"'");
+                  addLog("Writing translations in file '"+outputFilePath+"'.", "Lancement de l'écriture des traductions dans le fichier '"+outputFilePath+"'.", LogType.NORMAL);
                   ArrayList<String> linesToWrite = Interpreter.generateLines(allFilesFields, this);
                   //---------- Writing ---------------
                   if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
@@ -650,6 +713,7 @@ public class Window extends JFrame {
    }
 
    protected void translate(String inputFilePath, String outputFilePath) {
+      Log.fct(2, "Window.translate");
       String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
       String outputFileName = FileNamesInterpreter.getFileOrDirName(outputFilePath);
       if (!FileOpener.fileExists(inputFilePath)) {
@@ -700,6 +764,7 @@ public class Window extends JFrame {
    }
 
    protected ArrayList<HashMap<String, String>> translate(String inputFilePath) {
+      Log.fct(3, "Window.translate(ArrayList)");
       String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
       if (!FileOpener.fileExists(inputFilePath)) {
          addLog("The specified file name '"+inputFileName+"' does not exist.",
@@ -742,6 +807,7 @@ public class Window extends JFrame {
    }
 
    public void openFileChooser() {
+      Log.fct(2, "Window.openFileChooser");
       FileChooser chooser = new FileChooser(dirTranslationEnabled);
       String filenameSelected = chooser.getFileSelected();
       if (filenameSelected != null) {
@@ -752,6 +818,7 @@ public class Window extends JFrame {
 
    public class DropDownMenuListener implements ActionListener {
       public void actionPerformed(ActionEvent event) {
+         Log.fct(2, "Window.DropDownMenuListener.actionPerformed");
          if (event.getSource() == outputFormatDropDownMenu) {
             String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
             if (selectedItem == null)
@@ -777,6 +844,7 @@ public class Window extends JFrame {
 
    public class CheckBoxListener implements ActionListener {
       public void actionPerformed(ActionEvent event) {
+         Log.fct(2, "Window.CheckBoxListener.actionPerformed");
          if (event.getSource() == enableDirCheckBox) {
             dirTranslationEnabled = enableDirCheckBox.isSelected();
             singleFileOutputCheckBox.setEnabled(enableDirCheckBox.isSelected());

@@ -43,7 +43,7 @@ public class FileOpener {
    public static File[] getFilesInDirectory(String dirPath) {
       File tmp = new File(dirPath);
       if (!tmp.isDirectory())
-         throw new IllegalArgumentException("Tried to get all files of a directory from a path that represents a file.");
+         throw new IllegalArgumentException("Tried to get all files of a directory from a path that does not represent a directory.");
       return tmp.listFiles();
    }
 

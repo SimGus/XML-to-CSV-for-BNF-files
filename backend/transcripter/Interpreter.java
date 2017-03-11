@@ -45,6 +45,7 @@ public class Interpreter {
     * in the XML file
     */
    public static void initializeMaps() {
+      Log.fct(3, "Interpreter.initializeMaps");
       //================== Initialize tagTypesMap ========================
       tagTypesMap.put(XMLStringTagName, TagType.IGNORE);
 
@@ -232,8 +233,8 @@ public class Interpreter {
       parentFieldsBehaviors.put(fieldNames.get("unitid"), ParentFieldBehavior.FILL);
       parentFieldsBehaviors.put(fieldNames.get("unittitle"), ParentFieldBehavior.FILL);
       parentFieldsBehaviors.put(fieldNames.get("scopecontent"), ParentFieldBehavior.FILL);
-      parentFieldsBehaviors.put(fieldNames.get("unitdate"), ParentFieldBehavior.FILL);
-      parentFieldsBehaviors.put(fieldNames.get("physfacet"), ParentFieldBehavior.FILL);
+      parentFieldsBehaviors.put(fieldNames.get("unitdate"), ParentFieldBehavior.IGNORE);
+      parentFieldsBehaviors.put(fieldNames.get("physfacet"), ParentFieldBehavior.IGNORE);
       parentFieldsBehaviors.put(fieldNames.get("extent"), ParentFieldBehavior.IGNORE);
       parentFieldsBehaviors.put(fieldNames.get("dimensions"), ParentFieldBehavior.FILL);
       parentFieldsBehaviors.put(fieldNames.get("origination"), ParentFieldBehavior.FILL);
@@ -255,6 +256,7 @@ public class Interpreter {
     * Resets @translatedFields
     */
    public static void reset() {
+      Log.fct(3, "Interpreter.reset");
       translatedFields = new ArrayList<HashMap<String, String>>();
       translatedFields.add(new HashMap<String, String>());
 
@@ -272,6 +274,7 @@ public class Interpreter {
     * Each string in the ArrayList returned is a line of the file
     */
    public static ArrayList<String> translateTreeAndMakeLines(Window window) {
+      Log.fct(2, "Interpreter.translateTreeAndMakeLines");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
@@ -292,11 +295,12 @@ public class Interpreter {
    /*
     * @pre :   The input XML file has been successfully read
     *          and the tags tree @Parser.rootTags is initialized
-    * Run the translation on that tag, producing a HashMap @translatedFields of the fields
+    * Run the translation on that tags, producing a HashMap @translatedFields of the fields
     * and their values in the output file.
     * @return that HashMap.
     */
    public static ArrayList<HashMap<String, String>> translateTree(Window window) {
+      Log.fct(2, "Interpreter.translateTree");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
             "Il semble qu'il n'y ait rien à traduire dans le fichier XML.",
@@ -329,13 +333,14 @@ public class Interpreter {
     * @return all the lines that will be written in the output file
     */
    public static ArrayList<String> generateLines(ArrayList<HashMap<String, String>> allFilesFields, Window window) {
+      Log.fct(3, "Interpreter.generateLines");
       //============== Get the field names that are not empty ====================
       HashSet<String> fieldsNames = new HashSet<String>();
       for (HashMap<String, String> currentTranslation : allFilesFields) {
          for (String fieldName : currentTranslation.keySet()) {
             if (fieldName == null)
                continue;
-            if (currentTranslation.get(fieldName) != null)
+            if (currentTranslation.get(fieldName) != null)//TODO check 'ancienne cote' put at the end
                fieldsNames.add(fieldName);
          }
       }
@@ -389,6 +394,7 @@ public class Interpreter {
    }
 
    public static void runTranslation(Window window) {
+      Log.fct(4, "Interpreter.runTranslation");
       for (XMLPart currentRoot : Parser.rootTags) {
          translateTags(currentRoot, 0, window);//Translates tags recursively
       }
@@ -401,6 +407,7 @@ public class Interpreter {
     * and put the interesting translations in the HashMap @translatedFields
     */
    private static void translateTags(XMLPart tag, int parentDescriptionIndex, Window window) {
+      Log.fct(4, "Interpreter.translateTags");
       /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
          return;
@@ -456,6 +463,11 @@ public class Interpreter {
             }
             break;
          case LEVEL:
+            //TODO? @need Thomas's approval
+            //find <unitid type="foliotation">?
+            //yes keep it in the same description
+            //no keep executing this statement
+
             //create a new description (is it al<ays the use of c?)
             translatedFields.add(new HashMap<String, String>());
             parentDescriptionPointers.add(parentDescriptionIndex);
@@ -477,6 +489,7 @@ public class Interpreter {
     * Else return false
     */
    private static boolean specialTreatement(XMLPart currentTag, Window window) {
+      Log.fct(5, "Interpreter.specialTreatement");
       if (currentTag.getTagName().equals("string"))
          return false;
 
@@ -560,6 +573,7 @@ public class Interpreter {
     * Add @fieldValue for the field @fieldName of the current piece of material described in the input file
     */
    private static void updateField(String fieldName, String fieldValue) {
+      Log.fct(5, "Interpreter.updateField");
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
 
@@ -573,6 +587,7 @@ public class Interpreter {
     * Add @fieldValue for the field @fieldName of the main piece of material described in the input file
     */
    private static void updateMainMaterialField(String fieldName, String fieldValue) {
+      Log.fct(5, "Interpreter.updateMainMaterialField");
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
 
@@ -583,6 +598,7 @@ public class Interpreter {
    }
 
    private static String getOldCoteSystem(String coteValue) {
+      Log.fct(6, "Interpreter.getOldCoteSystem");
       if (coteValue == null || coteValue.length() <= 0)
          throw new IllegalArgumentException("Tried to get the old cote system name from an empty field.");
 
@@ -609,6 +625,7 @@ public class Interpreter {
     * Fills the minor material with the info of the main material if they haven't been replaced in the minor material description
     */
    private static void fillMinorMaterial() {
+      Log.fct(6, "Interpreter.fillMinorMaterial");
       //if one of the HashMaps in @translatedFields doesn't have a value for one of the fields that are tagged as FIELD_MAIN,
       //we place the value of the field from the main material description in that HashMap
       HashMap<String, String> mainMaterial = translatedFields.get(0);

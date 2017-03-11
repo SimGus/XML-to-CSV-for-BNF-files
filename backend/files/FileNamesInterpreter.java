@@ -13,6 +13,8 @@ public class FileNamesInterpreter {
    private static int extensionChosenID = 0;
 
    public static String interpretInputFileName(String userInput) {
+      Log.fct(4, "FileNamesInterpreter.interpretInputFileName");
+
       if (userInput == null || userInput.length() <= 0)
          throw new IllegalArgumentException("No input file name given.");
       if (!FileOpener.representsAFile(userInput))

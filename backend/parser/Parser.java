@@ -25,6 +25,7 @@ public class Parser {
     * Resets @rootTags, @stackOfTags and @inputFileName
     */
    public static void reset() {
+      Log.fct(3, "Parser.reset");
       inputFileName = "undefined";
       rootTags = new ArrayList<XMLPart>();
       stackOfTags = new Stack<XMLTag>();
@@ -35,6 +36,7 @@ public class Parser {
     * Returns true if there is something to translate
     */
    public static boolean parse(String inputFileName, Window window) {
+      Log.fct(2, "Parser.parse");
       Parser.inputFileName = inputFileName;
 
       Scanner inputScanner;
@@ -94,6 +96,8 @@ public class Parser {
     * If there is nothing in the tag, returns an empty ArrayList
     */
    private static ArrayList<String> splitTag(String line, int tagBeginningIndex) {
+      Log.fct(5, "Parser.splitTag");
+
       if (line == null || line.length() <= 0 || tagBeginningIndex < 0 || tagBeginningIndex >= line.length())
          throw new IllegalArgumentException("Tried to get a tag name from an invalid line.");
       if (line.charAt(tagBeginningIndex) != '<')
@@ -242,6 +246,8 @@ public class Parser {
     * Returns true if the prolog tag is valid
     */
    private static boolean prologTagIsValid(String firstLine, Window window) {
+      Log.fct(5, "Parser.prologTagIsValid");
+
       if (firstLine.length() <= 0 || firstLine.charAt(0) != '<') {
          Log.err("The file "+inputFileName+" does not contain a valid XML prolog.");
          window.addLog("The XML file does not contain a valid XML prolog.",
@@ -278,6 +284,8 @@ public class Parser {
     * Returns the remainder of @line without the XML prolog tags
     */
    private static String removeProlog(String line) {
+      Log.fct(5, "Parser.removeProlog");
+
       if (line.length() <= 0)
          return "";
 
@@ -307,6 +315,8 @@ public class Parser {
     * Parses the line @line and puts the tags in @rootTags and @stackOfTags
     */
    private static void parseLine(String line) {
+      Log.fct(5, "Parser.parseLine");
+
       int i=0;
       boolean standaloneTag = false, closingTag = false;
       while (i < line.length()) {
@@ -423,6 +433,8 @@ public class Parser {
     * Meant to be called for the last word inside a tag to see if it is a standalone tag or not
     */
    private static boolean isStandaloneWord(String word) {
+      Log.fct(6, "Parser.isStandaloneWord");
+
       if (word == null || word.length() <= 0) {
          Log.warn("Tried to check if an empty word ended with '/'");
          return false;
@@ -436,6 +448,8 @@ public class Parser {
     * Exception thrown if @source or @index are invalid or if there isn't a '<' at @index
     */
    private static String extractStringElement(String source, int index) {
+      Log.fct(6, "Parser.extractStringElement");
+
       if (source == null || index < 0 || index >= source.length())
          throw new IllegalArgumentException("Tried to extract a string from an empty line or with invalid arguments");
 
@@ -452,6 +466,8 @@ public class Parser {
     * Returns @str.length() if no '>' was found or if there was a problem
     */
    private static int nextTagClosingChar(String str, int beginningIndex) {
+      Log.fct(6, "Parser.nextTagClosingChar");
+
       if (str == null || str.length() <= 0 || beginningIndex < 0 || beginningIndex >= str.length()) {
          Log.warn("Tried to get the index of a character with invalid parameters.");
          return str.length();
@@ -468,6 +484,8 @@ public class Parser {
     * into their Unicode representation (> and so on) in @str
     */
    private static String translateSpecialChar(String str) {
+      Log.fct(6, "Parser.translateSpecialChar");
+
       if (str == null || str.length() <= 0)
          return str;
 

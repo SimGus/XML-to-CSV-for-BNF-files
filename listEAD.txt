@@ -36,7 +36,7 @@ chronitem
 chronlist
 colspec
 container
-controlaccess
+controlaccess			X
 corpname					X
 creation					X
 custodhist				X
