@@ -25,7 +25,7 @@ TODOS
    DONE add clear output button
    NOPE TODO translate directories recursively + add checkbox?
 
-   TODO multiple manuscripts in one XML file (!!!)
+   DONE multiple manuscripts in one XML file (!!!)
    DONE replace numérisation-fac-similé
    DONE contentscope in contenu
    DONE custodhist placed in contenu CHECK
@@ -35,6 +35,10 @@ TODOS
    DONE add BNF field
    DONE remove .tsv
    DONE translate directories in only one file
+   TODO put 'ancienne cote' in last fields
+   TODO multithread display
+   TODO multithread translation?
+   TODO write a file every X files translated
 
 BUGS
    FIX <lb/> not read
@@ -43,6 +47,9 @@ BUGS
    FIX not all is reset when translating a directory
    BUG unicode not recognized by FileMaker (add BOM?) NEED FEEDBACK
    FIX generating output file name when translating several files to several files produces an invalid output file name (/.../dir.txt/file.txt)
+   BUG latin nal FRBNF61786 (warn invalid architecture 'emph' misplaced)
+   BUG latin nal FRBNF69865 extref not ignored
+   BUG repeated call to JTextPane.insertString crashes the GUI
 
 CHECKS
    CHECK should I really have put custodhist in contenu?
