@@ -176,6 +176,9 @@ public class Translator extends Thread {
          win.addLog("No name for the XML file provided.", "Pas de nom pour le fichier XML fourni.", LogType.ERROR);
       }
 
+      //Make most resources available for the garbage collector
+      Parser.reset();
+      Interpreter.reset();
       win.displayReadyMsg();
    }
 
@@ -189,10 +192,8 @@ public class Translator extends Thread {
          return;
       }
 
-      win.addLog("----------------------------------------------------------------\n"
-         +"Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'.",
-         "----------------------------------------------------------------\n"
-         +"Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'.",
+      win.addLog("---------- Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'. ---------------",
+         "---------- Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'. ---------------",
          LogType.NORMAL
       );
 
@@ -215,16 +216,14 @@ public class Translator extends Thread {
 
          FileOpener.writeFile(outputFilePath, linesToWrite, win);
 
-         win.addLog("... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done.\n"
-            +"----------------------------------------------------------------",
-            "... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée.\n"
-            +"----------------------------------------------------------------",
+         win.addLog("---------- ... Translation of the file '"+inputFileName+"' to the file '"+outputFileName+"' done. ---------------",
+            "---------- ... Traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"' terminée. --------------",
             LogType.NORMAL
          );
       }
       else {
-         win.addLog("----------------------------------------------------------------",
-            "----------------------------------------------------------------",
+         win.addLog("---------------------------------------------------------------------",
+            "----------------------------------------------------------------------",
             LogType.NORMAL
          );
       }
@@ -239,10 +238,8 @@ public class Translator extends Thread {
          return null;
       }
 
-      win.addLog("----------------------------------------------------------------\n"
-         +"Starting translation of the file '"+inputFileName+"'.",
-         "----------------------------------------------------------------\n"
-         +"Lancement de la traduction du fichier '"+inputFileName+"'.",
+      win.addLog("---------- Starting translation of the file '"+inputFileName+"'. ---------------",
+         "---------- Lancement de la traduction du fichier '"+inputFileName+"'. ---------------",
          LogType.NORMAL
       );
 
@@ -256,17 +253,15 @@ public class Translator extends Thread {
       if (somethingToTranslate) {
          ArrayList<HashMap<String, String>> answer = Interpreter.translateTree(win);
 
-         win.addLog("... Translation of the file '"+inputFileName+"' done.\n"
-            +"----------------------------------------------------------------",
-            "... Traduction du fichier '"+inputFileName+"' terminée.\n"
-            +"----------------------------------------------------------------",
+         win.addLog("---------- ... Translation of the file '"+inputFileName+"' done. ---------------",
+            "---------- ... Traduction du fichier '"+inputFileName+"' terminée. --------------",
             LogType.NORMAL
          );
          return answer;
       }
       else {
-         win.addLog("----------------------------------------------------------------",
-            "----------------------------------------------------------------",
+         win.addLog("--------------------------------------------------------------------------",
+            "--------------------------------------------------------------------------",
             LogType.NORMAL
          );
          return null;

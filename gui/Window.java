@@ -36,8 +36,6 @@ import javax.swing.text.StyleConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import util.Log;
 import util.EnFrString;
 import util.LogType;
@@ -69,7 +67,7 @@ public class Window extends JFrame {
    protected boolean dirTranslationEnabled = true, singleFileOutput = true;
    protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
-   protected Thread backgroundThread = null;
+   protected Translator backgroundThread = null;//extends Thread
 
    //============  main tab elements ===================
    protected JPanel mainTab = new JPanel();
@@ -97,7 +95,7 @@ public class Window extends JFrame {
    protected JScrollPane logAreaScrollPane = new JScrollPane(logTextPane);
 
    protected static final EnFrString readyLogMsg = new EnFrString("Ready to translate XML file.", "Prêt à traduire un fichier XML.");
-   protected GUILogs logs = new GUILogs(readyLogMsg, LogType.NORMAL);
+   protected GUILogs logs = new GUILogs(this, readyLogMsg, LogType.NORMAL);
 
    protected static final EnFrString logAreaTitle = new EnFrString("Output", "Sortie");
 
@@ -211,6 +209,9 @@ public class Window extends JFrame {
       enableDirCheckBox.setSelected(true);
       placeElements();
       setLabels();
+
+      Thread logsUpdater = new Thread(logs);
+      logsUpdater.start();
 
       this.setVisible(true);
    }
@@ -360,7 +361,7 @@ public class Window extends JFrame {
 
       clearLogsButton.setText(clearLogsButtonLabel.toString());
 
-      writeLogs();
+      updateLogs();
 
       //=========== options tab =============
       outputFormatLabel.setText(outputFormatLabelString.toString());
@@ -484,8 +485,8 @@ public class Window extends JFrame {
 
    //============== LOGS =================
    /* Writes the logs in the log area */
-   public void writeLogs() {
-      Log.fct(4, "Window.writeLogs");
+   public void updateLogs() {
+      Log.fct(4, "Window.updateLogs");
       //logTextPane = new JTextPane();
       logTextPane.setText("");//Rewrite everytime TODO optimize (maybe not because of languages)
       StyledDocument logDoc = logTextPane.getStyledDocument();
@@ -535,12 +536,6 @@ public class Window extends JFrame {
       Log.fct(4, "Window.addLog");
       Log.displayed(enFrLine.toString());
       logs.add(enFrLine, type);
-      SwingUtilities.invokeLater(new Runnable() {
-         @Override
-         public void run() {
-            writeLogs();
-         }
-      });
    }
    public void addLog(String enLine, String frLine, LogType type) {
       addLog(new EnFrString(enLine, frLine), type);
@@ -555,7 +550,7 @@ public class Window extends JFrame {
       Log.fct(5, "Window.clearLogs");
       logs.clear();
       displayReadyMsg();
-      writeLogs();
+      updateLogs();
    }
 
    //============ Listeners ==============
@@ -565,7 +560,6 @@ public class Window extends JFrame {
          if (event.getSource() == okButton) {
             Log.log("Ok button : "+Thread.currentThread().getName());
             runBackgroundThread();
-            //runTranslation();
          }
          else if (event.getSource() == browseButton) {
             openFileChooser();
