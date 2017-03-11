@@ -335,16 +335,16 @@ public class Interpreter {
    public static ArrayList<String> generateLines(ArrayList<HashMap<String, String>> allFilesFields, Window window) {
       Log.fct(3, "Interpreter.generateLines");
       //============== Get the field names that are not empty ====================
-      HashSet<String> fieldsNames = new HashSet<String>();
+      HashSet<String> presentFieldsNames = new HashSet<String>();//store each field name only once
       for (HashMap<String, String> currentTranslation : allFilesFields) {
          for (String fieldName : currentTranslation.keySet()) {
             if (fieldName == null)
                continue;
-            if (currentTranslation.get(fieldName) != null)//TODO check 'ancienne cote' put at the end
-               fieldsNames.add(fieldName);
+            if (currentTranslation.get(fieldName) != null)
+               presentFieldsNames.add(fieldName);
          }
       }
-      if (fieldsNames.size() <= 0) {
+      if (presentFieldsNames.size() <= 0) {
          window.addLog("All the fields in all the XML input files seem to be empty.",
             "Tous les champs dans tous les fichiers XML d'entrée semblent être vides.",
             WARNING);
@@ -352,8 +352,20 @@ public class Interpreter {
       }
 
       ArrayList<String> fieldsOrder = new ArrayList<String>();
-      for (String currentFieldName : fieldsNames)
-         fieldsOrder.add(currentFieldName);
+      ArrayList<String> lastFields = new ArrayList<String>();//put 'ancienne cote X' at the end
+      boolean containsPresentCote = false;
+      for (String currentFieldName : presentFieldsNames) {
+         if (currentFieldName.equals(fieldNames.get("unitid"))) {//put 'cote actuelle' right before 'ancienne cote' field names
+            containsPresentCote = true;
+            continue;
+         }
+         if (currentFieldName.contains("Ancienne cote"))
+            lastFields.add(currentFieldName);
+         else
+            fieldsOrder.add(currentFieldName);
+      }
+      fieldsOrder.add(fieldNames.get("unitid"));
+      fieldsOrder.addAll(lastFields);
 
       //READABLE TRANSLATION TODO REMOVE
       // for (HashMap currentTranslation : allFilesFields) {

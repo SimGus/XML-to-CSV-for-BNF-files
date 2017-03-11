@@ -35,10 +35,11 @@ TODOS
    DONE add BNF field
    DONE remove .tsv
    DONE translate directories in only one file
-   TODO put 'ancienne cote' in last fields
+   DONE put 'ancienne cote' in last fields
    DONE multithread display
    TODO multithread translation?
    TODO write a file every X files translated
+   TODO check foliotation
 
 BUGS
    FIX <lb/> not read
