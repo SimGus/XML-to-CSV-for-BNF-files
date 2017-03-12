@@ -216,6 +216,7 @@ public class Interpreter {
       fieldNames.put("extent", "Nombre de feuillets");
       fieldNames.put("dimensions", "Dimensions");
       fieldNames.put("origination", "Provenance moderne");
+      fieldNames.put("physdesc", "Description physique");
       // fieldNames.put("repository", "Repository");
       fieldNames.put("langmaterial", "Langue");
 
@@ -437,13 +438,24 @@ public class Interpreter {
          case CONTENT:
             if (!invalidArchLogged) {
                Log.err("The input file seems to have an invalid architecture. Tag '"+tag.getTagName()+"' is misplaced (content : '"+tag.getContentsFormatted()+"').");
-               window.addLog("The XML file seems to have an invalid architecture. The program will try to keep running anyway. A tag with tag name '"+tag.getTagName()+"' is misplaced.",
-                  "Le fichier XML semble avoir une architecture invalide. Le programme va tout de même essayer de continuer son exécution. Une balise nommée '"+tag.getTagName()+"' est mal placée.",
+               window.addLog("The XML file contains a tag named '"+tag.getTagName()+"' in an unexpected place.",
+                  "Le fichier XML contient une balise nommée '"+tag.getTagName()+"' à un endroit inattendu.",
                   WARNING);
                invalidArchLogged = true;
             }
             break;
          case CONTAINER:
+            if (tag.getTagName().equals("physdesc")) {
+               for (XMLPart currentTag : tag.getChildrenElements()) {
+                  if (currentTag instanceof XMLString){
+                     String fieldValue = tag.getContentsFormatted();
+                     if (fieldValue != null)
+                        updateField(fieldNames.get(tag.getTagName()), fieldValue);
+                  }
+                  else
+                     translateTags(currentTag, parentDescriptionIndex, window);
+               }
+            }
             for (XMLPart currentTag : tag.getChildrenElements()) {
                translateTags(currentTag, parentDescriptionIndex, window);
             }
@@ -683,7 +695,6 @@ public class Interpreter {
    private static boolean tagContainsFoliotation(XMLPart part) {
       Log.fct(4, "Interpreter. tagContainsFoliotation");
 
-      Log.log("part analyzed : "+part.getTagName());
       if (part == null || part instanceof XMLString)
          return false;
 
