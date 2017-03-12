@@ -222,8 +222,8 @@ public class Translator extends Thread {
          );
       }
       else {
-         win.addLog("---------------------------------------------------------------------",
-            "----------------------------------------------------------------------",
+         win.addLog("----------- ... The file '"+inputFileName+"' was NOT translated. --------------",
+            "----------- ... Le fichier '"+inputFileName+"' n'a PAS été traduit --------------",
             LogType.NORMAL
          );
       }
@@ -260,8 +260,8 @@ public class Translator extends Thread {
          return answer;
       }
       else {
-         win.addLog("--------------------------------------------------------------------------",
-            "--------------------------------------------------------------------------",
+         win.addLog("----------- ... The file '"+inputFileName+"' was NOT translated. --------------",
+            "----------- ... Le fichier '"+inputFileName+"' n'a PAS été traduit --------------",
             LogType.NORMAL
          );
          return null;
