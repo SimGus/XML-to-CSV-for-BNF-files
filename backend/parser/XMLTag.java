@@ -123,7 +123,7 @@ public class XMLTag implements XMLPart {
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-         return "/";
+            return "/";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");
@@ -136,12 +136,14 @@ public class XMLTag implements XMLPart {
                return attributes.get("normal");
             return childrenElements.get(0).getContentsFormatted();
          }
-         else if (name.equals("abbr")) {
+         if (name.equals("abbr")) {
             String answer = childrenElements.get(0).getContentsFormatted();
             if (attributes.get("expan") != null)
                answer += " ("+attributes.get("expan")+")";
             return answer;
          }
+         if (name.equals("extref"))//IGNORE
+            return "";
       }
 
       String answer = "";

@@ -9,6 +9,7 @@ import util.Log;
 import backend.parser.Parser;
 import backend.parser.XMLPart;
 import backend.parser.XMLTag;
+import backend.parser.XMLString;
 import gui.Window;
 import static util.LogType.*;
 
@@ -479,14 +480,20 @@ public class Interpreter {
             //find <unitid type="foliotation">?
             //yes keep it in the same description
             //no keep executing this statement
-
-            //create a new description (is it al<ays the use of c?)
-            translatedFields.add(new HashMap<String, String>());
-            parentDescriptionPointers.add(parentDescriptionIndex);
-            currentMapIndex++;
-            //translate children
-            for (XMLPart currentTag : tag.getChildrenElements()) {
-               translateTags(currentTag, currentMapIndex, window);
+            if (hasFoliotationTypedChildren(tag)) {//consider it as CONTAINER
+               Log.log("found foliotation");
+               for (XMLPart currentTag : tag.getChildrenElements())
+                  translateTags(currentTag, parentDescriptionIndex, window);
+            }
+            else {
+               //create a new description (is it always the use of c?)
+               translatedFields.add(new HashMap<String, String>());
+               parentDescriptionPointers.add(parentDescriptionIndex);
+               currentMapIndex++;
+               //translate children
+               for (XMLPart currentTag : tag.getChildrenElements()) {
+                  translateTags(currentTag, currentMapIndex, window);
+               }
             }
             break;
          default:
@@ -586,6 +593,9 @@ public class Interpreter {
     */
    private static void updateField(String fieldName, String fieldValue) {
       Log.fct(5, "Interpreter.updateField");
+      if (fieldValue == null || fieldValue.length() <= 0)
+         return;
+
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
 
@@ -650,6 +660,51 @@ public class Interpreter {
             }
          }
       }
+   }
+
+   /*
+    * Calls @tagContainsFoliotation to check if at least one child in the same level as @tag is a 'unitid' tag with type 'foliotation'
+    */
+   private static boolean hasFoliotationTypedChildren(XMLPart tag) {
+      if (tag == null || tag instanceof XMLString)
+         return false;
+
+      for (XMLPart currentChild : tag.getChildrenElements()) {
+         if (tagContainsFoliotation(currentChild))
+            return true;
+      }
+      return false;
+   }
+
+   /*
+    * Checks if the tag @part contains a tag 'unitid' with type 'foliotation' at the same level
+    * If we find a 'unitid' tag with type 'foliotation', we shouldn't make a new material description but rather stay in the current one
+    */
+   private static boolean tagContainsFoliotation(XMLPart part) {
+      Log.fct(4, "Interpreter. tagContainsFoliotation");
+
+      Log.log("part analyzed : "+part.getTagName());
+      if (part == null || part instanceof XMLString)
+         return false;
+
+      XMLTag tag = (XMLTag) part;
+
+      if (tagTypesMap.get(tag.getTagName()) == TagType.LEVEL)//new level
+         return false;
+
+      if (tag.getTagName().equals("unitid")) {
+         String typeAttribute = tag.getAttribute("type");
+         if (typeAttribute != null && typeAttribute.equals("foliotation"))
+            return true;
+         return false;
+      }
+
+      for (XMLPart currentTag : tag.getChildrenElements()) {
+         if (tagContainsFoliotation(currentTag))
+            return true;
+      }
+
+      return false;
    }
 
    //============= Not used =====================
