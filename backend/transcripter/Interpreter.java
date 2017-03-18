@@ -456,8 +456,10 @@ public class Interpreter {
                      translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
                }
             }
-            for (XMLPart currentTag : tag.getChildrenElements()) {
-               translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+            else {
+               for (XMLPart currentTag : tag.getChildrenElements()) {
+                  translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+               }
             }
             break;
          case IGNORE://nothing to do
@@ -554,7 +556,12 @@ public class Interpreter {
                   if (attribute.equals("cote"))
                      updateField("Cote actuelle", fieldValue);
                   else if (attribute.equals("ancienne cote")) {
-                     String fieldName = "Ancienne cote " + getOldCoteSystem(fieldValue);
+                     String oldCoteSystem = getOldCoteSystem(fieldValue);
+                     String fieldName;
+                     if (oldCoteSystem == null)
+                        fieldName = "Ancienne cote";
+                     else
+                        fieldName = "Ancienne cote " + oldCoteSystem;
                      updateField(fieldName, fieldValue);
                   }
                   else
@@ -650,14 +657,16 @@ public class Interpreter {
 
    private static String getOldCoteSystem(String coteValue) {
       Log.fct(6, "Interpreter.getOldCoteSystem");
-      if (coteValue == null || coteValue.length() <= 0)
-         throw new IllegalArgumentException("Tried to get the old cote system name from an empty field.");
+      if (coteValue == null || coteValue.length() <= 0) {
+         Log.err("Tried to get the old cote system name from an empty field.");
+         return null;
+      }
 
       int i = 0;
       char c = coteValue.charAt(0);
       while (c==' ' || c=='\t') {//remove first spaces
          if (++i >= coteValue.length())
-            return "";
+            return null;
          c = coteValue.charAt(i);
       }
       int beginningIndex = i;
@@ -669,7 +678,11 @@ public class Interpreter {
          c = coteValue.charAt(i);
       }
 
-      return coteValue.substring(beginningIndex, i);
+      String firstWord = coteValue.substring(beginningIndex, i);
+      if (isNumerical(firstWord))
+         return null;
+
+      return firstWord;
    }
 
    /*
@@ -733,6 +746,13 @@ public class Interpreter {
       }
 
       return false;
+   }
+
+   /*
+    * Returns @true if @str only contains numbers
+    */
+   private static boolean isNumerical(String str) {
+      return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
    }
 
    //============= Not used =====================

@@ -58,7 +58,7 @@ BUGS
    FIX latin nal FRBNF71686 (warn invalid architecture 'emph' misplaced) IT'S NORMAL
    FIX latin nal FRBNF69865 extref not ignored
    FIX repeated call to JTextPane.insertString crashes the GUI
-   BUG things repeated FRBNFEAD000070666 file:///home/simon/Dropbox/export_BAM_20160926/departement-mss/latin/nal/FRBNFEAD000070666.xml
+   FIX things repeated FRBNFEAD000070666 file:///home/simon/Dropbox/export_BAM_20160926/departement-mss/latin/nal/FRBNFEAD000070666.xml
    BUG some empty things are getting new lined
 
 CHECKS
