@@ -123,7 +123,7 @@ public class XMLTag implements XMLPart {
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-            return "/";
+            return "%";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");

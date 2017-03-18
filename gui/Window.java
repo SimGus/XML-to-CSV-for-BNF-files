@@ -105,16 +105,16 @@ public class Window extends JFrame {
    //============ options tab elements ===============
    protected JLabel outputFormatLabel = new JLabel();
    protected JLabel languageChoiceLabel = new JLabel();
-   protected static EnFrString outputFormatLabelString = new EnFrString("Output file format :", "Format du fichier de sortie :");
-   protected static EnFrString languageChoiceLabelString = new EnFrString("Language :", "Langue :");
+   protected static final EnFrString outputFormatLabelString = new EnFrString("Output file format :", "Format du fichier de sortie :");
+   protected static final EnFrString languageChoiceLabelString = new EnFrString("Language :", "Langue :");
 
    protected JComboBox outputFormatDropDownMenu = new JComboBox();
    protected JComboBox languageChoiceDropDownMenu = new JComboBox();
-   protected static EnFrString[] outputFormatsAvailable = {
+   protected static final EnFrString[] outputFormatsAvailable = {
       new EnFrString("TXT file (.txt)", "Fichier TXT (.txt)"),
       new EnFrString("TAB file (.tab)", "Fichier TAB (.tab)"),
    };
-   protected static EnFrString[] languagesAvailable = {
+   protected static final EnFrString[] languagesAvailable = {
       new EnFrString("English", "Anglais"),
       new EnFrString("French", "Français")
    };
@@ -128,21 +128,28 @@ public class Window extends JFrame {
 
    protected JLabel singleFileOutputCheckBoxLabel = new JLabel();
    protected JCheckBox singleFileOutputCheckBox = new JCheckBox();
-   protected static EnFrString singleFileOutputCheckBoxString = new EnFrString(
+   protected static final EnFrString singleFileOutputCheckBoxString = new EnFrString(
       "Generate one output file for each XML file translated.",
       "Générer un fichier de sortie par fichier XML traduit."
    );
 
+   protected JLabel splitFragmentsCheckBoxLabel = new JLabel();
+   protected JCheckBox splitFragmentsCheckBox = new JCheckBox();
+   protected static final EnFrString splitFragmentsCheckBox = new EnFrString(
+      "Make a new entry in the output file for every fragment.",
+      "Faire une nouvelle entrée dans le fichier de sortie pour chaque fragment."
+   );
+
    //============ about tab elements =================
    protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
-   protected static EnFrString description = new EnFrString(
+   protected static final EnFrString description = new EnFrString(
       "This program is meant to translate XML files that describe archival materials,"
       +" into TAB or TXT files importable easily into databases.",
       "Ce programme permet de traduire des fichiers XML qui décrivent de la documentation archivistique,"
       +" en fichiers TAB ou TXT facilement importables dans des bases de données."
    );
-   protected static EnFrString usageTitle = new EnFrString("Usage", "Utilisation");
-   protected static EnFrString usage = new EnFrString(
+   protected static final EnFrString usageTitle = new EnFrString("Usage", "Utilisation");
+   protected static final EnFrString usage = new EnFrString(
       "Specify the path to the XML file you want to translate (you can do so using the 'Browse' button);\n\n"
       +"Optionaly specify the name of the TAB or TXT file;\n\n"
       +"Click the button 'Run transcription';\n\n"
@@ -152,13 +159,13 @@ public class Window extends JFrame {
       +"Cliquez sur 'Lancer la transcription';\n\n"
       +"Un fichier TAB ou TXT contenant la traduction du contenu du fichier XML sera créé."
    );
-   protected static EnFrString precision = new EnFrString(
+   protected static final EnFrString precision = new EnFrString(
       "You can set the format of the output file (TAB or TXT) in the option tab.\n"
       +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.\n",
       "Vous pouvez régler le format du fichier de sortie (TAB or TXT) dans l'onglet 'Options'.\n"
       +"Si l'option 'traduire les dossiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
    );
-   protected static EnFrString credits = new EnFrString(
+   protected static final EnFrString credits = new EnFrString(
       "\u00A9 2017 S. Gustin",
       "\u00A9 2017 S. Gustin"
    );
@@ -200,6 +207,7 @@ public class Window extends JFrame {
 
       enableDirCheckBox.addActionListener(new CheckBoxListener());
       singleFileOutputCheckBox.addActionListener(new CheckBoxListener());
+      splitFragmentsCheckBox.addActionListener(new CheckBoxListener());
 
       //-------- Make window ------------
       descriptionPane.setEditable(false);

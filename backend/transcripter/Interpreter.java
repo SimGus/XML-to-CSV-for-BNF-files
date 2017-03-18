@@ -613,7 +613,7 @@ public class Interpreter {
 
       String currentStoredValue = translatedFields.get(currentMapIndex).get(fieldName);
       if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " / " + fieldValue;
+         fieldValue = currentStoredValue + " % " + fieldValue;
       translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
    }
 
@@ -627,7 +627,7 @@ public class Interpreter {
 
       String currentStoredValue = translatedFields.get(0).get(fieldName);
       if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " / " + fieldValue;
+         fieldValue = currentStoredValue + " % " + fieldValue;
       translatedFields.get(0).put(fieldName, fieldValue);
    }
 
@@ -705,7 +705,7 @@ public class Interpreter {
 
       if (tag.getTagName().equals("unitid")) {
          String typeAttribute = tag.getAttribute("type");
-         if (typeAttribute != null && typeAttribute.equals("foliotation"))
+         if (typeAttribute != null && (typeAttribute.equals("foliotation") || typeAttribute.equals("division")))
             return true;
          return false;
       }

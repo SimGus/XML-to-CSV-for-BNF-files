@@ -29,7 +29,7 @@ public class GUILogs implements Iterable<GUILogs.LogMsg>, Runnable {
    protected ArrayList<LogMsg> messages = new ArrayList<LogMsg>();
    protected Window window;
    protected long lastTimeMs = System.currentTimeMillis();
-   protected final long updateDelayMs = 1000;//update the logs area not more than once every @updateDelayMs milliseconds
+   protected final long updateDelayMs = 750;//update the logs area not more than once every @updateDelayMs milliseconds
    protected int nbMsgOnLastUpdate = 0;
 
    //================ Constructor ========================

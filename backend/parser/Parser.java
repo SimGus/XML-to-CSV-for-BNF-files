@@ -206,7 +206,8 @@ public class Parser {
             quotingSymbol = '\'';
          else {
             Log.err("Attribute '"+currentAttributeName+"' of tag '"+tagName+"' has a value that is not quoted.");
-            throw new IllegalArgumentException("Invalid syntax in the input file (line "+Reader.getCurrentLineNb()+"). Missing quotes.");
+            //throw new IllegalArgumentException("Invalid syntax in the input file (line "+Reader.getCurrentLineNb()+"). Missing quotes.");
+            quotingSymbol = ' ';
          }
          if (i+1 < line.length()) {
             i++;

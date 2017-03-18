@@ -35,7 +35,21 @@ public class Translator extends Thread {
 
    @Override
    public void run() {
-      runTranslation(inputGiven, outputGiven);
+      try {
+         runTranslation(inputGiven, outputGiven);
+      } catch (IllegalArgumentException e) {
+         win.addLog("There was an error while translating the file or directory : 'Illegal argument exception - "+e.getMessage()+"'.",
+            "Une erreur s'est produite lors de la traduction du fichier ou dossier : 'Illegal argument exception - "+e.getMessage()+"'.",
+            LogType.ERROR);
+      } catch (UnsupportedOperationException e) {
+         win.addLog("There was an error while translating the file or directory 'Unsupported operation exception - "+e.getMessage()+"'.",
+         "Une erreur s'est produite lors de la traduction du fichier ou dossier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+         LogType.ERROR);
+      } catch (Exception e) {
+         win.addLog("There was an error while translating the file or directory : '"+e.getMessage()+"'.",
+            "Une erreur s'est produite lors de la traduction du fichier ou dossier : '"+e.getMessage()+"'.",
+            LogType.ERROR);
+      }
       Log.log("Thread "+getName()+" over");
    }
 
@@ -91,24 +105,24 @@ public class Translator extends Thread {
          //======================= Translate one directory ==============================
          else {//dirTranslationEnabled
             Log.log("Translate whole directory : '"+inputFilePath+"'");
-            try {
-               win.addLog("\n=====================================\n"
-                  +"Starting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
-                  "\n=====================================\n"
-                  +"Lancement de la traduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"'.\n",
-                  LogType.NORMAL
-               );
+            win.addLog("\n=====================================\n"
+               +"Starting the translation of the XML files in the directory '"+inputFilePath+"'.\n",
+               "\n=====================================\n"
+               +"Lancement de la traduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"'.\n",
+               LogType.NORMAL
+            );
 
-               File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
-               if (filesInDir.length <= 0)
-                  win.addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
+            File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
+            if (filesInDir.length <= 0)
+               win.addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
 
-               ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();//only for single output
+            ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();//only for single output
 
-               int i=0;
-               Log.log("Beginning the translation of all files ("+filesInDir.length+" files)");
-               for (File inputFile : filesInDir) {
-                  i++;
+            int i=0;
+            Log.log("Beginning the translation of all files ("+filesInDir.length+" files)");
+            for (File inputFile : filesInDir) {
+               i++;
+               try {
                   //--------- Check if current file is an XML file --------------
                   String currentInputFilePath = inputFile.getAbsolutePath();
                   if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
@@ -120,6 +134,7 @@ public class Translator extends Thread {
                         continue;
                      }
 
+                     //------------ Translate current file --------------------
                      if (!singleFileOutput) {
                         String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
                         translate(currentInputFilePath, currentOutputFilePath);//translates and write the current file
@@ -132,44 +147,44 @@ public class Translator extends Thread {
                   }
                   else//not an XML file
                      continue;
-
+               } catch (IllegalArgumentException e) {
+               win.addLog("There was an error while translating the file '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
+                  LogType.ERROR);
+               } catch (UnsupportedOperationException e) {
+                  win.addLog("There was an error while translating the file '"+inputFile.getName()+"' 'Unsupported operation exception - "+e.getMessage()+"'.",
+                  "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+                  LogType.ERROR);
+               } catch (Exception e) {
+                  win.addLog("There was an error while translating the file '"+inputFile.getName()+"' : '"+e.getMessage()+"'.",
+                     "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : '"+e.getMessage()+"'.",
+                     LogType.ERROR);
+               } finally {
                   Log.log("Translation of '"+inputFile.getName()+"' over");
+                  continue;
                }
-
-               //========== Make and write the single file (if directory is translating to only one single file) ===========
-               if (singleFileOutput) {
-                  Log.log("Creating single file output '"+outputFilePath+"'");
-                  win.addLog("Writing translations in file '"+outputFilePath+"'.", "Lancement de l'écriture des traductions dans le fichier '"+outputFilePath+"'.", LogType.NORMAL);
-                  ArrayList<String> linesToWrite = Interpreter.generateLines(allFilesFields, win);
-                  //---------- Writing ---------------
-                  if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
-                     win.addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
-                        "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
-                        LogType.WARNING);
-
-                  FileOpener.writeFile(outputFilePath, linesToWrite, win);
-               }
-
-               win.addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"
-                  +"=====================================\n",
-                  "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n"
-                  +"=====================================\n",
-                  LogType.NORMAL
-               );
-
-            } catch (IllegalArgumentException e) {
-               win.addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
-                  "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
-                  LogType.ERROR);
-            } catch (UnsupportedOperationException e) {
-               win.addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
-               "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
-               LogType.ERROR);
-            } catch (Exception e) {
-               win.addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
-                  "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
-                  LogType.ERROR);
             }
+
+            //========== Make and write the single file (if directory is translating to only one single file) ===========
+            if (singleFileOutput) {
+               Log.log("Creating single file output '"+outputFilePath+"'");
+               win.addLog("Writing translations in file '"+outputFilePath+"'.", "Lancement de l'écriture des traductions dans le fichier '"+outputFilePath+"'.", LogType.NORMAL);
+               ArrayList<String> linesToWrite = Interpreter.generateLines(allFilesFields, win);
+               //---------- Writing ---------------
+               if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
+                  win.addLog("The name of the output file provided does not have the same extension as what has been set in the options ('."+FileNamesInterpreter.getOutputExtension()+"'). The name provided will be used.",
+                     "Le nom du fichier de sortie fourni n'a pas la même extension que ce qui a été réglé dans les options ('."+FileNamesInterpreter.getOutputExtension()+"'). Le nom fourni sera utilisé.",
+                     LogType.WARNING);
+
+               FileOpener.writeFile(outputFilePath, linesToWrite, win);
+            }
+
+            win.addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"
+               +"=====================================\n",
+               "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n"
+               +"=====================================\n",
+               LogType.NORMAL
+            );
          }
       }
       else {
