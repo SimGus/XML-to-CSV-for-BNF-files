@@ -21,6 +21,8 @@ public class Parser {
    public static ArrayList<XMLPart> rootTags = new ArrayList<XMLPart>();
    private static Stack<XMLTag> stackOfTags = new Stack<XMLTag>();
 
+   private static int nbDisplayedErrors = 0;
+
    /*
     * Resets @rootTags, @stackOfTags and @inputFileName
     */
@@ -45,6 +47,7 @@ public class Parser {
       } catch (FileNotFoundException e) {
          Log.err("Couldn't open input file : '"+Parser.inputFileName+"'");
          window.addLog("Couldn't open the XML file.", "Impossible d'ouvrir le fichier XML.", ERROR);
+         nbDisplayedErrors++;
          return false;
       }
 
@@ -254,6 +257,7 @@ public class Parser {
          window.addLog("The XML file does not contain a valid XML prolog.",
             "Le fichier XML ne contient pas un prologue valide.",
             ERROR);
+         nbDisplayedErrors++;
          return false;
       }
 
@@ -263,6 +267,7 @@ public class Parser {
          window.addLog("The XML file does not contain a valid XML prolog.",
             "Le fichier XML ne contient pas un prologue valide.",
             ERROR);
+         nbDisplayedErrors++;
          return false;
       }
       for (int i=1; i<parts.size(); i++) {
@@ -497,4 +502,7 @@ public class Parser {
       answer = answer.replaceAll("&quot;", "\"");
       return answer;
    }
+
+   public static int getNbDisplayedErrors() {return nbDisplayedErrors++;}
+   public static void resetNbDisplayedErrors() {nbDisplayedErrors = 0;}
 }

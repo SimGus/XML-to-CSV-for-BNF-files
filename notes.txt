@@ -46,7 +46,7 @@ TODOS
    TODO ancienne cote (NEED RESOURCE)
    DONE don't stop everything if one error
    DONE remove exception thrown when missing quotes
-   TODO error counting
+   DONE error counting
 
 BUGS
    FIX <lb/> not read

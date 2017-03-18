@@ -20,6 +20,8 @@ public class Translator extends Thread {
    protected String inputGiven = null, outputGiven = null;
    protected boolean singleFileOutput, splitFragments;
 
+   protected int nbErrors = 0;
+
    public Translator(Window window, String inputFilePath, String outputFilePath, boolean singleFileOutput, boolean splitFragments) {
       super(threadName+ID);
       String name = threadName+ID;//getName() isn't created until the constructor is fully executed
@@ -42,15 +44,22 @@ public class Translator extends Thread {
          win.addLog("There was an error while translating the file or directory : 'Illegal argument exception - "+e.getMessage()+"'.",
             "Une erreur s'est produite lors de la traduction du fichier ou dossier : 'Illegal argument exception - "+e.getMessage()+"'.",
             LogType.ERROR);
+         nbErrors++;
       } catch (UnsupportedOperationException e) {
          win.addLog("There was an error while translating the file or directory 'Unsupported operation exception - "+e.getMessage()+"'.",
-         "Une erreur s'est produite lors de la traduction du fichier ou dossier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
-         LogType.ERROR);
+            "Une erreur s'est produite lors de la traduction du fichier ou dossier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+            LogType.ERROR);
+         nbErrors++;
       } catch (Exception e) {
          win.addLog("There was an error while translating the file or directory : '"+e.getMessage()+"'.",
             "Une erreur s'est produite lors de la traduction du fichier ou dossier : '"+e.getMessage()+"'.",
             LogType.ERROR);
+         nbErrors++;
       }
+
+      nbErrors = 0;
+      FileOpener.resetNbDisplayedErrors();
+      Parser.resetNbDisplayedErrors();
       Log.log("Thread "+getName()+" over");
    }
 
@@ -83,6 +92,7 @@ public class Translator extends Thread {
                if (!FileOpener.isValidFileName(inputFilePath)) {
                   win.addLog("The path '"+inputFilePath+"' is not a valid file path.",
                      "Le chemin '"+inputFilePath+"' n'est pas un chemin vers un fichier valide.", LogType.ERROR);
+                  nbErrors++;
                   return;
                }
 
@@ -92,14 +102,17 @@ public class Translator extends Thread {
                win.addLog("There was an error while translating the file : 'Illegal argument exception - "+e.getMessage()+"'.",
                   "Une erreur s'est produite lors de la traduction du fichier : 'Illegal argument exception - "+e.getMessage()+"'.",
                   LogType.ERROR);
+               nbErrors++;
             } catch (UnsupportedOperationException e) {
                win.addLog("There was an error while translating the file 'Unsupported operation exception - "+e.getMessage()+"'.",
-               "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
-               LogType.ERROR);
+                  "Une erreur s'est produite lors de la traduction du fichier : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+                  LogType.ERROR);
+               nbErrors++;
             } catch (Exception e) {
                win.addLog("There was an error while translating the file : '"+e.getMessage()+"'.",
                   "Une erreur s'est produite lors de la traduction du fichier : '"+e.getMessage()+"'.",
                   LogType.ERROR);
+               nbErrors++;
             }
 
          }
@@ -149,17 +162,20 @@ public class Translator extends Thread {
                   else//not an XML file
                      continue;
                } catch (IllegalArgumentException e) {
-               win.addLog("There was an error while translating the file '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
-                  "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
-                  LogType.ERROR);
+                  win.addLog("There was an error while translating the file '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
+                     "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Illegal argument exception - "+e.getMessage()+"'.",
+                     LogType.ERROR);
+                  nbErrors++;
                } catch (UnsupportedOperationException e) {
                   win.addLog("There was an error while translating the file '"+inputFile.getName()+"' 'Unsupported operation exception - "+e.getMessage()+"'.",
-                  "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Unsuppported operation exception - "+e.getMessage()+"'.",
-                  LogType.ERROR);
+                     "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : 'Unsuppported operation exception - "+e.getMessage()+"'.",
+                     LogType.ERROR);
+                  nbErrors++;
                } catch (Exception e) {
                   win.addLog("There was an error while translating the file '"+inputFile.getName()+"' : '"+e.getMessage()+"'.",
                      "Une erreur s'est produite lors de la traduction du fichier '"+inputFile.getName()+"' : '"+e.getMessage()+"'.",
                      LogType.ERROR);
+                  nbErrors++;
                } finally {
                   Log.log("Translation of '"+inputFile.getName()+"' over");
                   continue;
@@ -180,9 +196,11 @@ public class Translator extends Thread {
                FileOpener.writeFile(outputFilePath, linesToWrite, win);
             }
 
-            win.addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over.\n"
+            //========== Finish ==============
+            int nbDisplayedErrors = nbErrors + FileOpener.getNbDisplayedErrors() + Parser.getNbDisplayedErrors();
+            win.addLog("\nTranslation of the XML files in the directory '"+inputFilePath+"' over with "+nbDisplayedErrors+" errors.\n"
                +"=====================================\n",
-               "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée.\n"
+               "\nTraduction des fichiers XML se trouvant dans le dossier '"+inputFilePath+"' terminée avec "+nbDisplayedErrors+" erreurs.\n"
                +"=====================================\n",
                LogType.NORMAL
             );

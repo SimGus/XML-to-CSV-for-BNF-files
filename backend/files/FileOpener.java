@@ -12,6 +12,7 @@ import static util.LogType.*;
 
 public class FileOpener {
    public static String currentDirectory = Paths.get(".").toAbsolutePath().getParent().toString();
+   private static int nbDisplayedErrors = 0;
 
    /* Checks if the path @filePath is valid according to the OS */
    public static boolean isValidFileName(String filePath) {
@@ -68,6 +69,10 @@ public class FileOpener {
          window.addLog("Error while writing output file : '"+e.getMessage()+"'.",
             "Erreur lors de l'écriture du fichier de sortie : '"+e.getMessage()+"'.",
             ERROR);
+         nbDisplayedErrors++;
       }
    }
+
+   public static int getNbDisplayedErrors() {return nbDisplayedErrors;}
+   public static void resetNbDisplayedErrors() {nbDisplayedErrors = 0;}
 }
