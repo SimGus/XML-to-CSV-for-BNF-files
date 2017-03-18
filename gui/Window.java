@@ -64,7 +64,7 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
-   protected boolean dirTranslationEnabled = true, singleFileOutput = true;
+   protected boolean dirTranslationEnabled = true, singleFileOutput = true, splitFragments = false;
    protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
    protected Translator backgroundThread = null;//extends Thread
@@ -122,8 +122,8 @@ public class Window extends JFrame {
    protected JLabel enableDirCheckBoxLabel = new JLabel();
    protected JCheckBox enableDirCheckBox = new JCheckBox();
    protected static EnFrString enableDirCheckBoxString = new EnFrString(
-      "Enable the translation of all files in the specified directory",
-      "Autoriser la traduction de tous les fichier se trouvant dans le dossier spécifié"
+      "Enable the translation of all files in the specified directory.",
+      "Autoriser la traduction de tous les fichier se trouvant dans le dossier spécifié."
    );
 
    protected JLabel singleFileOutputCheckBoxLabel = new JLabel();
@@ -135,7 +135,7 @@ public class Window extends JFrame {
 
    protected JLabel splitFragmentsCheckBoxLabel = new JLabel();
    protected JCheckBox splitFragmentsCheckBox = new JCheckBox();
-   protected static final EnFrString splitFragmentsCheckBox = new EnFrString(
+   protected static final EnFrString splitFragmentsCheckBoxString = new EnFrString(
       "Make a new entry in the output file for every fragment.",
       "Faire une nouvelle entrée dans le fichier de sortie pour chaque fragment."
    );
@@ -197,6 +197,20 @@ public class Window extends JFrame {
       initLogsStyles(logTextPane.getStyledDocument());
       initDescStyles(descriptionPane.getStyledDocument());
 
+      //-------- Make window ------------
+      descriptionPane.setEditable(false);
+      logTextPane.setEditable(false);
+      okButton.setBackground(new Color(0x0277BD));
+      okButton.setForeground(Color.WHITE);
+      enableDirCheckBox.setSelected(dirTranslationEnabled);
+      singleFileOutputCheckBox.setSelected(!singleFileOutput);
+      splitFragmentsCheckBox.setSelected(splitFragments);
+      placeElements();
+      setLabels();
+
+      Thread logsUpdater = new Thread(logs);
+      logsUpdater.start();
+
       //-------- Add listeners ------------
       okButton.addActionListener(new ButtonListener());
       browseButton.addActionListener(new ButtonListener());
@@ -208,18 +222,6 @@ public class Window extends JFrame {
       enableDirCheckBox.addActionListener(new CheckBoxListener());
       singleFileOutputCheckBox.addActionListener(new CheckBoxListener());
       splitFragmentsCheckBox.addActionListener(new CheckBoxListener());
-
-      //-------- Make window ------------
-      descriptionPane.setEditable(false);
-      logTextPane.setEditable(false);
-      okButton.setBackground(new Color(0x0277BD));
-      okButton.setForeground(Color.WHITE);
-      enableDirCheckBox.setSelected(true);
-      placeElements();
-      setLabels();
-
-      Thread logsUpdater = new Thread(logs);
-      logsUpdater.start();
 
       this.setVisible(true);
    }
@@ -326,11 +328,21 @@ public class Window extends JFrame {
       setElementBorder(singleFileCheckBoxLine, linesBorder);
       singleFileCheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, singleFileOutputCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
 
+      Box splitFragmentsCheckBoxLine = Box.createHorizontalBox();
+      splitFragmentsCheckBoxLine.add(splitFragmentsCheckBox);
+      splitFragmentsCheckBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      splitFragmentsCheckBoxLine.add(splitFragmentsCheckBoxLabel);
+      splitFragmentsCheckBoxLine.add(Box.createHorizontalGlue());
+      //sizes
+      setElementBorder(splitFragmentsCheckBoxLine, linesBorder);
+      splitFragmentsCheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, splitFragmentsCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
+
       Box optionsTab = Box.createVerticalBox();
       optionsTab.add(outputFormatLine);
       optionsTab.add(languageLine);
       optionsTab.add(dircheckBoxLine);
       optionsTab.add(singleFileCheckBoxLine);
+      optionsTab.add(splitFragmentsCheckBoxLine);
       optionsTab.add(Box.createVerticalGlue());
       optionsTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
@@ -377,6 +389,7 @@ public class Window extends JFrame {
 
       enableDirCheckBoxLabel.setText(enableDirCheckBoxString.toString());
       singleFileOutputCheckBoxLabel.setText(singleFileOutputCheckBoxString.toString());
+      splitFragmentsCheckBoxLabel.setText(splitFragmentsCheckBoxString.toString());
 
       setDropDownMenusItems();
 
@@ -580,7 +593,7 @@ public class Window extends JFrame {
 
    public void runBackgroundThread() {
       if (backgroundThread == null || backgroundThread.getState() == Thread.State.TERMINATED) {
-         backgroundThread = new Translator(this, inputFileField.getText(), outputFileField.getText(), singleFileOutput);//Thread starts in its constructor
+         backgroundThread = new Translator(this, inputFileField.getText(), outputFileField.getText(), singleFileOutput, splitFragments);//Thread starts in its constructor
       }
       else {
          addLog("A transcription is already being computed.", "Un processus de transcription est déjà lancé.", LogType.WARNING);
@@ -633,6 +646,9 @@ public class Window extends JFrame {
          }
          else if (event.getSource() == singleFileOutputCheckBox) {
             singleFileOutput = !singleFileOutputCheckBox.isSelected();
+         }
+         else if (event.getSource() == splitFragmentsCheckBox) {
+            splitFragments = splitFragmentsCheckBox.isSelected();
          }
       }
    }

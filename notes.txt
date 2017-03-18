@@ -42,7 +42,7 @@ TODOS
    DONE check foliotation
    DONE check division
    DONE replace '/' by '%'
-   TODO checkbox for the splitting or not
+   DONE checkbox for the splitting or not
    TODO ancienne cote (NEED RESOURCE)
    DONE don't stop everything if one error
    DONE remove exception thrown when missing quotes
@@ -53,7 +53,7 @@ BUGS
    FIX twice french in drop down menu at the start of the program
    FIX read all the first line
    FIX not all is reset when translating a directory
-   BUG unicode not recognized by FileMaker (add BOM?) NEED FEEDBACK SEEM TO BE FIXED
+   BUG unicode not recognized by FileMaker (add BOM?) NEED FEEDBACK SEEMS TO BE FIXED
    FIX generating output file name when translating several files to several files produces an invalid output file name (/.../dir.txt/file.txt)
    FIX latin nal FRBNF71686 (warn invalid architecture 'emph' misplaced) IT'S NORMAL
    FIX latin nal FRBNF69865 extref not ignored

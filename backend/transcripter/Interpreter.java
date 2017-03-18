@@ -275,7 +275,7 @@ public class Interpreter {
     * that will be written in the output file
     * Each string in the ArrayList returned is a line of the file
     */
-   public static ArrayList<String> translateTreeAndMakeLines(Window window) {
+   public static ArrayList<String> translateTreeAndMakeLines(Window window, boolean splitFragments) {
       Log.fct(2, "Interpreter.translateTreeAndMakeLines");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
@@ -289,7 +289,7 @@ public class Interpreter {
          parentDescriptionPointers.add(-1);
       }
 
-      runTranslation(window);
+      runTranslation(window, splitFragments);
 
       return generateLines(window);
    }
@@ -301,7 +301,7 @@ public class Interpreter {
     * and their values in the output file.
     * @return that HashMap.
     */
-   public static ArrayList<HashMap<String, String>> translateTree(Window window) {
+   public static ArrayList<HashMap<String, String>> translateTree(Window window, boolean splitFragments) {
       Log.fct(2, "Interpreter.translateTree");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
@@ -315,7 +315,7 @@ public class Interpreter {
          parentDescriptionPointers.add(-1);
       }
 
-      runTranslation(window);
+      runTranslation(window, splitFragments);
 
       return translatedFields;
    }
@@ -407,10 +407,10 @@ public class Interpreter {
       return answer;
    }
 
-   public static void runTranslation(Window window) {
+   public static void runTranslation(Window window, boolean splitFragments) {
       Log.fct(4, "Interpreter.runTranslation");
       for (XMLPart currentRoot : Parser.rootTags) {
-         translateTags(currentRoot, 0, window);//Translates tags recursively
+         translateTags(currentRoot, 0, window, splitFragments);//Translates tags recursively
       }
 
       fillMinorMaterial();
@@ -420,7 +420,7 @@ public class Interpreter {
     * Iterates recursively through the tags tree (thanks to argument @tag)
     * and put the interesting translations in the HashMap @translatedFields
     */
-   private static void translateTags(XMLPart tag, int parentDescriptionIndex, Window window) {
+   private static void translateTags(XMLPart tag, int parentDescriptionIndex, Window window, boolean splitFragments) {
       Log.fct(4, "Interpreter.translateTags");
       /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
@@ -445,7 +445,7 @@ public class Interpreter {
             }
             break;
          case CONTAINER:
-            if (tag.getTagName().equals("physdesc")) {
+            if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
                for (XMLPart currentTag : tag.getChildrenElements()) {
                   if (currentTag instanceof XMLString){
                      String fieldValue = tag.getContentsFormatted();
@@ -453,11 +453,11 @@ public class Interpreter {
                         updateField(fieldNames.get(tag.getTagName()), fieldValue);
                   }
                   else
-                     translateTags(currentTag, parentDescriptionIndex, window);
+                     translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
                }
             }
             for (XMLPart currentTag : tag.getChildrenElements()) {
-               translateTags(currentTag, parentDescriptionIndex, window);
+               translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
             }
             break;
          case IGNORE://nothing to do
@@ -488,23 +488,40 @@ public class Interpreter {
             }
             break;
          case LEVEL:
-            //TODO? @need Thomas's approval
-            //find <unitid type="foliotation">?
-            //yes keep it in the same description
-            //no keep executing this statement
-            if (hasFoliotationTypedChildren(tag)) {//consider it as CONTAINER
-               Log.log("found foliotation");
-               for (XMLPart currentTag : tag.getChildrenElements())
-                  translateTags(currentTag, parentDescriptionIndex, window);
+            if (splitFragments) {
+               //find <unitid type="foliotation">?
+               //yes keep it in the same description
+               //no keep executing this statement
+               if (hasFoliotationTypedChildren(tag)) {//consider it as CONTAINER
+                  Log.log("found foliotation");
+                  for (XMLPart currentTag : tag.getChildrenElements())
+                     translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+               }
+               else {
+                  //create a new description (is it always the use of c?)
+                  translatedFields.add(new HashMap<String, String>());
+                  parentDescriptionPointers.add(parentDescriptionIndex);
+                  currentMapIndex++;
+                  //translate children
+                  for (XMLPart currentTag : tag.getChildrenElements()) {
+                     translateTags(currentTag, currentMapIndex, window, splitFragments);
+                  }
+               }
             }
-            else {
-               //create a new description (is it always the use of c?)
-               translatedFields.add(new HashMap<String, String>());
-               parentDescriptionPointers.add(parentDescriptionIndex);
-               currentMapIndex++;
-               //translate children
+            else {//same behavior as CONTAINER
+               if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
+                  for (XMLPart currentTag : tag.getChildrenElements()) {
+                     if (currentTag instanceof XMLString){
+                        String fieldValue = tag.getContentsFormatted();
+                        if (fieldValue != null)
+                           updateField(fieldNames.get(tag.getTagName()), fieldValue);
+                     }
+                     else
+                        translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+                  }
+               }
                for (XMLPart currentTag : tag.getChildrenElements()) {
-                  translateTags(currentTag, currentMapIndex, window);
+                  translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
                }
             }
             break;

@@ -18,9 +18,9 @@ public class Translator extends Thread {
    protected Window win;
 
    protected String inputGiven = null, outputGiven = null;
-   protected boolean singleFileOutput;
+   protected boolean singleFileOutput, splitFragments;
 
-   public Translator(Window window, String inputFilePath, String outputFilePath, boolean singleFileOutput) {
+   public Translator(Window window, String inputFilePath, String outputFilePath, boolean singleFileOutput, boolean splitFragments) {
       super(threadName+ID);
       String name = threadName+ID;//getName() isn't created until the constructor is fully executed
       ID++;
@@ -28,6 +28,7 @@ public class Translator extends Thread {
       inputGiven = inputFilePath;
       outputGiven = outputFilePath;
       this.singleFileOutput = singleFileOutput;
+      this.splitFragments = splitFragments;
 
       Log.fct(2, "<"+getName()+"> Translator.constructor");
       start();
@@ -221,7 +222,7 @@ public class Translator extends Thread {
 
       if (somethingToTranslate) {
          //----------- Translation -------------
-         ArrayList<String> linesToWrite = Interpreter.translateTreeAndMakeLines(win);
+         ArrayList<String> linesToWrite = Interpreter.translateTreeAndMakeLines(win, splitFragments);
 
          //---------- Writing ---------------
          if (!FileNamesInterpreter.checkExtensionsCoherence(outputFilePath))
@@ -266,7 +267,7 @@ public class Translator extends Thread {
       boolean somethingToTranslate = Parser.parse(inputFilePath, win);
 
       if (somethingToTranslate) {
-         ArrayList<HashMap<String, String>> answer = Interpreter.translateTree(win);
+         ArrayList<HashMap<String, String>> answer = Interpreter.translateTree(win, splitFragments);
 
          win.addLog("---------- ... Translation of the file '"+inputFileName+"' done. ---------------",
             "---------- ... Traduction du fichier '"+inputFileName+"' terminée. --------------",
