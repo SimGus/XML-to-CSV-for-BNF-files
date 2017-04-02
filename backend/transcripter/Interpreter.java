@@ -423,7 +423,7 @@ public class Interpreter {
    public static ArrayList<String> generateLines(ArrayList<HashMap<String, String>> allFilesFields, Window window) {
       Log.fct(3, "Interpreter.generateLines");
       //============== Get the field names that are not empty ====================
-      HashSet<String> presentFieldsNames = new HashSet<String>();//store each field name only once
+      HashSet<String> presentFieldsNames = new HashSet<String>();//store each field name ONLY once
       for (HashMap<String, String> currentTranslation : allFilesFields) {
          for (String fieldName : currentTranslation.keySet()) {
             if (fieldName == null)
@@ -455,14 +455,6 @@ public class Interpreter {
       fieldsOrder.add(fieldNames.get("unitid"));
       fieldsOrder.addAll(lastFields);
 
-      //READABLE TRANSLATION TODO REMOVE
-      // for (HashMap currentTranslation : allFilesFields) {
-      //    for (String fieldName : fieldsOrder) {
-      //       answer.add(fieldName + "\t" + currentTranslation.get(fieldName));
-      //    }
-      //    answer.add("\nNew entry");
-      // }
-
       //=========== Write first line ============================
       ArrayList<String> answer = new ArrayList<String>();
 
@@ -480,8 +472,10 @@ public class Interpreter {
          currentLine = "";
          for (String currentFieldName : fieldsOrder) {
             currentValue = currentTranslation.get(currentFieldName);
-            if (currentValue != null)
+            if (currentValue != null) {
+               currentValue = checkForSpaces(currentValue);
                currentLine += currentValue;
+            }
             currentLine += "\t";
          }
          if (currentLine.length() > 0) {
@@ -949,6 +943,52 @@ public class Interpreter {
     */
    private static boolean isNumerical(String str) {
       return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+   }
+
+   /*
+    * Checks if there are spaces around "%%" and adds them if there aren't
+    */
+   private static String checkForSpaces(String str) {
+      if (str == null || str.length() <= 0)
+         return "";
+
+      String tmp = "";
+      char c, tmpC;
+      boolean nextShouldBeASpace = false;
+      int i = 0;
+      while (i < str.length()-1) {
+         c = str.charAt(i);
+         if (nextShouldBeASpace && c != ' ' && c != '\t')
+            tmp += " ";
+         if (c != '%') {
+            tmp += c;
+            nextShouldBeASpace = false;
+         }
+         else {
+            if (str.charAt(i+1) == '%') {
+               if (tmp.length() <= 0) {
+                  tmp += "%%";
+                  i++;
+                  nextShouldBeASpace = true;
+               }
+               else {
+                  tmpC = tmp.charAt(tmp.length()-1);
+                  if (tmpC != ' ' && tmpC != '\t')
+                     tmp += " ";
+                  tmp += "%%";
+                  i++;
+                  nextShouldBeASpace = true;
+               }
+            }
+            else {
+               tmp += c;
+               nextShouldBeASpace = false;
+            }
+         }
+         i++;
+      }
+
+      return tmp;
    }
 
    //============= Not used =====================

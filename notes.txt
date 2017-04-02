@@ -50,7 +50,8 @@ TODOS
    DONE add initial capacity to ArrayList and HashMaps
    DONE (CHECK?) make a new entry for fragment only if date for a fragment is provided in the current XML file
    DONE replace '%' by "%%"
-   TODO check for spaces around "%%" and in dates
+   DONE check for spaces around "%%"
+   TODO check for spaces in dates
 
 BUGS
    FIX <lb/> not read
