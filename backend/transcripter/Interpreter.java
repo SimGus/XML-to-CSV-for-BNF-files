@@ -499,10 +499,6 @@ public class Interpreter {
          translateTags(currentRoot, 0, window, splitFragments);//Translates tags recursively
       }
 
-      Log.log("parentDescriptionPointers");
-      for (int i=0; i<parentDescriptionPointers.size(); i++)
-         Log.log(parentDescriptionPointers.get(i).toString());
-
       fillMinorMaterial();
    }
 
@@ -512,13 +508,12 @@ public class Interpreter {
     */
    private static void translateTags(XMLPart tag, int currentDescriptionIndex, Window window, SplitBehavior splitFragments) {
       Log.fct(4, "Interpreter.translateTags");
-      Log.log(tag.getTagName()+" with parent "+currentDescriptionIndex+" current "+currentMapIndex);
       /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
          return;
       }*/
 
-      currentMapIndex = currentDescriptionIndex;
+      currentMapIndex = currentDescriptionIndex;//TODO not certain about that
 
       if (!tag.getTagName().equals(XMLStringTagName) && tagTypesMap.get(tag.getTagName()) == null) {
          Log.warn("Found an unknown tag in the input file : '"+tag.getTagName()+"'. Ignoring it.");
@@ -630,7 +625,6 @@ public class Interpreter {
                   //make a new entry only if you find "unitdate" in the current fragment
                   //else write it in the parent entry
                   if (hasDateSpecifiedInChildren(tag)) {
-                     Log.log("Found date in "+tag.getTagName()+" "+((XMLTag) tag).getValue("id"));
                      //make a new entry
                      translatedFields.add(new HashMap<String, String>());
                      parentDescriptionPointers.add(currentDescriptionIndex);
@@ -757,7 +751,7 @@ public class Interpreter {
 
       String currentStoredValue = translatedFields.get(currentMapIndex).get(fieldName);
       if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " % " + fieldValue;
+         fieldValue = currentStoredValue + " %% " + fieldValue;
       translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
    }
 
@@ -789,7 +783,7 @@ public class Interpreter {
 
       String currentStoredValue = translatedFields.get(0).get(fieldName);
       if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " % " + fieldValue;
+         fieldValue = currentStoredValue + " %% " + fieldValue;
       translatedFields.get(0).put(fieldName, fieldValue);
    }
 

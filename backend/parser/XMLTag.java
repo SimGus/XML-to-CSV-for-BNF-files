@@ -123,7 +123,7 @@ public class XMLTag implements XMLPart {
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-            return "%";
+            return "%%";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");
@@ -158,7 +158,8 @@ public class XMLTag implements XMLPart {
 
          if (currentChild.getTagName().equals("p")
             || currentChild.getTagName().equals("head")) {
-               answer += " / ";
+               //answer += " %% ";//I don't think I should do that
+               answer += " ";
                dontPutSpaceAtBeginning = true;
          }
          else if (currentChild.getTagName().equals("lb"))
@@ -170,10 +171,9 @@ public class XMLTag implements XMLPart {
             wasLastChildAString = true;
          else
             wasLastChildAString = false;
-
-         if (answer.endsWith(" / "))
-            answer = answer.substring(0, answer.length()-3);
       }
+      // if (answer.endsWith(" %% "))
+      //    answer = answer.substring(0, answer.length()-3);
       answer = trim(answer);
 
       return answer;
