@@ -43,10 +43,14 @@ TODOS
    DONE check division
    DONE replace '/' by '%'
    DONE checkbox for the splitting or not
-   TODO ancienne cote (NEED RESOURCE)
+   DONE ancienne cote (NEED RESOURCE)
    DONE don't stop everything if one error
    DONE remove exception thrown when missing quotes
    DONE error counting
+   DONE add initial capacity to ArrayList and HashMaps
+   TODO make a new entry for fragment only if date for a fragment is provided in the current XML file
+   TODO replace '%' by "%%"
+   TODO check for spaces around "%%" and in dates
 
 BUGS
    FIX <lb/> not read
@@ -59,7 +63,8 @@ BUGS
    FIX latin nal FRBNF69865 extref not ignored
    FIX repeated call to JTextPane.insertString crashes the GUI
    FIX things repeated FRBNFEAD000070666 file:///home/simon/Dropbox/export_BAM_20160926/departement-mss/latin/nal/FRBNFEAD000070666.xml
-   BUG some empty things are getting new lined
+   FIX some empty things are getting new lined CAUSED BY FRAGMENTS => NORMAL BEHAVIOR
+   BUG some old cote badly written (cf. mail)
 
 CHECKS
    CHECK should I really have put custodhist in contenu?

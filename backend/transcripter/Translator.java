@@ -18,11 +18,12 @@ public class Translator extends Thread {
    protected Window win;
 
    protected String inputGiven = null, outputGiven = null;
-   protected boolean singleFileOutput, splitFragments;
+   protected boolean singleFileOutput;
+   protected SplitBehavior splitFragments;
 
    protected int nbErrors = 0;
 
-   public Translator(Window window, String inputFilePath, String outputFilePath, boolean singleFileOutput, boolean splitFragments) {
+   public Translator(Window window, String inputFilePath, String outputFilePath, boolean singleFileOutput, SplitBehavior splitFragments) {
       super(threadName+ID);
       String name = threadName+ID;//getName() isn't created until the constructor is fully executed
       ID++;

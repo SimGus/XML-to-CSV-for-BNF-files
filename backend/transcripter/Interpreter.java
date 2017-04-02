@@ -31,9 +31,10 @@ public class Interpreter {
    private static final String XMLStringTagName = "XMLString", feedbackFieldName = "DEBUG";
    private static boolean invalidArchLogged = false;
 
-   private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>();
-   private static final HashMap<String, String> fieldNames = new HashMap<String, String>();
-   private static final HashMap<String, ParentFieldBehavior> parentFieldsBehaviors = new HashMap<String, ParentFieldBehavior>();
+   private static final HashMap<String, TagType> tagTypesMap = new HashMap<String, TagType>(148);
+   private static final HashMap<String, String> fieldNames = new HashMap<String, String>(14);
+   private static final HashMap<String, ParentFieldBehavior> parentFieldsBehaviors = new HashMap<String, ParentFieldBehavior>(18);
+   private static ArrayList<String> oldCoteFieldNames = new ArrayList<String>(85);
 
    private static ArrayList<HashMap<String, String>> translatedFields = new ArrayList<HashMap<String, String>>();
    private static int currentMapIndex = 0;
@@ -205,7 +206,6 @@ public class Interpreter {
       tagTypesMap.put("head01", TagType.CONTAINER);
       tagTypesMap.put("head02", TagType.CONTAINER);
 
-
       //============== Initialize fieldNames =====================
       fieldNames.put("eadid", "Nom BNF");
       fieldNames.put("unitid", "Cote actuelle");//manage differently for different attributes
@@ -250,8 +250,94 @@ public class Interpreter {
       parentFieldsBehaviors.put("Support", ParentFieldBehavior.FILL);
       parentFieldsBehaviors.put("Histoire BNF", ParentFieldBehavior.FILL);
 
-
       parentFieldsBehaviors.put(feedbackFieldName, ParentFieldBehavior.IGNORE);
+
+      //==================== Initialize oldCoteFieldNames ==========================
+      oldCoteFieldNames.add("Ancien Supplément");
+      oldCoteFieldNames.add("Antoine Faure");
+      oldCoteFieldNames.add("Anquetil");
+      oldCoteFieldNames.add("Baluze");
+      oldCoteFieldNames.add("Béthune");
+      oldCoteFieldNames.add("Bigot");
+      oldCoteFieldNames.add("Blancs Manteaux");
+      oldCoteFieldNames.add("Blochet");
+      oldCoteFieldNames.add("Bouhier");
+      oldCoteFieldNames.add("Bourgogne et Bar");
+      oldCoteFieldNames.add("Caix");
+      oldCoteFieldNames.add("Cangé");
+      oldCoteFieldNames.add("Carmes de la place Maubert");
+      oldCoteFieldNames.add("Carmes");
+      oldCoteFieldNames.add("Capucins de Saint-Honoré");
+      oldCoteFieldNames.add("Cartulaire");
+      oldCoteFieldNames.add("Célestins");
+      oldCoteFieldNames.add("Colbert");
+      oldCoteFieldNames.add("Collot");
+      oldCoteFieldNames.add("Compiègne");
+      oldCoteFieldNames.add("Corbie");
+      oldCoteFieldNames.add("Cordeliers");
+      oldCoteFieldNames.add("Cordier médecine");
+      oldCoteFieldNames.add("Cordier non médecine");
+      oldCoteFieldNames.add("de la Mare");//put "Delamare" in it too
+      oldCoteFieldNames.add("de Mesmes");
+      oldCoteFieldNames.add("de Thou");
+      oldCoteFieldNames.add("Drouin");
+      oldCoteFieldNames.add("Ducaurroy");
+      oldCoteFieldNames.add("Dupuy");
+      oldCoteFieldNames.add("Feuillants");
+      oldCoteFieldNames.add("Flandres");
+      oldCoteFieldNames.add("Fourmont");
+      oldCoteFieldNames.add("Gaignières");
+      oldCoteFieldNames.add("Galland");
+      oldCoteFieldNames.add("Gentil");
+      oldCoteFieldNames.add("Gevres");//put "Gesvres" in it too
+      oldCoteFieldNames.add("Grandpré");
+      oldCoteFieldNames.add("Grands-Augustins");
+      oldCoteFieldNames.add("Griaule");
+      oldCoteFieldNames.add("Grimblot");
+      oldCoteFieldNames.add("Guérin");
+      oldCoteFieldNames.add("Harbonnières");
+      oldCoteFieldNames.add("Harlay");
+      oldCoteFieldNames.add("Hurault");
+      oldCoteFieldNames.add("Jacobins de Saint-Honoré");
+      oldCoteFieldNames.add("Jacobins de Saint-Jacques");
+      oldCoteFieldNames.add("La Vallière");
+      oldCoteFieldNames.add("Lancelot");
+      oldCoteFieldNames.add("Le Tellier de Reims");
+      oldCoteFieldNames.add("Maq");
+      oldCoteFieldNames.add("Mazarin");
+      oldCoteFieldNames.add("Minimes");
+      oldCoteFieldNames.add("Missions-étrangères");
+      oldCoteFieldNames.add("Mortemart");
+      oldCoteFieldNames.add("Navarre");
+      oldCoteFieldNames.add("Noailles");
+      oldCoteFieldNames.add("Notre-Dame");
+      oldCoteFieldNames.add("Oratoire");
+      oldCoteFieldNames.add("Petits-Pères");
+      oldCoteFieldNames.add("Rançon de René d'Anjou");
+      oldCoteFieldNames.add("Rigault");
+      oldCoteFieldNames.add("Résidu");
+      oldCoteFieldNames.add("Regius");
+      oldCoteFieldNames.add("Richelieu");
+      oldCoteFieldNames.add("S. Martin");
+      oldCoteFieldNames.add("Saint-Germain");//put "Résidu Saint-Germain" in it too
+      oldCoteFieldNames.add("Saint-Magloire");
+      oldCoteFieldNames.add("Saint-Mansuy");
+      oldCoteFieldNames.add("Saint-Martial");
+      oldCoteFieldNames.add("Saint-VIctor");
+      oldCoteFieldNames.add("Séguier-Coislin");
+      oldCoteFieldNames.add("Senart");
+      oldCoteFieldNames.add("SMAF");
+      oldCoteFieldNames.add("Sorbonne");
+      oldCoteFieldNames.add("Supplément");//transform "suppl." in it if found
+      oldCoteFieldNames.add("Supplément français");//idem
+      oldCoteFieldNames.add("Supplément latin");//idem
+      oldCoteFieldNames.add("Targny");
+      oldCoteFieldNames.add("Toul chapitre");
+      oldCoteFieldNames.add("Toul évêché");
+      oldCoteFieldNames.add("Versailles");
+      oldCoteFieldNames.add("Vaudemont tutelle");
+      oldCoteFieldNames.add("Verdun évêques");
+      oldCoteFieldNames.add("Verdun");
    }
 
    /*
@@ -275,7 +361,7 @@ public class Interpreter {
     * that will be written in the output file
     * Each string in the ArrayList returned is a line of the file
     */
-   public static ArrayList<String> translateTreeAndMakeLines(Window window, boolean splitFragments) {
+   public static ArrayList<String> translateTreeAndMakeLines(Window window, SplitBehavior splitFragments) {
       Log.fct(2, "Interpreter.translateTreeAndMakeLines");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
@@ -301,7 +387,7 @@ public class Interpreter {
     * and their values in the output file.
     * @return that HashMap.
     */
-   public static ArrayList<HashMap<String, String>> translateTree(Window window, boolean splitFragments) {
+   public static ArrayList<HashMap<String, String>> translateTree(Window window, SplitBehavior splitFragments) {
       Log.fct(2, "Interpreter.translateTree");
       if (Parser.rootTags.size() <= 0) {
          window.addLog("There seems to be nothing to translate in the XML file.",
@@ -407,11 +493,15 @@ public class Interpreter {
       return answer;
    }
 
-   public static void runTranslation(Window window, boolean splitFragments) {
+   public static void runTranslation(Window window, SplitBehavior splitFragments) {
       Log.fct(4, "Interpreter.runTranslation");
       for (XMLPart currentRoot : Parser.rootTags) {
          translateTags(currentRoot, 0, window, splitFragments);//Translates tags recursively
       }
+
+      Log.log("parentDescriptionPointers");
+      for (int i=0; i<parentDescriptionPointers.size(); i++)
+         Log.log(parentDescriptionPointers.get(i).toString());
 
       fillMinorMaterial();
    }
@@ -420,12 +510,15 @@ public class Interpreter {
     * Iterates recursively through the tags tree (thanks to argument @tag)
     * and put the interesting translations in the HashMap @translatedFields
     */
-   private static void translateTags(XMLPart tag, int parentDescriptionIndex, Window window, boolean splitFragments) {
+   private static void translateTags(XMLPart tag, int currentDescriptionIndex, Window window, SplitBehavior splitFragments) {
       Log.fct(4, "Interpreter.translateTags");
+      Log.log(tag.getTagName()+" with parent "+currentDescriptionIndex+" current "+currentMapIndex);
       /*if (tag.getTagName() == null) {//getTagName never returns null
          Log.err("The tag tree seems to be invalid. The input file must have an invalid architecture.");
          return;
       }*/
+
+      currentMapIndex = currentDescriptionIndex;
 
       if (!tag.getTagName().equals(XMLStringTagName) && tagTypesMap.get(tag.getTagName()) == null) {
          Log.warn("Found an unknown tag in the input file : '"+tag.getTagName()+"'. Ignoring it.");
@@ -453,12 +546,12 @@ public class Interpreter {
                         updateField(fieldNames.get(tag.getTagName()), fieldValue);
                   }
                   else
-                     translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+                     translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
                }
             }
             else {
                for (XMLPart currentTag : tag.getChildrenElements()) {
-                  translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+                  translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
                }
             }
             break;
@@ -490,27 +583,28 @@ public class Interpreter {
             }
             break;
          case LEVEL:
-            if (splitFragments) {
-               //find <unitid type="foliotation">?
+            if (splitFragments == SplitBehavior.SPLIT_ALL) {
+               //----------- One entry for each fragment ------------------------------
+               //find <unitid type="foliotation"> or "division"?
                //yes keep it in the same description
                //no keep executing this statement
                if (hasFoliotationTypedChildren(tag)) {//consider it as CONTAINER
-                  Log.log("found foliotation");
+                  // Log.log("found foliotation");
                   for (XMLPart currentTag : tag.getChildrenElements())
-                     translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+                     translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
                }
                else {
-                  //create a new description (is it always the use of c?)
+                  //create a new description : new entry (is it always the use of c?)
                   translatedFields.add(new HashMap<String, String>());
-                  parentDescriptionPointers.add(parentDescriptionIndex);
-                  currentMapIndex++;
+                  parentDescriptionPointers.add(currentDescriptionIndex);
+                  currentMapIndex = translatedFields.size()-1;
                   //translate children
-                  for (XMLPart currentTag : tag.getChildrenElements()) {
+                  for (XMLPart currentTag : tag.getChildrenElements())
                      translateTags(currentTag, currentMapIndex, window, splitFragments);
-                  }
                }
             }
-            else {//same behavior as CONTAINER
+            else if (splitFragments == SplitBehavior.MERGE) {//same behavior as CONTAINER
+               //-------------- One single entry for each XML file -----------------------
                if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
                   for (XMLPart currentTag : tag.getChildrenElements()) {
                      if (currentTag instanceof XMLString){
@@ -519,11 +613,37 @@ public class Interpreter {
                            updateField(fieldNames.get(tag.getTagName()), fieldValue);
                      }
                      else
-                        translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+                        translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
                   }
                }
-               for (XMLPart currentTag : tag.getChildrenElements()) {
-                  translateTags(currentTag, parentDescriptionIndex, window, splitFragments);
+               for (XMLPart currentTag : tag.getChildrenElements())
+                  translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
+            }
+            else {
+               //--------- One entry for each fragment if the current XML file provides a date for at least one fragment ---------
+               if (hasFoliotationTypedChildren(tag)) {
+                  // Log.log("found foliotation");
+                  for (XMLPart currentTag : tag.getChildrenElements())
+                     translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
+               }
+               else {
+                  //make a new entry only if you find "unitdate" in the current fragment
+                  //else write it in the parent entry
+                  if (hasDateSpecifiedInChildren(tag)) {
+                     Log.log("Found date in "+tag.getTagName()+" "+((XMLTag) tag).getValue("id"));
+                     //make a new entry
+                     translatedFields.add(new HashMap<String, String>());
+                     parentDescriptionPointers.add(currentDescriptionIndex);
+                     currentMapIndex = translatedFields.size()-1;
+                     //translate children
+                     for (XMLPart currentTag : tag.getChildrenElements())
+                        translateTags(currentTag, currentMapIndex, window, splitFragments);
+                  }
+                  else {//not even one of the children has a date in it
+                     //stay on the same level
+                     for (XMLPart currentTag : tag.getChildrenElements())
+                        translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
+                  }
                }
             }
             break;
@@ -629,7 +749,7 @@ public class Interpreter {
     */
    private static void updateField(String fieldName, String fieldValue) {
       Log.fct(5, "Interpreter.updateField");
-      if (fieldValue == null || fieldValue.length() <= 0)
+      if (isEmpty(fieldValue))
          return;
 
       if (translatedFields.size() == 0)
@@ -639,6 +759,24 @@ public class Interpreter {
       if (currentStoredValue != null)
          fieldValue = currentStoredValue + " % " + fieldValue;
       translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
+   }
+
+   private static boolean isEmpty(String str) {
+      if (str == null || str.length() <= 0)
+         return true;
+
+      //remove first spaces
+      int i = 0;
+      char c = str.charAt(0);
+      while (c==' ' || c=='\t') {
+         if (++i >= str.length())
+            return true;
+         c = str.charAt(i);
+      }
+      if (str.substring(i).length() <= 0)
+         return true;//normally never reached
+
+      return false;
    }
 
    /*
@@ -662,27 +800,52 @@ public class Interpreter {
          return null;
       }
 
+      //remove first spaces
       int i = 0;
       char c = coteValue.charAt(0);
-      while (c==' ' || c=='\t') {//remove first spaces
+      while (c==' ' || c=='\t') {
          if (++i >= coteValue.length())
             return null;
          c = coteValue.charAt(i);
       }
-      int beginningIndex = i;
+      coteValue = coteValue.substring(i);
+      //
+      // //find first actual space
+      // while (c!=' ' && c!='\t') {
+      //    if (++i >= coteValue.length())
+      //       break;
+      //    c = coteValue.charAt(i);
+      // }
+      //
+      // String firstWord = coteValue.substring(beginningIndex, i);
+      // if (isNumerical(firstWord))
+      //    return null;
+      //
+      // return firstWord;
 
-      //find first actual space
-      while (c!=' ' && c!='\t') {
-         if (++i >= coteValue.length())
-            break;
-         c = coteValue.charAt(i);
+      String lowercaseValue = coteValue.toLowerCase();
+      String currentFieldNameLowercase;
+      for (String currentFieldName : oldCoteFieldNames) {
+         currentFieldNameLowercase = currentFieldName.toLowerCase();
+         if (lowercaseValue.startsWith(currentFieldNameLowercase))
+            return currentFieldName;
+      }
+      //check for specific names
+      if (lowercaseValue.startsWith("delamare"))
+         return "de la Mare";
+      if (lowercaseValue.startsWith("gesvres"))
+         return "Gevres";
+      if (lowercaseValue.startsWith("résidu saint-germain"))
+         return "Saint-Germain";
+      if (lowercaseValue.startsWith("suppl.")) {
+         if (lowercaseValue.startsWith("suppl. francais") || lowercaseValue.startsWith("suppl. français"))
+            return "Supplément français";
+         if (lowercaseValue.startsWith("suppl. latin"))
+            return "Supplément latin";
+         return "Supplément";
       }
 
-      String firstWord = coteValue.substring(beginningIndex, i);
-      if (isNumerical(firstWord))
-         return null;
-
-      return firstWord;
+      return null;
    }
 
    /*
@@ -723,7 +886,7 @@ public class Interpreter {
     * If we find a 'unitid' tag with type 'foliotation', we shouldn't make a new material description but rather stay in the current one
     */
    private static boolean tagContainsFoliotation(XMLPart part) {
-      Log.fct(4, "Interpreter. tagContainsFoliotation");
+      Log.fct(4, "Interpreter.tagContainsFoliotation");
 
       if (part == null || part instanceof XMLString)
          return false;
@@ -742,6 +905,45 @@ public class Interpreter {
 
       for (XMLPart currentTag : tag.getChildrenElements()) {
          if (tagContainsFoliotation(currentTag))
+            return true;
+      }
+
+      return false;
+   }
+
+   /*
+    * Calls @tagContainsDate and returns true if one of the children tags of @tag contains a field 'unitdate'
+    */
+   private static boolean hasDateSpecifiedInChildren(XMLPart tag) {
+      if (tag == null || tag instanceof XMLString)
+         return false;
+
+      for (XMLPart currentChild : tag.getChildrenElements()) {
+         if (tagContainsDate(currentChild))
+            return true;
+      }
+      return false;
+   }
+
+   /*
+    * Checks if the tag @part contains a tag 'unitdate' at the same level
+    */
+   private static boolean tagContainsDate(XMLPart part) {
+      Log.fct(4, "Interpreter.tagContainsDate");
+
+      if (part == null || part instanceof XMLString)
+         return false;
+
+      XMLTag tag = (XMLTag) part;
+
+      if (tagTypesMap.get(tag.getTagName()) == TagType.LEVEL)//new level
+         return false;
+
+      if (tag.getTagName().equals("unitdate"))
+         return true;
+
+      for (XMLPart currentTag : tag.getChildrenElements()) {
+         if (tagContainsDate(currentTag))
             return true;
       }
 

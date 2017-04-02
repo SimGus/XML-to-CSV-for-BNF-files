@@ -45,6 +45,7 @@ import backend.files.FileOpener;
 import backend.parser.Parser;
 import backend.transcripter.Interpreter;
 import backend.transcripter.Translator;
+import backend.transcripter.SplitBehavior;
 
 public class Window extends JFrame {
    protected static final int defaultWidth = 640, defaultHeight = 480;
@@ -64,7 +65,8 @@ public class Window extends JFrame {
    protected EnFrString title;
    protected JTabbedPane tabs = new JTabbedPane();
 
-   protected boolean dirTranslationEnabled = true, singleFileOutput = true, splitFragments = false;
+   protected boolean dirTranslationEnabled = true, singleFileOutput = true;
+   protected SplitBehavior splitFragmentsBehavior = SplitBehavior.SPLIT_DATE;
    protected boolean languagesHaveBeenSetup = false;//changed to true when the language drop down menu has been set up to avoid setting it twice because of the ActionListener
 
    protected Translator backgroundThread = null;//extends Thread
@@ -107,6 +109,7 @@ public class Window extends JFrame {
    protected JLabel languageChoiceLabel = new JLabel();
    protected static final EnFrString outputFormatLabelString = new EnFrString("Output file format :", "Format du fichier de sortie :");
    protected static final EnFrString languageChoiceLabelString = new EnFrString("Language :", "Langue :");
+   protected EnFrString splitFragmentsDropDownMenuLabelString = new EnFrString("Fragments management :", "Gestion des fragments :");
 
    protected JComboBox outputFormatDropDownMenu = new JComboBox();
    protected JComboBox languageChoiceDropDownMenu = new JComboBox();
@@ -133,12 +136,22 @@ public class Window extends JFrame {
       "Générer un fichier de sortie par fichier XML traduit."
    );
 
-   protected JLabel splitFragmentsCheckBoxLabel = new JLabel();
-   protected JCheckBox splitFragmentsCheckBox = new JCheckBox();
-   protected static final EnFrString splitFragmentsCheckBoxString = new EnFrString(
-      "Make a new entry in the output file for every fragment.",
-      "Faire une nouvelle entrée dans le fichier de sortie pour chaque fragment."
-   );
+   protected JLabel splitFragmentsDropDownMenuLabel = new JLabel();
+   protected JComboBox splitFragmentsDropDownMenu = new JComboBox();
+   protected static final EnFrString[] splitFragmentsDropDownMenuStrings = {
+      new EnFrString(
+         "One entry for each fragment",
+         "Une entrée par fragment"
+      ),
+      new EnFrString(//default
+         "One entry for each fragment with a date specified",
+         "Une entrée par fragment avec une date spécifiée"
+      ),
+      new EnFrString(
+         "One entry for each XML file",
+         "Une entrée par fichier XML"
+      )
+   };
 
    //============ about tab elements =================
    protected JTextPane descriptionPane = new JTextPane();//TODO change to JLabel?
@@ -202,11 +215,19 @@ public class Window extends JFrame {
       logTextPane.setEditable(false);
       okButton.setBackground(new Color(0x0277BD));
       okButton.setForeground(Color.WHITE);
+      //default values (check boxes)
       enableDirCheckBox.setSelected(dirTranslationEnabled);
       singleFileOutputCheckBox.setSelected(!singleFileOutput);
-      splitFragmentsCheckBox.setSelected(splitFragments);
+
       placeElements();
       setLabels();
+
+      //default values (drop down menus)
+      try {
+         splitFragmentsDropDownMenu.setSelectedIndex(1);
+      } catch (IllegalArgumentException e) {
+         Log.err("Tried to set the default value of the drop down menu for fragments management to a too big value (2)");
+      }
 
       Thread logsUpdater = new Thread(logs);
       logsUpdater.start();
@@ -221,7 +242,8 @@ public class Window extends JFrame {
 
       enableDirCheckBox.addActionListener(new CheckBoxListener());
       singleFileOutputCheckBox.addActionListener(new CheckBoxListener());
-      splitFragmentsCheckBox.addActionListener(new CheckBoxListener());
+
+      splitFragmentsDropDownMenu.addActionListener(new DropDownMenuListener());
 
       this.setVisible(true);
    }
@@ -328,21 +350,21 @@ public class Window extends JFrame {
       setElementBorder(singleFileCheckBoxLine, linesBorder);
       singleFileCheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, singleFileOutputCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
 
-      Box splitFragmentsCheckBoxLine = Box.createHorizontalBox();
-      splitFragmentsCheckBoxLine.add(splitFragmentsCheckBox);
-      splitFragmentsCheckBoxLine.add(Box.createHorizontalStrut(elementsSpacingSize));
-      splitFragmentsCheckBoxLine.add(splitFragmentsCheckBoxLabel);
-      splitFragmentsCheckBoxLine.add(Box.createHorizontalGlue());
+      Box splitFragmentsDropDownMenuLine = Box.createHorizontalBox();
+      splitFragmentsDropDownMenuLine.add(splitFragmentsDropDownMenuLabel);
+      splitFragmentsDropDownMenuLine.add(Box.createHorizontalStrut(elementsSpacingSize));
+      splitFragmentsDropDownMenuLine.add(splitFragmentsDropDownMenu);
+      splitFragmentsDropDownMenuLine.add(Box.createHorizontalGlue());
       //sizes
-      setElementBorder(splitFragmentsCheckBoxLine, linesBorder);
-      splitFragmentsCheckBoxLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, splitFragmentsCheckBoxLabel.getPreferredSize().height+2*internalBorderSize));
+      setElementBorder(splitFragmentsDropDownMenuLine, linesBorder);
+      splitFragmentsDropDownMenuLine.setMaximumSize(new Dimension(Integer.MAX_VALUE, splitFragmentsDropDownMenuLabel.getPreferredSize().height+2*internalBorderSize));
 
       Box optionsTab = Box.createVerticalBox();
       optionsTab.add(outputFormatLine);
       optionsTab.add(languageLine);
       optionsTab.add(dircheckBoxLine);
       optionsTab.add(singleFileCheckBoxLine);
-      optionsTab.add(splitFragmentsCheckBoxLine);
+      optionsTab.add(splitFragmentsDropDownMenuLine);
       optionsTab.add(Box.createVerticalGlue());
       optionsTab.setBorder(new EmptyBorder(externalBorderSize, externalBorderSize, externalBorderSize, externalBorderSize));
 
@@ -389,7 +411,8 @@ public class Window extends JFrame {
 
       enableDirCheckBoxLabel.setText(enableDirCheckBoxString.toString());
       singleFileOutputCheckBoxLabel.setText(singleFileOutputCheckBoxString.toString());
-      splitFragmentsCheckBoxLabel.setText(splitFragmentsCheckBoxString.toString());
+
+      splitFragmentsDropDownMenuLabel.setText(splitFragmentsDropDownMenuLabelString.toString());
 
       setDropDownMenusItems();
 
@@ -462,6 +485,8 @@ public class Window extends JFrame {
    protected void setDropDownMenusItems() {
       Log.fct(4, "Window.setDropDownMenusItems");
       int indexToSelect = -1;
+
+      //----------- Set the output format menu -------------------------------
       String selectedItem = (String) outputFormatDropDownMenu.getSelectedItem();
       if (selectedItem == null)
          indexToSelect = -1;//nothing to do
@@ -478,6 +503,7 @@ public class Window extends JFrame {
       if (indexToSelect >= 0)
          outputFormatDropDownMenu.setSelectedIndex(indexToSelect);
 
+      //-------------- Set the language menu ---------------------------------
       selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
       if (selectedItem == null)
          indexToSelect = -1;//nothing to do
@@ -493,6 +519,23 @@ public class Window extends JFrame {
          languageChoiceDropDownMenu.setSelectedIndex(indexToSelect);
 
       languagesHaveBeenSetup = true;
+
+      //-------------- Set the fragment management menu -----------------------
+      selectedItem = (String) splitFragmentsDropDownMenu.getSelectedItem();
+      if (selectedItem == null)
+         indexToSelect = -1;//nothing to do
+      else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[0].getStrings("English")) || selectedItem.equals(splitFragmentsDropDownMenuStrings[0].getStrings("French")))
+         indexToSelect = 0;
+      else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[1].getStrings("English")) || selectedItem.equals(splitFragmentsDropDownMenuStrings[1].getStrings("French")))
+         indexToSelect = 1;
+      else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[2].getStrings("English")) || selectedItem.equals(splitFragmentsDropDownMenuStrings[2].getStrings("French")))
+         indexToSelect = 2;
+
+      splitFragmentsDropDownMenu.removeAllItems();
+      for (EnFrString currentItem : splitFragmentsDropDownMenuStrings)
+         splitFragmentsDropDownMenu.addItem(currentItem.toString());
+      if (indexToSelect >= 0)
+         splitFragmentsDropDownMenu.setSelectedIndex(indexToSelect);
    }
 
    private void setElementBorder(JComponent element, EmptyBorder border) {
@@ -593,7 +636,7 @@ public class Window extends JFrame {
 
    public void runBackgroundThread() {
       if (backgroundThread == null || backgroundThread.getState() == Thread.State.TERMINATED) {
-         backgroundThread = new Translator(this, inputFileField.getText(), outputFileField.getText(), singleFileOutput, splitFragments);//Thread starts in its constructor
+         backgroundThread = new Translator(this, inputFileField.getText(), outputFileField.getText(), singleFileOutput, splitFragmentsBehavior);//Thread starts in its constructor
       }
       else {
          addLog("A transcription is already being computed.", "Un processus de transcription est déjà lancé.", LogType.WARNING);
@@ -622,6 +665,8 @@ public class Window extends JFrame {
                FileNamesInterpreter.changeOutputExtension("txt");
             else if (selectedItem.equals(outputFormatsAvailable[1].toString()))
                FileNamesInterpreter.changeOutputExtension("tab");
+            else
+               Log.err("The output format drop down menu is badly set up : the selected item's index is out of range");
          }
          else if (event.getSource() == languageChoiceDropDownMenu) {
             String selectedItem = (String) languageChoiceDropDownMenu.getSelectedItem();
@@ -631,8 +676,23 @@ public class Window extends JFrame {
                EnFrString.setCurrentLanguage("English");
             else if (selectedItem.equals(languagesAvailable[1].toString()))
                EnFrString.setCurrentLanguage("French");
+            else
+               Log.err("The language drop down menu is badly set up : the selected item's index is out of range");
             if (languagesHaveBeenSetup)//don't call it if the listener is being called because of the first drop down menu setup
                setLabels();
+         }
+         else if (event.getSource() == splitFragmentsDropDownMenu) {
+            String selectedItem = (String) splitFragmentsDropDownMenu.getSelectedItem();
+            if (selectedItem == null)
+               return;//nothing to do
+            else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[0].toString()))
+               splitFragmentsBehavior = SplitBehavior.SPLIT_ALL;
+            else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[1].toString()))
+               splitFragmentsBehavior = SplitBehavior.SPLIT_DATE;
+            else if (selectedItem.equals(splitFragmentsDropDownMenuStrings[2].toString()))
+               splitFragmentsBehavior = SplitBehavior.MERGE;
+            else
+               Log.err("The fragment management drop down menu is badly set up : the selected item's index is out of range");
          }
       }
    }
@@ -646,9 +706,6 @@ public class Window extends JFrame {
          }
          else if (event.getSource() == singleFileOutputCheckBox) {
             singleFileOutput = !singleFileOutputCheckBox.isSelected();
-         }
-         else if (event.getSource() == splitFragmentsCheckBox) {
-            splitFragments = splitFragmentsCheckBox.isSelected();
          }
       }
    }
