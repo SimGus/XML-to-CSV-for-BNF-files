@@ -190,6 +190,9 @@ public class XMLTag implements XMLPart {
       // if (answer.endsWith(" %% "))
       //    answer = answer.substring(0, answer.length()-3);
 
+      if (name.equals("note"))
+         answer = "Notes: "+answer;
+
       return answer;
    }
 

@@ -174,9 +174,11 @@ public class Window extends JFrame {
    );
    protected static final EnFrString precision = new EnFrString(
       "You can set the format of the output file (TAB or TXT) in the option tab.\n"
-      +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.\n",
+      +"If the option 'translate directories' is enabled, the program will translate all the XML files in the specified directory.\n"
+      +"You can also set the behavior of the program concerning the fragments described in the XML files.",
       "Vous pouvez régler le format du fichier de sortie (TAB or TXT) dans l'onglet 'Options'.\n"
-      +"Si l'option 'traduire les dossiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié."
+      +"Si l'option 'traduire les dossiers' est activée, le programme traduira tous les fichiers XML dans le dossier spécifié.\n"
+      +"Vous pouvez aussi régler le comportement du programme concernant les fragments décrits dans les fichiers XML."
    );
    protected static final EnFrString credits = new EnFrString(
       "\u00A9 2017 S. Gustin",

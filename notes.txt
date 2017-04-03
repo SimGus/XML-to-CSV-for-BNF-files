@@ -54,6 +54,8 @@ TODOS
    DONE check for spaces in dates
    DONE make it deterministic by sorting the files
    DONE call garbage collection between file translations
+   DONE update info panel
+   DONE add 'notes : ' for 'note' tag -> IN XMLTag.getContentsFormatted
 
 BUGS
    FIX <lb/> not read

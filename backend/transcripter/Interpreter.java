@@ -176,7 +176,7 @@ public class Interpreter {
       tagTypesMap.put("materialspec", TagType.FEEDBACK);
       tagTypesMap.put("name", TagType.FEEDBACK);
       tagTypesMap.put("namegrp", TagType.FEEDBACK);
-      tagTypesMap.put("note", TagType.FEEDBACK);
+      tagTypesMap.put("note", TagType.CONTENT);
       tagTypesMap.put("notestmt", TagType.FEEDBACK);
       tagTypesMap.put("occupation", TagType.FEEDBACK);
       tagTypesMap.put("odd", TagType.FEEDBACK);
@@ -543,8 +543,8 @@ public class Interpreter {
             //don't signify an error for 'emph' because it can be everywhere
             if (!invalidArchLogged && !tag.getTagName().equals("emph")) {
                Log.err("The input file seems to have an invalid architecture. Tag '"+tag.getTagName()+"' is misplaced (content : '"+tag.getWritableContent()+"').");
-               window.addLog("The XML file contains a tag named '"+tag.getTagName()+"' in an unexpected place.",
-                  "Le fichier XML contient une balise nommée '"+tag.getTagName()+"' à un endroit inattendu.",
+               window.addLog("The XML file contains a tag named '"+tag.getTagName()+"' in an unexpected place. The translation might be incorrect for this particular file.",
+                  "Le fichier XML contient une balise nommée '"+tag.getTagName()+"' à un endroit inattendu. La traduction pourrait être incorrecte.",
                   WARNING);
                invalidArchLogged = true;
             }
