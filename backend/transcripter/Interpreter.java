@@ -812,7 +812,7 @@ public class Interpreter {
       //remove first spaces
       int i = 0;
       char c = coteValue.charAt(0);
-      while (c==' ' || c=='\t') {
+      while (c==' ' || c=='\t' || c=='\n') {
          if (++i >= coteValue.length())
             return null;
          c = coteValue.charAt(i);
