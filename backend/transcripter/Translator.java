@@ -63,6 +63,9 @@ public class Translator extends Thread {
       FileOpener.resetNbDisplayedErrors();
       Parser.resetNbDisplayedErrors();
       Log.log("Thread "+getName()+" over");
+
+      //------- Ask for garbage collection -----------
+      System.gc();
    }
 
    /*
@@ -135,15 +138,20 @@ public class Translator extends Thread {
 
             ArrayList<HashMap<String, String>> allFilesFields = new ArrayList<HashMap<String, String>>();//only for single output
 
-            int i=0;
-            Log.log("Beginning the translation of all files ("+filesInDir.length+" files)");
+            int i=0, nbFiles = filesInDir.length;
+            String inputFileName;
+            Log.log("Beginning the translation of all files ("+nbFiles+" files)");
             for (File inputFile : filesInDir) {
                i++;
                try {
+                  //-------- Ask for garbage collection once every 500 files translated --------------
+                  if (i % 500 == 0 && i > 0)
+                     System.gc();
+
                   //--------- Check if current file is an XML file --------------
                   String currentInputFilePath = inputFile.getAbsolutePath();
                   if (FileNamesInterpreter.isAnXMLFile(currentInputFilePath)) {
-                     Log.log("Translation of file '"+inputFile.getName()+"' ("+i+"/"+filesInDir.length+")");
+                     Log.log("Translation of file '"+inputFile.getName()+"' ("+i+"/"+nbFiles+")");
                      if (!FileOpener.isValidFileName(currentInputFilePath)) {
                         win.addLog("The path '"+currentInputFilePath+"' is not a valid file path. Moving on to the next file in the directory.",
                            "Le chemin '"+currentInputFilePath+"' n'est pas valide. Passage au fichier suivant dans le dossier.",
@@ -152,6 +160,11 @@ public class Translator extends Thread {
                      }
 
                      //------------ Translate current file --------------------
+                     inputFileName = FileNamesInterpreter.getFileOrDirName(currentInputFilePath);
+                     win.addLog("---------- Starting translation of the file '"+inputFileName+"' ("+i+" / "+nbFiles+"). ---------------",
+                        "---------- Lancement de la traduction du fichier '"+inputFileName+"' ("+i+" / "+nbFiles+"). ---------------",
+                        LogType.NORMAL
+                     );
                      if (!singleFileOutput) {
                         String currentOutputFilePath = FileNamesInterpreter.generateOutputFileName(currentInputFilePath, outputFilePath);
                         translate(currentInputFilePath, currentOutputFilePath);//translates and write the current file
@@ -229,11 +242,6 @@ public class Translator extends Thread {
          return;
       }
 
-      win.addLog("---------- Starting translation of the file '"+inputFileName+"' to the file '"+outputFileName+"'. ---------------",
-         "---------- Lancement de la traduction du fichier '"+inputFileName+"' vers le fichier '"+outputFileName+"'. ---------------",
-         LogType.NORMAL
-      );
-
       //============ Reset parser and interpreter =============
       Parser.reset();
       Interpreter.reset();
@@ -274,11 +282,6 @@ public class Translator extends Thread {
             "Le fichier spécifié '"+inputFileName+"' n'existe pas.", LogType.WARNING);
          return null;
       }
-
-      win.addLog("---------- Starting translation of the file '"+inputFileName+"'. ---------------",
-         "---------- Lancement de la traduction du fichier '"+inputFileName+"'. ---------------",
-         LogType.NORMAL
-      );
 
       //============ Reset parser and interpreter ===================
       Parser.reset();

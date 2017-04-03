@@ -53,7 +53,7 @@ TODOS
    DONE check for spaces around "%%"
    DONE check for spaces in dates
    DONE make it deterministic by sorting the files
-   TODO call garbage collection between file translations
+   DONE call garbage collection between file translations
 
 BUGS
    FIX <lb/> not read
@@ -67,7 +67,7 @@ BUGS
    FIX repeated call to JTextPane.insertString crashes the GUI
    FIX things repeated FRBNFEAD000070666 file:///home/simon/Dropbox/export_BAM_20160926/departement-mss/latin/nal/FRBNFEAD000070666.xml
    FIX some empty things are getting new lined CAUSED BY FRAGMENTS => NORMAL BEHAVIOR
-   BUG some old cote badly written (cf. mail)
+   BUG some old cote badly written (cf. mail) I DON'T FIND IT
    FIX spaces removed where they shouldn't (see XMLTag getContentsFormatted())
 
 CHECKS
