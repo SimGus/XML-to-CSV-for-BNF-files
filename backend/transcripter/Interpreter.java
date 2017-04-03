@@ -584,8 +584,11 @@ public class Interpreter {
             if (!specialTreatement(tag, window)) {
                String fieldName = fieldNames.get(tag.getTagName());
                String fieldValue = tag.getWritableContent();
-               if (fieldValue != null)
+               if (fieldValue != null) {
+                  if (tag.getTagName().equals("unitdate"))
+                     fieldValue = checkForSpacesInDates(fieldValue);
                   updateField(fieldName, fieldValue);
+               }
             }
             break;
          case FIELD_MAIN:
@@ -670,6 +673,7 @@ public class Interpreter {
     * If @currentTag must have a special treatement (several fields for different attributes of the tag),
     * put the different things in @translatedFields and return true
     * Else return false
+    * This is the case for tags with names : 'unitid', 'physfacet' and 'origination'
     */
    private static boolean specialTreatement(XMLPart currentTag, Window window) {
       Log.fct(5, "Interpreter.specialTreatement");
@@ -1013,16 +1017,62 @@ public class Interpreter {
       str = new String(tmp);
       tmp = new String();
 
-      //----------- Check for spaces before "siècle" -------------
-      i = 0;
+      return tmp;
+   }
+
+   /*
+    * Checks if there is a space before the words 'siècle', 'moitié' and 'quart'
+    * ! This will not work for 'quart' if it is the last word of @str without any char coming after it
+    * Returns a new @String with the spaces added or a copy of @str if nothing has been changed
+    * Returns @str if no checking has been made
+    */
+   private static String checkForSpacesInDates(String str) {
+      if (str == null || str.length() < 5)
+         return str;
+
+      String tmp = "";
+      char c, tmpC;
+      int i = 0;
       while (i < str.length()-5) {
          c = str.charAt(i);
-         if ((c=='s' || c=='S') && (str.charAt(i+1)=='i'||str.charAt(i+1)=='I') && (str.charAt(i+2)=='è'||str.charAt(i+2)=='È'||str.charAt(i+2)=='e'||str.charAt(i+2)=='E') && (str.charAt(i+3)=='c'||str.charAt(i+3)=='C') && (str.charAt(i+4)=='l'||str.charAt(i+4)=='L') && (str.charAt(i+5)=='e'||str.charAt(i+5)=='E')) {
-            if (tmp.length() > 0) {
-               tmpC = tmp.charAt(tmp.length()-1);
-               if (tmpC != ' ' && tmpC != '\t')
-                  tmp += " ";
-            }
+         //'siècle'
+         if (  (c=='s'||c=='S')
+            && (str.charAt(i+1)=='i'||str.charAt(i+1)=='I')
+            && (str.charAt(i+2)=='è'||str.charAt(i+2)=='È'||str.charAt(i+2)=='e'||str.charAt(i+2)=='E')
+            && (str.charAt(i+3)=='c'||str.charAt(i+3)=='C')
+            && (str.charAt(i+4)=='l'||str.charAt(i+4)=='L')
+            && (str.charAt(i+5)=='e'||str.charAt(i+5)=='E')) {
+               if (tmp.length() > 0) {
+                  tmpC = tmp.charAt(tmp.length()-1);
+                  if (tmpC != ' ' && tmpC != '\t')
+                     tmp += " ";
+               }
+         }
+         //'moitié'
+         else if (   (c=='m'||c=='M')
+                  && (str.charAt(i+1)=='o'||str.charAt(i+1)=='O')
+                  && (str.charAt(i+2)=='i'||str.charAt(i+2)=='I')
+                  && (str.charAt(i+3)=='t'||str.charAt(i+3)=='T')
+                  && (str.charAt(i+4)=='i'||str.charAt(i+4)=='I')
+                  && (str.charAt(i+5)=='é'||str.charAt(i+5)=='É'||str.charAt(i+5)=='e'||str.charAt(i+5)=='E')) {
+                     if (tmp.length() > 0) {
+                        tmpC = tmp.charAt(tmp.length()-1);
+                        if (tmpC != ' ' && tmpC != '\t')
+                           tmp += " ";
+                     }
+         }
+         //'quart'
+         else if (   (c=='q'||c=='Q')
+                  && (str.charAt(i+1)=='u'||str.charAt(i+1)=='U')
+                  && (str.charAt(i+2)=='a'||str.charAt(i+2)=='A')
+                  && (str.charAt(i+3)=='r'||str.charAt(i+3)=='R')
+                  && (str.charAt(i+4)=='t'||str.charAt(i+3)=='T')
+                  && (str.charAt(i+5)==' '||str.charAt(i+5)=='\t'||str.charAt(i+5)=='\n')) {//To avoid to take words as 'quartier' into account
+                     if (tmp.length() > 0) {
+                        tmpC = tmp.charAt(tmp.length()-1);
+                        if (tmpC != ' ' && tmpC != '\t')
+                           tmp += " ";
+                     }
          }
          tmp += c;
          i++;
