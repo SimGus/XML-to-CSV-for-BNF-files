@@ -946,12 +946,16 @@ public class Interpreter {
    }
 
    /*
-    * Checks if there are spaces around "%%" and adds them if there aren't
+    * Checks if there are spaces around "%%" in @str and adds them if there aren't
+    * If you can find "siècle" in @str and there is no spacxe in front of it, adds it
     */
    private static String checkForSpaces(String str) {
       if (str == null || str.length() <= 0)
          return "";
 
+         Log.log("check : "+str);
+
+      //----------- Check for spaces around "%%" ---------------
       String tmp = "";
       char c, tmpC;
       boolean nextShouldBeASpace = false;
@@ -985,6 +989,30 @@ public class Interpreter {
                nextShouldBeASpace = false;
             }
          }
+         i++;
+      }
+      tmp += str.charAt(i);
+
+      str = new String(tmp);
+      tmp = new String();
+
+      //----------- Check for spaces before "siècle" -------------
+      i = 0;
+      while (i < str.length()-5) {
+         c = str.charAt(i);
+         if ((c=='s' || c=='S') && (str.charAt(i+1)=='i'||str.charAt(i+1)=='I') && (str.charAt(i+2)=='è'||str.charAt(i+2)=='È'||str.charAt(i+2)=='e'||str.charAt(i+2)=='E') && (str.charAt(i+3)=='c'||str.charAt(i+3)=='C') && (str.charAt(i+4)=='l'||str.charAt(i+4)=='L') && (str.charAt(i+5)=='e'||str.charAt(i+5)=='E')) {
+            Log.log("found");
+            if (tmp.length() > 0) {
+               tmpC = tmp.charAt(tmp.length()-1);
+               if (tmpC != ' ' && tmpC != '\t')
+                  tmp += " ";
+            }
+         }
+         tmp += c;
+         i++;
+      }
+      while (i < str.length()) {
+         tmp += str.charAt(i);
          i++;
       }
 
