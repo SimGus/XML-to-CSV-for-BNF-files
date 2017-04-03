@@ -241,7 +241,7 @@ public class Interpreter {
       fieldNames.put("bibliography", "Bibliographie");//separate the fields by '/'
       fieldNames.put("altformavail", "Reproduction");
       // fieldNames.put("dao", "Digital archival object");//@Thomas "Je ne vois pas ce champ pour l'instant"
-      fieldNames.put("custodhist", "Contenu");//CHECK in contenu as well?
+      fieldNames.put("custodhist", "Provenance moderne");
 
       // fieldNames.put("abstract", "Abstract");
       // fieldNames.put("accessrestrict", "Conditions governing access");

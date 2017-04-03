@@ -74,6 +74,7 @@ BUGS
    FIX physdesc with a String inside doesn't understand emph
    FIX physdesc is being copied over and over again
    FIX physdesc containing irrelevant information
+   FIX custodhist inside content PUT IN 'Provenance moderne'
 
 CHECKS
    CHECK should I really have put custodhist in contenu?
