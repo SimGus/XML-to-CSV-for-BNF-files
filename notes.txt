@@ -66,6 +66,7 @@ BUGS
    FIX things repeated FRBNFEAD000070666 file:///home/simon/Dropbox/export_BAM_20160926/departement-mss/latin/nal/FRBNFEAD000070666.xml
    FIX some empty things are getting new lined CAUSED BY FRAGMENTS => NORMAL BEHAVIOR
    BUG some old cote badly written (cf. mail)
+   FIX spaces removed where they shouldn't (see XMLTag getContentsFormatted())
 
 CHECKS
    CHECK should I really have put custodhist in contenu?

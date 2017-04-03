@@ -43,6 +43,10 @@ public class XMLString implements XMLPart {
          System.out.print("  ");
    }
 
+   public String getWritableContent() {
+      return content;
+   }
+
    public String getContentsFormatted() {
       return content;
    }

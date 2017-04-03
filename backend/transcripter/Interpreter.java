@@ -519,7 +519,7 @@ public class Interpreter {
       switch (tagTypesMap.get(tag.getTagName())) {
          case CONTENT:
             if (!invalidArchLogged) {
-               Log.err("The input file seems to have an invalid architecture. Tag '"+tag.getTagName()+"' is misplaced (content : '"+tag.getContentsFormatted()+"').");
+               Log.err("The input file seems to have an invalid architecture. Tag '"+tag.getTagName()+"' is misplaced (content : '"+tag.getWritableContent()+"').");
                window.addLog("The XML file contains a tag named '"+tag.getTagName()+"' in an unexpected place.",
                   "Le fichier XML contient une balise nommée '"+tag.getTagName()+"' à un endroit inattendu.",
                   WARNING);
@@ -530,7 +530,7 @@ public class Interpreter {
             if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
                for (XMLPart currentTag : tag.getChildrenElements()) {
                   if (currentTag instanceof XMLString){
-                     String fieldValue = tag.getContentsFormatted();
+                     String fieldValue = tag.getWritableContent();
                      if (fieldValue != null)
                         updateField(fieldNames.get(tag.getTagName()), fieldValue);
                   }
@@ -548,7 +548,7 @@ public class Interpreter {
             break;
          case FEEDBACK:
             {
-               String fieldValue = tag.getContentsFormatted();
+               String fieldValue = tag.getWritableContent();
                if (!fieldValue.equals("") && !fieldValue.equals(" ") && !fieldValue.equals("\t")) {
                   fieldValue = "["+tag.getTagName()+"] "+fieldValue;
                   updateMainMaterialField(feedbackFieldName, fieldValue);
@@ -558,7 +558,7 @@ public class Interpreter {
          case FIELD:
             if (!specialTreatement(tag, window)) {
                String fieldName = fieldNames.get(tag.getTagName());
-               String fieldValue = tag.getContentsFormatted();
+               String fieldValue = tag.getWritableContent();
                if (fieldValue != null)
                   updateField(fieldName, fieldValue);
             }
@@ -566,7 +566,7 @@ public class Interpreter {
          case FIELD_MAIN:
             if (!specialTreatement(tag, window)) {
                String fieldName = fieldNames.get(tag.getTagName());
-               String fieldValue = tag.getContentsFormatted();
+               String fieldValue = tag.getWritableContent();
                if (fieldValue != null)
                   updateMainMaterialField(fieldName, fieldValue);
             }
@@ -597,7 +597,7 @@ public class Interpreter {
                if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
                   for (XMLPart currentTag : tag.getChildrenElements()) {
                      if (currentTag instanceof XMLString){
-                        String fieldValue = tag.getContentsFormatted();
+                        String fieldValue = tag.getWritableContent();
                         if (fieldValue != null)
                            updateField(fieldNames.get(tag.getTagName()), fieldValue);
                      }
@@ -659,7 +659,7 @@ public class Interpreter {
                if (attribute == null)
                   return false;//will get in @translatedFields the regular way
 
-               String fieldValue = tag.getContentsFormatted();
+               String fieldValue = tag.getWritableContent();
                if (fieldValue != null) {
                   if (attribute.equals("cote"))
                      updateField("Cote actuelle", fieldValue);
@@ -683,7 +683,7 @@ public class Interpreter {
                if (attribute == null)
                   return false;//will get in @translatedFields the regular way
 
-               String fieldValue = tag.getContentsFormatted();
+               String fieldValue = tag.getWritableContent();
                if (fieldValue != null) {
                   if (attribute.equals("décoration"))
                      updateField("Décor", fieldValue);
@@ -700,7 +700,7 @@ public class Interpreter {
             }
          // case "unitdate"://TODO
          //    {
-         //       String fieldValue = tag.getContentsFormatted();
+         //       String fieldValue = tag.getWritableContent();
          //       if (fieldValue.contains("(") && fieldValue.contains(")")) {
          //          if (fieldValue.contains("moitié")) {
          //             //TODO parse dates
@@ -726,7 +726,7 @@ public class Interpreter {
          //       return true;
          //    }
          case "origination":
-            updateField(fieldNames.get("origination"), tag.getContentsFormatted());
+            updateField(fieldNames.get("origination"), tag.getWritableContent());
             return true;
       }
       return false;
@@ -953,8 +953,6 @@ public class Interpreter {
       if (str == null || str.length() <= 0)
          return "";
 
-         Log.log("check : "+str);
-
       //----------- Check for spaces around "%%" ---------------
       String tmp = "";
       char c, tmpC;
@@ -1001,7 +999,6 @@ public class Interpreter {
       while (i < str.length()-5) {
          c = str.charAt(i);
          if ((c=='s' || c=='S') && (str.charAt(i+1)=='i'||str.charAt(i+1)=='I') && (str.charAt(i+2)=='è'||str.charAt(i+2)=='È'||str.charAt(i+2)=='e'||str.charAt(i+2)=='E') && (str.charAt(i+3)=='c'||str.charAt(i+3)=='C') && (str.charAt(i+4)=='l'||str.charAt(i+4)=='L') && (str.charAt(i+5)=='e'||str.charAt(i+5)=='E')) {
-            Log.log("found");
             if (tmp.length() > 0) {
                tmpC = tmp.charAt(tmp.length()-1);
                if (tmpC != ' ' && tmpC != '\t')

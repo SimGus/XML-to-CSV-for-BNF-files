@@ -29,6 +29,11 @@ public interface XMLPart {
 
    /*
     * Returns a String containing the interesting contents of the tag formatted
+    * without additionnal spaces
+    */
+   String getWritableContent();
+   /*
+    * Returns a String containing the interesting contents of the tag formatted
     */
    String getContentsFormatted();
 }

@@ -120,10 +120,23 @@ public class XMLTag implements XMLPart {
          System.out.print("  ");
    }
 
+   /*
+    * Returns the contents of @this and its children in a way you can write it in an output file
+    * and without spaces around the whole @String
+    */
+   public String getWritableContent() {
+      String answer = getContentsFormatted();
+      return trim(answer);
+   }
+
+   /*
+    * Returns the contents of @this and its children in a way you can write them in an output file
+    * by calling @getContentsFormatted recursively
+    */
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
          if (name.equals("lb"))
-            return "%%";
+            return " ";//return "%%";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
                return attributes.get("href");
@@ -174,7 +187,6 @@ public class XMLTag implements XMLPart {
       }
       // if (answer.endsWith(" %% "))
       //    answer = answer.substring(0, answer.length()-3);
-      answer = trim(answer);
 
       return answer;
    }
