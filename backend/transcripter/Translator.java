@@ -3,6 +3,7 @@ package backend.transcripter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.File;
+import java.util.Arrays;
 
 import util.Log;
 import gui.Window;
@@ -128,6 +129,7 @@ public class Translator extends Thread {
             );
 
             File[] filesInDir = FileOpener.getFilesInDirectory(inputFilePath);
+            Arrays.sort(filesInDir);
             if (filesInDir.length <= 0)
                win.addLog("The directory specified is empty.", "Le dossier spécifié est vide.", LogType.WARNING);
 

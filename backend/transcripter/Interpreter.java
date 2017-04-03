@@ -473,7 +473,7 @@ public class Interpreter {
          for (String currentFieldName : fieldsOrder) {
             currentValue = currentTranslation.get(currentFieldName);
             if (currentValue != null) {
-               currentValue = checkForSpaces(currentValue);
+               //currentValue = checkForSpaces(currentValue);//not used since it isn't very useful and takes too much time
                currentLine += currentValue;
             }
             currentLine += "\t";
@@ -948,6 +948,8 @@ public class Interpreter {
    /*
     * Checks if there are spaces around "%%" in @str and adds them if there aren't
     * If you can find "siècle" in @str and there is no spacxe in front of it, adds it
+    * Not used since I am the only one to add "%%" and I actually add " %% "
+    * Plus, it takes too much time to check for "siècle"
     */
    private static String checkForSpaces(String str) {
       if (str == null || str.length() <= 0)

@@ -52,6 +52,8 @@ TODOS
    DONE replace '%' by "%%"
    DONE check for spaces around "%%"
    DONE check for spaces in dates
+   DONE make it deterministic by sorting the files
+   TODO call garbage collection between file translations
 
 BUGS
    FIX <lb/> not read
