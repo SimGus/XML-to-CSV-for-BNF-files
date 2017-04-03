@@ -101,6 +101,12 @@ public class Translator extends Thread {
                   return;
                }
 
+               String inputFileName = FileNamesInterpreter.getFileOrDirName(inputFilePath);
+               win.addLog("---------- Starting translation of the file '"+inputFileName+"'. ---------------",
+                  "---------- Lancement de la traduction du fichier '"+inputFileName+"'. ---------------",
+                  LogType.NORMAL
+               );
+
                translate(inputFilePath, outputFilePath);
 
             } catch (IllegalArgumentException e) {

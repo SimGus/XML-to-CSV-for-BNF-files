@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 import util.Log;
+import util.Useful;
 import backend.parser.Parser;
 import backend.parser.XMLPart;
 import backend.parser.XMLTag;
@@ -35,6 +38,21 @@ public class Interpreter {
    private static final HashMap<String, String> fieldNames = new HashMap<String, String>(14);
    private static final HashMap<String, ParentFieldBehavior> parentFieldsBehaviors = new HashMap<String, ParentFieldBehavior>(18);
    private static ArrayList<String> oldCoteFieldNames = new ArrayList<String>(85);
+   private static final String[] infoTagNamesArray = {
+      "emph",
+      "persname",
+      "corpname",
+      "language",
+      "date",
+      "num",
+      "title",
+      "abbr",
+      "p",
+      "head",
+      "head01",
+      "head02"
+   };//an array containing every tag name that can be part of a physical description besides @XMLString.
+   public static final List<String> infoTagNamesList = Arrays.asList(infoTagNamesArray);//This is used only in @XMLTag.getPhysicalDescription
 
    private static ArrayList<HashMap<String, String>> translatedFields = new ArrayList<HashMap<String, String>>();
    private static int currentMapIndex = 0;
@@ -493,7 +511,11 @@ public class Interpreter {
          translateTags(currentRoot, 0, window, splitFragments);//Translates tags recursively
       }
 
+      // Log.log("Description physique bf "+1+" : '"+translatedFields.get(1).get("Description physique")+"'");
+
       fillMinorMaterial();
+
+      // Log.log("Description physique af "+1+" : '"+translatedFields.get(1).get("Description physique")+"'");
    }
 
    /*
@@ -518,7 +540,8 @@ public class Interpreter {
       }
       switch (tagTypesMap.get(tag.getTagName())) {
          case CONTENT:
-            if (!invalidArchLogged) {
+            //don't signify an error for 'emph' because it can be everywhere
+            if (!invalidArchLogged && !tag.getTagName().equals("emph")) {
                Log.err("The input file seems to have an invalid architecture. Tag '"+tag.getTagName()+"' is misplaced (content : '"+tag.getWritableContent()+"').");
                window.addLog("The XML file contains a tag named '"+tag.getTagName()+"' in an unexpected place.",
                   "Le fichier XML contient une balise nommée '"+tag.getTagName()+"' à un endroit inattendu.",
@@ -528,20 +551,22 @@ public class Interpreter {
             break;
          case CONTAINER:
             if (tag.getTagName().equals("physdesc")) {//'physdesc' can contain both values to translate to a field and containers that translate to fields
+               //------ Get the physical description -----
+               String physicalDescriptionValue = ((XMLTag) tag).getPhysicalDescription();
+               if (physicalDescriptionValue != null && physicalDescriptionValue.length() > 0)
+                  updateField(fieldNames.get(tag.getTagName()/*"physdesc"*/), physicalDescriptionValue);
+
+               //----- Translate the remainder of the contents of 'physdesc' ---------
+               TagType tmpType;
                for (XMLPart currentTag : tag.getChildrenElements()) {
-                  if (currentTag instanceof XMLString){
-                     String fieldValue = tag.getWritableContent();
-                     if (fieldValue != null)
-                        updateField(fieldNames.get(tag.getTagName()), fieldValue);
-                  }
-                  else
+                  tmpType = tagTypesMap.get(currentTag.getTagName());
+                  if (tmpType != TagType.IGNORE && tmpType != TagType.CONTENT && tmpType != TagType.FEEDBACK)
                      translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
                }
             }
             else {
-               for (XMLPart currentTag : tag.getChildrenElements()) {
+               for (XMLPart currentTag : tag.getChildrenElements())
                   translateTags(currentTag, currentDescriptionIndex, window, splitFragments);
-               }
             }
             break;
          case IGNORE://nothing to do
@@ -737,34 +762,25 @@ public class Interpreter {
     */
    private static void updateField(String fieldName, String fieldValue) {
       Log.fct(5, "Interpreter.updateField");
-      if (isEmpty(fieldValue))
+      if (Useful.isStringEmpty(fieldValue))
          return;
 
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
 
+      fieldValue = Useful.trim(fieldValue);
+
       String currentStoredValue = translatedFields.get(currentMapIndex).get(fieldName);
-      if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " %% " + fieldValue;
-      translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
-   }
-
-   private static boolean isEmpty(String str) {
-      if (str == null || str.length() <= 0)
-         return true;
-
-      //remove first spaces
-      int i = 0;
-      char c = str.charAt(0);
-      while (c==' ' || c=='\t') {
-         if (++i >= str.length())
-            return true;
-         c = str.charAt(i);
+      if (currentStoredValue != null) {
+         if (!currentStoredValue.equals("")) {
+            // System.out.println("=> '"+currentStoredValue+"'");
+            if (currentStoredValue.endsWith("%% "))
+               fieldValue = currentStoredValue + fieldValue;
+            else
+               fieldValue = currentStoredValue + " %% " + fieldValue;
+         }
       }
-      if (str.substring(i).length() <= 0)
-         return true;//normally never reached
-
-      return false;
+      translatedFields.get(currentMapIndex).put(fieldName, fieldValue);
    }
 
    /*
@@ -772,12 +788,13 @@ public class Interpreter {
     */
    private static void updateMainMaterialField(String fieldName, String fieldValue) {
       Log.fct(5, "Interpreter.updateMainMaterialField");
+
       if (translatedFields.size() == 0)
          translatedFields.add(new HashMap<String, String>());
 
       String currentStoredValue = translatedFields.get(0).get(fieldName);
       if (currentStoredValue != null)
-         fieldValue = currentStoredValue + " %% " + fieldValue;
+         fieldValue = currentStoredValue + " %% " + fieldValue;//not the same behavior as @updateField because you have to keep the empty string to keep track in the output file of which string corresponds to which in another field
       translatedFields.get(0).put(fieldName, fieldValue);
    }
 

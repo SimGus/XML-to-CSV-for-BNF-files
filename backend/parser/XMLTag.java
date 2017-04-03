@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 import util.Log;
+import util.Useful;
+import backend.transcripter.Interpreter;
 
 public class XMLTag implements XMLPart {
    protected static char stringSpacing = '\t';
@@ -126,7 +128,7 @@ public class XMLTag implements XMLPart {
     */
    public String getWritableContent() {
       String answer = getContentsFormatted();
-      return trim(answer);
+      return Useful.trim(answer);
    }
 
    /*
@@ -192,43 +194,23 @@ public class XMLTag implements XMLPart {
    }
 
    /*
-    * Return a string that is the same string as @str but without the whitespaces (' ', '\t' and '\n') at the beginning and the end
-    * Removes also the literal "\\n" and "\\t"
+    * If @this is a tag with @name == "physdesc", returns the content that is a physical description of the material,
+    * that is an @XMLString or part of the array @Interpreter.infoTagNames
+    * Returns @null if there is no content or if @this is not of name "physdesc"
     */
-   public static String trim(String str) {
-      if (str == null || str.length() <= 0)
-         return "";
+   public String getPhysicalDescription() {
+      if (name == null || !name.equals("physdesc"))
+         return null;
 
-      int i;
-      for (i=0; i<str.length(); i++) {
-         if (str.charAt(i) != ' ' && str.charAt(i) != '\t' && str.charAt(i) != '\n') {
-            if (i+1 >= str.length())
-               break;
-            if (str.charAt(i) == '\\' && (str.charAt(i+1) == 'n' || str.charAt(i+1) == 't')) {
-               i++;
-               continue;
-            }
-            else
-               break;
-         }
+      String answer = "";
+      for (XMLPart currentChild : childrenElements) {
+         if (currentChild instanceof XMLString || Interpreter.infoTagNamesList.contains(((XMLTag) currentChild).name))
+            answer += currentChild.getContentsFormatted();
       }
 
-      int j;
-      for (j=str.length()-1; j>=0; j--) {
-         if (str.charAt(j) != ' ' && str.charAt(j) != '\t' && str.charAt(j) != '\n') {
-            if (j-1 <= 0)
-               break;
-            if (str.charAt(j-1) == '\\' && (str.charAt(j) == 'n' || str.charAt(j) == 't')) {
-               j--;
-               continue;
-            }
-            else
-               break;
-         }
-      }
-
-      if (j<i)
-         return "";
-      return str.substring(i, j+1);
+      answer = Useful.trim(answer);
+      if (answer.equals(""))
+         return null;
+      return answer;
    }
 }
