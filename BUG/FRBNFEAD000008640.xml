@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000008640</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>
+          Latin
+          <num>17742</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France</publisher>
+        <date calendar="gregorian" era="ce">2008</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <langusage>
+        Notice rédigée en
+        <language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="otherlevel" otherlevel="recueil">
+    <did>
+      <unitid type="cote">Latin 17742</unitid>
+      <unitid type="ancienne cote">G (f. 1)</unitid>
+      <unitid type="ancienne cote">S. Martin 137 (contreplat sup.)</unitid>
+      <unitid type="ancienne cote">S. Martin 58</unitid>
+      <unittitle>Recueil composite.</unittitle>
+      <physdesc>
+        <physfacet type="reliure">Reliure parchemin (remploi de fragments d'un lectionnaire du XIIe s.) avec une étiquette collée aux armes de l'abbaye S. Martin-des-Champs, dos lacunaire.</physfacet>
+        <lb/>
+        <physfacet>Estampilles Bibliothèque nationale (Révolution), 1792-1802, modèle identique à Josserand-Bruno, 277 et pl. type 17 et Bibliothèque impériale (Second Empire), 1852-1870, modèle avec la mention « MSS. » proche de Josserand-Bruno, 289 et pl. type 36.</physfacet>
+      </physdesc>
+      <origination>
+        La première partie du ms. (ff. 1-105v) a été copiée à
+        <corpname>Saint-Pierre de Cluny</corpname>
+        , comme le prouve le contenu textuel (additions de première main au martyrologe primitif relatives à Cluny), sous l'abbatiat de saint Hugues, entre 1087 (translation du corps de saint Nicolas à Bari effectuée cette année-là et commémorée dans le martyrologe à la date du 9 mai) et 1095 (date de la dédicace de la nouvelle basilique de Cluny par Urbain II, passée sous silence dans le martyrologe, celle de saint Maïeul, dédicacée en 981, faisant seule l'objet d'une mention le 14 février). Selon J. Vezin, la copie pourrait en être due au moine
+        <persname role="0271">Durannus</persname>
+        , auquel saint Hugues concéda après sa mort un office double, en récompense du zèle avec lequel ce moine copia les livres liturgiques (Vezin, 1976, p. 411). Cette première partie du ms. a été adaptée très tôt à l'usage du prieuré clunisien de
+        <corpname role="4010">Saint-Martin-des-Champs</corpname>
+        (Paris), auquel le ms. a appartenu, ainsi qu'en témoignent les nombreuses additions dès le XIIe s., notamment au martyrologe (cf. f. 31v: dédicace de l'église S. Martin-des-Champs) et le contenu de la seconde partie du ms. rédigée à l'usage de ce prieuré (ff. 106-336v).
+      </origination>
+    </did>
+    <bibliography>
+      <p>
+        L. Delisle,
+        <emph render="italic">Cab. des mss.</emph>
+        , II, p. 240;  A. Molinier,
+        <emph render="italic">Les obituaires français du Moyen Âge</emph>
+        , Paris, 1890, n°59; Id.,
+        <emph render="italic">Obituaires de la province de Sens</emph>
+        , I, 1, Paris, 1892, p. 420-486; H. Quentin,
+        <emph render="italic">Les martyrologes historiques du Moyen Âge</emph>
+        , Paris, 1908 (2e éd.), p. 676; J. Depoin,
+        <emph render="italic">Recueil de chartes et documents de Saint-Martin-des-Champs</emph>
+        , Paris, 1913, p. 355-356;
+        <emph render="italic">Mss. datés</emph>
+        , III, 589; J. Vezin, "Un martyrologe copié à Cluny à la fin de l'abbatiat de saint Hugues",
+        <emph render="italic">Hommages à André Boutemy. Latomus</emph>
+        145 (1976), p. 404-412; J.-L. Lemaître (éd.),
+        <emph render="italic">Répertoire des documents nécrologiques français</emph>
+        , I, Paris, 1980, p. 589; M. Mostert,
+        <emph render="italic">The Library of Fleury</emph>
+        , Hilversum, 1989, p. 237.
+      </p>
+    </bibliography>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f662" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f663" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f664" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f665" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f666" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f667" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f668" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f669" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f670" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f671" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f672" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f673" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f674" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f675" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f676" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f677" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f678" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f679" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f680" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f681" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f682" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f683" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <p>
+        2010
+        <lb/>
+        <bibref>
+          Marianne BESSEYRE, "le lectionnaire de Cluny (NAL 2246). Un manuscrit de l'Office enluminé à la fin de l'abbatiat d'Hugues de Sémur" extrait de
+          <emph render="italic">Art de l'enluminure</emph>
+          , N°33, 2010, p.28-49, cité p. 32
+        </bibref>
+      </p>
+      <p>
+        2010
+        <lb/>
+        <bibref>
+          Charlotte DENOËL, "L'enluminure à Saint Pierre de Cluny entre la fin du Xè siècle et le début du XIIè siècle", extrait de
+          <emph render="italic">Art de l'enluminure</emph>
+          , N°33, 2010, p.4-27, cité p. 21
+        </bibref>
+      </p>
+    </bibliography>
+    <processinfo>
+      <p>Notice rédigée par Charlotte Denoël.</p>
+    </processinfo>
+    <altformavail>
+      <p>
+        Microfilm en noir et blanc. Cote de consultation en salle de lecture : MF 27177. Cote de la matrice (pour commander une reproduction) :
+        <num>R 10763</num>
+      </p>
+    </altformavail>
+    <dao href="http://gallica.bnf.fr/ark:/12148/btv1b9068480v"/>
+    <altformavail>
+      <p>Numérisation effectuée à partir d'un document de substitution</p>
+    </altformavail>
+    <dsc><c id="a100" level="item">
+  <did>
+    <unitid type="foliotation">ff. 1-105v</unitid>
+    <unittitle>I. <persname role="0070">Usuardus</persname>, <title type="">Martyrologium</title> (1-73v).   
+</unittitle>
+    <unittitle>
+      <title>Lectiones</title> (74-105v).</unittitle>
+    <unitdate calendar="gregorian" era="ce" normal="1301/1400">1087-1095</unitdate>
+    <physdesc>
+      <physfacet type="décoration">
+        <geogname role="5020"> Saint-Pierre de Cluny</geogname>. Initiales ornées de rinceaux tracés à l'encre rouge sur fond vert, bleu et pourpre. Cette décoration est typiquement clunisienne. </physfacet>
+      <lb/>
+      <physfacet type="support">Parch. </physfacet>
+      <extent>105 ff.</extent>
+      <dimensions>285 x 190 mm</dimensions>.</physdesc>
+  </did>
+  <scopecontent>
+    <blockquote>
+      <p>Les ff. 73v et 74 renferment des additions des XIIe et XIIIe s. relatives à Saint-Martin-des-Champs, et les ff. 103-105v diverses additions par des mains plus tardives.</p>
+    </blockquote>
+  </scopecontent>
+</c><c id="a101" level="item">
+  <did>
+    <unitid type="foliotation">ff. 106-336v </unitid>
+    <unittitle>II. <title>Varia ad usum Sancti Martini de Campis</title> (106-113v).</unittitle>
+    <unittitle>
+      <title>Regula sancti Benedicti</title> (114-144).</unittitle>
+    <unittitle>
+      <title>Preces diversae</title> (144-145v).</unittitle>
+    <unittitle>
+      <title>Obituarium Sancti Martini de Campis</title> (146-328).</unittitle>
+    <unittitle>
+      <title>Obituarium Sancti Martini de Campis</title> [19-31 décembre, avec des documents relatifs à Saint-Martin-des-Champs et un tableau de comput] (329-336v).</unittitle>
+    <unitdate calendar="gregorian" era="ce" normal="1101/1200">XVe-XVIe s. (ff. 106-113v)</unitdate>
+    <unitdate>XIVe s. (début) (ff. 114-144)</unitdate>
+    <unitdate>XIVe s. (ff. 144-145v)</unitdate>
+    <unitdate>XIVe s. (milieu) (ff. 146-328)</unitdate>
+    <unitdate>XIIe s. (fin) (ff. 329-336v)</unitdate>
+    <physdesc>
+      <physfacet type="décoration">
+        <geogname role="5020"> Saint-Martin-des-Champs</geogname>     (Paris). Décoration parisienne: ff. 114-144: initiale historiée représentant saint Benoît enseignant la Règle bénédictine à deux moines (114), initiales filigranées bleues et rouges; ff. 146-328: initiales filigranées bleues, violettes et rouges à bandes d'I.</physfacet>
+      <lb/>
+      <physfacet type="support">Parch. </physfacet>
+      <extent>230 ff.</extent>
+      <dimensions>285 x 190 mm</dimensions>.
+</physdesc>
+  </did>
+  <scopecontent>
+    <blockquote>
+      <p>Les ff. 145-328 sont la copie d'un nécrologe rédigé à Saint-Martin-des-Champs à la fin du XIIe s. et conservé à la Bibliothèque Mazarine (ms. 3347). De ce nécrologe proviennent les ff. 329-336v du ms. lat. 17742. Ceux-ci renferment des mentions de décès pour les derniers jours de l'année, du 19 au 31 décembre, ainsi que divers documents relatifs à Saint-Martin-des-Champs et un tableau des cycles de dix-neuf ans à partir de l'année 1175 (J. Vezin, 1976).<lb/>Le ms. BnF latin 17743 (XVIe s.) est une copie partielle du nécrologe conservé dans le présent ms.<lb/>Au  f. 321 figure l'obit d'un copiste de Saint-Martin-des-Champs, "<persname role="0270">Johannes de Fiscampno</persname> se vivente ibi se posuit qui scripsit istud marthologium" [Jean de Fécamp] (XVI. kal. jan.). Ailleurs dans l'obituaire sont mentionnés d'autres noms de donateurs de livres au prieuré: "<persname role="4040">Moyses</persname> pro quo habuit huius ecclesia unum Matheum glosatum et quedam decreta et unum calicem" (III. kal. feb., 160v), "<persname role="4040">Petrus de Parisii</persname> qui dedit nobis unum antiphonarium, unum collectarium, unum graduale et unum psalterium" (XVII. kal. apr.183), "<persname role="4040">Magister Martellus</persname>, doctor in sacra theologia. Ipse dedit nobis omnes suos libros" (I. non. apr., 175), "<persname role="3120">Johannes Arvernentius</persname>(...). Item fecit fieri quatuor antiphonaria, quatuor psalteria, quatuor gradualia, unum missale, unum collectarium..." (VI. id. julii, 241).<lb/>Au bas du f. 334, on lit cette addition du XIIIe s. relative à l'entretien de la bibliothèque de Saint-Martin-des-Champs: "Sciant presentes et futuri Christi fideles quod cantor ecclesie Beati Martini de Campis Parisiensis tenetur religare et reparare omnia gradalia, psal[teria] et antiphonaria tantummodo. Sacrista ejusdem ecclesie tenetur [religare et] reparare omnia missalia et textos argenteos que sunt in [ecclesia]. [Armarius?] eiusdem loci tenetur religare et reparare biblias, ev[angelia], [homili]aria, passionalia et omnes alios libros qui sunt [in armario?]."</p>
+    </blockquote>
+  </scopecontent>
+  <bibliography>
+    <p>2011<lb/>
+      <bibref>Charlotte DENOËL, "La bibliothèque médiévale de Saint-Martin-des-Champs à Paris", extrait de<emph render="italic">Scriptorium</emph>, ISSN 0036-9772, 65, 2011, p. 67-108 ; cité p. 78, p. 83, p. 87, p. 91 ; ill. pl. 31</bibref>
+    </p>
+  </bibliography>
+</c></dsc>
+  </archdesc>
+</ead>

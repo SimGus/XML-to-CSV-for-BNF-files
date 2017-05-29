@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="N0000000">
+  <eadheader>
+    <eadid>FRBNFEAD000012427</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>
+          Latin
+          <num>17768</num>
+        </titleproper>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France</publisher>
+        <date>2008</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <langusage>
+        Notice rédigée en
+        <language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">Latin 17768</unitid>
+      <unitid type="ancienne cote ?">VII</unitid>
+      <unitid type="ancienne cote XVIIIe s.">Corbie 125</unitid>
+      <unitid type="ancienne cote XIXe s.">Corbie 3</unitid>
+      <unittitle>
+        <persname role="0070">Ado</persname>
+        ,
+        <title linktype="simple">Martyrologium</title>
+        (4-42v).
+      </unittitle>
+      <unittitle>
+        <title linktype="simple">Obituarium monasterii Sancti Petri Corbeiensis</title>
+        (44-103v).
+      </unittitle>
+      <unittitle>
+        <title>Evangelia</title>
+        (107-122v).
+      </unittitle>
+      <unittitle>
+        <title linktype="simple">Regula sancti Benedicti</title>
+        (123-151).
+      </unittitle>
+      <unitdate calendar="gregorian" era="ce">XIIe s. (1173-1186/7).</unitdate>
+      <physdesc>
+        <physfacet type="écriture">
+          <geogname>Saint-Pierre de Corbie</geogname>
+          .   Le ms. a été copié entre 1173, date de la canonisation de saint Thomas Becket, mentionnée au f. 5, et 1186-1187, dates respectives de l'anniversaire de Louis VII et de la mort de Gosso, abbé de Corbie, toutes deux ajoutées dans l'obituaire aux ff. 106 et 51.
+          <lb/>
+          Le principal copiste,
+          <persname role="0270">Hélie</persname>
+          , a laissé un colophon au f. 151: "Hanc regulam scripsit Helyas".
+          <lb/>
+        </physfacet>
+        <physfacet type="décoration">
+          <lb/>
+          <lb/>
+          Miniatures  : Circoncision (5v), mois de février (8v).
+          <lb/>
+          <lb/>
+          Initiales historiées : un personnage (Hélie?) et la Nativité (4v), mois de mars (f. 11), avril (f. 13v), mai (f. 16v), juin (f. 19), juillet (f. 22v), août (f. 26), septembre (f. 30v), octobre (f. 33v), novembre (f. 37), décembre (f. 40), saint Benoît et un moine (f. 123).
+          <lb/>
+          <lb/>
+          Grande initiale ornée de motifs végétaux (4), initiales filigranées bleues, rouges, vertes (passim).
+          <lb/>
+          <lb/>
+          Technique: or, peinture à la gouache.
+        </physfacet>
+        .
+        <lb/>
+        <lb/>
+        <physfacet type="support">Parch.</physfacet>
+        <extent>158 ff.</extent>
+        <dimensions>320 x 220 mm</dimensions>
+        <lb/>
+        <physfacet type="reliure">Reliure XIXe s. veau raciné, dos de peau rouge au chiffre de Charles X.</physfacet>
+        <lb/>
+        <physfacet type="sceau">Estampilles Bibliothèque royale (Restauration), 1815-1830, modèle identique à Josserand-Bruno, 281 et pl. type 20 et Bibliothèque impériale, 1852-1870, modèle avec la mention "MSS." proche de Josserand-Bruno, 289 et pl. type 36.</physfacet>
+      </physdesc>
+      <origination>
+        Le ms. provient de l'abbaye
+        <corpname role="4010">Saint-Pierre de Corbie</corpname>
+        , où il a été copié.  Il porte l'ancienne cote de Corbie "125" au f. 1.
+        <lb/>
+        Lors de la Révolution, le ms.  fut porté en 1791 à la bibliothèque d'Amiens, puis, en 1803, à la Bibliothèque nationale avec 74 autres mss. de même provenance. C'est à la suite de son entrée à la B.N. qu'il a reçu la cote "Corbie 3".
+      </origination>
+    </did>
+    <scopecontent>
+      <blockquote>
+        <p>
+          <lb/>
+          Au f. 1v figure une note du XVIIIe s. sur le ms.: "Contenta in hic codice 125".
+          <lb/>
+          Le ms. contient différentes additions:
+          <lb/>
+          - ff. 2v-3v : actes divers relatifs à Corbie (XIIIe s.)
+          <lb/>
+          - ff. 42v-43v: concessions de confraternités personnelles (XIIe-XIIIe s.)
+          <lb/>
+          - ff. 104-106: copies de bulles et d'actes divers (XIIe s.)
+          <lb/>
+          - f. 122v: confraternité et bulle d'Alexandre III
+          <lb/>
+          - ff. 151v-153: copies d'actes de confraternité
+          <lb/>
+          - ff. 153v-154: liste des évêques d'Amiens
+          <lb/>
+          - ff. 154v-155: liste des abbés de Corbie, avec la date de leur obiit
+          <lb/>
+          - ff. 155v-158: additions diverses (bulle d'Innocent III, concessions de confraternités, actes d'Hugues, comte de Saint-Pol, état des droits de l'abbaye, sentence de Philippe III entre l'abbé, d'une part, et le maire et les jurés de Corbie, d'autre part.
+          <lb/>
+        </p>
+      </blockquote>
+    </scopecontent>
+    <bibliography>
+      <bibref>
+        <lb/>
+        L. Delisle,
+        <emph render="italic">Cab. des mss.</emph>
+        , II, p. 114, 124, III, p. 377;
+      </bibref>
+      <bibref>
+        <lb/>
+        A. Molinier,
+        <emph render="italic">Les obituaires français</emph>
+        , Paris, 1890, n°252;
+      </bibref>
+      <bibref>
+        <lb/>
+        <emph render="italic">Colophons des mss. occidentaux</emph>
+        , II, n°6278;
+      </bibref>
+      <bibref>
+        <lb/>
+        <emph render="italic">Mss. datés</emph>
+        , III, p. 591;
+      </bibref>
+      <bibref>
+        <lb/>
+        C. de Mérindol,
+        <emph render="italic">La production des livres peints à l'abbaye de Corbie au XIIe siècle</emph>
+        , Université de Lille III, 1976, II, p. 1004-1006 et I, passim;
+      </bibref>
+      <bibref>
+        <lb/>
+        Id., "Dessins des églises de l'abbaye de Corbie dans deux manuscrits du XIIe siècle",
+        <emph render="italic">Bulletin de la société nationale des antiquaires de France 1982</emph>
+        , p. 155-162, cité p. 156 (note 11 et 12);
+        <emph render="italic">[Mss. 8° Pièce 4026]</emph>
+      </bibref>
+      <bibref>
+        <lb/>
+        Id., "Les peintres de l'abbaye de Corbie au XIIe siècle",
+        <emph render="italic">Artistes, artisans et production artistique au Moyen Âge, colloque international de l'université de Rennes II, 2-6 mai 1993</emph>
+        , éd. X. Barral y Altet, Paris, 1986, p. 312, 316, 320, 321...;
+      </bibref>
+      <bibref>
+        <lb/>
+        J.-L. Lemaître,
+        <emph render="italic">Répertoire des documents nécrologiques français</emph>
+        , Paris, 1980, II, nécrologe de l'abbaye Saint-Pierre de Corbie (fin XIIes), recensé p. 858-859, n°2009;
+        <emph render="italic">[Mss. 4° Impr. 1310 VII (2) — Usuel Salle 577]</emph>
+      </bibref>
+      <bibref>
+        <lb/>
+        <emph render="italic">Clavis scriptorum latinorum medii aevi. Auctores Galliae 735-987</emph>
+        , I. Indices, éd. M.-H. Jullien et F. Perelman, Turnhout, 1994, p. 111;
+        <emph render="italic">[Mss. T 24]</emph>
+      </bibref>
+      <bibref>
+        <lb/>
+        <emph render="italic">Un texte en contexte. Les Flores paradisi et le milieu culturel de Villers-en-Brabant dans la première moitié du 13e siècle</emph>
+        . Ed. T. Falmagne, Turnhout, 2001, cité p. 180;
+        <emph render="italic">[Tolbiac 2003-17852]</emph>
+      </bibref>
+    </bibliography>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f427" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f864" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f865" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f866" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f867" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f868" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f869" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f870" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f871" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f872" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f873" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f874" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f875" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f876" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f877" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f878" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f879" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f880" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f881" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f882" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f883" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f884" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140129j.image.f885" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <p>
+        2012
+        <lb/>
+        <bibref>
+          Erik Kwakkel, Rosamond McKitterick et Rodney Thomson,
+          <emph render="italic">Turning Over a New Leaf : Change and Development in the Medieval Book</emph>
+          , Leiden University Press, 2012
+        </bibref>
+      </p>
+      <p>
+        2008
+        <lb/>
+        <bibref>
+          Jean-François Nieus,
+          <emph render="italic">Les chartes des comtes de Saint-Pol</emph>
+          , Turnhout : Brepols, 2008
+        </bibref>
+      </p>
+    </bibliography>
+    <processinfo>
+      <p>Notice rédigée par Charlotte Denoël.</p>
+    </processinfo>
+    <altformavail>
+      <p>
+        Microfilm en noir et blanc. Cote de consultation en salle de lecture : MF 27652. Cote de la matrice (pour commander une reproduction) :
+        <num>R 45444</num>
+      </p>
+    </altformavail>
+  <dsc/></archdesc>
+</ead>

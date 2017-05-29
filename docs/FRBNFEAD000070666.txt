@@ -1,0 +1,2 @@
+﻿Reliure	Support	Langue	Contenu	Nombre de feuillets	Nom BNF	Dimensions	DEBUG	Siècle	Cote actuelle
+Demi-reliure.	Parchemin.	Manuscrit en latin	Fragmenta Missalis ad usum Ebroicensem et aliorum aliquot liturgicorum codicum.	37 et 21 feuillets.	FRBNFEAD000070666	360 × 255 mm. et dimensions diverses	[acqinfo] Don de M. le chanoine Porée.	XIIe-XVe siècle	NAL 2463

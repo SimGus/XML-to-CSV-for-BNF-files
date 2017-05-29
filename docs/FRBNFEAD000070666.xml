@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000070666</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>NAL <num>2463</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France.</publisher>
+        <date calendar="gregorian" era="ce">2009</date>
+      </publicationstmt>
+      <notestmt>
+        <note>
+          <p>Notice créée à partir de la compilation dans un tableur Excel des données des Notices des manuscrits Nouvelles acquisitions latines 1 à 2660 et NAL 3001 à 3174, publiées dans : Bibliothèque de l'Ecole des Chartes, t. 89 (1928), p. 252-253.</p>
+        </note>
+      </notestmt>
+    </filedesc>
+    <profiledesc>
+      
+      <langusage>Notice rédigée en<language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">NAL 2463</unitid>
+      <unittitle>Fragmenta Missalis ad usum Ebroicensem et aliorum aliquot liturgicorum codicum.</unittitle>
+      <unitdate calendar="gregorian" era="ce" normal="1101/1500">XII<emph render="super">e</emph>-XV<emph render="super">e</emph> siècle</unitdate>
+      <physdesc>
+        <physfacet type="support">Parchemin.</physfacet>
+        <extent>37 et 21 feuillets.</extent>
+        <dimensions>360 × 255 mm. et dimensions diverses</dimensions>
+        <physfacet type="reliure">Demi-reliure.</physfacet>
+      </physdesc>
+      <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+      </langmaterial>
+      <repository>
+        <corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname>
+      </repository>
+    </did>
+    <acqinfo>
+      <p>Don de M. le chanoine Porée.</p>
+    </acqinfo>
+  <dsc/></archdesc>
+</ead>

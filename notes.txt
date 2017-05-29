@@ -57,6 +57,9 @@ TODOS
    DONE update info panel
    DONE add 'notes : ' for 'note' tag -> IN XMLTag.getContentsFormatted
 
+   DONE add space in front of everything
+   DONE manage dates differently since spaces in XML files isn't coherent
+
 BUGS
    FIX <lb/> not read
    FIX twice french in drop down menu at the start of the program

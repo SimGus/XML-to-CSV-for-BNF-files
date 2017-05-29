@@ -1,0 +1,2 @@
+﻿DEBUG	Cote actuelle
+[abstract] T1 (Test 1) This is a date. But in several paragraphs. To test the program... A little more. Is there a space test ? machinsiècle 2Siècle	

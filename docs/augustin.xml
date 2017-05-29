@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid countrycode="FR" mainagencycode="751021006">FRBNFEAD000004252</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Latin <num>17398</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France</publisher>
+        <date calendar="gregorian" era="ce">2007</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+
+      <langusage>Notice rédigée en<language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">Latin 17398</unitid>
+      <unitid type="ancienne cote">Navarre 98</unitid>
+      <unittitle>
+        <persname role="0070">S. Augustinus</persname>, <title linktype="simple" type="">De regula vere fidei </title> (1-12), <title linktype="simple" type="">De fide et operibus </title> (12-24), <title linktype="simple" type="">De predestinatione divina</title> (24-29v), <title linktype="simple" type="">De presentia Dei </title> (29v-35v), <title linktype="simple" type="">De natura et gratia </title> (35v-50v), <title linktype="simple" type="">Annotationes in Job  </title> (51-74v), <title linktype="simple" type="">De mendacio  </title> (75-86), <title linktype="simple" type="">Contra Pelagianos et Celestianos hereticos </title> (86-102), <title linktype="simple" type="">De Magistro </title> (102-112), <title linktype="simple" type="">De musica </title> (112-124v), <title linktype="simple" type="">De beata vita </title> (125-132), <title linktype="simple" type="">De moribus catholice eccelesie </title> (132v-147v).</unittitle>
+      <unitdate calendar="gregorian" era="ce">XIIIe s. (2nd quart)</unitdate>
+      <physdesc>
+        <physfacet type="décoration">France (Paris). Initiales filigranées bleues et rouges, les plus grandes puzzle.</physfacet>
+        <extent> 147 ff. </extent>
+        <dimensions>330 x 220 mm  </dimensions>
+        <physfacet type="support">Parch. </physfacet>
+        <physfacet type="reliure">Demi-reliure maroquin rouge au chiffre RF signée «<persname role="4140">Ottmann-Duplanil</persname> 1851 ». </physfacet>
+        <physfacet type="sceau">Estampilles Bibliothèque nationale (Révolution), 1792-1802, modèle identique à Josserand-Bruno, 277 et pl. type 17 et Bibliothèque impériale (Second Empire), 1852-1870, modèle avec la mention « MSS. » proche de Josserand-Bruno, 289 et pl. type 36.</physfacet>
+      </physdesc>
+      <origination>
+        <corpname role="4010">Collège de Navarre</corpname>.<lb/>Ex-libris « Pro libraria regalis collegii Campaniae alias Navarrae» (XVIe s., f. 1).</origination>
+    </did>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401285.image.f224" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401285.image.f225" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+    </bibliography>
+    <processinfo>
+      <p>Notice rédigée par Charlotte Denoël.</p>
+    </processinfo>
+    <dsc/>
+  </archdesc>
+</ead>

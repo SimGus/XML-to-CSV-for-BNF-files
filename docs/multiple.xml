@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<ead id="d0e1">
+   <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+      <eadid>FRBNFEAD000089262</eadid>
+      <filedesc>
+         <titlestmt>
+            <titleproper>Ms-<num>7908</num>-7922. Papiers de Thoré-Bürger (1828-1869)</titleproper>
+            <subtitle>Notice descriptive.</subtitle>
+         </titlestmt>
+         <publicationstmt>
+            <publisher>Bibliothèque nationale de France</publisher><date calendar="gregorian" era="ce">2008</date>
+         </publicationstmt>
+         <notestmt>
+            <note>
+               <p>
+                  Notice créée à partir de la conversion rétrospective du Catalogue général des manuscrits des bibliothèques publiques de France,
+                  départements, tome XLV : Paris, Arsenal, Mazarine, Sainte-Geneviève ; Besançon ; Aix-en-Provence. Paris : Plon, Nourrit et Cie, 1915.
+               </p>
+            </note>
+         </notestmt>
+      </filedesc>
+      <profiledesc>
+         <creation audience="internal">
+            Cette notice a été encodée en XML conformément à la DTD EAD (version 2002).
+            <lb/>La conversion a été réalisée par la société Archproteus, en <date calendar="gregorian" era="ce">2008</date>
+         </creation>
+         <langusage>Notice rédigée en<language langcode="fre">français</language></langusage>
+      </profiledesc>
+   </eadheader>
+   <archdesc level="otherlevel" otherlevel="groupe-de-notice">
+      <did>
+         <unitid type="cote">Ms-7908-7922</unitid>
+         <unittitle>
+            Papiers de <persname authfilenumber="ark:/12148/cb12737137k" normal="Thoré, Théophile (1807-1869)" role="" source="OPP">Thoré-Bürger</persname>, <date normal="1828/1869">1828-1869</date>
+         </unittitle>
+         <unitdate calendar="gregorian" era="ce" normal="1801/1900">XIX<emph render="super">e</emph> siècle</unitdate>
+         <langmaterial><language langcode="fre">français</language></langmaterial>
+         <physdesc>
+            <physfacet type="support">Papier. </physfacet>
+            <extent>Quinze cartons</extent>
+         </physdesc>
+         <repository>
+            <corpname authfilenumber="751021002" source="RCR">Bibliothèque de l'Arsenal</corpname>
+            <address><addressline>1 Rue de Sully</addressline><addressline>75004 Paris</addressline><addressline>Tél. : 01.53.79.39.04</addressline><addressline>http://www.bnf.fr</addressline></address>
+         </repository>
+      </did>
+      <userestrict><p>Toute publication de documents inédits doit être notifiée à l'établissement.</p></userestrict>
+      <prefercite><p>Bibliothèque nationale de France. Bibliothèque de l'Arsenal, Ms-X, fol. Y.</p></prefercite>
+      <bibliography>
+         <bibref>Sancipriano, Mario, <emph render="italic">Lamennais in Italia : autorita e liberta nel pensiero filosofico-religioso del Risorgimento</emph>, Milan, Marzorati, 1973, [manuscrit 7916]. </bibref>
+      </bibliography>
+      <controlaccess><persname>Thoré-Bürger (Leidaes)</persname></controlaccess>
+      <dsc>
+         <c id="d0e70" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7908</unitid>
+               <unittitle>I. Papiers de famille</unittitle>
+               <physdesc><extent>53 pièces</extent></physdesc>
+            </did>
+         </c>
+         <c id="d0e81" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7909</unitid>
+               <unittitle>II. Lettres de Thoré-Bürger à sa mère, <date normal="1828/1859">1828-1859</date></unittitle>
+               <physdesc><extent>162 lettres</extent></physdesc>
+            </did>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname></controlaccess>
+         </c>
+         <c id="d0e95" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7910</unitid>
+               <unittitle>
+                  III. Correspondance de Milady. — Lettres de et à Milady, <date normal="1853/1854">1853-1854</date>.
+                   — Milady à Thoré, <date normal="1859/1860">1859-1860</date>.
+                    — Firmin Barrion, Félix et Paul Barrion à Thoré et à Milady.
+                     — Claire Barrion à Milady — Maurice du Seigneur à Thoré et à Milady.
+                      — Paul Lacroix à Panizzi. — Emmanuel Mennessier-Nodier et Ernestine Panckoucke à Madame Paul Lacroix.
+                       — Walckenaer à Paul Lacroix. — Willemot à Madame Paul Lacroix. — 2 lettres de Rolland.
+               </unittitle>
+            </did>
+            <scopecontent>
+               <p>189 lettres</p>
+            </scopecontent>
+            <controlaccess><persname>Barrion (Claire)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Barrion (Félix)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Barrion (Firmin)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Barrion (Paul)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Du Seigneur (Maurice)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lacroix (Mme Paul)</persname><name>Lettres à elle adressées</name></controlaccess>
+            <controlaccess><persname>Lacroix (Paul)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lacroix (Paul)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Mennessier-Nodier (Emmanuel)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Panckoucke (Ernestine)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Panizzi</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Rolland</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Walckenaer</persname><name>Lettre</name></controlaccess>
+         </c>
+         <c id="d0e173" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7911</unitid>
+               <unittitle>IV. Correspondance de Thoré avec Delhasse, <date normal="1839/1868">1839-1868</date></unittitle>
+               <physdesc><extent>308 lettres</extent></physdesc>
+            </did>
+            <controlaccess><persname>Delhasse</persname><name>Correspondance avec Thoré</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+         </c>
+         <c id="d0e194" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7912</unitid>
+               <unittitle>V. Correspondance adressée à Thoré. </unittitle>
+            </did>
+            <scopecontent>
+               <p>
+                  Lettres de Barbier, Barroilhet (11), L. Berardi (4), Berru (5), Charles Blanc (4), Bordillon,
+                  Victor Borie, Ch. Bouchet (2), Brissot-Thivars (2), G. Brunet (28), Burty (20, dont 1 à Double),
+                  Désiré Cadilhac, Caudebec, Champfleury, G. Champseix (4), Chaumelin (2), Chintreuil, L. Coignard,
+                  A. Conrad, Léopold Double (12, dont 1 à Féval, 1 à Sablon et 1 de Sablon à Double), Doussault, Dupoty (4),
+                  Elchoët, Fabre d'Olivet, Léopold Flameng (2), Émile Galichon (4), Gally, Grubbel, Baptistin Guilhiermoz (9).
+                  — 127 lettres (certaines sont des copies).
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Barroilhet</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Berardi (L.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Berru</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Blanc (Charles)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Bordillon</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Borie (Victor)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Bouchet (Ch.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Brissot-Thivars</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Brunet (Gustave)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Burty (Philippe)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Cadilhac (Désiré)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Caudebec</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Champfleury</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Champseix (G.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Chaumelin</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Chintreuil</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Coignard (L.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Conrad (A.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Double (Léopold)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Double (Léopold)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Doussault</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Dupoty</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Elchoët</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Fabre d'Olivet</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Féval (Paul)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Flameng (Léopold)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Galichon (Émile)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Gally</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Grubbel</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Guilhiermoz (Baptistin)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Sablon</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Sablon</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+         </c>
+         <c id="d0e370" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7913</unitid>
+               <unittitle>VI. Correspondance adressée à Thoré</unittitle>
+            </did>
+            <scopecontent>
+               <p>
+                  Lettres de Hittorf, Arsène Houssaye (2), Édouard Houssaye (15), C. Jarral, Jeanru (2), V. Joguet,
+                  Émile La Bédollière, Th. Lacordaire, Ch. Lafond (2), A. Laroche, Laviron, Émile Leclercq (2),
+                  Lehmann (3), A. Lemaître, Alexandre Le Noble (2), Marie de l'Épinay, Pedro de Madrazo (5), V. Mangin,
+                  Henri Marcette (2), Marcotte, H. Martin, E.-A. Mayer, A. Merruau, le prince de Metternich, J. Michelet,
+                  Ch. Nisard, Léon Paillet, Pascal, A. de Pastoret, Paulin (5), Pector (2), Philipon de la Madeleine, Pichon,
+                  E. Piot (5), Ed. Plouvier (sonnet), Jules Salmson (2), Lord Seymour, Alfred Tattet (2),
+                  Charles de Tournemine (13), Traubé (3), Flora Tristan (2), Turgot (2), Van Praet, Van Tenac,
+                  Docteur Verhaeghe (4), L. Véron, Louis Viardot (5), F. Villot (3), J. Voisin, Anonymes et illisibles. — 109 lettres.
+               </p>
+            </scopecontent>
+            <controlaccess><persname>La Bédollière (Émile de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Hittorf</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Houssaye (Arsène)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Houssaye (Édouard)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Jarral (C.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Jeanru</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Joguet (V.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lacordaire (Th.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lafond (Ch.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Laviron (Jean-Étienne)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Le Noble (Alexandre)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Leclercq (Émile)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Lehmann</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>L'Epinay (Marie de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Madrazo (Pedro de)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Mangin (V.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Marcette (Henri)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Marcotte</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Martin (Henri), peintre</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Mayer (E.-A.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Merruau (A.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Metternich (Prince de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Michelet (Jules)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Nisard (Charles)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Paillet (Léon)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Pascal (Blaise)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Pastoret (A. de)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Paulin</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Pector</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Philipon de la Madeleine</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Pichon</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Piot (E.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Plouvier (Ed.)</persname><name>Sonnet</name></controlaccess>
+            <controlaccess><persname>Salmson (Jules)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Seymour (Lord)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Tattet (Alfred)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Tournemine (Charles de)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Traube</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Tristan (Flora)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Turgot</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Van Praet</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Van Tenac</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Verhaeghe (Docteur)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Véron (L.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Viardot (Louis)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Villot (F.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Voisin (Joseph)</persname><name>Lettre</name></controlaccess>
+         </c>
+         <c id="d0e621" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7914</unitid>
+               <unittitle>VII. Lettres relatives au journal <emph render="italic">la Démocratie</emph>, <date normal="1839/1840">1839-1840</date></unittitle>
+            </did>
+            <c id="d0e632" level="otherlevel" otherlevel="sous-notice">
+               <did>
+                  <unittitle>1. Lettres</unittitle>
+                  <physdesc><extent>47 lettres</extent></physdesc>
+               </did>
+               <scopecontent>
+                  <p>
+                     Lettres de Thoré à Alphonse Karr et réponse (3 lettres), Thoré au gérant du journal
+                     <emph render="italic">la Presse,</emph> Schœlcher à Thoré (36 lettres), Thoré à Schœlcher (11 lettres),
+                     Jules Belin à Celliez, A. Billiard à Thoré, Blaize, Brothier à Thoré, Cahaigne à Schœlcher,
+                     Henry Celliez à Delhasse et à Schœlcher (2), Celliez à Thoré (4), Cormier à Thoré (2), H. Courcelle-Seneuil à Celliez,
+                     Charles Didier à Schœlcher, Duché à Thoré, Marc Dufraisse à Thoré, L. Dussieux à Thoré (3), Th. Fabas à Thoré (2),
+                     H. Fortoul, Benedict Gallet à Duclerc, Napoléon Gallois à Celliez, Gally à Celliez, Gervais (de Caen), Guéret à Thoré,
+                     Havard à Schœlcher, Jahyer à Celliez, Joguet à Celliez, Joguet à Thoré, Jullien à Thoré, Aug. Luchet à Celliez,
+                     Luchet à Thoré, Ch. Mennesson à Celliez, Montaudon à Thoré, Peauger à Thoré, Romieu à Thoré, (2 lettres),
+                     Testelin à Bianchi, Thoré à Celliez (3), Anonyme
+                  </p>
+               </scopecontent>
+               <controlaccess><persname>Belin (Jules)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Bianchi</persname><name>Lettre à lui adressée</name></controlaccess>
+               <controlaccess><persname>Billiard (A.)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Blaize</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Brothier</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Cahaigne</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Celliez (Henry)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Celliez (Henry)</persname><name>Lettres à lui adressées</name></controlaccess>
+               <controlaccess><persname>Cormier</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Courcelle-Seneuil (H.)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+               <controlaccess><persname>Didier (Charles)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Duché</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Duclerc</persname><name>Lettre à lui adressée</name></controlaccess>
+               <controlaccess><persname>Dufraisse (Marc)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Dussieux (L.)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Fabas (Th)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Fortoul (H.)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Gallet (Bénédict)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Gallois (Napoléon)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Gally</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Gervais, de Caen</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Guéret</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Havard</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Jahyer</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Joguet (V.)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Jullien</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Karr (Alphonse)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Luchet (Auguste)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Mennesson (Ch.)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Montaudon</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Peauger</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Romieu (Chevalier de)</persname><name>Lettres</name></controlaccess>
+               <controlaccess><persname>Schœlcher (Victor)</persname><name>Lettre</name></controlaccess>
+               <controlaccess><persname>Schœlcher (Victor)</persname><name>Lettres à lui adressées</name></controlaccess>
+               <controlaccess><persname>Testelin</persname><name>Lettre</name></controlaccess>
+            </c>
+            <c id="d0e824" level="otherlevel" otherlevel="sous-notice">
+               <did>
+                  <unittitle>2. Discours de Thoré devant les jurés pour sa défense</unittitle>
+                  <physdesc><extent>43 feuillets</extent></physdesc>
+               </did>
+               <scopecontent>
+                  <p>Affaire de sa brochure <emph render="italic">la Vérité sur le parti démocratique</emph>.</p>
+               </scopecontent>
+               <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Discours devant les jurés pour sa défense</name></controlaccess>
+            </c>
+            <c id="d0e844" level="otherlevel" otherlevel="sous-notice">
+               <did>
+                  <unittitle>3. Prison de Thoré à Sainte-Pélagie (1840)</unittitle>
+                  <physdesc><extent>7 pièces</extent></physdesc>
+               </did>
+            </c>
+         </c>
+         <c id="d0e853" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7915</unitid>
+               <unittitle>VIII. Lettres relatives à <emph render="italic">la Vraie République</emph>, <date normal="1847/1849">1847-1849</date>, classées chronologiquement</unittitle>
+               <physdesc><extent>143 pièces</extent></physdesc>
+            </did>
+         </c>
+         <c id="d0e867" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7916</unitid>
+               <unittitle>IX. Lettres politiques, adressées principalement à Thoré (1848-1852). <emph render="italic">L'Exilé,</emph> almanach, juin 1851. Manifeste de l'Union socialiste (signé T. Thoré, 15 mai 1852)</unittitle>
+            </did>
+            <scopecontent>
+               <p>
+                  Lettres de L. Bergeron (3), Berjeau (2), Louis Blanc à Delhasse, à V. Hugo et à Thoré (20), Brothier (4), H. Carnot (2),
+                  Cauchois-Lemaire, le vicomte de Caqueray au chevalier de Caqueray, A. Chambolle, Cormier, Correch, Darimon, Deglos,
+                  L. Desmoulins, Dugied, Alphonse Esquiros (2), L. Gallois, Édouard Hervé, Husson, F. Lamennais, Ch. Leroux, Leuilloux,
+                  H. Martin à Duseigneur et à Thoré (2), l'abbé Montlouis (2), Pons de l'Hérault à Flocon, Félix Pyat (6), Edgar Quinet,
+                  Renard, J. Reynaud à Celliez, à Thoré et à Trouillebert, Rochoux, Ch. Rouhier (2), Alix Sauzeau (2), Léonard Simpson.
+                  — Complainte de la Bastille. — Réunions électorales A. Dréo (1861). — Extrait du <emph render="italic">Diable à quatre</emph> (12 juin 1869).
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Bergeron (L.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Berjeau</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Blanc (Louis)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Brothier</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Caqueray (Chevalier de)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Caqueray (Vicomte de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Carnot (H.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Cauchois-Lemaire</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Celliez (Henry)</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Chambolle (A)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Cormier</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Correch</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Darimon</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Deglos</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Desmoulins (L.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Dréo (A.)</persname><name>Réunions électorales</name></controlaccess>
+            <controlaccess><persname>Dugied</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Esquiros (Alphonse)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Flocon (Joseph)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Gallois (L.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Hervé (Édouard)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Hugo (Victor)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Husson</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lamennais (F.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Leroux (Ch.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Leuilloux</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Martin (Henri), peintre</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Montlouis (Abbé)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Pons, de l'Hérault</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Pyat (Félix)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Quinet (Edgar)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Renard (Louis)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Reynaud (J.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Rochoux</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Rouhier (Ch.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Sauzeau (Alix)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Simpson (Léonard)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Trouillebert</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><title linktype="simple">Bastille (La)</title><name>Complainte</name></controlaccess>
+            <controlaccess><subject>Union socialiste</subject><name>Manifeste</name></controlaccess>
+         </c>
+         <c id="d0e1094" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7917</unitid>
+               <unittitle>X. Autobiographie de Thoré</unittitle>
+               <physdesc><extent>5 liasses</extent></physdesc>
+            </did>
+            <scopecontent>
+               <p>Anecdotes et souvenirs (1848). — Itinéraire (1848-1857). — Voyages. — Autobiographie. — Compte rendu d'un exilé.</p>
+            </scopecontent>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Autobiographie</name></controlaccess>
+         </c>
+         <c id="d0e1113" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7918</unitid>
+               <unittitle>XI. Notes et pensées diverses</unittitle>
+            </did>
+            <scopecontent>
+               <p>
+                  Boutades d'un honnête homme. — Notes diverses sur la Belgique. — Boutades sur les Belges.
+                  — Les bords de l'Amblève, promenade pittoresque, par un peintre flamand [Thoré] ; manuscrit, épreuves, imprimé.
+                  — Lettres de Desoer à Laidaes (pseudonyme de Thoré).
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Desoer</persname><name>Lettres</name></controlaccess>
+            <controlaccess><geogname>Amblève, rivière</geogname><name>Promenade pittoresque sur les bords de l'Amblève</name></controlaccess>
+            <controlaccess><geogname>Belgique</geogname><name>Notes diverses</name></controlaccess>
+         </c>
+         <c id="d0e1139" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7919</unitid>
+               <unittitle>XII. Beaux-Arts</unittitle>
+            </did>
+            <scopecontent>
+               <p>Alliance des Arts (1843). Lettres de Thoré à Delhasse d'Hauregard. Delhasse à Paul d'Hauregard (20 lettres)
+                  — Notice sur l'affaire de MM. d'Hauregard et Delhasse contre MM. Lacroix et Thoré.
+                  — <emph render="italic">Le Progrès</emph> : Charles Lassailly à Paul Lacroix et à Thoré.
+                  — Le chevalier Camberlyn, et le chardonneret de Fabritius : lettre de Hyacinthe Van der Dussen de Kestergat.
+                  — Démêlés de Thoré avec Th. Silvestre.
+                  — Correspondance avec Suermondt : 1<emph render="super">re</emph> liasse, 30 lettres datées ; 2<emph render="super">e</emph> liasse, 38 lettres non datées.
+               </p>
+               <p>
+                  Divers articles imprimés de Thoré sur les Beaux-Arts.
+                  — Articles de Ph. Audebrand, Jacques Desrosiers, Paul Lacroix, Ernest Lucet, Wauters, publiés du vivant de Thoré.
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Audebrand (Ph.)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Desrosiers (Jacques)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Hauregard (Paul d')</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Lacroix (Paul)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Lacroix (Paul)</persname><name>Écrit de Lassailly à lui adressé</name></controlaccess>
+            <controlaccess><persname>Lacroix (Paul)</persname><name>Notice sur l'affaire de MM. d'Hauregard et Delhasse contre MM. Lacroix et Thoré</name></controlaccess>
+            <controlaccess><persname>Lassailly (Charles)</persname><name><emph render="italic">Le Progrès</emph></name></controlaccess>
+            <controlaccess><persname>Lucet (Ernest)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Silvestre (Th.)</persname><name>Ses démêlés avec Thoré</name></controlaccess>
+            <controlaccess><persname>Suermondt</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Articles divers sur les beaux-arts</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Van der Dussen de Kestergat (Hyacinthe)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Wauters</persname><name>Article imprimé</name></controlaccess>
+         </c>
+         <c id="d0e1242" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7920</unitid>
+               <unittitle>XIII. Dernière maladie et mort de Thoré</unittitle>
+            </did>
+            <scopecontent>
+               <p>
+                  Lettres adressées à Delhasse par Carjat, Chaumelin, A. Fleury, Arthur Pougin.
+                  — Vingt-deux articles nécrologiques parus dans les journaux (mai 1869).
+                  — Bibliographie et articles d'Émile Leclercq (1869), Maurice Du Seigneur (1881 et 1890), Larroumet (15 décembre 1892),
+                  Lucien Jottrand, Marguerite Van de Wiele (1893).
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Carjat</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Chaumelin</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Du Seigneur (Maurice)</persname><name>Articles imprimés</name></controlaccess>
+            <controlaccess><persname>Du Seigneur (Maurice)</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Jottrand (Lucien)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Larroumet</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Leclercq (Émile)</persname><name>Article imprimé</name></controlaccess>
+            <controlaccess><persname>Pougin (Arthur)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Van de Wiele (Marguerite)</persname><name>Article imprimé</name></controlaccess>
+         </c>
+         <c id="d0e1308" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7921</unitid>
+               <unittitle>XIV. Documents relatifs à l'<emph render="italic">Annuaire dramatique belge,</emph> de Delhasse</unittitle>
+               <physdesc><extent>98 lettres et pièces</extent></physdesc>
+            </did>
+            <scopecontent>
+               <p>
+                  Lettres des auteurs dramatiques eux-mêmes, ou notices sur eux, adressées à Delhasse et à ses collaborateurs :
+                  Ancelot, Anne (Louis-François-Théodore), H. d'Argé à Delhasse ; Édouard Bardou au même, Léon Bertrand,
+                  L. Bergeron à Delhasse, Biéville et Joseph Blum à Lelong, Félix Bogaerts à Delhasse, Anicet Bourgeois, Boulé,
+                  Brisebarre, Joseph Brisset, Brunswick-Lhérie, de Burbure de Wezembeeck à Vanderauwera, Cavé (Hygin-Auguste),
+                  Chabenot, Choquart, Clairville, Cordellier, Delanoue, Decomberousse, Delaboullaye à Jouhaud, Depret,
+                  Dubois-Davesne à Jouhaud, Du Mersan, Emmanuel du Plessis, Georges Duval, d'Ennery à Jouhaud, Fleury-Jemma,
+                  Paul Foucher à Jouhaud, Fourdrin aîné, Francis Cornu à Vanderauwera, Gits à Schott, Goizet à Delhasse,
+                  Emmanuel Gonzalès, Grangé à Jouhaud, Paul de Guerville, Guyot de Fère à Delhasse, Henriot, Herbin, Hocédé à Jouhaud,
+                  André Hoffmann, J. Jaime, Labat, Latour, Chapelle dit Laurencin à Jouhaud, « pour M. Delhasse », Alexandre de Lavergne,
+                  Leenders à Schott, Hippolyte Lefebvre, Louis Lefèvre, Lefils, Léonard, Léonce, Lesguillon à Delhasse,
+                  Adolphe de Leuven, Levesque, Lopez à Jouhaud, Marie-Louise Lévic (lettre de Romberg à Vanderauwera), Auguste Luchet,
+                  Louis Lurine à Jouhaud, Mahouden à Questienne, Martin Lubize, Albert Maurin à Jouhaud, Mélotte à Vanderauwera,
+                  Marc Michel, Mequen à Tarride, Mira à « Delaes », Moléri, Eugène Moreau, Théodore Muret à Jouhaud, Léon Paillet à Delhasse,
+                  Noël Parfait, Alfred Philibert à Jouhaud, Alexandre Pirotte à Vanderauwera, Prosper Poitevin, Potier à Jouhaud,
+                  Potron à Jouhaud, de Prémaray, Louis-Hippolyte Rimbaut, Ramoux à Vanderauwera, Louis Saint-Armand, V. de Saint-Hilaire,
+                  Henry Simon à Laidaes, Siraudin de Sancy, Adolphe Siret à Vanderauwera, Steveniers, Thomas à Jouhaud,
+                  de Tournay à Delhasse, Jean-Pierre Tournemire, Xavier Van Elewyck, Van Peene à Vanderauwera, Villain,
+                  Violet d'Epagny à Jouhaud, Wenstenraad à Delhasse, 3 lettres illisibles.
+                  Compte rendu de <emph render="italic">Giralda.</emph>
+               </p>
+            </scopecontent>
+            <controlaccess><persname>Ancelot</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Anne (Louis-François-Théodore)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Argé (H. d')</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Bardou (Édouard)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Bergeron (L.)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Bertrand (Léon)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Biéville</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Blum (Joseph)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Bogaerts (Félix)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Boulé</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Bourgeois (Anicet)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Brisebarre</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Brisset (Joseph)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Brunswick-Lhérie</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Burbure de Wezembeeck (De)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Cavé (Hygin-Auguste)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Chabenot</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Chapelle, dit Laurencin</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Choquart</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Clairville</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Cordellier</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Cornu (Francis)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Decomberousse</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Delanoue</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Documents relatifs à l'<emph render="italic">Annuaire dramatique belge</emph></name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Depret</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Du Mersan</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Du Plessis (Emmanuel)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Dubois-Davesne</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Duval (Georges)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Ennery (D')</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Fleury-Jemma</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Foucher (Paul)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Fourdrin aîné</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Gits</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Goizet</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Gonzalès (Emmanuel)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Grangé</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Guerville (Paul de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Guyot de Fère</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Henriot (O.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Herbin</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Hocédé</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Hoffmann (André)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Jaime (J.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Jouhaud</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Labat</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Laurencin (Chapelle, dit)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lavergne (Alexandre de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Leenders</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lefebvre (Hippolyte)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lefèvre (Louis)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lefils</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Leonard (G.)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Léonce</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lesguillon</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Leuven (Adolphe de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Levesque</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lévic (Marie-Louise)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Lubize (Martin)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Luchet (Auguste)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Lurine (Louis)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Mahouden</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Maurin (Albert)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Mélotte</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Mequen</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Michel (Marc)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Mira</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Moléri</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Moreau (Eugène)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Muret (Théodore)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Paillet (Léon)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Parfait (Noël)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Philibert (Alfred)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Pirotte (Alexandre)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Poitevin (Prosper)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Potier (Michel)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Potron</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Prémaray (De)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Questienne</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Ramoux</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Rimbaut (Louis-Hippolyte)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Romberg</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Saint-Armand (Louis)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Saint-Hilaire (V. de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Sancy (Siraudin de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Schott</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Simon (Henry)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Siraudin de Sancy</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Siret (Adolphe)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Steveniers</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Tarride</persname><name>Lettre à lui adressée</name></controlaccess>
+            <controlaccess><persname>Thomas</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Tournay (Comte de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Tournemire (Jean-Pierre)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Van Elewyck (Xavier)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Van Peene</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Vanderauwera</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Villain</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Violet d'Épagny</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Wenstenraad</persname><name>Lettre</name></controlaccess>
+            <controlaccess><geogname>Belgique</geogname><name>Documents relatifs à l'<emph render="italic">Annuaire dramatique belge</emph>, de Delhasse</name></controlaccess>
+         </c>
+         <c id="d0e1852" level="otherlevel" otherlevel="notice">
+            <did>
+               <unitid type="cote">Ms-7922</unitid>
+               <unittitle>
+                  XV. Lettres de Louis Blanc, George Sand ; deux dossiers (25 coupures de journaux) sur Louis Blanc ; 7 lettres de Troubat à Delhasse.
+                  — Lettres copiées par Delhasse : note de Sainte-Beuve, Sainte-Beuve à Mme d'Arbouville, Note de Mme d'Arbouville, George Sand à Sainte-Beuve (6 lettres),
+                  Planche à Sainte-Beuve, Musset à Sainte-Beuve. Notes de Delhasse sur la correspondance de George Sand.
+                  — Articles sur George Sand et Alfred de Musset. — Articles sur sa correspondance, ses romans, ses mémoires et sa mort (au nombre de 34).
+                  — Adresse de la main de George Sand au citoyen Thoré
+               </unittitle>
+            </did>
+            <controlaccess><persname>Arbouville (Mme Loyré d')</persname><name>Lettre à elle adressée</name></controlaccess>
+            <controlaccess><persname>Arbouville (Mme Loyré d')</persname><name>Note de sa main</name></controlaccess>
+            <controlaccess><persname>Blanc (Louis)</persname><name>Coupures de journaux le concernant</name></controlaccess>
+            <controlaccess><persname>Blanc (Louis)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Brunot</persname><name>Notes de sa main</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Lettres copiées par lui</name></controlaccess>
+            <controlaccess><persname>Delhasse</persname><name>Notes sur la correspondance de George Sand</name></controlaccess>
+            <controlaccess><persname>Musset (Alfred de)</persname><name>Articles le concernant</name></controlaccess>
+            <controlaccess><persname>Musset (Alfred de)</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Planche</persname><name>Lettre</name></controlaccess>
+            <controlaccess><persname>Sainte-Beuve</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Sainte-Beuve</persname><name>Lettres à lui adressées</name></controlaccess>
+            <controlaccess><persname>Sainte-Beuve</persname><name>Notes de sa main</name></controlaccess>
+            <controlaccess><persname>Sand (George)</persname><name>Adresse au citoyen Thoré</name></controlaccess>
+            <controlaccess><persname>Sand (George)</persname><name>Arlicles la concernant</name></controlaccess>
+            <controlaccess><persname>Sand (George)</persname><name>Lettres</name></controlaccess>
+            <controlaccess><persname>Thoré-Bürger (Leidaes)</persname><name>Correspondance</name></controlaccess>
+            <controlaccess><persname>Troubat</persname><name>Lettres</name></controlaccess>
+         </c>
+      </dsc>
+   </archdesc>
+</ead>

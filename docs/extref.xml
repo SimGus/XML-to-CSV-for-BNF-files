@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000069865</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>
+          NAL
+          <num>1544</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France.</publisher>
+        <date calendar="gregorian" era="ce">2009</date>
+      </publicationstmt>
+      <notestmt>
+        <note>
+          <p>Notice créée à partir de la compilation dans un tableur Excel des données des Notices des manuscrits Nouvelles acquisitions latines 1 à 2660 et NAL 3001 à 3174, publiées dans : Manuscrits latins et français ajoutés aux fonds des Nouvelles acquisitions pendant les années 1875-1891, Paris : H. Champion, 1891.</p>
+        </note>
+      </notestmt>
+    </filedesc>
+    <profiledesc>
+      
+      <langusage>
+        Notice rédigée en
+        <language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">NAL 1544</unitid>
+      <unittitle>
+        Mélanges en vers et en prose. Recueil formé au XV
+        <emph render="super">e</emph>
+        siècle dont, les pièces en vers ont été analysées par M. Hauréau dans Notices et extraits des mss., t. XXXII, part. I, p. 253-314.
+      </unittitle>
+      <physdesc>
+        <physfacet type="support">Volume en papier.</physfacet>
+        <extent>129 feuillets.</extent>
+        <physfacet type="écriture">
+          Écriture du XV
+          <emph render="super">e</emph>
+          siècle.
+        </physfacet>
+        <dimensions>292 × 210 mm.</dimensions>
+      </physdesc>
+      <langmaterial>
+        Manuscrit en
+        <language langcode="lat">latin</language>
+      </langmaterial>
+      <repository>
+        <corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname>
+      </repository>
+    </did>
+    <scopecontent>
+      <p>Suivent les titres ou les premiers mots de chaque morceau (Le reste du manuscrit a été détruit) :</p>
+    </scopecontent>
+    <bibliography>
+      <bibref linktype="simple">
+        F. 74v-75
+        <lb/>
+        1995
+        <lb/>
+        utilisé comme source pp. 123, 125
+        <lb/>
+        [Art. n° II : M.-T. d'ALVERNY, « Alain de Lille et le Theologia »,
+        <emph render="italic">L'homme devant Dieu, Mélanges offerts au Père Henri de Lubac II.</emph>
+        , Paris, 1964, p. 111-128]
+        <lb/>
+        Marie-Thérèse d'ALVERNY,
+        <emph render="italic">
+          Pensée médiévale en Occident. Théologie, magie et autres textes des XII
+          <emph render="super">e</emph>
+          -XIII
+          <emph render="super">e</emph>
+          siècles
+        </emph>
+        , Aldershot, Variorum, 1995
+        <lb/>
+        <emph render="italic">Mss. [ 8° Impr. 8740</emph>
+      </bibref>
+      <bibref linktype="simple">
+        1970
+        <lb/>
+        cité parmi les sources p. 218
+        <lb/>
+        Wilhelm MEYERS,
+        <emph render="italic">Carmina Burana,</emph>
+        t. 1, Heidelberg, C. Winter Universitätsverlag, 1970
+        <lb/>
+        <emph render="italic">Mss. [ 8° Impr. 6974</emph>
+      </bibref>
+    </bibliography>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f925" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f926" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f927" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f928" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f929" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f930" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f931" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f932" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f933" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f934" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f935" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f936" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f937" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f938" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f939" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f940" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f941" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f942" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f943" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f944" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f945" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f946" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f947" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f948" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f949" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f950" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f951" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f952" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f953" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f954" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f955" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f956" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f957" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f958" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f959" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f960" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f961" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f962" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f963" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f964" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f965" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f966" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f967" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f968" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f969" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f970" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f971" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f972" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f973" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140139w.image.f974" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <p>
+        2010
+        <lb/>
+        <bibref>
+          Marie-Hélène JULLIEN (éd.),
+          <emph render="italic">Clavis scriptorum latinorum Medii Aevii. Auctores Galliae 735-987</emph>
+          , III, Indices, Corpus Christianorum Continuatio Medievalis, Turnhout : Brepols, 2010, cité p. 383
+        </bibref>
+      </p>
+    </bibliography>
+    <dsc><c id="d0e248" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 1</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Exceptiones sumpte de libris Salomonis, secundum ordinem librorum ipsius. "</p>
+  </scopecontent>
+</c><c id="d0e255" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 14</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Liber de formula vite honeste, [par Martin, évêque de Braga]. Quatuor virtutum species multorum sapiencium sentenciis diffinite sunt... "</p>
+  </scopecontent>
+</c><c id="d0e262" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 18 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Proverbia Senece. Ab alio expectes alteri quod feceris... "</p>
+  </scopecontent>
+</c><c id="d0e269" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 23 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Male de te opinantur homines quia mali mal. displicere... "</p>
+  </scopecontent>
+</c><c id="d0e276" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 24</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Augustinus de quatuor virtutibus. Hominis summum bonum Deus est, cui habere beatissimum est... "</p>
+  </scopecontent>
+</c><c id="d0e283" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 27</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt notabilia decretalium. <emph render="italic">Firmiter</emph>, etc. Nota simpliciter debere confiteri. Nota quod diaboli creati sunt boni, sed per liberum arbitrium facti sunt mali... "</p>
+  </scopecontent>
+</c><c id="d0e293" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 54 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Proverbia dictaminum. Cum excedit quispiam in annis teneris abnegari, sibi non debet venia, sed tenetur a prudentibus dulciter relevari... "</p>
+  </scopecontent>
+</c><c id="d0e300" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 56</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" ... Qui peccatum defendit alterius, in hoc ipso reum se asserit aut suspectum. Expliciunt proverbia dictaminum. "</p>
+  </scopecontent>
+</c><c id="d0e307" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 56 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Notabilia epistolarum sancti Bernardi. Prime epistole. Dolor nimius non deliberat, non verecundatur, non consulit rationem... "</p>
+  </scopecontent>
+</c><c id="d0e314" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 60</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Extraits des Pères de l'Église et des philosophes de l'antiquité.</p>
+  </scopecontent>
+</c><c id="d0e321" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Hec sunt bona que facit confessio. Te pudor emendat... " 3 vers.</p>
+  </scopecontent>
+</c><c id="d0e328" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Fabula dicit omnes bestias fetus suos Jovi presentasse probandos, inter quos simia deformem natum... "</p>
+  </scopecontent>
+</c><c id="d0e335" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Ignis quatuor habet virtutes sive naturas... "</p>
+  </scopecontent>
+</c><c id="d0e342" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Ista sunt peccata que retinent episcopi. Peccata contra naturam, incestus... "</p>
+  </scopecontent>
+</c><c id="d0e349" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Desertum est cor malum, quia cultum non est... "</p>
+  </scopecontent>
+</c><c id="d0e356" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 68 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Pièce de cinq strophes, publiée par M. Hauréau, Notices et extraits des manuscrits, t. XXXII, part. I, p. 254. Premiers mots : " Quid in hac miseria... "</p>
+  </scopecontent>
+</c><c id="d0e363" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 69</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Comparatio Philomene ad animam bene Deum diligentem. Philomena previa... " Pièce souvent attribuée à saint Bonaventure.</p>
+  </scopecontent>
+</c><c id="d0e370" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 72 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Excitacio ad psallendum in choro. Dum in nocte video... " Pièce qu'on a faussement attribuée à saint Bernard et qui est intitulée : " Torneamentum beati Bernardi " dans d'autres manuscrits.</p>
+  </scopecontent>
+</c><c id="d0e377" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 73 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Salutatio beate Marie. Ave, Dei genitrix et immaculata... "</p>
+  </scopecontent>
+</c><c id="d0e384" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 74 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Pièce de sept strophes, qui paraît être d'Alain de Lille. " Exceptivam actionem... "</p>
+  </scopecontent>
+</c><c id="d0e391" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 75</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Note sur les trois Maries.</p>
+  </scopecontent>
+</c><c id="d0e398" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 75</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Salutationes beate Virginis. Vale, sole clarior atque luna pulcrior... "</p>
+  </scopecontent>
+</c><c id="d0e405" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 75 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipit Phillidis et Flore amoris altercatio ".</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 259.</bibref>
+  </bibliography>
+</c><c id="d0e415" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 80</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" De peccatore et beata Maria. Sol intraverat virginem... "</p>
+  </scopecontent>
+</c><c id="d0e422" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 84</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" De scismate duorum paparum. "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publié par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 273.</bibref>
+  </bibliography>
+</c><c id="d0e432" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 85</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt quinque gaudia beate Marie. Gaude, virge mater Christi... "</p>
+  </scopecontent>
+</c><c id="d0e439" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 85 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Salutatio angeli ad Mariam. Ave, plena gratia, virgo, vas honoris... "</p>
+  </scopecontent>
+</c><c id="d0e446" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 86 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Contra curiam Romanam. Frigescente caritatis in terris igniculo... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée en partie par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 277.</bibref>
+  </bibliography>
+</c><c id="d0e456" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 87</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Ad idem. Ecce sonat in apperto... " Pièce de 50 vers plusieurs fois publiée.</p>
+  </scopecontent>
+</c><c id="d0e463" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 87 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Ad papam, causa aliquid obtinendi. Tanto viro locuturi... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 279.</bibref>
+  </bibliography>
+</c><c id="d0e473" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 89</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Contra Grandismontis conversos. Respiciat Emanuel... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, ibid., p. 284.</bibref>
+  </bibliography>
+</c><c id="d0e483" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 89</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>v°. " Incipit causa pauperis scolaris et divitis. In sublimi solio Salomon sedebat... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée en partie par M. Hauréau, ibid., p. 286.</bibref>
+  </bibliography>
+</c><c id="d0e493" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 91</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Causa Acis et Poliphemi pro Galatea habenda. Puer ferens pharetras, judex, juris scutum... "</p>
+  </scopecontent>
+</c><c id="d0e500" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 92 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipit causa viri ementulati et ejus uxoris petentis fieri divortium. Ave, pater gencium... "</p>
+    <p>Il semble que cette pièce soit du temps du pape Innocent IV. Le poète a mis ces deux vers dans la bouche de la plaignante : Ha crucior modicum ; michi te prestes amicum, // Tu qui scismaticum condempnasti Federicum.</p>
+  </scopecontent>
+</c><c id="d0e509" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 94</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Causa pauperis scolaris cum presbitero. Hora nena sabbati... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 289.</bibref>
+  </bibliography>
+</c><c id="d0e519" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 97 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Dictum Goliardi. Ecce homo sine domo... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publié par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 296.</bibref>
+  </bibliography>
+</c><c id="d0e529" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 97 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Item. " Pièce de 32 vers, moitié en français et moitié en latin.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 298. " Seignor, volez oir de patre decio... "</bibref>
+  </bibliography>
+</c><c id="d0e539" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 98</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Gausa divitis et Lazari. Audi, sancte senior... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 300.</bibref>
+  </bibliography>
+</c><c id="d0e549" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 100</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Proverbia moralia. Rusticitas hodie... " Déclamations poétiques, sur lesquelles il faut lire les observations de M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 304.</p>
+  </scopecontent>
+</c><c id="d0e556" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 102</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Pièce satyrique, de 30 vers. " Luxus opum semper varios... "</p>
+  </scopecontent>
+</c><c id="d0e563" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 102 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Satyre contre les églises de la province de Reims. " Cum ex rapto vivere... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII, part. I, p. 306.</bibref>
+  </bibliography>
+</c><c id="d0e573" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 103 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Hee sunt septem curialitates. In privato sobrietas... "</p>
+  </scopecontent>
+</c><c id="d0e580" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 103 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Hee sunt septem rusticitates. Loquacitas in convivio... "</p>
+  </scopecontent>
+</c><c id="d0e587" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 103 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Sentencie procerum Romanorum. Crassus : Parentes vereri Deam timereque debemus, sepius auribus uti quam lingua. Catullus : Debemus neminem nimium judicare... "</p>
+  </scopecontent>
+</c><c id="d0e594" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 103 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Exhortation morale, en 65 vers. " Quasi leo rugiens... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée par M. Hauréau, Notices et extraits des mss., t. XXXII. part. I, p. 308.</bibref>
+  </bibliography>
+</c><c id="d0e604" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 104 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Poésie pieuse, en 42 vers. " Quid ultra tibi facere... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée, par M. Hauréau, Notices et extraits des mss., t. XXXII. part. I, p. 310.</bibref>
+  </bibliography>
+</c><c id="d0e614" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 105 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Cordis et oculi altercatio, [par le chancelier Philippe de Grève]. Si quis cordis et oculi... "</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">Publiée, par M. Hauréau, Notices et extraits des mss., t. XXXII. part. I, p. 312.</bibref>
+  </bibliography>
+</c><c id="d0e624" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 106</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Oratio. " 14 vers. Christe, fave votis, quem sensibus invoco totis.</p>
+  </scopecontent>
+</c><c id="d0e631" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 106</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Des qualités chrétiennes du jugement. " Si juste judicas, justum judicem honoras... "</p>
+  </scopecontent>
+</c><c id="d0e638" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 106 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Augustinus, de civitate Dei, libro XV, cap. VI. Spiritus sanctus operatur intrinsecus ut valeat aliquid... "</p>
+  </scopecontent>
+</c><c id="d0e645" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 107</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Versus proverbiales et alii collecti ex pluribus. "</p>
+    <p>Environ 460 vers.</p>
+    <p>
+      <blockquote>
+        <p>Letificat multum grandis promissio stultum.<lb/>Heret ocellus ibi res ubi cara tibi.<lb/>Plus valet " hoc tribuo " quam tribuenda duo.<lb/>Sepe nocet qui plura docet, quia vix retinentur ;<lb/>Excoquitur quicquid capitur cum pauca docentur.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c><c id="d0e666" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 114</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Diffiniciones diversorum. Proverbium est generalis sententia cui consuetudo fidem attribuit... "</p>
+  </scopecontent>
+</c><c id="d0e673" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 114</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Virtutes anime. Caritas est mentis affectus ad Deum et proximum ferventer et ordinate porrectus... "</p>
+  </scopecontent>
+</c><c id="d0e680" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 115</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt flores auctorum. " 149 vers.</p>
+    <p>
+      <blockquote>
+        <p>Res est solliciti plena timoris amor.<lb/>Fallar et hic crimen tenues vanescat in auras.<lb/>Non venit ante suam nostra querela diem.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c><c id="d0e695" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 117 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Proverbia Ovidii de Ponto. "</p>
+    <p>
+      <blockquote>
+        <p>Sepe levant penas ereptaque lumina reddunt.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c><c id="d0e706" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 120 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Proverbia Ovidii de Tristibus. "</p>
+    <p>
+      <blockquote>
+        <p>Ne quod non opus est forte loquare cave.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c><c id="d0e717" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 124 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt proverbia Ovidii Magni. "</p>
+    <p>
+      <blockquote>
+        <p>Nulli sua fortuna manebat.<lb/>Sanctius hiis animal mentisque capacius alte.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c><c id="d0e730" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 126</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt proverbia secundi libri. "</p>
+  </scopecontent>
+</c><c id="d0e737" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 127 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>" Incipiunt tercii libri proverbia. "</p>
+  </scopecontent>
+</c><c id="d0e744" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 129 v°</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Ces extraits s'arrêtent au bas de ce fol., au vers :<blockquote>
+        <p>Inscribit facies ; Jovis est regalis ymago.</p>
+      </blockquote>
+    </p>
+  </scopecontent>
+</c></dsc>
+    <altformavail>
+      <p>
+        Microfilm en noir et blanc. Cote de consultation en salle de lecture : MF 13933. Cote de la matrice (pour commander une reproduction) :
+        <num>R 16248</num>
+      </p>
+    </altformavail>
+  </archdesc>
+</ead>

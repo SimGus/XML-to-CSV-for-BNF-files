@@ -134,6 +134,8 @@ public class XMLTag implements XMLPart {
    /*
     * Returns the contents of @this and its children in a way you can write them in an output file
     * by calling @getContentsFormatted recursively
+    * To be sure to have spaces where there should be, add a space in front of the tags that can be inside an @XMLString
+    * This might put 2 spaces inside the output text (but it can be sorted out when client manages the output)
     */
    public String getContentsFormatted() {
       if (childrenElements.size() == 0) {
@@ -141,20 +143,20 @@ public class XMLTag implements XMLPart {
             return " ";//return "%%";
          if (name.equals("dao")) {
             if (attributes.get("href") != null)
-               return attributes.get("href");
+               return " "+attributes.get("href");
             return "";
          }
       }
       else if (childrenElements.size() == 1) {
          if (name.equals("persname") || name.equals("title")) {
             if (attributes.get("normal") != null)
-               return attributes.get("normal");
+               return " "+attributes.get("normal");
             return childrenElements.get(0).getContentsFormatted();
          }
          if (name.equals("abbr")) {
             String answer = childrenElements.get(0).getContentsFormatted();
             if (attributes.get("expan") != null)
-               answer += " ("+attributes.get("expan")+")";
+               answer += " ("+attributes.get("expan")+") ";
             return answer;
          }
          if (name.equals("extref"))//IGNORE
@@ -162,12 +164,25 @@ public class XMLTag implements XMLPart {
       }
 
       String answer = "";
-      boolean wasLastChildAString = false, dontPutSpaceAtBeginning = true;
+
+      //for dates, as the formatting of the XML files (concerning spaces) is not coherent, make a special case
+      if (name.equals("unitdate")) {
+         for (XMLPart currentChild : childrenElements) {
+            answer += currentChild.getContentsFormatted();
+         }
+         return answer;
+      }
+
+      boolean dontPutSpaceAtBeginning = true, wasPreviousChildAString = false;
       for (XMLPart currentChild : childrenElements) {
          if ((!(currentChild instanceof XMLString) && !currentChild.getTagName().equals("lb"))
-            && !wasLastChildAString
-            && !dontPutSpaceAtBeginning)
+            && wasPreviousChildAString
+            && !dontPutSpaceAtBeginning) {
                answer += " ";
+         }
+         else if ((currentChild instanceof XMLString) && !dontPutSpaceAtBeginning) {
+            answer += " ";
+         }
 
          answer += currentChild.getContentsFormatted();
 
@@ -183,9 +198,9 @@ public class XMLTag implements XMLPart {
             dontPutSpaceAtBeginning = false;
 
          if (currentChild instanceof XMLString)
-            wasLastChildAString = true;
+            wasPreviousChildAString = true;
          else
-            wasLastChildAString = false;
+            wasPreviousChildAString = false;
       }
       // if (answer.endsWith(" %% "))
       //    answer = answer.substring(0, answer.length()-3);

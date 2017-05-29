@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<ead id="d0e1">
+   <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+      <eadid>FRBNFEAD000025595</eadid>
+      <filedesc>
+         <titlestmt>
+            <titleproper>Allemand <num>100</num></titleproper>
+            <subtitle>Notice descriptive</subtitle>
+         </titlestmt>
+         <publicationstmt>
+            <publisher>Bibliothèque nationale de France.</publisher>
+            <date calendar="gregorian" era="ce">2009</date>
+         </publicationstmt>
+         <notestmt>
+            <note>
+               <p>Notice créée à partir de la conversion rétrospective du Catalogue des manuscrits allemands de la Bibliothèque nationale, par Gédéon Huet. Paris : Librairie Emile Bouillon, éditeur, 1895.</p>
+            </note>
+         </notestmt>
+      </filedesc>
+      <profiledesc>
+         <creation audience="internal">
+            Cette notice a été encodée en XML conformément à la DTD EAD (version 2002).<lb/>La conversion a été réalisée par ArchProteus, <date calendar="gregorian" era="ce">2009</date>
+         </creation>
+         <langusage>Notice rédigée en<language langcode="fre">français</language></langusage>
+      </profiledesc>
+   </eadheader>
+   <archdesc level="otherlevel" otherlevel="recueil">
+      <did>
+         <unitid type="cote">Allemand 100</unitid>
+         <unitid type="ancienne cote">Supplément français 3264.</unitid>
+         <unittitle>Recueil de copies de lettres et de notes journalières relatives à la campagne de Hongrie en 1687.</unittitle>
+         <unitdate calendar="gregorian" era="ce" normal="1601/1700">XVII<emph render="super">e</emph> siècle</unitdate>
+         <physdesc>
+            <physfacet type="support">Papier.</physfacet>
+            <extent>248 feuillets.</extent>
+            <dimensions>320 × 210 mm.</dimensions>
+         </physdesc>
+         <langmaterial>Manuscrit en <language langcode="ger">allemand</language></langmaterial>
+         <repository><corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname></repository>
+      </did>
+      <controlaccess><name>Hongrie, campagne de</name></controlaccess>
+      <dsc>
+         <c id="d0e58" level="item">
+            <did>
+               <unitid type="foliotation">Fol. 2 v°</unitid>
+            </did>
+            <scopecontent>
+               <p>Incipit : "Allerdurchleuchtigster. Die albereits zu mehr und mehr avancierende Zeith erfordert..."</p>
+            </scopecontent>
+         </c>
+         <c id="d0e65" level="item">
+            <did>
+               <unitid type="foliotation">Fol. 1-22</unitid>
+               <unittitle>documents divers sur le plan de campagne.</unittitle>
+            </did>
+         </c>
+         <c id="d0e71" level="item">
+            <did>
+               <unitid type="foliotation">Fol. 23-162</unitid>
+               <unittitle>notes journalières sur les opérations et copies de lettres.</unittitle>
+            </did>
+         </c>
+         <c id="d0e77" level="item">
+            <did>
+               <unitid type="foliotation">Fol. 163-248</unitid>
+               <unittitle>plans de la campagne à venir (datés de décembre 1687).</unittitle>
+            </did>
+         </c>
+         <c id="d0e83" level="item">
+            <did>
+               <unitid type="foliotation">Fol. 248 v°</unitid>
+            </did>
+            <scopecontent>
+               <p>Explicit : "die anstalten.... machen lassen kunte."</p>
+            </scopecontent>
+         </c>
+      </dsc>
+   </archdesc>
+</ead>

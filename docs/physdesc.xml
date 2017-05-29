@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000071686</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>
+          NAL
+          <num>3197</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France.</publisher>
+        <date calendar="gregorian" era="ce">2010</date>
+      </publicationstmt>
+      <notestmt>
+        <note>
+          <p>Notice créée à partir de la conversion rétrospective de Manuscrits du Moyen Age et de la Renaissance. Enrichissements du département des Manuscrits. Fonds européens. 1983-1992. Sous la direction de Jacqueline Sclafer. Paris : Bibliothèque nationale de France, 1994, p. 1-79.</p>
+        </note>
+      </notestmt>
+    </filedesc>
+    <profiledesc>
+      
+      <langusage>
+        Notice rédigée en
+        <language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">NAL 3197</unitid>
+      <unittitle>Horae ad usum Romanum, dictae Heures de Comeau.</unittitle>
+      <unitdate calendar="gregorian" era="ce" normal="1490/1510">
+        XV
+        <emph render="super">e</emph>
+        siècle (vers 1500)
+      </unitdate>
+      <physdesc>
+        Peint en Bourbonnais ou en Lyonnais. Sur les peintures et l'histoire du manuscrit, cf. [Fr. Avril,] dans
+        <emph render="italic">RBN</emph>
+        , n° 27 (printemps 1988), 46-48; Fr. Avril et N. Reynaud,
+        <emph render="italic">Les Manuscrits à peinture en France, 1440-1520</emph>
+        . [Catalogue de l'exposition B.N., oct. 1993-janv. 1994:
+        <emph render="italic">Quand la peinture était dans les livres.</emph>
+        ] Paris, 1993, n° 195. — Plusieurs mains. — Deux artistes: le maître d'oeuvre a peint les pages principales au début des matines de la Vierge (27) et de l'office des morts (f. soustrait, représentant Job sur le fumier, passé récemment en vente à Paris, Hotel Drouot, 13 avril 1984, n° 25); le deuxième artiste, dit le Maître de Comeau, est l'auteur du plus grand nombre des miniatures. De nombreuses peintures ont été soustraites au manuscrit; il reste 12 peintures à pleine page: s. Luc (7), s. Matthieu (9), s. Marc (11), au début des péricopes évangéliques; Baiser de Judas (13, passion du Christ), Vierge et enfant (20,
+        <emph render="italic">Obsecro te</emph>
+        ), Descente de Croix (23, hymne à la Vierge), Annonciation (27, matines de la Vierge), Visitation (39, laudes), Pentecôte (48, matines du Saint-Esprit), Annonce aux bergers (52 bis, tierce de la Vierge), Présentation au Temple (61, none de la Vierge), David et Goliath (77, psaumes de la pénitence). Une treizième peinture, représentant l'Adoration des mages, enlevée au manuscrit et vendue à part, a pu être achetée et est intégrée dans la boîte de protection, sous la même cote que le manuscrit; elle doit être replacée au début de sexte entre les ff. 56 et 57. 13 petites peintures carrées signalent le début d'un hymne à la Vierge: rencontre de s. Joachim et de ste Anne (25v); le début des suffrages: ste Véronique (117), ss. Pierre et Paul (118), s. Jacques le Majeur (118v), s. Christophe (119), s. Sébastien (120), s. Nicolas (120v), s. Grégoire (121), s. Claude (121v), ste Catherine (122), ste Barbe (122v), ste Appoline (123); et le début de la prière
+        <emph render="italic">Missus est</emph>
+        : Annonciation (124). Sur chaque page de texte, bordure peinte et or, souvent à compartiments, à feuilles d'acanthes, fleurs, fruits, oiseaux, etc. Initiales d'or sur fond peint et or. Bouts-de-ligne peints et or. Titres en bleu. Le calendrier est écrit à l'encre or et bleue.
+        <physfacet type="support">Parchemin. Réglure à l'encre rouge.</physfacet>
+        <extent>127 ff. + f. 52 bis, précédés de 2 gardes et suivis d'une garde de parchemin.</extent>
+        <extent>19 cahiers (pour la plupart primitivement de 8 ff.): le 1er de 5 ff. (1-5); les 2e, 3e, 4e de 7 ff. (6-12; 13-19; 20-26); les 5e et 6e de 8 ff. (27-34; 35-42); le 7e de 6 ff. (43-48); le 8e de 8 ff. (49-55+52bis); les 9e, 10e, 11e de 7 ff. (56-62; 63-69; 70-76); le 12e de 5 ff. (77-81); le 13e de 8 ff. (82-89); le 14e de 7 ff. (90-96); les 15e et 16e de 8 ff. (97-104; 105-112); les 17e et 18e de 4 ff. (113-116; 117-120); le 19e de 6 ff. (121-126). Le f. 127 est seul. — Réclames en fin de cahier, perpendiculaires à la ligne de texte à partir du f. 34v. — Plusieurs feuillets, dont la plupart portaient des peintures, ont disparu: 7 ff. au début du manuscrit (dont le 7e faisait partie de l'actuel cahier 1), 1 f. avant le f. 6 (2e cahier), 1 f. entre les ff. 23 et 24 (4e cahier), 1 f. entre les ff. 46 et 47 et 1 f. après le f. 48 (7e cahier), 1 f. entre les ff. 56 et 57 (9e cahier), 1 f. entre les ff. 65 et 66 (10e cahier), 1 f. entre les ff. 71 et 72 (11e cahier), 1 f. avant le f. 90 (14e cahier), 2 ff. entre les ff. 117 et 118 (18e cahier), 2 ff. entre les ff. 121-122 (19e cahier). Le feuillet manquant entre les ff. 56 et 57, retrouvé, a pu être acheté séparément; il a été placé dans la même boîte que le manuscrit sous la même cote. — Les ff. 12v, 19v, 26v, 46v, 47v, 60v, 65v, 71v, 76v ont une bordure peinte, mais la place réservée à l'écriture est restée blanche.</extent>
+        <dimensions>195 × 130 mm. (justification du texte: 105 × 65 mm.).</dimensions>
+        <physfacet type="reliure">Reliure XXe s. velours vert. Signet de ruban.</physfacet>
+      </physdesc>
+      <langmaterial>
+        Manuscrit en
+        <language langcode="lat">latin</language>
+      </langmaterial>
+      <repository>
+        <corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname>
+      </repository>
+    </did>
+    <dao href="http://gallica.bnf.fr/ark:/12148/btv1b105154676"/>
+    <altformavail>
+      <p>Numérisation effectuée à partir d'un document original</p>
+    </altformavail>
+    <acqinfo>
+      <p>
+        Acheté aux héritiers en 1987, et signalé dans
+        <emph render="italic">RBN</emph>
+        , n° 27 (printemps 1988), 47.— (Achat 87-11).
+      </p>
+    </acqinfo>
+    <processinfo audience="external">
+      <p>Notice rédigée par Jacqueline Sclafer</p>
+    </processinfo>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140144b.image.f637" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140144b.image.f638" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140144b.image.f639" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140144b.image.f640" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140144b.image.f641" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+    </bibliography>
+    <scopecontent>
+      <p>
+        <num>F. 1-5v</num>
+        Calendrier août-décembre, avec un saint pour tous les jours. Incomplet du début, par suite de la perte de 7 feuillets. Parmi les grandes fêtes à noter en or les saints français: 9 octobre, "s. Dyonisii"; 11 novembre, "Martini ep.". De nombreux saints cités étaient vénérés dans les diocèses de Cologne ou d'Utrecht: 5 août, "Osvaldi regis"; 17 août, "Geronis m. [Frisiae]"; 3 septembre, "Remacli ep. [Trajectensis]"; 17 septembre, "Lamberti ep. [Traiectensis]"; 3 octobre, "Duorum [E]waldorum", mm. in Saxonia; 10 octobre: "Ger[e]onis, Victoris", mm. Coloniae; 15 octobre, "Maurorum mm. [Coloniae]"; 21 octobre: "Undecim milium virginum"; 23 octobre, "Severini archiep. [Coloniensis]"; 3 novembre, "Huberti ep. [Traiectensis ad Mosam]"; 7 novembre: "Willibrordi ep. [Traiectensis]"; 12 novembre, "Leobini ep." [s. Lebuinus, Frisa]; 16 novembre: "Othmaris conf.", abbas Sangallensis; 19 novembre, "Elizabeth vidue".
+      </p>
+      <p>
+        <num>F. 6-12</num>
+        Péricopes évangéliques, incomplet du début par suite de la perte d'1 feuillet: Io 1, 13-14, le texte commence à [... ex vo-] "luntate viri ..." (6); Lc 1, 26-38 (6v-8); "Secundum Marcum [
+        <emph render="italic">sic</emph>
+        ]" Mt 2, 1-12 (8v-10); Mc 16, 14-20 (10v-12).
+      </p>
+      <p>
+        <num>F. 13-19</num>
+        "Pacio [
+        <emph render="italic">sic</emph>
+        ] Domini nostri Jhesus [
+        <emph render="italic">sic</emph>
+        ] Christi", Io 18, 1-19, 42.
+      </p>
+      <p>
+        <num>F. 20-26</num>
+        Prières à la Vierge. "Obsecro te ...", formule masculine (éd. Leroquais,
+        <emph render="italic">Livres d'heures</emph>
+        , II, 346-347); cf.
+        <emph render="italic">ibid.</emph>
+        , I, XXIV-XXV (20-22v); — "[O Maria] stella maris// Pietate singularis// ...-... nos annumera. Amen ...", attribué à Adam de Saint-Victor (
+        <emph render="italic">AH,</emph>
+        LIV, 386-387, n° 246); cf. Chevalier, n° 13225; Szövérffy,
+        <emph render="italic">Die Annalen</emph>
+        , II, 108 et 120 (23v); — [O intemerata ... De te enim Dei Filius ... ], incomplet du début par suite de la perte d'un feuillet (éd.Wilmart,
+        <emph render="italic">Auteurs spirituels</emph>
+        , 494, lig. 14-495; Leroquais,
+        <emph render="italic">op. cit.</emph>
+        , II, 336-337); cf.
+        <emph render="italic">ibid</emph>
+        ., I, XXV (24-25v); — "Ave cujus conceptio// Solemni plena gaudio//...-... glorificatio", ...; "Oremus. Deus qui nos conceptionis, nativitatis, annuntiationis, purificationis b. Marie virginis ... in celis. Per ..."; cf. Chevalier, n° 1744 et même hymne et prière dans Leroquais,
+        <emph render="italic">op. cit.</emph>
+        , I, 99 (25v-26).
+      </p>
+      <p>
+        <num>F. 27-76</num>
+        Heures de la Vierge, de la Croix et du Saint Esprit. Les Heures de la Vierge sont à l'usage de Rome; cf. Leroquais,
+        <emph render="italic">Heures de la Vierge</emph>
+        , ms. NAL 3162, f. 16-16v. A la suite de chacune des heures de la Vierge sont ajoutées les heures correspondantes de la Croix et du Saint Esprit. Matines et laudes de la Vierge (27-46); matines de la Croix, incomplet du début, par suite de la perte d'un feuillet entre les ff. 46 et 47; il manque la première strophe de l'hymne
+        <emph render="italic">Patris sapientia</emph>
+        , le texte reprend à l'oraison: "Domine Jhesu Christe fili Dei vivi pone passionem ...sempiternam. Qui ..." (47); matines du Saint Esprit (48-48v); — prime de la Vierge, incomplet du début par suite de la perte d'un feuillet entre les ff. 48 et 49; le texte reprend au milieu de Ps. 53, 5: [... insurrexerunt] "adversum me..." (49-51); prime de la Croix, sans titre (51-51v); prime du Saint Esprit (51v-52); — tierce (52v-56); —"Sequitur officium ad sextam", sexte de la Vierge; le feuillet arraché au début de l'office entre les ff. 56 et 57 a été retrouvé et placé sous la même cote dans la boîte du manuscrit (56v, f. séparé et verso, 57-59); sexte de la Croix et du Saint Esprit (59-60v); — none (61-65); — vêpres de la Vierge, incomplet du début par suite de la perte d'un feuillet entre les ff. 65 et 66; le texte reprend à Ps. 109, 6 (66-71); vêpres de la Croix et du Saint Esprit (70-71); — complies de la Vierge, incomplet du début par suite de la perte d'un feuillet entre les ff. 71 et 72; le texte reprend à Ps. 128, 7 (72-74); complies de la Croix et du Saint Esprit (74-75v); "Salve regina misericordie// ...-... O dulcis Maria", ... (
+        <emph render="italic">AH</emph>
+        , L, 318-319, n° 245); cf. Szövérffy,
+        <emph render="italic">Die Annalen</emph>
+        , I, 376 (76).
+      </p>
+      <p>
+        <num>F. 77-89v</num>
+        Psaumes de la pénitence (77-84v); — litanies; parmi les apôtres: "s. Marcialis ..."; parmi les martyrs: "s. Dyonisi cum sociis tuis ...s. Maurici cum sociis tuis ...s. Georgi ...s. Eutropi ...s. Quintine ..."; parmi les confesseurs: "s. Nicasii ... s. Remigi ... s. Marcelle ... s. Eligi ... s. Egidi ... s. Maure ... s. Leobine ... s. Sulpici ... s. Leonarde ..."; parmi les saintes: " s. Barbara ... s. Genovefa ... s. Ursula ..." (84v-89v).
+      </p>
+      <p>
+        <num>F. 90-116v</num>
+        Office des défunts à l'usage de Rome, incomplet du début par suite de la perte d'un feuillet; le début des vêpres et le ps. 114 manquent; cf. Leroquais,
+        <emph render="italic">ms. cit.</emph>
+        , f. 16v.
+      </p>
+      <p>
+        <num>F. 117-123v</num>
+        Suffrages des saints. "Oratio de sancta facie Domini nostri" (117-117v); "... ad Deum Patrem", titre seul; le texte manque par suite de la perte de 2 feuillets (117v); [Ad ss. Petrum et Paulum] (118); "De sancto Jacobo apostolo ..." (118-118v); [De s. Christophoro] (119-119v); "... de s. Sebastiano ..." (119v-120v); "De s. Nicholao" (120v); "De s. Gregorio papa ..." (121); "... de s. Claudio ...", incomplet de la fin, par suite de la perte de 2 feuillets (121-121v); [De s. Katherina] (122); [De s. Barbara] (122v); "De b. Appolonia" (123-123v).
+      </p>
+      <p>
+        <num>F. 123v-127v</num>
+        "Devota oratio ad virginem Mariam. Missus est Gabriel angelus ad Mariam virginem desponsatam Joseph ...-... per ignem"; cf. Leroquais,
+        <emph render="italic">op. cit.</emph>
+        I, 95, etc.; Wilmart,
+        <emph render="italic">Auteurs spirituels</emph>
+        , 334, n. 2, sans la prière de conclusion.
+      </p>
+      <p>
+        Les initiales "N" et "I", répétées dans les bordures tout le long du manuscrit, en désignent sans doute le destinataire, représenté à genoux devant la Vierge, au début d' l'
+        <emph render="italic">Obsecro te</emph>
+        (20). Les armoiries peintes sur son tabard, d'azur à la fasce d'or accompagnées de trois rais de comète de même, sont celles de la famille bourguignonne Comeau de Créancey ; bien qu'elles ne soient apparemment pas d'origine, elles ont donné son nom au Livre d'heures.
+      </p>
+      <p>Le manuscrit a fait partie des anciennes collections Durrieu et Charnacé.</p>
+    </scopecontent>
+    <bibliography>
+      <bibref linktype="simple">
+        1994
+        <lb/>
+        <emph render="italic">Horae ad usum Romanum</emph>
+        , dictae
+        <emph render="italic">Heures de Comeau</emph>
+        , cité pp. 45-49 (notice)
+        <lb/>
+        <emph render="italic">Manuscrits du Moyen Age et de la Renaissance. Enrichissements du département des Manuscrits 1983-1992,</emph>
+        Paris, Bibliothèque nationale de France, 1994
+        <lb/>
+        <emph render="italic">Mss. [ Usuel</emph>
+      </bibref>
+      <bibref linktype="simple">
+        2001
+        <lb/>
+        cité p. 29
+        <lb/>
+        Elisabeth BURIN,
+        <emph render="italic">Manuscript Illumination in Lyons 1473-1530</emph>
+        , Turnhout, Brepols, 2001 (Ars nova III)
+        <lb/>
+        <emph render="italic">Mss. [ 4° Impr. 2551</emph>
+      </bibref>
+      <p>
+        1993
+        <lb/>
+        <bibref>
+          Eberhard König et Heribert Tenschert,
+          <emph render="italic">Leuchtendes Mittelalter VI</emph>
+          , Heribert Tenschert; 1993/94
+        </bibref>
+      </p>
+    </bibliography>
+    <controlaccess>
+      <blockquote>
+        <p>Ave cujus conceptio// Sollemni plena gaudio//</p>
+      </blockquote>
+      <p>f. 25v</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>Deus qui nos conceptionis nativitatis annunciationis purificationis beatae Mariae virginis</p>
+      </blockquote>
+      <p>f. 25v</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>Domine Jesu Christe fili Dei vivi pone passionem crucem</p>
+      </blockquote>
+      <p>f. 47</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>Missus est Gabriel angelus ad Mariam virginem desponsatam Joseph</p>
+      </blockquote>
+      <p>f. 123v</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>O Maria stella maris// Pietate singularis</p>
+      </blockquote>
+      <p>f. 23v</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>Obsecro te domina sancta Maria mater Dei</p>
+      </blockquote>
+      <p>f. 20</p>
+    </controlaccess>
+    <controlaccess>
+      <blockquote>
+        <p>Salve regina misericordiae// Vita dulcedo et spes</p>
+      </blockquote>
+      <p>f. 76</p>
+    </controlaccess>
+    <controlaccess>
+      <name>AEGIDIUS (s.), abbas</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>ANNA (s.)</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Annonce aux bergers</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Annonciation</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>APPOLONIA (s.)</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>APPOLONIA (s.)</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>BARBARA (s.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>BARBARA (s.)</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>BARBARA (s.)</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>BIBLIA SACRA</subject>
+      <name>Psalmi paenitentiales</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>BIBLIA SACRA</subject>
+      <name>Evangelia (fragmenta)</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>CALENDRIER</subject>
+    </controlaccess>
+    <controlaccess>
+      <name>CATHARINA ALEXANDRIAE (s.)</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CATHARINA ALEXANDRIAE (s.)</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CHARNACÉ (Maurice de)</name>
+      <name>Possesseur</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CHRISTOPHORUS (s.), m. in Lycia</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CHRISTOPHORUS (s.), m. in Lycia</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CLAUDIUS (s.)</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>CLAUDIUS (s.)</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>COMEAU DE CRÉANCEY (famille)</name>
+      <name>Armes</name>
+    </controlaccess>
+    <controlaccess>
+      <name>COMEAU DE CRÉANCEY (famille)</name>
+      <name>Possesseur</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Croix (sainte)</subject>
+      <name>Heures (petites)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>DAVID, roi</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Défunts</subject>
+      <name>Rome</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Destinataire du manuscrit</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>DIONYSIUS (s.), Parisiensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>DURRIEU (le comte Paul)</name>
+      <name>Possesseur</name>
+    </controlaccess>
+    <controlaccess>
+      <name>EHRMANN (Jean)</name>
+      <name>Possesseur</name>
+    </controlaccess>
+    <controlaccess>
+      <name>ELIGIUS (s.), Noviomensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>ELISABETH (s.), vidua</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>EUTROPIUS (s.), Sanctonensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>EWALDI duo (ss.), mm. in Saxonia</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Explicit probable d'un feuillet manquant</subject>
+      <name>[insurrexerunt]</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Explicit probable d'un feuillet manquant</subject>
+      <name>[ex vo-]</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GENOVEFA (s.), Parisiensis v.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GEORGIUS (s.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GEREON ET VICTOR (ss.), Thebeae legionis socii, mm.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GERO (s.), m. Frisiae</name>
+      <name>Mention, (17 août)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GIRAUD-BADIN, librairie à Paris</name>
+      <name>Mss. achetés à</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GOLIATH</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GREGORIUS I Magnus (s.), papa</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>GREGORIUS I Magnus (s.), papa</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>HEURES (Livres d')</subject>
+      <name>Rome</name>
+    </controlaccess>
+    <controlaccess>
+      <name>HUBERTUS (s.), ep. Traiectensis ad Mosam</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Hymnes</subject>
+    </controlaccess>
+    <controlaccess>
+      <name>JACOBUS (s.), major, apostolus</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>JACOBUS (s.), major, apostolus</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>JESUS CHRISTUS</name>
+      <name>Suffrages, à la Sainte Face</name>
+    </controlaccess>
+    <controlaccess>
+      <name>JESUS CHRISTUS. Iconographie</name>
+      <name>Jésus est descendu de la croix, peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>JOACHIM (s.)</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>JUDAS. Baiser de Judas</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>LAMBERTUS (s.), ep. Traiectensis</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>LEBUINUS (s.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>LEONARDUS (s.), abbas</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Litanies</subject>
+    </controlaccess>
+    <controlaccess>
+      <name>LUCAS (s.), evangelista</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Mages. Adoration des mages</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>"Maître de Comeau"</name>
+      <name>Peintre</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARCELLUS (s.), Parisiensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARCUS (s.), evangelista</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Heures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Hymnes</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Destinataires des manuscrits en prière devant la Vierge, peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Vierge et enfant, peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Prières</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>O intemerata</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARIA (b. Virgo)</name>
+      <name>Obsecro te</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARTIALIS (s), Lemovicensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MARTINUS TURONENSIS ep. (s.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MATTHAEUS (s.), apostolus</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Mauri, martyres Coloniae (ss.)</subject>
+      <name>Mention, (15 oct.)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MAURITIUS et socii (ss.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>MAURUS (s.), abbas Glannafoliensis</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>NICASIUS (s.), Remensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>NICOLAUS ep. (s.)</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>NICOLAUS ep. (s.)</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>OSWALDUS (s.), rex</name>
+      <name>Mention, (4 août)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>OTMARUS (s.), abbas Sangallensis</name>
+      <name>Mention, (16 nov.)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>PAULUS (s.), apostolus</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>PAULUS (s.), apostolus</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Pentecôte</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>PETRUS (s.), apostolus</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <name>PETRUS (s.), apostolus</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Présentation au Temple</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Prières</subject>
+    </controlaccess>
+    <controlaccess>
+      <name>QUINTINUS (s.), ep. Viromandensis</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>RELIURES</subject>
+      <name>Velours vert, (XXe s.)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>REMACLUS (s.), ep. Traiectensis</name>
+      <name>Mention, (3 sept.)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>REMIGIUS (s.), Remensis ep.</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>SANCTUS SPIRITUS</name>
+      <name>Heures (petites)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>SEBASTIANUS (s.), m.</name>
+      <name>Peintures</name>
+    </controlaccess>
+    <controlaccess>
+      <name>SEBASTIANUS (s.), m.</name>
+      <name>Suffrage</name>
+    </controlaccess>
+    <controlaccess>
+      <name>SEVERINUS (s.), ep. Coloniensis</name>
+      <name>Mention, (22 oct.)</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Signets</subject>
+      <name>ruban</name>
+    </controlaccess>
+    <controlaccess>
+      <name>SULPICIUS (s.)</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Undecim milia virgines (ss.), mm.</subject>
+      <name>Mention, (21 oct.)</name>
+    </controlaccess>
+    <controlaccess>
+      <name>URSULA et soc. (ss.), vv. et mm. cultae Coloniae</name>
+      <name>Mention</name>
+    </controlaccess>
+    <controlaccess>
+      <name>VERONICA (s.)</name>
+      <name>Peinture</name>
+    </controlaccess>
+    <controlaccess>
+      <subject>Visitation</subject>
+      <name>Peintures</name>
+    </controlaccess>
+    <altformavail>
+      <p>
+        Microfilm en couleur. Cote de consultation en salle de lecture : MFC 1149. Cote de la matrice (pour commander une reproduction) :
+        <num>ICR 2488</num>
+      </p>
+    </altformavail>
+    <dsc><c id="d0e754" level="item">
+  <did>
+    <unitid type="cote">NAL 3197 (Miniature)</unitid>
+    <unittitle>Miniature</unittitle>
+    <physdesc>
+      <physfacet type="support">Parchemin.</physfacet>
+      <extent>1 f. isolé.</extent>
+      <dimensions>156 × 120 mm. (justification du texte: 100 × 65 mm.).</dimensions>
+      <physfacet type="reliure">Monté sous plexiglas.</physfacet>
+    </physdesc>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <dao href="http://gallica.bnf.fr/ark:/12148/btv1b105154659"/>
+  <altformavail>
+    <p>Numérisation effectuée à partir d'un document original</p>
+  </altformavail>
+  <acqinfo>
+    <p>Achetée en 1987 à la librairie Giraud-Badin à Paris. — (Achat 87-34).</p>
+  </acqinfo>
+  <scopecontent>
+    <p>La miniature réintégrée appartenait à la collection Jean Ehrmann. Passée en vente à Paris, Hôtel Drouot, 13 avril 1984, n° 24.</p>
+  </scopecontent>
+</c></dsc>
+  </archdesc>
+</ead>

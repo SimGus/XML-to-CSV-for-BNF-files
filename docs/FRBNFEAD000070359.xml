@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000070359</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>NAL <num>2098</num>-2118</titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France.</publisher>
+        <date calendar="gregorian" era="ce">2009</date>
+      </publicationstmt>
+      <notestmt>
+        <note>
+          <p>Notice créée à partir de la compilation dans un tableur Excel des données des Notices des manuscrits Nouvelles acquisitions latines 1 à 2660 et NAL 3001 à 3174, publiées dans : Bibliothèque de l'Ecole des Chartes, t. 35 (1874), p. 88-92.</p>
+        </note>
+      </notestmt>
+    </filedesc>
+    <profiledesc>
+      
+      <langusage>Notice rédigée en<language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="otherlevel" otherlevel="recueil">
+    <did>
+      <unitid type="cote">NAL 2098-2118</unitid>
+      <unittitle>Papiers de l'abbé J. Boileau classés comme il suit :</unittitle>
+      <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+      </langmaterial>
+      <repository>
+        <corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname>
+      </repository>
+    </did>
+    <dsc><c id="d0e41" level="item">
+  <did>
+    <unitid type="cote">NAL 2098</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Correspondance. Notes et mémoires.</p>
+  </scopecontent>
+<c id="d0e48" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 114</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Religieuses de la congrégation de Notre-Dame au diocèse de Sens</p>
+  </scopecontent>
+</c><c id="d0e55" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 247</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Bévues des savants</p>
+  </scopecontent>
+</c></c><c id="d0e62" level="item">
+  <did>
+    <unitid type="cote">NAL 2099</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Mélanges théologiques.</p>
+  </scopecontent>
+</c><c id="d0e69" level="item">
+  <did>
+    <unitid type="cote">NAL 2100</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De episcoporum causis.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">1997<lb/>cité p. 206<lb/>Irene SCARAVELLI, "Supplemento d'Indagine sul <emph render="italic">Liber gestorum recentium</emph> di Arnolfo di Milano", <emph render="italic">Filologia Mediolatina</emph>, 4 (1997), p. 191-250<lb/>
+      <emph render="italic">Tolbiac [ 8-Z-64810</emph>
+    </bibref>
+  </bibliography>
+  <bibliography>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401416.image.f1025" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+  </bibliography>
+</c><c id="d0e96" level="otherlevel" otherlevel="recueil">
+  <did>
+    <unitid type="cote">NAL 2101-2102</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De sigillo confessionis auricularis.</p>
+  </scopecontent>
+</c><c id="d0e103" level="item">
+  <did>
+    <unitid type="cote">NAL 2103</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>S. Augustinus vindicatus.</p>
+  </scopecontent>
+</c><c id="d0e110" level="otherlevel" otherlevel="recueil">
+  <did>
+    <unitid type="cote">NAL 2104-2105</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Traité de Ratramne sur l'Eucharistie.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401416.image.f1027" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401416.image.f1028" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+  </bibliography>
+</c><c id="d0e124" level="item">
+  <did>
+    <unitid type="cote">NAL 2106</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De residentia canonicorum. — De tactibus impudicis.</p>
+  </scopecontent>
+</c><c id="d0e131" level="otherlevel" otherlevel="recueil">
+  <did>
+    <unitid type="cote">NAL 2107-2109</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Histoire des flagellants.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401416.image.f1029" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k1401416.image.f1030" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+  </bibliography>
+</c><c id="d0e145" level="item">
+  <did>
+    <unitid type="cote">NAL 2110</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De re vestiaria hominis sacri.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140142k.image.f1" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140142k.image.f2" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+    <bibref linktype="simple">
+      <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140142k.image.f3" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+    </bibref>
+  </bibliography>
+</c><c id="d0e162" level="item">
+  <did>
+    <unitid type="cote">NAL 2111</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De approbationibus librorum.</p>
+  </scopecontent>
+</c><c id="d0e169" level="otherlevel" otherlevel="recueil">
+  <did>
+    <unitid type="cote">NAL 2112-2113</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De re beneficiaria.</p>
+  </scopecontent>
+</c><c id="d0e176" level="item">
+  <did>
+    <unitid type="cote">NAL 2114</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De denegata eucharistia reis hominibus.</p>
+  </scopecontent>
+  <bibliography>
+    <bibref linktype="simple">F. 25r-26v<lb/>1996<lb/>cité à titre de copie (Paris AN ms. J184 n° 1 ou AN Musée AEII.1664. et Angers AD Maine-et-Loire 201H1 n° 3) 76 (notice n° 65)<lb/>LIST AND INDEX SOCIETY, <emph render="italic">Acta of Henry II and Richard I (part two) ed. by Nicholas VINCENT</emph>, Special series (vol. 27), Richmond, The List and Index Society, Public Record Office, 1996<lb/>
+      <emph render="italic">Mss. [ 4° Impr. 2204</emph>
+    </bibref>
+  </bibliography>
+</c><c id="d0e198" level="item">
+  <did>
+    <unitid type="cote">NAL 2115</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Dépositions des évêques.</p>
+  </scopecontent>
+</c><c id="d0e205" level="item">
+  <did>
+    <unitid type="cote">NAL 2116</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Historia schismatis Donatistarum.</p>
+  </scopecontent>
+</c><c id="d0e212" level="item">
+  <did>
+    <unitid type="cote">NAL 2117</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>De actionum delicti privilegiati et communis origine.</p>
+  </scopecontent>
+</c><c id="d0e219" level="item">
+  <did>
+    <unitid type="cote">NAL 2118</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Pièces pour l'histoire du diocèse de Sens au XVII s.</p>
+  </scopecontent>
+<c id="d0e226" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 6</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Copie d'une lettre d'Ant. Arnaud du 21 août 1668</p>
+  </scopecontent>
+</c><c id="d0e233" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 83</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Affaires d'Allemagne. — Pouillé du diocèse de Sens</p>
+  </scopecontent>
+</c><c id="d0e240" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 134</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Catalogue des doyens de Sens</p>
+  </scopecontent>
+</c><c id="d0e247" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 164</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Extrait des lettres de M. Lagault à M. Grandin en 1652 et 1653</p>
+  </scopecontent>
+</c><c id="d0e254" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 180</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Réflexions du docteur Le Vray sur une lettre attribuée au ministre Claude, et adressée de Hollande aux protestants nouvellement convertis</p>
+  </scopecontent>
+</c><c id="d0e261" level="otherlevel" otherlevel="partie_composante">
+  <did>
+    <unitid type="foliotation">F. 200</unitid>
+    <langmaterial>Manuscrit en <language langcode="lat">latin</language>
+    </langmaterial>
+  </did>
+  <scopecontent>
+    <p>Leçons du nouveau bréviaire de Sens</p>
+  </scopecontent>
+</c></c></dsc>
+  </archdesc>
+</ead>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+<abstract>
+   <abbr expan='Test 1'>T1</abbr>
+   <unitdate>
+      <head>
+         This is a date.
+      </head>
+      <p>
+         But in several paragraphs.
+      </p>
+      <p>
+         To test the program...
+      </p>
+      <p>
+         A little more. Is there a space<emph>test</emph>?
+      </p>
+      <p>
+         machinsiècle 2Siècle
+      </p>
+   </unitdate>
+</abstract>

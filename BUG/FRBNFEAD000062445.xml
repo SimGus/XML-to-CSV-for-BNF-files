@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd"><ead id="d0e1">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid>FRBNFEAD000062445</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>
+          Latin
+          <num>8917</num>
+        </titleproper>
+        <subtitle>Notice descriptive</subtitle>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bibliothèque nationale de France.</publisher>
+        <date calendar="gregorian" era="ce">2010</date>
+      </publicationstmt>
+      <notestmt>
+        <note>
+          <p>Notice créée à partir de la conversion rétrospective du Catalogue général des manuscrits latins n° 8823 à 8921). Paris : Bibliothèque nationale, 1997.</p>
+        </note>
+      </notestmt>
+    </filedesc>
+    <profiledesc>
+      
+      <langusage>
+        Notice rédigée en
+        <language langcode="fre">français</language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="item">
+    <did>
+      <unitid type="cote">Latin 8917</unitid>
+      <unitid type="ancienne cote">Supplément latin 1675</unitid>
+      <unittitle>
+        <persname authfilenumber="ark:/12148/cb125177395" normal="Rupertus Tuitiensis (1070?-1129?)" role="0070" source="OPP">Rupertus Tuitiensis</persname>
+        ,
+        <title>De divinis officiis</title>
+      </unittitle>
+      <unittitle>
+        <persname authfilenumber="ark:/12148/cb11909011p" normal="Josephus, Flavius (0038?-0100?)" role="0070" source="OPP">Flavius Josephus</persname>
+        ,
+        <title>De bello judaico</title>
+      </unittitle>
+      <unittitle>
+        <persname authfilenumber="ark:/12148/cb13194949d" normal="Agobardus (saint ; 0779-0840)" role="0070" source="OPP">Agobardus Lugdunensis</persname>
+        ,
+        <title>De antiphonario</title>
+      </unittitle>
+      <unittitle>
+        <title>Fragmenta</title>
+      </unittitle>
+      <physdesc>
+        <geogname role="5020">Echternach</geogname>
+        .
+        <physfacet type="support">Parchemin</physfacet>
+        .
+        <extent>102 ff</extent>
+        .
+        <lb/>
+        <physfacet type="reliure">
+          Reliure XIX
+          <emph render="super">e</emph>
+          s. veau brun raciné restaurée en 1972, précédés et suivis d'1 contregarde et d'1 garde de papier marbré et d'1 garde de papier blanc. Titre «RUPERTUS TUITIENSIS» et chiffre de Louis-Philippe dorés au dos sur pièce de peau rouge
+        </physfacet>
+        .
+        <physfacet type="sceau">Aux ff. 1, 2 et 101v, estampille de la Bibliothèque nationale correspondant aux années 1792-1802; cf. Josserand-Bruno, 277 type 17.</physfacet>
+      </physdesc>
+      <langmaterial>
+        Manuscrit en
+        <language langcode="lat">latin</language>
+      </langmaterial>
+      <repository>
+        <corpname authfilenumber="751021006" source="RCR">Bibliothèque nationale de France. Département des manuscrits</corpname>
+      </repository>
+    </did>
+    <scopecontent>
+      <p>Ms. composite assemblé à Echternach.</p>
+      <p>3 manuscrits, chacun avec des additions contemporaines ou postérieures.</p>
+      <p>
+        Aux ff. 1v et 2, mentions du XIVe-XVe s. : «Continet XIII librum antiquitatis Josephi de bello judaico»; «Continet Rubertum abbatem Tuitiensem de divinis officiis perutiles tractatus. Et XIII librum antiquitatis judaice. Et Agobardum Lugdunensem super antiphonarium» et cotes grattées lisibles à la lumière ultra-violette : «R 3 E2», caractéristiques de la bibliothèque de l'abbaye d'Echternach; cf. J. Schroeder,
+        <emph render="italic">Bibliothek und Schule der Abtei Echternach um die Jahrhundertwende</emph>
+        , Luxembourg, 1977, 27-31 et 166.
+      </p>
+      <p>
+        Saisi par
+        <persname>Jean-Baptiste Maugerard</persname>
+        , avec 85 autres mss. originaires d'Echternach et d'Orbais, dans le dépôt littéraire de Luxembourg et apporté à la Bibliothèque nationale en oct. 1802. N° 29 de la liste de Maugerard; cf. B.n.F., ms. Archives Modernes 497, dossier Echternach; L. Traube et R. Ehwald, dans
+        <emph render="italic">Bayer. Akad. d. Wissen. Phil.-hist. Kl. Abhandl.</emph>
+        , XXIII (1903), 336 et ss.; H. Degering, dans
+        <emph render="italic">Aufsätze Fritz Milkau gewidmet</emph>
+        , Leipzig, 1921, 71-82 n° 29;
+        <emph render="italic">1789. Le Patrimoine libéré</emph>
+        , Paris, B. N., 1989, 158-159.
+      </p>
+    </scopecontent>
+    <bibliography>
+      <p>
+        1979
+        <lb/>
+        <bibref>
+          Michel HUGLO, « Les remaniements de l'antiphonaire grégorien au IXes : Hélisachar, Agobard, Amalaire », in Michel HUGLO,
+          <emph render="italic">Les sources du plain-chant et de la musique médiévale.</emph>
+          Ashgate, Variorum, 2004, [ XI, p. 89-120 ], cité p. 103, note 4.
+        </bibref>
+      </p>
+      <p>
+        1985
+        <lb/>
+        <bibref>
+          Paul LIBAERT, "Notice sur 43 manuscrits d'Echternach conservés à la bibliothèque nationale de Paris",
+          <emph render="italic">Hémecht,</emph>
+          1
+          <emph render="italic">(1985),</emph>
+          p. 53-73, recensé et cité pp. 58, 61, 63, 70.
+        </bibref>
+      </p>
+      <p>
+        1993
+        <lb/>
+        <bibref>
+          <emph render="italic">Egbert Erzbischof von Trier 977-993. Gedenkschrift der Diöceze Trier zum 1000. Todestag</emph>
+          . Band 1 :
+          <emph render="italic">Katalog und Tafelband</emph>
+          , Hrsg F.J. Ronig et alii, Trier, Selbstverlag des Rheinischen Landesmuseums, 1993, notice n° 32, cité p. 34 + planche 138 (ff. 79, 80v).
+        </bibref>
+      </p>
+      <p>
+        1994
+        <lb/>
+        <bibref>
+          <emph render="italic">Clavis scriptorum latinorum medii aevi. Auctores Galliae 735-987. T. I. Indices,</emph>
+          Ed. M-H. Jullien — F. Perelman, Turnhout, Brepols, 1994 (CC. Continuatio Mediaevalis, Clavis des auteurs latins du Moyen Age), recensé p. 109.
+        </bibref>
+      </p>
+      <p>
+        <emph render="italic">Catalogue général des manuscrits latins. N°s 8823-8921.</emph>
+        S.d. J. Sclaffer — M-P. Laffitte, Paris, Bibliothèque nationale de France, 1997, notice pp. 167-169.
+      </p>
+      <p>
+        1995
+        <lb/>
+        <bibref>AVRIL (François), RABEL (Claudia), Manuscrits enluminés d'origine germanique, Tome I, Xe-XIVe s., Paris : BnF-CRME, 1995, 219 pp. +164 pl., notice n° 42 avec reproduction(s) (F. 1-78) ; notice n° 7 avec reproduction(s) (F. 79-97, 102)</bibref>
+      </p>
+      <p>
+        2000
+        <lb/>
+        <bibref>
+          Jean-Claude MULLER, « Faites-moi grâce de ne pas dédaigner mon envoi : Réquisitions de manuscrits et trafic d'incunables à Metz, à Luxembourg et au pas de Trèves par Jean-Baptiste Maugérard sous le Consulat »,
+          <emph render="italic">Hémecht</emph>
+          , 52/1 (2000), p. 5-80, recensé parmi les mss d'Echternach, cité p. 59.
+        </bibref>
+      </p>
+      <p>
+        2006
+        <lb/>
+        <bibref>
+          Marie-Pierre LAFFITTE, « La politique de reliure du département des Manuscrits pour ses collections occidentales, de la Révolution à la Monarchie de Juillet », (tiré à part) in
+          <emph render="italic">Bibliophilies et reliures : mélanges offerts à Michel Wittock</emph>
+          , dir. Annie De COSTER, Bruxelles, Librairie F. Tulkens, 2006, p. 274-291, cité p. 281 (note n° 51).
+        </bibref>
+      </p>
+      <p>
+        2007
+        <lb/>
+        <bibref>
+          [Jean-Claude MULLER, « "faites-moi la grâce de ne pas dédaigner mon envoi" : Réquisitions de manuscrits et trafic d'incunables à Metz, à Luxembourg et au pays de Trèves par Jean-Baptiste Maugérard sous le Consulat. Édition de sa correspondance avec van Praet (1802-1803) et d'un inventaire complet des manuscrits d'Echternach et d'Orval réquisitionnés à Luxembourg au profit de la Bibliothèque nationale de Paris »,
+          <emph render="italic">Hemecht. Zeitschrift für Luxemburger Geschichte</emph>
+          , 52/1 (2000), p. 5-80]. Voir bulletin codicologique n°562, in
+          <emph render="italic">Scriptorium</emph>
+          LXI/2 (2007)
+        </bibref>
+      </p>
+    </bibliography>
+    <bibliography>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f677" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f678" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f679" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f680" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f681" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f682" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f683" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f684" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f685" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f686" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f687" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f688" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f689" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f690" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f691" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f692" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f693" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f694" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <bibref linktype="simple">
+        <extref actuate="onrequest" href="http://gallica.bnf.fr/ark:/12148/bpt6k140069m.image.f695" linktype="simple" show="new">Consulter la fiche bibliographique numérisée</extref>
+      </bibref>
+      <p>
+        1981
+        <lb/>
+        <bibref>
+          L. Van Acker,
+          <emph render="italic">Agobardi Lugdunensis "Opera omnia"</emph>
+          dans la collection
+          <emph render="italic">Corpus Christianorum</emph>
+          52 (1981)
+        </bibref>
+      </p>
+      <p>
+        1967
+        <lb/>
+        <bibref>
+          Hrabanus Haacke,
+          <emph render="italic">Ruperti Tuitiensis "Liber de divinis officiis"</emph>
+          dans la collection
+          <emph render="italic">Corpus Christianorum</emph>
+          7 (1967)
+        </bibref>
+      </p>
+    </bibliography>
+    <processinfo audience="external">
+      <p>Notice rédigée par Mathieu LESCUYER</p>
+    </processinfo>
+    <altformavail>
+      <p>
+        Microfilm en noir et blanc. Cote de consultation en salle de lecture : MF 22640. Cote de la matrice (pour commander une reproduction) :
+        <num>R 816</num>
+      </p>
+    </altformavail>
+    <dao href="http://gallica.bnf.fr/ark:/12148/btv1b90661695"/>
+    <altformavail>
+      <p>Numérisation effectuée à partir d'un document de substitution</p>
+    </altformavail>
+    <dsc><c id="d0e496" level="otherlevel" otherlevel="unité_textuelle">
+  <did>
+    <unitid type="foliotation">F. 1-78</unitid>
+    <unittitle>
+      <persname authfilenumber="ark:/12148/cb125177395" normal="Rupertus Tuitiensis (1070?-1129?)" role="0070" source="OPP">Rupertus Tuitiensis</persname>, <title>De divinis officiis</title>
+    </unittitle>
+    <unittitle>
+      <title>Fragmenta</title>
+    </unittitle>
+    <unitdate calendar="gregorian" era="ce" normal="1167/1200">3<emph render="super">e</emph> tiers du XII<emph render="super">e</emph> siècle</unitdate>
+    <physdesc>
+      <physfacet type="écriture">Echternach; cf. Fr. Avril et Cl. Rabel, <emph render="italic">Manuscrits enluminés d'origine germanique</emph>, I, Paris, 1995, 50 n° 42. Deux mains, la seconde aux ff. 9v et 13. — Diphtongue <emph render="italic">ae</emph> signalée par le <emph render="italic">e</emph> cédillé</physfacet>.<lb/>
+      <physfacet type="décoration">Décoration inachevée : la place des initiales de la préface et des différents livres est restée en blanc, sauf un dessin préparatoire (2). Deux initiales ornées à l'encre rouge (49v, 57v); initiales de paragraphes rubriquées <emph render="italic">passim</emph>; rehaussées de bleu ou de vert (64v); cf. op. cit., ibid. et pl. XXXVI. Titres à lignes (1v) ou à lettres (30v) alternativement rouges et brunes. Rubriques <emph render="italic">passim</emph>. — Mots en caractères grecs (39v, 46, 47, 63v, 67, 70-71, 77v) et hébreux (71), le plus souvent surlignés d'un trait à l'encre</physfacet>. — <physfacet type="marginalia">Notes marginales contemporaines <emph render="italic">passim</emph>; rayées de rouge (4v, 9, 25, 75v-77v); des XIVe-XVe s. (66v-67v, 68v)</physfacet>. — Notation musicale : au f. 1, neumes lorrains sur portée de quatre lignes rouges; cf. S. Corbin, dans <emph render="italic">Annuaire de l'École pratique des hautes études</emph>, 1972-1973, 374.<lb/>
+      <lb/>
+      <physfacet type="codicologie">10 cahiers de 8 ff. sauf le 10e de 6 ff. (73-78).  Coutures du parchemin contemporaines du ms. aux ff. 48, 54</physfacet>.<lb/>
+      <lb/>
+      <extent>78 ff. à 2 colonnes de 56 lignes</extent>. <dimensions>360 × 255 mm. (justification 300 × 200 mm)</dimensions>. <physfacet type="réglure">Réglure à la mine de plomb; f. 78 réglé à la pointe sèche à l'origine</physfacet>.
+</physdesc>
+  </did>
+  <scopecontent>
+    <p>F. 1 <title>Hymne (?) pour la division des apôtres</title>, notée : «Cetus apostolicus celorum gloria virtus // Est individuus...-... Obtineat veniam vite perducat in aulam // Amen». — Addition contemporaine.</p>
+    <p>F. 1v-78 [RUPERTUS TUITIENSIS abbas, O.S.B., De Divinis officiis] «Ea que per anni circulum ordine constituto...-... usque ad reditum Christi scripture nos illuminent et consolentur. Per eundem dominum nostrum Jesum Christum qui cum Patre et Spiritu sancto vivit et regnat» (ms. <emph render="italic">A4</emph> de l'éd. de R. Haacke, <emph render="italic">C.C.C.M.,</emph> VII, XXXIII; nombreuses variantes dans les libellés et les emplacements des titres, non signalés dans l'éd.).</p>
+    <p>F. 78. Trois <title>épitaphes</title> d'abbés d'Echternach, <persname role="5030">Ravangerus</persname>, <persname role="5030">Uroldus</persname> et <persname role="5030">Godefridus</persname> : «Hac recumbant fossa Ravangeri patris ossa// Et fiunt...-... Clauserat ipse diem nunc habeat requiem» (éd. <emph render="italic">M.G. H., Poet. lat.,</emph> V, 315-316); «Continet hic artus locus Uroldi patris artus// Cujus in ecclesia...-... Hac tumba proprie clauditur ecclesie» (éd. Martène et Durand, <emph render="italic">Voyage littéraire de deux religieux bénédictins</emph>, Paris, 1719, 300 et <emph render="italic">Gallia christiana</emph>, XIII, 579); «Quod caro sit vermis quod homo sit pulvis inermis // Approbat illud homo...-... Ad cineres hominis vota fer ipse cinis» (éd. Martène et Durand, <emph render="italic">Voyage littéraire de deux religieux bénédictins</emph>, 300 et <emph render="italic">Gallia christiana</emph>, XIII, 581). — Liste des signes du zodiaque en abrégé : «Est libr. scor. tau...-... pis. vir.» — Additions du XIIe s.<lb/>Le feuillet 78 est  palimpseste :  fragment d'un bifolium plus grand réutilisé perpendiculairement, avec rubriques à l'encre orange, correspondant sans doute à un <title>sacramentaire</title>; cf. J.-C. Muller, <emph render="italic">Lateinische Kultur im X. Jahrhundert</emph>, éd. W. Berchin, 1991, 330.</p>
+  </scopecontent>
+</c><c id="d0e591" level="otherlevel" otherlevel="unité_textuelle">
+  <did>
+    <unitid type="foliotation">F. 78v-97v</unitid>
+    <unittitle>
+      <persname authfilenumber="ark:/12148/cb11909011p" normal="Josephus, Flavius (0038?-0100?)" role="0070" source="OPP">Flavius Josephus</persname>, <title>De bello judaico</title>
+    </unittitle>
+    <unittitle>
+      <title>Fragment</title>
+    </unittitle>
+    <unitdate calendar="gregorian" era="ce" normal="0975/1025">Fin du X<emph render="super">e</emph>-début du XI<emph render="super">e</emph> siècle</unitdate>
+    <physdesc>
+      <physfacet type="écriture">Echternach; cf. Fr. Avril et Cl. Rabel, <emph render="italic">Manuscrits enluminés d'origine germanique</emph>, I, Paris, 1995, 15 n° 7. — Diphtongue <emph render="italic">ae</emph> signalée par le <emph render="italic">e</emph> cédillé</physfacet>.  <lb/>
+      <physfacet type="décoration">Initiales ornées à l'encre orange; cf. <emph render="italic">op. cit., ibid.</emph> et pl. VI, et rubriques au début du prologue et du livre I (79; 80v). Une initiale rubriquée (82)</physfacet>. — <physfacet type="marginalia">Corrections et notes marginales contemporaines (79-81v); note marginale du XIVe-XVes. (88v)</physfacet>.<lb/>
+      <lb/>
+      <physfacet type="codicologie">3 cahiers, les deux premiers de 8 ff., le dernier de 4 ff. (95-97, 102). Les ff. 98-101v sont encartés par erreur entre les ff. 97v et 102. Le f. 102 est mutilé, il ne contient qu'une colonne de texte, la seconde ayant été enlevée. Au bas du f. 97v, mention du XIIe-XIIIe s. «omnibus omnia non sumnia (?) dicere possum. Amen»</physfacet>.<lb/>
+      <lb/>
+      <extent>20 ff. à 2 colonnes de 34 lignes</extent>. <dimensions>360 × 250 mm. (justification 265 × 200 mm)</dimensions>. <physfacet type="réglure">Réglure à la pointe sèche</physfacet>.</physdesc>
+  </did>
+  <scopecontent>
+    <p>F. 78v.  (Addition du XVe s.) Poème au sujet d'une déprédation commise en 1461 dans la crypte de l'abbaye : «Anno milleno primo decies quoque seno // Etque quadringenti jungantur...-... Quid facile extigwit pirus intra (?) dum domus ardet» (éd. P. Liebaert, <emph render="italic">Hémecht</emph> (1985), 63-64). — Addition du XVe s.</p>
+    <p>F. 79-97v, 102.  [FLAVIUS JOSEPHUS, De Bello judaico]. [Prologus et L. I, c. 1-16] «Incipit liber XIII Josephi ystoriographi antiquitatis judaicae [<emph render="italic">sic</emph>]. Quoniam bellum quod cum populo romano...-... oppidum autem provincie dedicavit rebusque advecticiis [portum Caesari vero...]», incomplet de la fin et sans la division en chapitres (éd. <emph render="italic">Flavii Josephi... opera quaedam</emph>, Bâle, Johann Froben, 1524, 593-631).</p>
+    <p>F. 102v.  Fragment : «Imbuo pando noto probo colligo metior edo cor rude quid genus astra sonos spacium numerum». — [<persname role="0070">BERTERUS AURELIANENSIS</persname>, <title>Lamentacio quod sepulchrum Christi deseritur</title>] «Juxta threnos Jheremie // Vere lugent Sion vie // Quod sollemni...-... Pro me redimendo [moniendo]» (éd. A. Wilmart, dans <emph render="italic">Mediaeval and Renaissance Studies</emph>, IV (1958), 81-82; <emph render="italic">P. L.</emph>, CLV, 1289-1292).</p>
+    <p>F. 102v, 101v.  Notes extraites du <title>Liber pontificalis</title> énumérant les décisions des papes en matière liturgique et paraliturgique, commençant au bas du f. 102v et finissant au bas du f. 101v : «Linus papa statuit ut mulier velato capite intret ecclesiam. Cletus statuit ut clericus neque comam neque barbam nutriat...-... Simacus statuit ut <emph render="italic">Gloria in excelsis</emph> cantaretur in festis sanctorum». — Additions du XIIe s.</p>
+  </scopecontent>
+</c><c id="d0e674" level="otherlevel" otherlevel="unité_textuelle">
+  <did>
+    <unitid type="foliotation">F. 98-101v</unitid>
+    <unittitle>
+      <persname authfilenumber="ark:/12148/cb13194949d" normal="Agobardus (saint ; 0779-0840)" role="0070" source="OPP">Agobardus Lugdunensis</persname>, <title>De antiphonario</title>
+    </unittitle>
+    <unitdate calendar="gregorian" era="ce" normal="1001/1100">XI<emph render="super">e</emph> siècle</unitdate>
+    <physdesc>
+      <physfacet type="écriture">Echternach (?). — Diphtongue <emph render="italic">ae</emph> signalée par le <emph render="italic">e</emph> cédillé</physfacet>. <lb/>
+      <physfacet type="décoration">Aucun élément décoratif</physfacet>. — Notation musicale : au f. 101v, neumes lorrains sur portée de quatre lignes rouges; cf. S. Corbin, dans <emph render="italic">Annuaire de l'École pratique des hautes études</emph>, 1971-1972, 374. — <physfacet type="marginalia">Notes marginales du XIVe-XVe s. (98v, 99v). Voir planche XXVII.</physfacet>
+      <lb/>
+      <lb/>
+      <physfacet type="codicologie">1 cahier de 4 ff., encarté dans le cahier précédant; cf. <emph render="italic">supra</emph>. La marge inférieure des ff. 98 et 100 a été découpée</physfacet>.<lb/>
+      <lb/>
+      <extent>4 ff. à 38 lignes pleines</extent>. <dimensions>340 × 250 mm. (justification 240 × 180 mm.)</dimensions>. <physfacet type="réglure">Réglure à la pointe sèche</physfacet>.</physdesc>
+  </did>
+  <scopecontent>
+    <p>F. 98-101v. [AGOBARDUS LUGDUNENSIS archiep., De antiphonario] «Incipit prefatio Agobardi Lugdunensis ecclesie archiepiscopi super antiphonarium. Dilectissimis in Christo fratribus et precipue cantoribus ecclesie Lugdunensis...-... ista sufficere et superhabundare noscuntur» (ms. <emph render="italic">Pd</emph> de l'éd. de L. Van Acker, <emph render="italic">C. C. C. M.</emph>, LII, LIV et 335-351; les dernières phrases, au f. 101v, sont presque complètement illisibles car elles ont été grattées); cf. <emph render="italic">Clavis scriptorum latinorum medii aevi</emph>, I, Ago 7.</p>
+    <p>F. 101v.  <title>Fragment avec notation musicale</title> : «Quid videbitis in Sunamite... -... fabricata es manu artificis» (Ct 7, 1; cf. même pièce, ms. B. n. F., Latin 8922, f. 173, provenant d'Echbernach). — Addition du XIes. — Cf. <emph render="italic">supra</emph> pour le fragment s'étendant sur les ff.102v-101v.</p>
+    <p>F. 101v. <title>Récit relatif à l'invasion de la Hongrie par les Tartares en 1241</title> : «Anno incarnacionis Domini millesimo ducentesimo quadragesimo primo ipsa die resurrectionis dominice Tartari per Alpes in silvas irrunpentes Rodanam quoddam opidum...-... in villa Zaliz» (éd. d'après ce ms. dans <emph render="italic">M. G. H., S. S.</emph>, XXIV, 65). — Addition du XIIIe s.</p>
+  </scopecontent>
+</c></dsc>
+  </archdesc>
+</ead>
