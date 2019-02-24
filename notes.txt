@@ -65,7 +65,7 @@ BUGS
    FIX twice french in drop down menu at the start of the program
    FIX read all the first line
    FIX not all is reset when translating a directory
-   BUG unicode not recognized by FileMaker (add BOM?) NEED FEEDBACK SEEMS TO BE FIXED
+   BUG unicode not recognized by FileMaker (add BOM?) COMES FROM WINDOWS
    FIX generating output file name when translating several files to several files produces an invalid output file name (/.../dir.txt/file.txt)
    FIX latin nal FRBNF71686 (warn invalid architecture 'emph' misplaced) IT'S NORMAL
    FIX latin nal FRBNF69865 extref not ignored
@@ -78,6 +78,8 @@ BUGS
    FIX physdesc is being copied over and over again
    FIX physdesc containing irrelevant information
    FIX custodhist inside content PUT IN 'Provenance moderne'
+   FIX old cotes sometimes written in current cote field
+   FIX "supplément" not being found
 
 CHECKS
    CHECK should I really have put custodhist in contenu?
