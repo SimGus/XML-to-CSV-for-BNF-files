@@ -688,11 +688,13 @@ public class Interpreter {
                if (attribute == null)
                   return false;//will get in @translatedFields the regular way
 
+               attribute = attribute.toLowerCase();
+
                String fieldValue = tag.getWritableContent();
                if (fieldValue != null) {
                   if (attribute.equals("cote"))
                      updateField("Cote actuelle", fieldValue);
-                  else if (attribute.equals("ancienne cote")) {
+                  else if (attribute.startsWith("ancienne cote")) {
                      String oldCoteSystem = getOldCoteSystem(fieldValue);
                      String fieldName;
                      if (oldCoteSystem == null)
@@ -711,6 +713,8 @@ public class Interpreter {
                String attribute = tag.getAttribute("type");
                if (attribute == null)
                   return false;//will get in @translatedFields the regular way
+
+               attribute = attribute.toLowerCase();
 
                String fieldValue = tag.getWritableContent();
                if (fieldValue != null) {
@@ -847,9 +851,11 @@ public class Interpreter {
       if (lowercaseValue.startsWith("résidu saint-germain"))
          return "Saint-Germain";
       if (lowercaseValue.startsWith("suppl.")) {
-         if (lowercaseValue.startsWith("suppl. francais") || lowercaseValue.startsWith("suppl. français"))
+         if (lowercaseValue.startsWith("suppl. francais") || lowercaseValue.startsWith("suppl. français")
+            || lowercaseValue.startsWith("supplement français") || lowercaseValue.startsWith("supplément français"))
             return "Supplément français";
-         if (lowercaseValue.startsWith("suppl. latin"))
+         if (lowercaseValue.startsWith("suppl. latin")
+            || lowercaseValue.startsWith("supplement latin") || lowercaseValue.startsWith("supplément latin"))
             return "Supplément latin";
          return "Supplément";
       }
