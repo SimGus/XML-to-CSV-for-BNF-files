@@ -26,7 +26,7 @@ I worked alone on this project, with input from the Professor in History who was
 - To try and cope with user data that contains invalid/unexpected information and formats
 - To analyze, understand and find a solution to a client's problem
 - To fulfill a client's demand
-- To use Java Swing library to make a simple and ergonomic GUI
+- To use the Java Swing and AWT libraries to make a simple and ergonomic GUI
 - To make a multi-language GUI (here in 2 languages)
 
 ## Files worth checking out
